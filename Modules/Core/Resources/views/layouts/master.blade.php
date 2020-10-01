@@ -181,13 +181,18 @@
                         >
                             <v-col
                                 cols="12"
+                                class="d-flex align-content-center flex-wrap"
                             >
-                                @{{ new Date().getFullYear() }} — <strong>{{ config('app.name', 'Laravel') }}</strong>
+                                <v-icon
+                                    small
+                                    color="black"
+                                    class="mr-1"
+                                >
+                                    mdi-copyright
+                                </v-icon> @{{ new Date().getFullYear() }} — {{ config('app.name', 'Laravel') }}
                             </v-col>
                         </v-footer>
                     </v-main>
- 
-                    
 
                 </v-app>
             </base-layout>
