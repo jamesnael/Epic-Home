@@ -1,0 +1,1 @@
+Vue.component('tipe-proyek-form', () => import('./components/TipeProyek/Form.vue'));

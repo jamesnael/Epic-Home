@@ -1,21 +1,20 @@
 <?php
 
-namespace Modules\Core\Providers;
+namespace Modules\MasterData\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 
-class CoreServiceProvider extends ServiceProvider
+class MasterDataServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Core';
+    protected $moduleName = 'MasterData';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'core';
+    protected $moduleNameLower = 'masterdata';
 
     /**
      * Boot the application events.
@@ -38,8 +37,6 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-
-        require __DIR__.'/CoreHelpersProvider.php';
     }
 
     /**

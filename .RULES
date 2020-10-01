@@ -1,0 +1,16 @@
+Indent 4 spaces
+Module StudlyCase
+Class StudlyCase
+Constant CAPITAL_CASE
+Class Method camelCase
+Helper Method snake_case
+Variable snake_case
+No unclear variable names
+Route URI dash-case
+Route Params snake_case
+Props camelCase
+File Name PHP snake_case
+File Name Vue StudlyCase
+API & View
+Fix Config Variable -> file config.php
+Dynamic Config Variable -> laravel options

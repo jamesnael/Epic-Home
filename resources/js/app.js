@@ -10,6 +10,7 @@ window.Vue = require('vue');
 Vue.use(Vuetify);
 
 require('./../../Modules/Core/Resources/js/app');
+require('./../../Modules/MasterData/Resources/js/app');
 
 const vuetify = new Vuetify({
 	icons: {
