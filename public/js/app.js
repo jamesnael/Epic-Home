@@ -214,6 +214,9 @@ Vue.component('base-layout', function () {
 Vue.component('table-component', function () {
   return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
 });
+Vue.component('main-menu-component', function () {
+  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./components/MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
+});
 
 /***/ }),
 
