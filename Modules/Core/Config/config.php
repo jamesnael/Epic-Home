@@ -18,6 +18,27 @@ return [
     	            'model' => false,
     	            'show' => true
     	        ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Tipe Bangunan',
+                    'uri' => 'tipe-bangunan.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Tipe Unit',
+                    'uri' => 'tipe-unit.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Agent Property',
+                    'uri' => 'agent-property.index',
+                    'model' => false,
+                    'show' => true
+                ],
     	    ]
     	],
         // [  
