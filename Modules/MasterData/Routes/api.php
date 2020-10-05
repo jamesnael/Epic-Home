@@ -14,8 +14,13 @@ use Illuminate\Http\Request;
 */
 
 Route::prefix('master-data')->namespace('Api')->group(function() {
-	Route::get('tipe_proyek/{tipe_proyek}/data', 'TipeProyekController@data')->name('tipe-proyek.data');
+	Route::get('tipe-proyek/{tipe_proyek}/data', 'TipeProyekController@data')->name('tipe-proyek.data');
 	Route::apiResource('tipe-proyek', 'TipeProyekController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('faq/{faq}/data', 'FaqController@data')->name('faq.data');
+	Route::apiResource('faq', 'FaqController')->only([
 	    'store', 'update', 'destroy'
 	]);
 });

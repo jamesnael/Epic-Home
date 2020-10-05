@@ -15,4 +15,8 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('tipe-proyek', 'TipeProyekController')->only([
 	    'index', 'create', 'edit'
 	]);
+	
+	Route::resource('faq', 'FaqController')->only([
+	    'index', 'create', 'edit'
+	]);
 });

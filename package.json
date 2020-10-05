@@ -28,6 +28,7 @@
         "@mdi/font": "^5.6.55",
         "moment": "^2.29.0",
         "vee-validate": "^3.4.0",
-        "vuetify": "^2.3.12"
+        "vuetify": "^2.3.12",
+        "vue-wysiwyg": "^1.7.2"
     }
 }
