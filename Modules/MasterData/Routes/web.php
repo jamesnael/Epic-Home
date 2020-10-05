@@ -23,4 +23,8 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('tipe-unit', 'TipeUnitController')->only([
 	    'index', 'create', 'edit'
 	]);
+
+	Route::resource('agent-property', 'AgentPropertyController')->only([
+	    'index', 'create', 'edit'
+	]);
 });

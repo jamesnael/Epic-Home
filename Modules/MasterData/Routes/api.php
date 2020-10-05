@@ -31,4 +31,10 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	Route::apiResource('tipe-unit', 'TipeUnitController')->only([
 	    'store', 'update', 'destroy'
 	]);
+
+	Route::get('agent-property/table', 'AgentPropertyController@table')->name('agent-property.table');
+	Route::get('agent-property/{agent_property}/data', 'AgentPropertyController@data')->name('agent-property.data');
+	Route::apiResource('agent-property', 'AgentPropertyController')->only([
+	    'store', 'update', 'destroy'
+	]);
 });

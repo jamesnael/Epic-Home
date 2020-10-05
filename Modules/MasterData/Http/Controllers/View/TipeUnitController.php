@@ -19,7 +19,6 @@ class TipeUnitController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'Master Data'],
-            ['href' => route('tipe-unit.index'), 'text' => 'Master Data'],
             ['href' => route('tipe-unit.index'), 'text' => 'Tipe Unit'],
         ];
 
