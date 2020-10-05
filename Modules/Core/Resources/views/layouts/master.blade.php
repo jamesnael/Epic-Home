@@ -147,27 +147,10 @@
 
                         </v-navigation-drawer>
 
-                        <v-card
-                            outlined>
-                            <v-card-title>
-                                <h3>Title</h3>
-                            </v-card-title>
-
-                            <v-card-subtitle>
-                                <v-breadcrumbs
-                                    class="px-0 py-2" 
-                                    :items="breadcrumbs">
-                                    <template v-slot:item="{ item }">
-                                        <v-breadcrumbs-item
-                                            :href="item.href"
-                                            :disabled="item.disabled"
-                                        >
-                                            @{{ item.text.toUpperCase() }}
-                                        </v-breadcrumbs-item>
-                                    </template>
-                                </v-breadcrumbs>
-                            </v-card-subtitle>
-                        </v-card>
+                        @includeWhen(isset($page_title) && isset($breadcrumbs), 'core::components.breadcrumbs', [
+                            'breadcrumb_title' => $page_title,
+                            'breadcrumbs' => $breadcrumbs
+                        ])
                         <v-container fluid>
 
                             @yield('content')
