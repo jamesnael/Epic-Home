@@ -5,8 +5,9 @@ namespace Modules\MasterData\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\Storage;
 
-class TipeProyek extends Model
+class AgentProperty extends Model
 {
     use Sluggable, SoftDeletes;
 
@@ -15,7 +16,7 @@ class TipeProyek extends Model
      *
      * @var string
      */
-    protected $table = 'ms_tipe_proyek';
+    protected $table = 'ms_agent_property';
 
     /**
      * The attributes that are mass assignable.
@@ -23,9 +24,28 @@ class TipeProyek extends Model
      * @var array
      */
     protected $fillable = [
-    	'nama',
+    	'nama_agent_property',
+    	'email',
+    	'nomor_telepon',
+    	'alamat',
+    	'logo_agent',
     	'deskripsi'
     ];
+
+    protected $appends = [
+        'url_logo_agent',
+    ];
+
+    /**
+     * Get the model's url logo agent.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getUrlLogoAgentAttribute()
+    {
+        return (!empty($this->attributes['logo_agent'])) ? Storage::disk('public')->url('app/public/logo/logo_agent/'.$this->attributes['logo_agent']) : null;
+    }
 
     /**
      * The attributes that should be mutated to dates.
@@ -45,7 +65,7 @@ class TipeProyek extends Model
     {
         return [
             'slug' => [
-                'source' => ['nama']
+                'source' => ['nama_agent_property']
             ]
         ];
     }
@@ -59,13 +79,4 @@ class TipeProyek extends Model
     {
         return 'slug';
     }
-
-    /**
-     * Get the relationship for the model.
-     */
-    public function tipe_unit()
-    {
-        return $this->hasMany('Modules\MasterData\Entities\TipeUnit', 'id_tipe_proyek');
-    }
-
 }

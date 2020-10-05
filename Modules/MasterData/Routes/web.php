@@ -16,7 +16,19 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	    'index', 'create', 'edit'
 	]);
 	
-	Route::resource('faq', 'FaqController')->only([
+	Route::resource('tipe-bangunan', 'TipeBangunanController')->only([
 	    'index', 'create', 'edit'
+	]);
+
+	Route::resource('tipe-unit', 'TipeUnitController')->only([
+	    'index', 'create', 'edit'
+	]);
+
+	Route::resource('agent-property', 'AgentPropertyController')->only([
+	    'index', 'create', 'edit'
+	]);
+
+	Route::resource('faq', 'FaqController')->only([
+		'index', 'create', 'edit'
 	]);
 });

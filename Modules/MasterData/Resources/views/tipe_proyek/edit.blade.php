@@ -8,7 +8,7 @@
     			<v-card-text>
     				<tipe-proyek-form
 	    				inline-template
-	    				action-form="{{ route('tipe-proyek.store') }}"
+	    				action-form="{{ route('tipe-proyek.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('tipe-proyek.index') }}"
 	    				data-uri="{{ route('tipe-proyek.data', [ $data->slug ]) }}">
 		    			@include('masterdata::tipe_proyek.form')

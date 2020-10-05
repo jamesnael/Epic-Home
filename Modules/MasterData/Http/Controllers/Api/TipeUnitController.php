@@ -5,11 +5,11 @@ namespace Modules\MasterData\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\TipeProyek;
+use Modules\MasterData\Entities\TipeUnit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class TipeProyekController extends Controller
+class TipeUnitController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -26,9 +26,9 @@ class TipeProyekController extends Controller
 
         DB::beginTransaction();
         try {
-            $data = TipeProyek::create($request->all());
+            $data = TipeUnit::create($request->all());
             DB::commit();
-            return response_json(true, null, 'Tipe proyek berhasil disimpan.', $data);
+            return response_json(true, null, 'Tipe unit berhasil disimpan.', $data);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -38,10 +38,10 @@ class TipeProyekController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param TipeProyek $tipe_proyek
+     * @param TipeUnit $tipe_unit
      * @return Renderable
      */
-    public function update(Request $request, TipeProyek $tipe_proyek)
+    public function update(Request $request, TipeUnit $tipe_unit)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -51,9 +51,9 @@ class TipeProyekController extends Controller
 
         DB::beginTransaction();
         try {
-            $tipe_proyek->update($request->all());
+            $tipe_unit->update($request->all());
             DB::commit();
-            return response_json(true, null, 'Tipe proyek berhasil disimpan.', $tipe_proyek);
+            return response_json(true, null, 'Tipe unit berhasil disimpan.', $tipe_unit);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -62,16 +62,16 @@ class TipeProyekController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param TipeProyek $tipe_proyek
+     * @param TipeUnit $tipe_unit
      * @return Renderable
      */
-    public function destroy(TipeProyek $tipe_proyek)
+    public function destroy(TipeUnit $tipe_unit)
     {
         DB::beginTransaction();
         try {
-            $tipe_proyek->delete();
+            $tipe_unit->delete();
             DB::commit();
-            return response_json(true, null, 'Tipe proyek dihapus.');
+            return response_json(true, null, 'Tipe unit dihapus.');
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menghapus data, silahkan dicoba kembali beberapa saat lagi.');
@@ -80,12 +80,12 @@ class TipeProyekController extends Controller
 
     /**
      * Get the specified resource from storage.
-     * @param TipeProyek $tipe_proyek
+     * @param TipeUnit $tipe_unit
      * @return Renderable
      */
-    public function data(TipeProyek $tipe_proyek)
+    public function data(TipeUnit $tipe_unit)
     {
-        return response_json(true, null, 'Data retrieved', $tipe_proyek);
+        return response_json(true, null, 'Data retrieved', $tipe_unit);
     }
 
     /**
@@ -96,7 +96,8 @@ class TipeProyekController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'nama' => 'bail|required',
+            'id_tipe_proyek' => 'bail|required|exists:Modules\MasterData\Entities\TipeProyek,id',
+            'nama_tipe_unit' => 'bail|required',
             'deskripsi' => 'bail|nullable'
         ]);
     }
@@ -115,12 +116,16 @@ class TipeProyekController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = TipeProyek::query();
+        $query = TipeUnit::with('tipe_proyek');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->where('nama_tipe_unit', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('deskripsi', 'LIKE', '%' . $request->input('search') . '%');
+            });
+
+            $query->orWhereHas('tipe_proyek', function($subquery) use ($request) {
+                $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
             });
         }
         
@@ -129,6 +134,7 @@ class TipeProyekController extends Controller
 
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
+            $item->nama_tipe_proyek = $item->tipe_proyek->nama ?? '';
             return $item;
         });
 
@@ -148,4 +154,5 @@ class TipeProyekController extends Controller
             "paginate" => "bail|required|numeric|in:10,20,50,100",
         ]);
     }
+
 }

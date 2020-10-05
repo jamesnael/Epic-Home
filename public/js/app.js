@@ -211,6 +211,12 @@
 Vue.component('base-layout', function () {
   return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
 });
+Vue.component('table-component', function () {
+  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
+});
+Vue.component('main-menu-component', function () {
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./components/MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
+});
 
 /***/ }),
 
@@ -222,10 +228,19 @@ Vue.component('base-layout', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+});
+Vue.component('tipe-bangunan-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
+});
+Vue.component('tipe-unit-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
+});
+Vue.component('agent-property-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('faq-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
 
 /***/ }),
@@ -82905,8 +82920,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
+    "tipe-proyek.table": {
+      "uri": "api\/master-data\/tipe-proyek\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "tipe-proyek.data": {
-      "uri": "api\/master-data\/tipe_proyek\/{tipe_proyek}\/data",
+      "uri": "api\/master-data\/tipe-proyek\/{tipe_proyek}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -82925,6 +82945,81 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "tipe-bangunan.table": {
+      "uri": "api\/master-data\/tipe-bangunan\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.data": {
+      "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.store": {
+      "uri": "api\/master-data\/tipe-bangunan",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "tipe-bangunan.update": {
+      "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "tipe-bangunan.destroy": {
+      "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "tipe-unit.table": {
+      "uri": "api\/master-data\/tipe-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.data": {
+      "uri": "api\/master-data\/tipe-unit\/{tipe_unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.store": {
+      "uri": "api\/master-data\/tipe-unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "tipe-unit.update": {
+      "uri": "api\/master-data\/tipe-unit\/{tipe_unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "tipe-unit.destroy": {
+      "uri": "api\/master-data\/tipe-unit\/{tipe_unit}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "agent-property.table": {
+      "uri": "api\/master-data\/agent-property\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.data": {
+      "uri": "api\/master-data\/agent-property\/{agent_property}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.store": {
+      "uri": "api\/master-data\/agent-property",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "agent-property.update": {
+      "uri": "api\/master-data\/agent-property\/{agent_property}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "agent-property.destroy": {
+      "uri": "api\/master-data\/agent-property\/{agent_property}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "tipe-proyek.index": {
       "uri": "master-data\/tipe-proyek",
       "methods": ["GET", "HEAD"],
@@ -82937,6 +83032,51 @@ var Ziggy = {
     },
     "tipe-proyek.edit": {
       "uri": "master-data\/tipe-proyek\/{tipe_proyek}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.index": {
+      "uri": "master-data\/tipe-bangunan",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.create": {
+      "uri": "master-data\/tipe-bangunan\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.edit": {
+      "uri": "master-data\/tipe-bangunan\/{tipe_bangunan}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.index": {
+      "uri": "master-data\/tipe-unit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.create": {
+      "uri": "master-data\/tipe-unit\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.edit": {
+      "uri": "master-data\/tipe-unit\/{tipe_unit}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.index": {
+      "uri": "master-data\/agent-property",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.create": {
+      "uri": "master-data\/agent-property\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.edit": {
+      "uri": "master-data\/agent-property\/{agent_property}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     }

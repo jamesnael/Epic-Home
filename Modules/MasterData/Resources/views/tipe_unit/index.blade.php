@@ -9,7 +9,7 @@
     				<table-component inline-template
     					table-number
     					with-actions
-    					uri="{{ route('tipe-proyek.table') }}"
+    					uri="{{ route('tipe-unit.table') }}"
     					:headers='@json($table_headers)'
     					no-data-text="Tidak ada data ditemukan."
     					no-results-text="Tidak ada data ditemukan."
@@ -18,13 +18,13 @@
     					items-per-page-all-text="Semua"
     					items-per-page-text="Tampilkan"
     					page-text-locale="id"
-    					add-new-uri="{{ route('tipe-proyek.create') }}"
+    					add-new-uri="{{ route('tipe-unit.create') }}"
     					add-new-text="Tambah"
     					add-new-color="light-blue lighten-2"
-    					edit-uri="tipe-proyek.edit"
+    					edit-uri="tipe-unit.edit"
     					edit-uri-parameter="slug"
     					edit-text="Ubah"
-    					delete-uri="tipe-proyek.destroy"
+    					delete-uri="tipe-unit.destroy"
     					delete-uri-parameter="slug"
     					delete-text="Hapus"
     					delete-confirmation-text="Apakah Anda yakin untuk menghapus data ini ?"

@@ -17,7 +17,8 @@ class TipeProyekController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => route('tipe-proyek.index'), 'text' => 'Master Data'],
             ['href' => route('tipe-proyek.index'), 'text' => 'Tipe Proyek'],
         ];
     }
@@ -28,8 +29,31 @@ class TipeProyekController extends Controller
      */
     public function index()
     {
+        $table_headers = [
+            [
+                "text" => 'Tipe Proyek',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama',
+            ],
+            [
+                "text" => 'Deskripsi',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'deskripsi',
+            ],
+            [
+                "text" => 'Terakhir Diubah',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'last_update',
+            ]
+           
+        ];
         return view('masterdata::tipe_proyek.index')
-             ->with('breadcrumbs', $this->breadcrumbs);
+             ->with('page_title', 'Tipe Proyek')
+             ->with('breadcrumbs', $this->breadcrumbs)
+             ->with('table_headers', $table_headers);
     }
 
     /**
@@ -41,6 +65,7 @@ class TipeProyekController extends Controller
         $this->breadcrumbs[] = ['href' => route('tipe-proyek.create'), 'text' => 'Tambah Tipe Proyek'];
 
         return view('masterdata::tipe_proyek.create')
+             ->with('page_title', 'Tambah Tipe Proyek')
              ->with('breadcrumbs', $this->breadcrumbs);
     }
 
@@ -55,6 +80,7 @@ class TipeProyekController extends Controller
 
         return view('masterdata::tipe_proyek.edit')
              ->with('data', $tipe_proyek)
+             ->with('page_title', 'Ubah Tipe Proyek ' . $tipe_proyek->nama)
              ->with('breadcrumbs', $this->breadcrumbs);
     }
 }

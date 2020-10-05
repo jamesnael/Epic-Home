@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class TipeProyek extends Model
+class TipeUnit extends Model
 {
-    use Sluggable, SoftDeletes;
+	use Sluggable, SoftDeletes;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'ms_tipe_proyek';
+    protected $table = 'ms_tipe_unit';
 
     /**
      * The attributes that are mass assignable.
@@ -23,8 +23,9 @@ class TipeProyek extends Model
      * @var array
      */
     protected $fillable = [
-    	'nama',
-    	'deskripsi'
+    	'id_tipe_proyek',
+    	'nama_tipe_unit',
+    	'deskripsi',
     ];
 
     /**
@@ -45,7 +46,7 @@ class TipeProyek extends Model
     {
         return [
             'slug' => [
-                'source' => ['nama']
+                'source' => ['nama_tipe_unit']
             ]
         ];
     }
@@ -63,9 +64,8 @@ class TipeProyek extends Model
     /**
      * Get the relationship for the model.
      */
-    public function tipe_unit()
+    public function tipe_proyek()
     {
-        return $this->hasMany('Modules\MasterData\Entities\TipeUnit', 'id_tipe_proyek');
+        return $this->belongsTo('Modules\MasterData\Entities\TipeProyek', 'id_tipe_proyek');
     }
-
 }

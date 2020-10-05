@@ -5,11 +5,12 @@ namespace Modules\MasterData\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\TipeProyek;
+use Modules\MasterData\Entities\AgentProperty;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class TipeProyekController extends Controller
+class AgentPropertyController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -26,9 +27,18 @@ class TipeProyekController extends Controller
 
         DB::beginTransaction();
         try {
-            $data = TipeProyek::create($request->all());
+            $data = AgentProperty::create($request->all());
+            if ($request->hasFile('logo_agent')) {
+                $file_name = $data->nama_agent_property .'-'. uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('agent_property/logo_agent', $request->file('logo_agent'), $file_name
+                );
+                $data->logo_agent = $file_name;
+
+            }
+            $data->save();
+
             DB::commit();
-            return response_json(true, null, 'Tipe proyek berhasil disimpan.', $data);
+            return response_json(true, null, 'Agent property berhasil disimpan.', $data);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -38,10 +48,10 @@ class TipeProyekController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param TipeProyek $tipe_proyek
+     * @param AgentProperty $agent_property
      * @return Renderable
      */
-    public function update(Request $request, TipeProyek $tipe_proyek)
+    public function update(Request $request, AgentProperty $agent_property)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -51,9 +61,20 @@ class TipeProyekController extends Controller
 
         DB::beginTransaction();
         try {
-            $tipe_proyek->update($request->all());
+            $agent_property->update($request->all());
+
+            if ($request->hasFile('logo_agent')) {
+                $file_name = $agent_property->nama_agent_property . '-' . uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('agent_property/logo_agent', $request->file('logo_agent'), $file_name
+                );
+                $agent_property->logo_agent = $file_name;
+
+            }
+            $agent_property->save();
+
+
             DB::commit();
-            return response_json(true, null, 'Tipe proyek berhasil disimpan.', $tipe_proyek);
+            return response_json(true, null, 'Agent property berhasil disimpan.', $agent_property);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -62,16 +83,16 @@ class TipeProyekController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param TipeProyek $tipe_proyek
+     * @param AgentProperty $agent_property
      * @return Renderable
      */
-    public function destroy(TipeProyek $tipe_proyek)
+    public function destroy(AgentProperty $agent_property)
     {
         DB::beginTransaction();
         try {
-            $tipe_proyek->delete();
+            $agent_property->delete();
             DB::commit();
-            return response_json(true, null, 'Tipe proyek dihapus.');
+            return response_json(true, null, 'Agent property dihapus.');
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menghapus data, silahkan dicoba kembali beberapa saat lagi.');
@@ -80,12 +101,12 @@ class TipeProyekController extends Controller
 
     /**
      * Get the specified resource from storage.
-     * @param TipeProyek $tipe_proyek
+     * @param AgentProperty $agent_property
      * @return Renderable
      */
-    public function data(TipeProyek $tipe_proyek)
+    public function data(AgentProperty $agent_property)
     {
-        return response_json(true, null, 'Data retrieved', $tipe_proyek);
+        return response_json(true, null, 'Data retrieved', $agent_property);
     }
 
     /**
@@ -96,8 +117,11 @@ class TipeProyekController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'nama' => 'bail|required',
-            'deskripsi' => 'bail|nullable'
+            'nama_agent_property' => 'bail|required',
+            'email' => 'bail|required',
+            'nomor_telepon => bail|nullable',
+            'alamat => bail|nullable',
+            'deskripsi => bail|nullable'
         ]);
     }
 
@@ -115,11 +139,14 @@ class TipeProyekController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = TipeProyek::query();
+        $query = AgentProperty::query();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->where('nama_agent_property', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('email', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('nomor_telepon', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('alamat', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('deskripsi', 'LIKE', '%' . $request->input('search') . '%');
             });
         }
