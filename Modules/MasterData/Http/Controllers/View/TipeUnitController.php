@@ -19,6 +19,7 @@ class TipeUnitController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => route('tipe-unit.index'), 'text' => 'Master Data'],
             ['href' => route('tipe-unit.index'), 'text' => 'Tipe Unit'],
         ];
 
@@ -31,8 +32,37 @@ class TipeUnitController extends Controller
      */
     public function index()
     {
+        $table_headers = [
+            [
+                "text" => 'Tipe Proyek',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_tipe_proyek',
+            ],
+            [
+                "text" => 'Tipe Unit',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_tipe_unit',
+            ],
+            [
+                "text" => 'Deskripsi',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'deskripsi',
+            ],
+            [
+                "text" => 'Terakhir Diubah',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'last_update',
+            ]
+           
+        ];
         return view('masterdata::tipe_unit.index')
-             ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('page_title', 'Tipe Unit')
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with('table_headers', $table_headers);
     }
 
     /**
@@ -44,8 +74,9 @@ class TipeUnitController extends Controller
         $this->breadcrumbs[] = ['href' => route('tipe-unit.create'), 'text' => 'Tambah Tipe Unit'];
 
         return view('masterdata::tipe_unit.create')
-             ->with('breadcrumbs', $this->breadcrumbs)
-             ->with($this->helper->getHelper());
+            ->with('page_title', 'Tambah Tipe Unit')
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 
     /**
@@ -58,7 +89,9 @@ class TipeUnitController extends Controller
         $this->breadcrumbs[] = ['href' => route('tipe-unit.edit', [ $tipe_unit->slug ]), 'text' => 'Ubah Tipe Unit ' . $tipe_unit->nama];
 
         return view('masterdata::tipe_unit.edit')
-             ->with('data', $tipe_unit)
-             ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('data', $tipe_unit)
+            ->with('page_title', 'Ubah Tipe Unit ' . $tipe_unit->nama_tipe_unit)
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 }

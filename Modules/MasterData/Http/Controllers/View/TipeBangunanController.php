@@ -18,6 +18,7 @@ class TipeBangunanController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => route('tipe-bangunan.index'), 'text' => 'Master Data'],
             ['href' => route('tipe-bangunan.index'), 'text' => 'Tipe Bangunan'],
         ];
     }
@@ -28,8 +29,31 @@ class TipeBangunanController extends Controller
      */
     public function index()
     {
+        $table_headers = [
+            [
+                "text" => 'Tipe Bangunan',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_tipe_bangunan',
+            ],
+            [
+                "text" => 'Deskripsi',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'deskripsi',
+            ],
+            [
+                "text" => 'Terakhir Diubah',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'last_update',
+            ]
+           
+        ];
         return view('masterdata::tipe_bangunan.index')
-             ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('page_title', 'Tipe Bangunan')
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with('table_headers', $table_headers);
     }
 
     /**
@@ -41,7 +65,8 @@ class TipeBangunanController extends Controller
         $this->breadcrumbs[] = ['href' => route('tipe-bangunan.create'), 'text' => 'Tambah Tipe Bangunan'];
 
         return view('masterdata::tipe_bangunan.create')
-             ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('page_title', 'Tambah Tipe Bangunan')
+            ->with('breadcrumbs', $this->breadcrumbs);
     }
 
     /**
@@ -54,7 +79,8 @@ class TipeBangunanController extends Controller
         $this->breadcrumbs[] = ['href' => route('tipe-bangunan.edit', [ $tipe_bangunan->slug ]), 'text' => 'Ubah Tipe Bangunan ' . $tipe_bangunan->nama_tipe_bangunan];
 
         return view('masterdata::tipe_bangunan.edit')
-             ->with('data', $tipe_bangunan)
-             ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('data', $tipe_bangunan)
+            ->with('page_title', 'Ubah Tipe Bangunan ' . $tipe_bangunan->nama_tipe_bangunan)
+            ->with('breadcrumbs', $this->breadcrumbs);
     }
 }

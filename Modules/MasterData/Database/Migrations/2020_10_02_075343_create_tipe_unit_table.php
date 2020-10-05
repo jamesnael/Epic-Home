@@ -16,7 +16,7 @@ class CreateTipeUnitTable extends Migration
         Schema::create('ms_tipe_unit', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('slug')->nullable();
-            $table->string('id_tipe_proyek');
+            $table->integer('id_tipe_proyek');
             $table->string('nama_tipe_unit');
             $table->longText('deskripsi')->nullable();
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateTipeUnitTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipe_unit');
+        Schema::dropIfExists('ms_tipe_unit');
     }
 }

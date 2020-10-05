@@ -102,4 +102,57 @@ class TipeUnitController extends Controller
         ]);
     }
 
+    /**
+     *
+     * Get the resources from storage.
+     * @return Renderable
+     *
+     */
+    public function table(Request $request)
+    {
+        $validator = $this->validateTableRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, 'Isian form salah', $validator->errors()->first());
+        }
+
+        $query = TipeUnit::with('tipe_proyek');
+
+        if ($request->has('search') && $request->input('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('nama_tipe_unit', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('deskripsi', 'LIKE', '%' . $request->input('search') . '%');
+            });
+
+            $query->orWhereHas('tipe_proyek', function($subquery) use ($request) {
+                $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+            });
+        }
+        
+        $data = $query->orderBy('created_at', 'desc')
+                    ->paginate($request->input('paginate') ?? 10);
+
+        $data->getCollection()->transform(function($item) {
+            $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
+            $item->nama_tipe_proyek = $item->tipe_proyek->nama ?? '';
+            return $item;
+        });
+
+        return response_json(true, null, 'Data retrieved.', $data);
+    }
+
+    /**
+     *
+     * Validation Rules for Get Table Data
+     *
+     */
+    public function validateTableRequest($request)
+    {
+        return Validator::make($request->all(), [
+            "page" => "bail|sometimes|required|numeric|min:1",
+            "search" => "bail|present|nullable",
+            "paginate" => "bail|required|numeric|in:10,20,50,100",
+        ]);
+    }
+
 }

@@ -10,7 +10,7 @@
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
-                :readonly="field_state"
+                :disabled="field_state"
             ></v-autocomplete>
         </validation-provider>
         <validation-provider rules="required" name="Tipe unit" v-slot="{ errors }">

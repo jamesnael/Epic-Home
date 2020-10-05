@@ -8,7 +8,7 @@
     			<v-card-text>
     				<tipe-bangunan-form
 	    				inline-template
-	    				action-form="{{ route('tipe-bangunan.store') }}"
+	    				action-form="{{ route('tipe-bangunan.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('tipe-bangunan.index') }}"
 	    				data-uri="{{ route('tipe-bangunan.data', [ $data->slug ]) }}">
 		    			@include('masterdata::tipe_bangunan.form')
