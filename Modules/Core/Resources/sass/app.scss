@@ -1,10 +1,13 @@
 @import '~vuetify/dist/vuetify.min.css';
 @import '~@mdi/font/css/materialdesignicons.min.css';
-
 body {
     color: #000 !important;
 }
-
+.v-application {
+    font-family: Poppins, sans-serif;
+    line-height: 1.5 !important;
+    font-weight: 400;
+}
 .custom-loader {
     animation: loader 1s infinite;
     display: flex;
@@ -56,4 +59,10 @@ body {
 
 .v-main__wrap {
     background-color: #eef5f9;
+}
+
+.main-menu--active {
+    background-color: #1e88e5 !important;
+    border-color: #1e88e5 !important;
+    color: #fff !important;
 }

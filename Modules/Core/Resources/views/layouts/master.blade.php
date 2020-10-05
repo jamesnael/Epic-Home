@@ -9,6 +9,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="/favicon.ico" />
 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
         <link href="{{ mix('public/css/app.css') }}?v={{config('core.app_version')}}" rel="stylesheet">
         @yield('styles')
     </head>
@@ -112,45 +113,16 @@
                                 </v-card-title>
                             </v-img>
 
-                            <v-list nav>
-                                <v-list-item
-                                    link>
-                                    <v-list-item-icon>
-                                        <v-icon>mdi-home</v-icon>
-                                    </v-list-item-icon>
-
-                                    <v-list-item-title>Home</v-list-item-title>
-                                </v-list-item>
-
-                                <v-list-group
-                                    :value="true"
-                                    prepend-icon="mdi-account-circle"
-                                >
-                                    <template v-slot:activator>
-                                        <v-list-item-title>Users</v-list-item-title>
-                                    </template>
-
-                                    <v-list-item
-                                        v-for="([title, icon], i) in admins"
-                                        :key="i"
-                                        link
-                                    >
-                                        <v-list-item-icon>
-                                            <v-icon v-text="icon"></v-icon>
-                                        </v-list-item-icon>
-
-                                        <v-list-item-title v-text="title"></v-list-item-title>
-                                    </v-list-item>
-                                    
-                                </v-list-group>
-                            </v-list>
+                            @include('core::components.main_menu')
 
                         </v-navigation-drawer>
 
-                        @includeWhen(isset($page_title) && isset($breadcrumbs), 'core::components.breadcrumbs', [
-                            'breadcrumb_title' => $page_title,
-                            'breadcrumbs' => $breadcrumbs
-                        ])
+                        @if (isset($page_title) && isset($breadcrumbs))
+                            @include('core::components.breadcrumbs', [
+                                'breadcrumb_title' => $page_title,
+                                'breadcrumbs' => $breadcrumbs
+                            ])
+                        @endif
                         <v-container fluid>
 
                             @yield('content')
