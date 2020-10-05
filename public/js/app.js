@@ -211,6 +211,9 @@
 Vue.component('base-layout', function () {
   return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
 });
+Vue.component('table-component', function () {
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
+});
 
 /***/ }),
 
@@ -222,7 +225,7 @@ Vue.component('base-layout', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
 });
 
 /***/ }),
@@ -82238,8 +82241,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
+    "tipe-proyek.table": {
+      "uri": "api\/master-data\/tipe-proyek\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "tipe-proyek.data": {
-      "uri": "api\/master-data\/tipe_proyek\/{tipe_proyek}\/data",
+      "uri": "api\/master-data\/tipe-proyek\/{tipe_proyek}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
