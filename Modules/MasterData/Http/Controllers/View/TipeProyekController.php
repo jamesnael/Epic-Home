@@ -28,7 +28,29 @@ class TipeProyekController extends Controller
      */
     public function index()
     {
+        $table_headers = [
+            [
+                "text" => 'Tipe Proyek',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama',
+            ],
+            [
+                "text" => 'Deskripsi',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'deskripsi',
+            ],
+            [
+                "text" => 'Terakhir Diubah',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'last_update',
+            ]
+           
+        ];
         return view('masterdata::tipe_proyek.index')
+             ->with('table_headers', $table_headers)
              ->with('breadcrumbs', $this->breadcrumbs);
     }
 
