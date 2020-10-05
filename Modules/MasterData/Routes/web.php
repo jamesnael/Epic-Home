@@ -15,4 +15,12 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('tipe-proyek', 'TipeProyekController')->only([
 	    'index', 'create', 'edit'
 	]);
+
+	Route::resource('tipe-bangunan', 'TipeBangunanController')->only([
+	    'index', 'create', 'edit'
+	]);
+
+	Route::resource('tipe-unit', 'TipeUnitController')->only([
+	    'index', 'create', 'edit'
+	]);
 });

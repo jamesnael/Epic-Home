@@ -209,7 +209,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('base-layout', function () {
-  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
 });
 
 /***/ }),
@@ -222,7 +222,13 @@ Vue.component('base-layout', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+});
+Vue.component('tipe-bangunan-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
+});
+Vue.component('tipe-unit-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
 });
 
 /***/ }),
@@ -82258,6 +82264,26 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "tipe-bangunan.data": {
+      "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.store": {
+      "uri": "api\/master-data\/tipe-bangunan",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "tipe-bangunan.update": {
+      "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "tipe-bangunan.destroy": {
+      "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "tipe-proyek.index": {
       "uri": "master-data\/tipe-proyek",
       "methods": ["GET", "HEAD"],
@@ -82270,6 +82296,21 @@ var Ziggy = {
     },
     "tipe-proyek.edit": {
       "uri": "master-data\/tipe-proyek\/{tipe_proyek}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.index": {
+      "uri": "master-data\/tipe-bangunan",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.create": {
+      "uri": "master-data\/tipe-bangunan\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.edit": {
+      "uri": "master-data\/tipe-bangunan\/{tipe_bangunan}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     }
@@ -82631,8 +82672,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\epic_home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\epic_home\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic-home\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

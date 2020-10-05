@@ -18,4 +18,14 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	Route::apiResource('tipe-proyek', 'TipeProyekController')->only([
 	    'store', 'update', 'destroy'
 	]);
+
+	Route::get('tipe-bangunan/{tipe_bangunan}/data', 'TipeBangunanController@data')->name('tipe-bangunan.data');
+	Route::apiResource('tipe-bangunan', 'TipeBangunanController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('tipe-unit/{tipe_unit}/data', 'TipeUnitController@data')->name('tipe-unit.data');
+	Route::apiResource('tipe-unit', 'TipeUnitController')->only([
+	    'store', 'update', 'destroy'
+	]);
 });
