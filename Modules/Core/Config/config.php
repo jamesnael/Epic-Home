@@ -40,6 +40,13 @@ return [
                     'model' => false,
                     'show' => true
                 ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Developer',
+                    'uri' => 'developer.index',
+                    'model' => false,
+                    'show' => true
+                ],
     	    ]
     	],
         // [  
