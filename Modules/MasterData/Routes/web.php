@@ -31,4 +31,12 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('faq', 'FaqController')->only([
 		'index', 'create', 'edit'
 	]);
+
+	Route::resource('proyek-primary', 'ProyekPrimaryController')->only([
+		'index', 'create', 'edit'
+	]);
+
+	Route::resource('cluster', 'ClusterController')->only([
+		'index', 'create', 'edit'
+	]);
 });

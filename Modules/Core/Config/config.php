@@ -28,6 +28,13 @@ return [
                 ],
                 [
                     'icon' => 'mdi-adjust',
+                    'text' => 'Tipe Cluster',
+                    'uri' => 'cluster.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
                     'text' => 'Tipe Unit',
                     'uri' => 'tipe-unit.index',
                     'model' => false,
@@ -37,6 +44,13 @@ return [
                     'icon' => 'mdi-adjust',
                     'text' => 'Agent Property',
                     'uri' => 'agent-property.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Proyek Primary',
+                    'uri' => 'proyek-primary.index',
                     'model' => false,
                     'show' => true
                 ],

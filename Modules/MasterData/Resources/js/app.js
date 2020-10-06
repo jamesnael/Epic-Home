@@ -3,3 +3,5 @@ Vue.component('tipe-bangunan-form', () => import('./components/TipeBangunan/Form
 Vue.component('tipe-unit-form', () => import('./components/TipeUnit/Form.vue'));
 Vue.component('agent-property-form', () => import('./components/AgentProperty/Form.vue'));
 Vue.component('faq-form', () => import('./components/Faq/Form.vue'));
+Vue.component('proyek-primary-form', () => import('./components/ProyekPrimary/Form.vue'));
+Vue.component('cluster-form', () => import('./components/Cluster/Form.vue'));
