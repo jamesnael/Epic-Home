@@ -106,6 +106,7 @@ class AgentPropertyController extends Controller
      */
     public function data(AgentProperty $agent_property)
     {
+        $agent_property->url_logo_agent = get_file_url('public', 'agent_property/logo_agent/' . $agent_property->logo_agent);
         return response_json(true, null, 'Data retrieved', $agent_property);
     }
 
