@@ -3,6 +3,7 @@
 return [
     'name' => 'Core',
     'app_version' => '1.0.0',
+    'app_timezone' => 'Asia/Jakarta',
     'main_menu' => [
     	[
     	    'icon' => 'mdi-database',
