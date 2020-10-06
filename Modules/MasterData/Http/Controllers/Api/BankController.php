@@ -140,14 +140,7 @@ class BankController extends Controller
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
             $item->tenor = $item->tenor_mulai_dari .'-'. $item->tenor_sampai_dengan .' '.'Tahun';
-            $item->masa_kredit = $item->masa_kredit.' '.'Tahun' ;
-
-            $item->suku_bunga = $item->suku_bunga;
-            if($item->flat_suku_bunga == true){
-                $item->suku_bunga = 'Flat';
-            }else{
-                $item->suku_bunga = $item->suku_bunga .' '.'%';
-            }
+            
             return $item;
         });
 

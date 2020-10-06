@@ -1,5 +1,27 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.suku_bunga="{ item }">
+    <span v-if="item.flat_suku_bunga">
+        Flat
+    </span>
+    <span v-else>
+        @{{ item.suku_bunga }} %
+    </span>
+</template>
+<template v-slot:item.masa_kredit="{ item }">
+    @{{ item.masa_kredit }} Tahun
+</template>
+<template v-slot:item.status="{ item }">
+    <v-chip
+        :color="item.status == 'Publish' ? 'green' : 'red'"
+        text-color="white"
+    >
+        @{{ item.status.toUpperCase() }}
+    </v-chip>
+</template>
+@endpush
+
 @section('content')
     <v-row
 	    class="px-md-4 px-sm-2">
