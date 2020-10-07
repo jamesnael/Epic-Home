@@ -5,6 +5,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 if (! function_exists('format_money')) {
     function format_money($value=0)
@@ -113,5 +114,15 @@ if (! function_exists('prepare_main_menu')) {
         });
 
         return $collection;
+    }
+}
+
+if (! function_exists('get_file_url')) {
+    function get_file_url($disk_name = 'public', $file_name) {
+        if ($file_name) {
+            return Storage::disk($disk_name)->url($file_name);
+        }
+
+        return $file_name;
     }
 }

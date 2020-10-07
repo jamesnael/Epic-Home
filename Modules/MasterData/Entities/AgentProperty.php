@@ -32,21 +32,6 @@ class AgentProperty extends Model
     	'deskripsi'
     ];
 
-    protected $appends = [
-        'url_logo_agent',
-    ];
-
-    /**
-     * Get the model's url logo agent.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getUrlLogoAgentAttribute()
-    {
-        return (!empty($this->attributes['logo_agent'])) ? Storage::disk('public')->url('app/public/logo/logo_agent/'.$this->attributes['logo_agent']) : null;
-    }
-
     /**
      * The attributes that should be mutated to dates.
      *

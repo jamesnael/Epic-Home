@@ -5,12 +5,12 @@ namespace Modules\MasterData\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\AgentProperty;
+use Modules\MasterData\Entities\Developer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class AgentPropertyController extends Controller
+class DeveloperController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -27,31 +27,27 @@ class AgentPropertyController extends Controller
 
         DB::beginTransaction();
         try {
-            $data = AgentProperty::create($request->all());
-            if ($request->hasFile('logo_agent')) {
-                $file_name = $data->nama_agent_property .'-'. uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('agent_property/logo_agent', $request->file('logo_agent'), $file_name
+            $data = Developer::create($request->all());
+            if ($request->hasFile('logo_developer')) {
+                $file_name = $data->nama_developer .'-'. uniqid() . '.' . $request->file('logo_developer')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('developer/logo_developer', $request->file('logo_developer'), $file_name
                 );
-                $data->logo_agent = $file_name;
+                $data->logo_developer = $file_name;
 
             }
             $data->save();
 
             DB::commit();
-            return response_json(true, null, 'Agent property berhasil disimpan.', $data);
+            return response_json(true, null, 'Developer berhasil disimpan.', $data);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param AgentProperty $agent_property
-     * @return Renderable
-     */
-    public function update(Request $request, AgentProperty $agent_property)
+
+
+    public function update(Request $request, Developer $developer)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -61,53 +57,46 @@ class AgentPropertyController extends Controller
 
         DB::beginTransaction();
         try {
-            $agent_property->update($request->all());
+            $developer->update($request->all());
 
-            if ($request->hasFile('logo_agent')) {
-                $file_name = $agent_property->nama_agent_property . '-' . uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('agent_property/logo_agent', $request->file('logo_agent'), $file_name
+            if ($request->hasFile('logo_developer')) {
+                $file_name = $developer->nama_developer . '-' . uniqid() . '.' . $request->file('logo_developer')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('developer/logo_developer', $request->file('logo_developer'), $file_name
                 );
-                $agent_property->logo_agent = $file_name;
+                $developer->logo_developer = $file_name;
 
             }
-            $agent_property->save();
+            $developer->save();
 
 
             DB::commit();
-            return response_json(true, null, 'Agent property berhasil disimpan.', $agent_property);
+            return response_json(true, null, 'Developer berhasil disimpan.', $developer);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param AgentProperty $agent_property
-     * @return Renderable
-     */
-    public function destroy(AgentProperty $agent_property)
+    
+
+    public function destroy(Developer $developer)
     {
         DB::beginTransaction();
         try {
-            $agent_property->delete();
+            $developer->delete();
             DB::commit();
-            return response_json(true, null, 'Agent property dihapus.');
+            return response_json(true, null, 'Developer property dihapus.');
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menghapus data, silahkan dicoba kembali beberapa saat lagi.');
         }
     }
 
-    /**
-     * Get the specified resource from storage.
-     * @param AgentProperty $agent_property
-     * @return Renderable
-     */
-    public function data(AgentProperty $agent_property)
+    
+
+    public function data(Developer $developer)
     {
-        $agent_property->url_logo_agent = get_file_url('public', 'agent_property/logo_agent/' . $agent_property->logo_agent);
-        return response_json(true, null, 'Data retrieved', $agent_property);
+        return response_json(true, null, 'Data retrieved', $developer);
     }
 
     /**
@@ -118,7 +107,7 @@ class AgentPropertyController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'nama_agent_property' => 'bail|required',
+            'nama_developer' => 'bail|required',
             'email' => 'bail|required',
             'nomor_telepon => bail|nullable',
             'alamat => bail|nullable',
@@ -140,11 +129,11 @@ class AgentPropertyController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = AgentProperty::query();
+        $query = Developer::query();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('nama_agent_property', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->where('nama_developer', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('email', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('nomor_telepon', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('alamat', 'LIKE', '%' . $request->input('search') . '%');

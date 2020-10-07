@@ -5,3 +5,5 @@ Vue.component('agent-property-form', () => import('./components/AgentProperty/Fo
 Vue.component('faq-form', () => import('./components/Faq/Form.vue'));
 Vue.component('proyek-primary-form', () => import('./components/ProyekPrimary/Form.vue'));
 Vue.component('cluster-form', () => import('./components/Cluster/Form.vue'));
+Vue.component('developer-form', () => import('./components/Developer/Form.vue'));
+Vue.component('bank-form', () => import('./components/Bank/Form.vue'));

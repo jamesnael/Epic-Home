@@ -54,4 +54,17 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	Route::apiResource('proyek-primary', 'ProyekPrimaryController')->only([
 	    'store', 'update', 'destroy'
 	]);
+
+	Route::get('developer/table', 'DeveloperController@table')->name('developer.table');
+	Route::get('developer/{developer}/data', 'DeveloperController@data')->name('developer.data');
+	Route::apiResource('developer', 'DeveloperController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('bank/table', 'BankController@table')->name('bank.table');
+	Route::get('bank/{bank}/data', 'BankController@data')->name('bank.data');
+	Route::apiResource('bank', 'BankController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
 });
