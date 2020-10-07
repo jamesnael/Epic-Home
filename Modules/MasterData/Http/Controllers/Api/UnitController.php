@@ -5,12 +5,11 @@ namespace Modules\MasterData\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\Faq;
-use Modules\MasterData\Entities\KategoriFaq;
+use Modules\MasterData\Entities\Unit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class FaqController extends Controller
+class UnitController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -27,21 +26,9 @@ class FaqController extends Controller
 
         DB::beginTransaction();
         try {
-            $data_kategori = KategoriFaq::firstOrCreate([
-                'nama' => $request->kategori
-            ]);
-
-            $data = Faq::create($request->all());
-
-            if ($request->publish) {
-                $data->publish = 1;
-            } else {
-                $data->publish = 0;
-            }
-            $data->save();
-
+            $data = Unit::create($request->all());
             DB::commit();
-            return response_json(true, null, 'Faq berhasil disimpan.', $data);
+            return response_json(true, null, 'Unit berhasil disimpan.', $data);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -51,10 +38,10 @@ class FaqController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param Faq $faq
+     * @param Unit $unit
      * @return Renderable
      */
-    public function update(Request $request, Faq $faq)
+    public function update(Request $request, Unit $unit)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -64,21 +51,9 @@ class FaqController extends Controller
 
         DB::beginTransaction();
         try {
-            $data_kategori = KategoriFaq::firstOrCreate([
-                'nama' => $request->kategori
-            ]);
-
-            $faq->update($request->all());
-
-            if ($request->publish) {
-                $faq->publish = 1;
-            } else {
-                $faq->publish = 0;
-            }
-            $faq->save();
-            
+            $unit->update($request->all());
             DB::commit();
-            return response_json(true, null, 'Faq berhasil disimpan.', $faq);
+            return response_json(true, null, 'Unit berhasil disimpan.', $unit);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -87,16 +62,16 @@ class FaqController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param Faq $faq
+     * @param Unit $unit
      * @return Renderable
      */
-    public function destroy(Faq $faq)
+    public function destroy(Unit $unit)
     {
         DB::beginTransaction();
         try {
-            $faq->delete();
+            $unit->delete();
             DB::commit();
-            return response_json(true, null, 'Faq dihapus.');
+            return response_json(true, null, 'Unit dihapus.');
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menghapus data, silahkan dicoba kembali beberapa saat lagi.');
@@ -105,12 +80,12 @@ class FaqController extends Controller
 
     /**
      * Get the specified resource from storage.
-     * @param Faq $faq
+     * @param Unit $unit
      * @return Renderable
      */
-    public function data(Faq $faq)
+    public function data(Unit $unit)
     {
-        return response_json(true, null, 'Data retrieved', $faq);
+        return response_json(true, null, 'Data retrieved', $unit);
     }
 
     /**
@@ -121,10 +96,24 @@ class FaqController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'menu' => 'bail|required|string|max:190',
-            'kategori' => 'bail|required|string|max:190',
-            'pertanyaan' => 'bail|required|string|max:190',
-            'jawaban' => 'bail|required'
+            'id_proyek_primari' => 'bail|required',
+            'id_cluster' => 'bail|required',
+            'tipe_unit' => 'bail|required',
+            'harga_unit' => 'bail|required',
+            'harga_per_meter' => 'bail|required',
+            'blok' => 'bail|required',
+            'nomor_unit' => 'bail|required',
+            'luas_tanah' => 'bail|required',
+            'luas_bangunan' => 'bail|required',
+            'arah_bangunan' => 'bail|required',
+            'jumlah_kamar_tidur' => 'bail|required',
+            'jumlah_kamar_mandi' => 'bail|required',
+            'jumlah_lantai' => 'bail|required',
+            'jumlah_garasi_mobil' => 'bail|required',
+            'listrik' => 'bail|required',
+            'lebar_jalan_depan' => 'bail|required',
+            'lingkungan_sekitar' => 'bail|required'
+            // 'gambar_unit' => 'bail|required'
         ]);
     }
 
@@ -142,13 +131,19 @@ class FaqController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = Faq::query();
+        $query = Unit::with('tipe_unit');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('menu', 'LIKE', '%' . $request->input('search') . '%');
-                $subquery->orWhere('kategori', 'LIKE', '%' . $request->input('search') . '%');
-                $subquery->orWhere('pertanyaan', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->where('id_proyek_primari', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('blok', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('nomor_unit', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('luas_tanah', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhere('harga_unit', 'LIKE', '%' . $request->input('search') . '%');
+            });
+
+            $query->orWhereHas('tipe_unit', function($subquery) use ($request) {
+                $subquery->where('nama_tipe_unit', 'LIKE', '%' . $request->input('search') . '%');
             });
         }
         
@@ -156,12 +151,8 @@ class FaqController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
-            if ($item->publish) {
-                $item->publish = "Diterbitkan";
-            } else {
-                $item->publish = "Tidak diterbitkan";
-            }
             $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
+            $item->nama_tipe_unit = $item->tipe_unit->nama ?? '';
             return $item;
         });
 
@@ -181,4 +172,5 @@ class FaqController extends Controller
             "paginate" => "bail|required|numeric|in:10,20,50,100",
         ]);
     }
+
 }

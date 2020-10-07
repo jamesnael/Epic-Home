@@ -5,9 +5,9 @@ namespace Modules\MasterData\Http\Controllers\Helper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\KategoriFaq;
+use Modules\MasterData\Entities\TipeUnit;
 
-class FaqHelper extends Controller
+class UnitHelper extends Controller
 {
     /**
      *
@@ -17,14 +17,9 @@ class FaqHelper extends Controller
     public function getHelper()
     {
         return [
-            'menu' => ['Untuk Pelanggan', 'Untuk Agen Properti', 'Untuk Pemilik Properti'],
-            'kategori' => KategoriFaq::pluck('nama'),
-            'publish' => [
-                array(
-                    '1' => 'Publish',
-                    '0' => 'Unpublish'
-                )
-            ],
+            'proyek_primari' => [array('value' => '1', 'text' => 'proyek 1')],
+            'tipe_unit' => TipeUnit::select('nama_tipe_unit AS value', 'nama_tipe_unit AS text')->get(),
+            'cluster' => [array('value' => '1', 'text' => 'cluster 1')],
         ];
     }
 

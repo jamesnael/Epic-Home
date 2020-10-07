@@ -1,9 +1,10 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required } from 'vee-validate/dist/rules'
+	import { required, numeric } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
+	extend('numeric', numeric)
     localize('id', id);
 
 	export default {
@@ -24,19 +25,19 @@
 				type: String,
 				default: ''
 			},
-			filterMenu: {
+			filterProyekPrimari: {
 			    type: Array,
 			    default: function () {
 			        return []
 			    }
 			},
-			filterKategori: {
+			filterTipeUnit: {
 			    type: Array,
 			    default: function () {
 			        return []
 			    }
 			},
-			filterPublish: {
+			filterCluster: {
 			    type: Array,
 			    default: function () {
 			        return []
@@ -45,11 +46,24 @@
 		},
 		data: () => ({
 			form_data: {
-				menu: '',
-				kategori: '',
-				pertanyaan: '',
-				jawaban: '',
-				publish: 1
+				id_proyek_primari: '',
+				id_cluster: '',
+				tipe_unit: '',
+				harga_unit: '',
+				harga_per_meter: '',
+				blok: '',
+				nomor_unit: '',
+				luas_tanah: '',
+				luas_bangunan: '',
+				arah_bangunan: '',
+				jumlah_kamar_tidur: '',
+				jumlah_kamar_mandi: '',
+				jumlah_lantai: '',
+				jumlah_garasi_mobil: '',
+				listrik: '',
+				lebar_jalan_depan: '',
+				lingkungan_sekitar: '',
+				gambar_unit: ''
 			},
 			field_state: false,
 			form_alert_state: false,
@@ -70,11 +84,24 @@
     		            	if (response.data.success) {
     		            		let data = response.data.data
     		            		this.form_data = {
-    		            			menu: data.menu,
-    		            			kategori: data.kategori,
-    		            			pertanyaan: data.pertanyaan,
-    		            			jawaban: data.jawaban,
-    		            			publish: data.publish,
+    		            			id_proyek_primari: data.id_proyek_primari,
+									id_cluster: data.id_cluster,
+									tipe_unit: data.tipe_unit,
+									harga_unit: data.harga_unit,
+									harga_per_meter: data.harga_per_meter,
+									blok: data.blok,
+									nomor_unit: data.nomor_unit,
+									luas_tanah: data.luas_tanah,
+									luas_bangunan: data.luas_bangunan,
+									arah_bangunan: data.arah_bangunan,
+									jumlah_kamar_tidur: data.jumlah_kamar_tidur,
+									jumlah_kamar_mandi: data.jumlah_kamar_mandi,
+									jumlah_lantai: data.jumlah_lantai,
+									jumlah_garasi_mobil: data.jumlah_garasi_mobil,
+									listrik: data.listrik,
+									lebar_jalan_depan: data.lebar_jalan_depan,
+									lingkungan_sekitar: data.lingkungan_sekitar,
+									gambar_unit: data.gambar_unit
     		            		}
 
     			                this.field_state = false
@@ -95,11 +122,24 @@
     		},
 			clearForm() {
 				this.form_data = {
-					menu: '',
-					kategori: '',
-					pertanyaan: '',
-					jawaban: '',
-					publish: ''
+					id_proyek_primari: '',
+					id_cluster: '',
+					tipe_unit: '',
+					harga_unit: '',
+					harga_per_meter: '',
+					blok: '',
+					nomor_unit: '',
+					luas_tanah: '',
+					luas_bangunan: '',
+					arah_bangunan: '',
+					jumlah_kamar_tidur: '',
+					jumlah_kamar_mandi: '',
+					jumlah_lantai: '',
+					jumlah_garasi_mobil: '',
+					listrik: '',
+					lebar_jalan_depan: '',
+					lingkungan_sekitar: '',
+					gambar_unit: ''
 				}
 				this.$refs.observer.reset()
 			},
@@ -119,9 +159,7 @@
 	    		
 	    		if (this.dataUri) {
 	    		    form_data.append("_method", "put");
-	    		    form_data.append("jawaban", this.form_data.jawaban)
 	    		}
-	    		form_data.append("jawaban", this.form_data.jawaban)
 
 	    		axios.post(this.actionForm, form_data)
 	    		    .then((response) => {
