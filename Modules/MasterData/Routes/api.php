@@ -38,6 +38,13 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
+	Route::get('unit/table', 'UnitController@table')->name('unit.table');
+	Route::get('unit/{unit}/data', 'UnitController@data')->name('unit.data');
+	Route::apiResource('unit', 'UnitController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('faq/table', 'FaqController@table')->name('faq.table');
 	Route::get('faq/{faq}/data', 'FaqController@data')->name('faq.data');
 	Route::apiResource('faq', 'FaqController')->only([
 		'store', 'update', 'destroy'
@@ -64,6 +71,13 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	Route::get('bank/table', 'BankController@table')->name('bank.table');
 	Route::get('bank/{bank}/data', 'BankController@data')->name('bank.data');
 	Route::apiResource('bank', 'BankController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('secondary-unit/table', 'SecondaryUnitController@table')->name('secondary-unit.table');
+	Route::get('secondary-unit/table-approved', 'SecondaryUnitController@tableApproved')->name('secondary-unit.table-approved');
+	Route::get('secondary-unit/{secondary_unit}/data', 'SecondaryUnitController@data')->name('secondary-unit.data');
+	Route::apiResource('secondary-unit', 'SecondaryUnitController')->only([
 	    'store', 'update', 'destroy'
 	]);
 

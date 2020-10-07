@@ -28,6 +28,10 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	    'index', 'create', 'edit'
 	]);
 
+	Route::resource('unit', 'UnitController')->only([
+	    'index', 'create', 'edit'
+	]);
+
 	Route::resource('faq', 'FaqController')->only([
 		'index', 'create', 'edit'
 	]);
@@ -45,6 +49,10 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	]);
 
 	Route::resource('bank', 'BankController')->only([
+	    'index', 'create', 'edit'
+	]);
+
+	Route::resource('secondary-unit', 'SecondaryUnitController')->only([
 	    'index', 'create', 'edit'
 	]);
 });

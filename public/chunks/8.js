@@ -86,13 +86,19 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       type: String,
       "default": ''
     },
-    filter_menu: {
+    filterMenu: {
       type: Array,
       "default": function _default() {
         return [];
       }
     },
-    filter_kategori: {
+    filterKategori: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterPublish: {
       type: Array,
       "default": function _default() {
         return [];
@@ -105,7 +111,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         menu: '',
         kategori: '',
         pertanyaan: '',
-        jawaban: ''
+        jawaban: '',
+        publish: 1
       },
       field_state: false,
       form_alert_state: false,
@@ -129,7 +136,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               menu: data.menu,
               kategori: data.kategori,
               pertanyaan: data.pertanyaan,
-              jawaban: data.jawaban
+              jawaban: data.jawaban,
+              publish: data.publish
             };
             _this.field_state = false;
           } else {
@@ -151,7 +159,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         menu: '',
         kategori: '',
         pertanyaan: '',
-        jawaban: ''
+        jawaban: '',
+        publish: ''
       };
       this.$refs.observer.reset();
     },

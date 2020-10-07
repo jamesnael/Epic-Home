@@ -66,5 +66,9 @@ class TipeBangunan extends Model
     public function proyek_primary()
     {
         return $this->hasOne('Modules\MasterData\Entities\ProyekPrimary', 'id_tipe_bangunan');
+        
+    public function secondary_unit()
+    {
+        return $this->hasMany('Modules\MasterData\Entities\SecondaryUnit', 'id_tipe_bangunan');
     }
 }

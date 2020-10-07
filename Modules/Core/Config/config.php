@@ -51,13 +51,29 @@ return [
                     'icon' => 'mdi-adjust',
                     'text' => 'Proyek Primary',
                     'uri' => 'proyek-primary.index',
+                    'text' => 'Faq',
+                    'uri' => 'faq.index',
                     'model' => false,
                     'show' => true
                 ],
-                   [
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Developer',
+                    'uri' => 'developer.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
                     'icon' => 'mdi-adjust',
                     'text' => 'Bank',
                     'uri' => 'bank.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Secondary Unit',
+                    'uri' => 'secondary-unit.index',
                     'model' => false,
                     'show' => true
                 ],

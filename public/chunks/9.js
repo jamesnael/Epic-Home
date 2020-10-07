@@ -99,18 +99,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
-    },
-    filterTipeUnit: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
-    },
-    filterCluster: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
     }
   },
   data: function data() {
