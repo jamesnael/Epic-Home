@@ -22,15 +22,6 @@ class Developer extends Model
 						   'logo_developer'
 	];
 
-    protected $appends = [
-        'url_logo_developer',
-    ];
-
-
-    public function getUrlLogoDeveloperAttribute()
-    {
-        return (!empty($this->attributes['logo_developer'])) ? Storage::disk('public')->url('app/public/logo/logo_developer/'.$this->attributes['logo_developer']) : null;
-    }
 
     protected $dates = [
         'deleted_at',

@@ -17,7 +17,8 @@ class BankController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => route('bank.index'), 'text' => 'Master Data'],
             ['href' => route('bank.index'), 'text' => 'Bank'],
         ];
     }
