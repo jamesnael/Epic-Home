@@ -96,6 +96,7 @@ class DeveloperController extends Controller
 
     public function data(Developer $developer)
     {
+        $developer->url_logo_developer = get_file_url('public', 'developer/logo_developer/' . $developer->logo_developer);
         return response_json(true, null, 'Data retrieved', $developer);
     }
 

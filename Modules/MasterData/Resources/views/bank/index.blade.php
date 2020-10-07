@@ -20,6 +20,9 @@
         @{{ item.status.toUpperCase() }}
     </v-chip>
 </template>
+<template v-slot:item.tenor="{ item }">
+    @{{ item.tenor_mulai_dari }} - @{{ item.tenor_sampai_dengan }} Tahun
+</template>
 @endpush
 
 @section('content')

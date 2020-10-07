@@ -14,7 +14,8 @@ class DeveloperController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => route('developer.index'), 'text' => 'Master Data'],
             ['href' => route('developer.index'), 'text' => 'Developer'],
         ];
     }

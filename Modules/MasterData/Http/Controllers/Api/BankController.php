@@ -56,9 +56,9 @@ class BankController extends Controller
         DB::beginTransaction();
         try {
 
-            if($request->has('flat_suku_bunga')){
+            if ($request->has('flat_suku_bunga')) {
                 $request->merge(['flat_suku_bunga' => true]);
-            }else{
+            } else {
                 $request->merge(['flat_suku_bunga' => false]);
             }
             $bank->update($request->all());
@@ -139,8 +139,6 @@ class BankController extends Controller
 
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
-            $item->tenor = $item->tenor_mulai_dari .'-'. $item->tenor_sampai_dengan .' '.'Tahun';
-            
             return $item;
         });
 
