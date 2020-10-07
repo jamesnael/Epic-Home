@@ -3,4 +3,5 @@ Vue.component('tipe-bangunan-form', () => import('./components/TipeBangunan/Form
 Vue.component('tipe-unit-form', () => import('./components/TipeUnit/Form.vue'));
 Vue.component('agent-property-form', () => import('./components/AgentProperty/Form.vue'));
 Vue.component('unit-form', () => import('./components/Unit/Form.vue'));
-Vue.component('faq-form', () => import('./components/Faq/Form.vue'));
+Vue.component('developer-form', () => import('./components/Developer/Form.vue'));
+Vue.component('bank-form', () => import('./components/Bank/Form.vue'));

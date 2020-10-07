@@ -3,6 +3,7 @@
 return [
     'name' => 'Core',
     'app_version' => '1.0.0',
+    'app_timezone' => 'Asia/Jakarta',
     'main_menu' => [
     	[
     	    'icon' => 'mdi-database',
@@ -43,6 +44,20 @@ return [
                     'icon' => 'mdi-adjust',
                     'text' => 'Faq',
                     'uri' => 'faq.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Developer',
+                    'uri' => 'developer.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                   [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Bank',
+                    'uri' => 'bank.index',
                     'model' => false,
                     'show' => true
                 ],
