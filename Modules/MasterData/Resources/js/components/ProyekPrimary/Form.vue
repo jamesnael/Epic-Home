@@ -37,19 +37,7 @@
 			    default: function () {
 			        return []
 			    }
-			},
-			filterTipeUnit: {
-			    type: Array,
-			    default: function () {
-			        return []
-			    }
-			},
-			filterCluster: {
-			    type: Array,
-			    default: function () {
-			        return []
-			    }
-			},
+			}
 		},
 		data: () => ({
 			form_data: {

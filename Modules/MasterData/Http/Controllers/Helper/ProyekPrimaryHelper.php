@@ -22,8 +22,6 @@ class ProyekPrimaryHelper extends Controller
         return [
             'tipe_proyek' => TipeProyek::select('id AS value', 'nama AS text')->get(),
             'tipe_bangunan' => TipeBangunan::select('id AS value', 'nama_tipe_bangunan AS text')->get(),
-            'tipe_unit' => TipeUnit::select('id AS value', 'nama_tipe_unit AS text')->get(),
-            'cluster' => Cluster::select('id AS value', 'nama_cluster AS text')->get(),
         ];
     }
 

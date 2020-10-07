@@ -59,4 +59,12 @@ class TipeBangunan extends Model
     {
         return 'slug';
     }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function proyek_primary()
+    {
+        return $this->hasOne('Modules\MasterData\Entities\ProyekPrimary', 'id_tipe_bangunan');
+    }
 }

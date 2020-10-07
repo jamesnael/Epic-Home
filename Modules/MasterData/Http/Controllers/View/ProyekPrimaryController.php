@@ -32,24 +32,59 @@ class ProyekPrimaryController extends Controller
     {
         $table_headers = [
             [
-                "text" => 'Proyek Primary',
+                "text" => 'Tipe Proyek',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => '',
+                "value" => 'nama_tipe_proyek',
             ],
             [
-                "text" => 'Deskripsi',
+                "text" => 'Tipe Bangunan',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => '',
+                "value" => 'nama_tipe_bangunan',
             ],
             [
-                "text" => 'Terakhir Diubah',
+                "text" => 'Nama Proyek',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => '',
+                "value" => 'nama_proyek',
+            ],
+            [
+                "text" => 'Status Unit',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'status_unit',
+            ],
+            [
+                "text" => 'Nama Pengembang',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_developer',
+            ],
+            [
+                "text" => 'Tahun Selesai',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'tahun_selesai',
+            ],
+            [
+                "text" => 'Harga Mulai Dari',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'harga_awal',
+            ],
+            [
+                "text" => 'Nama PIC',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_pic',
+            ],
+            [
+                "text" => 'Nomor Handphone',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_pic',
             ]
-           
         ];
         return view('masterdata::proyek_primary.index')
             ->with('page_title', 'Proyek Primary')
