@@ -18,7 +18,7 @@ class CreateUnitTable extends Migration
             $table->string('slug')->nullable();
             $table->integer('id_proyek_primari');
             $table->integer('id_cluster');
-            $table->string('tipe_unit');
+            $table->integer('id_tipe_unit');
             $table->double('harga_unit', 20, 2)->default(0);
             $table->double('harga_per_meter', 20, 2)->default(0);
             $table->string('blok');
