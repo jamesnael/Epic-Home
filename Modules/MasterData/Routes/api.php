@@ -38,6 +38,13 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
+	Route::get('unit/table', 'UnitController@table')->name('unit.table');
+	Route::get('unit/{unit}/data', 'UnitController@data')->name('unit.data');
+	Route::apiResource('unit', 'UnitController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('faq/table', 'FaqController@table')->name('faq.table');
 	Route::get('faq/{faq}/data', 'FaqController@data')->name('faq.data');
 	Route::apiResource('faq', 'FaqController')->only([
 		'store', 'update', 'destroy'

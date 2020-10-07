@@ -9,7 +9,7 @@
     				<table-component inline-template
     					table-number
     					with-actions
-    					uri="{{ route('faq.table') }}"
+    					uri="{{ route('unit.table') }}"
     					:headers='@json($table_headers)'
     					no-data-text="Tidak ada data ditemukan."
     					no-results-text="Tidak ada data ditemukan."
@@ -18,14 +18,14 @@
     					items-per-page-all-text="Semua"
     					items-per-page-text="Tampilkan"
     					page-text-locale="id"
-    					add-new-uri="{{ route('faq.create') }}"
+    					add-new-uri="{{ route('unit.create') }}"
     					add-new-text="Tambah"
     					add-new-color="light-blue lighten-2"
-    					edit-uri="faq.edit"
-    					edit-uri-parameter="slug"
+    					edit-uri="unit.edit"
+    					edit-uri-parameter="id"
     					edit-text="Ubah"
-    					delete-uri="faq.destroy"
-    					delete-uri-parameter="slug"
+    					delete-uri="unit.destroy"
+    					delete-uri-parameter="id"
     					delete-text="Hapus"
     					delete-confirmation-text="Apakah Anda yakin untuk menghapus data ini ?"
     					delete-cancel-text="Batal"

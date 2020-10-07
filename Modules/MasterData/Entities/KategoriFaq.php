@@ -25,7 +25,6 @@ class KategoriFaq extends Model
         'nama'
     ];
 
-
     /**
      * Return the sluggable configuration array for this model.
      *

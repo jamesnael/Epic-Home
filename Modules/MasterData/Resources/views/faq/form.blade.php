@@ -4,7 +4,7 @@
             <v-select
                 class="my-4"
                 v-model="form_data.menu" 
-                :items="filter_menu"
+                :items="filterMenu"
                 label="Menu"
                 name="menu"
                 hint="* harus diisi"
@@ -18,7 +18,7 @@
             <v-combobox
                 class="my-4"
                 v-model="form_data.kategori"
-                :items="filter_kategori"
+                :items="filterKategori"
                 label="Kategori"
                 name="kategori"
                 hint="* harus diisi"
@@ -53,12 +53,26 @@
                         name="jawaban"
                         label="Jawaban"
                         :error-messages="errors"
-                        :readonly="field_state">
-                    </wysiwyg>
+                        :readonly="field_state"
+                    ></wysiwyg>
                     <h5 class="mb-2 font-weight-medium">* harus diisi</h5>
                 </validation-provider>
             </v-col>
         </v-row>
+
+        <validation-provider rules="required" name="Publish" v-slot="{ errors }">
+            <v-select
+                class="my-4"
+                v-model="form_data.publish" 
+                :items="filterPublish"
+                label="Publish"
+                name="publish"
+                hint="* harus diisi"
+                :persistent-hint="true"
+                :error-messages="errors"
+                :readonly="field_state"
+            ></v-select>
+        </validation-provider>
 
         <v-btn
         	class="mr-4"

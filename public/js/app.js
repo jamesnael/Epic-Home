@@ -239,6 +239,9 @@ Vue.component('tipe-unit-form', function () {
 Vue.component('agent-property-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
+Vue.component('unit-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
+});
 Vue.component('faq-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
@@ -82920,6 +82923,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
+    "generated::FKjNY68Ku9FBnVhw": {
+      "uri": "\/",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "tipe-proyek.table": {
       "uri": "api\/master-data\/tipe-proyek\/table",
       "methods": ["GET", "HEAD"],
@@ -83020,6 +83028,56 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "unit.table": {
+      "uri": "api\/master-data\/unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "unit.data": {
+      "uri": "api\/master-data\/unit\/{unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "unit.store": {
+      "uri": "api\/master-data\/unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "unit.update": {
+      "uri": "api\/master-data\/unit\/{unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "unit.destroy": {
+      "uri": "api\/master-data\/unit\/{unit}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "faq.table": {
+      "uri": "api\/master-data\/faq\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.data": {
+      "uri": "api\/master-data\/faq\/{faq}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.store": {
+      "uri": "api\/master-data\/faq",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "faq.update": {
+      "uri": "api\/master-data\/faq\/{faq}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "faq.destroy": {
+      "uri": "api\/master-data\/faq\/{faq}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "tipe-proyek.index": {
       "uri": "master-data\/tipe-proyek",
       "methods": ["GET", "HEAD"],
@@ -83077,6 +83135,36 @@ var Ziggy = {
     },
     "agent-property.edit": {
       "uri": "master-data\/agent-property\/{agent_property}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "unit.index": {
+      "uri": "master-data\/unit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "unit.create": {
+      "uri": "master-data\/unit\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "unit.edit": {
+      "uri": "master-data\/unit\/{unit}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.index": {
+      "uri": "master-data\/faq",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.create": {
+      "uri": "master-data\/faq\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.edit": {
+      "uri": "master-data\/faq\/{faq}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     }
