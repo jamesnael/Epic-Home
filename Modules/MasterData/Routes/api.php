@@ -55,4 +55,11 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
+	Route::get('secondary-unit/table', 'SecondaryUnitController@table')->name('secondary-unit.table');
+	Route::get('secondary-unit/table-approved', 'SecondaryUnitController@tableApproved')->name('secondary-unit.table-approved');
+	Route::get('secondary-unit/{secondary_unit}/data', 'SecondaryUnitController@data')->name('secondary-unit.data');
+	Route::apiResource('secondary-unit', 'SecondaryUnitController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
 });

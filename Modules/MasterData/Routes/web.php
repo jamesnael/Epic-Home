@@ -39,4 +39,8 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('bank', 'BankController')->only([
 	    'index', 'create', 'edit'
 	]);
+
+	Route::resource('secondary-unit', 'SecondaryUnitController')->only([
+	    'index', 'create', 'edit'
+	]);
 });

@@ -59,4 +59,9 @@ class TipeBangunan extends Model
     {
         return 'slug';
     }
+
+    public function secondary_unit()
+    {
+        return $this->hasMany('Modules\MasterData\Entities\SecondaryUnit', 'id_tipe_bangunan');
+    }
 }

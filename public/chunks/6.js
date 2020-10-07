@@ -97,7 +97,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         nomor_telepon: '',
         alamat: '',
         logo_developer: '',
-        deskrips: ''
+        deskripsi: ''
       },
       field_state: false,
       form_alert_state: false,
@@ -148,7 +148,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         nomor_telepon: '',
         alamat: '',
         logo_developer: '',
-        deskrips: ''
+        deskripsi: ''
       };
       this.$refs.observer.reset();
     },

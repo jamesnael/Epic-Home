@@ -34,7 +34,7 @@
 		    	nomor_telepon:'',
 		    	alamat:'',
 		    	logo_developer:'',
-		    	deskrips:''
+		    	deskripsi:''
 			},
 			field_state: false,
 			form_alert_state: false,
@@ -87,7 +87,7 @@
 			    	nomor_telepon:'',
 			    	alamat:'',
 			    	logo_developer:'',
-			    	deskrips:''
+			    	deskripsi:''
 				}
 				this.$refs.observer.reset()
 			},

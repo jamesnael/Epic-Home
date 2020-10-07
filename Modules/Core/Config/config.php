@@ -47,10 +47,17 @@ return [
                     'model' => false,
                     'show' => true
                 ],
-                   [
+                [
                     'icon' => 'mdi-adjust',
                     'text' => 'Bank',
                     'uri' => 'bank.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Secondary Unit',
+                    'uri' => 'secondary-unit.index',
                     'model' => false,
                     'show' => true
                 ],
