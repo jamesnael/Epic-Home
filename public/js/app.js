@@ -212,10 +212,10 @@ Vue.component('base-layout', function () {
   return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
 });
 Vue.component('table-component', function () {
-  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
+  return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
 });
 Vue.component('main-menu-component', function () {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./components/MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
+  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./components/MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
 });
 
 /***/ }),
@@ -228,25 +228,37 @@ Vue.component('main-menu-component', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
 });
 Vue.component('tipe-bangunan-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
 });
 Vue.component('tipe-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
 });
 Vue.component('agent-property-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
+});
+Vue.component('faq-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
+});
+Vue.component('proyek-primary-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+});
+Vue.component('cluster-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
 });
 Vue.component('unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
 });
 Vue.component('developer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
 });
 Vue.component('bank-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
+});
+Vue.component('secondary-unit-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
 });
 
 /***/ }),
@@ -82926,11 +82938,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
-    "generated::kri9tgN8G2lq3jzD": {
-      "uri": "\/",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
     "tipe-proyek.table": {
       "uri": "api\/master-data\/tipe-proyek\/table",
       "methods": ["GET", "HEAD"],
@@ -83081,6 +83088,136 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "cluster.table": {
+      "uri": "api\/master-data\/cluster\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.data": {
+      "uri": "api\/master-data\/cluster\/{cluster}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.store": {
+      "uri": "api\/master-data\/cluster",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "cluster.update": {
+      "uri": "api\/master-data\/cluster\/{cluster}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "cluster.destroy": {
+      "uri": "api\/master-data\/cluster\/{cluster}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "proyek-primary.table": {
+      "uri": "api\/master-data\/proyek-primary\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.data": {
+      "uri": "api\/master-data\/proyek-primary\/{proyek_primary}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.store": {
+      "uri": "api\/master-data\/proyek-primary",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "proyek-primary.update": {
+      "uri": "api\/master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "proyek-primary.destroy": {
+      "uri": "api\/master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "developer.table": {
+      "uri": "api\/master-data\/developer\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.data": {
+      "uri": "api\/master-data\/developer\/{developer}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.store": {
+      "uri": "api\/master-data\/developer",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "developer.update": {
+      "uri": "api\/master-data\/developer\/{developer}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "developer.destroy": {
+      "uri": "api\/master-data\/developer\/{developer}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "bank.table": {
+      "uri": "api\/master-data\/bank\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.data": {
+      "uri": "api\/master-data\/bank\/{bank}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.store": {
+      "uri": "api\/master-data\/bank",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "bank.update": {
+      "uri": "api\/master-data\/bank\/{bank}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "bank.destroy": {
+      "uri": "api\/master-data\/bank\/{bank}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "secondary-unit.table": {
+      "uri": "api\/master-data\/secondary-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.table-approved": {
+      "uri": "api\/master-data\/secondary-unit\/table-approved",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.data": {
+      "uri": "api\/master-data\/secondary-unit\/{secondary_unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.store": {
+      "uri": "api\/master-data\/secondary-unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "secondary-unit.update": {
+      "uri": "api\/master-data\/secondary-unit\/{secondary_unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "secondary-unit.destroy": {
+      "uri": "api\/master-data\/secondary-unit\/{secondary_unit}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "tipe-proyek.index": {
       "uri": "master-data\/tipe-proyek",
       "methods": ["GET", "HEAD"],
@@ -83170,11 +83307,86 @@ var Ziggy = {
       "uri": "master-data\/faq\/{faq}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
+    },
+    "proyek-primary.index": {
+      "uri": "master-data\/proyek-primary",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.create": {
+      "uri": "master-data\/proyek-primary\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.edit": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.index": {
+      "uri": "master-data\/cluster",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.create": {
+      "uri": "master-data\/cluster\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.edit": {
+      "uri": "master-data\/cluster\/{cluster}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.index": {
+      "uri": "master-data\/developer",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.create": {
+      "uri": "master-data\/developer\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.edit": {
+      "uri": "master-data\/developer\/{developer}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.index": {
+      "uri": "master-data\/bank",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.create": {
+      "uri": "master-data\/bank\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.edit": {
+      "uri": "master-data\/bank\/{bank}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.index": {
+      "uri": "master-data\/secondary-unit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.create": {
+      "uri": "master-data\/secondary-unit\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.edit": {
+      "uri": "master-data\/secondary-unit\/{secondary_unit}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
     }
   },
-  baseUrl: 'http://localhost/',
+  baseUrl: 'http://epic-home.test/',
   baseProtocol: 'http',
-  baseDomain: 'localhost',
+  baseDomain: 'epic-home.test',
   basePort: false,
   defaultParameters: []
 };

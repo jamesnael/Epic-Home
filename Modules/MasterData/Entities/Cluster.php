@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class TipeBangunan extends Model
+class Cluster extends Model
 {
     use Sluggable, SoftDeletes;
 
@@ -15,7 +15,7 @@ class TipeBangunan extends Model
      *
      * @var string
      */
-    protected $table = 'ms_tipe_bangunan';
+    protected $table = 'ms_cluster';
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class TipeBangunan extends Model
      * @var array
      */
     protected $fillable = [
-    	'nama_tipe_bangunan',
+    	'nama_cluster',
     	'deskripsi'
     ];
 
@@ -45,7 +45,7 @@ class TipeBangunan extends Model
     {
         return [
             'slug' => [
-                'source' => ['nama_tipe_bangunan']
+                'source' => ['nama_cluster']
             ]
         ];
     }
@@ -58,18 +58,5 @@ class TipeBangunan extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    /**
-     * Get the relationship for the model.
-     */
-    public function proyek_primary()
-    {
-        return $this->hasOne('Modules\MasterData\Entities\ProyekPrimary', 'id_tipe_bangunan');
-    }
-    
-    public function secondary_unit()
-    {
-        return $this->hasMany('Modules\MasterData\Entities\SecondaryUnit', 'id_tipe_bangunan');
     }
 }

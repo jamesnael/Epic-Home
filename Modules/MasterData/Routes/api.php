@@ -50,6 +50,18 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 		'store', 'update', 'destroy'
 	]);
 
+	Route::get('cluster/table', 'ClusterController@table')->name('cluster.table');
+	Route::get('cluster/{cluster}/data', 'ClusterController@data')->name('cluster.data');
+	Route::apiResource('cluster', 'ClusterController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
+	Route::get('proyek-primary/table', 'ProyekPrimaryController@table')->name('proyek-primary.table');
+	Route::get('proyek-primary/{proyek_primary}/data', 'ProyekPrimaryController@data')->name('proyek-primary.data');
+	Route::apiResource('proyek-primary', 'ProyekPrimaryController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
 	Route::get('developer/table', 'DeveloperController@table')->name('developer.table');
 	Route::get('developer/{developer}/data', 'DeveloperController@data')->name('developer.data');
 	Route::apiResource('developer', 'DeveloperController')->only([

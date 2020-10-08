@@ -133,7 +133,7 @@ class TipeUnitController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
-            $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
+            $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->nama_tipe_proyek = $item->tipe_proyek->nama ?? '';
             return $item;
         });
