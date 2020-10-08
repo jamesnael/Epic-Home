@@ -364,6 +364,7 @@
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
+            <small class="form-text text-muted">Rp @{{number_format(form_data.harga_unit)}}</small>
         </validation-provider>
 
          <validation-provider v-slot="{ errors }" name="Harga/Meter" rules="required|numeric">
@@ -378,6 +379,7 @@
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
+            <small class="form-text text-muted">Rp @{{number_format(form_data.harga_per_meter)}}</small>
         </validation-provider>
 
          <validation-provider v-slot="{ errors }" name="Jenis pembayaran" rules="required">
@@ -461,7 +463,7 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-                 @change="form_data.jangka_waktu_pemasangan = '0'"
+                 @change="form_data.jangka_waktu_pemasangan = ''"
             ></v-autocomplete>
         </validation-provider>
 
@@ -471,7 +473,7 @@
                 v-model="form_data.jangka_waktu_pemasangan"
                 label="Jangka Waktu Pemasangan"
                 name="jangka_waktu_pemasangan"
-                :readonly="form_data.bersedia_dipasang == 'Tidak' "
+                :disabled="form_data.bersedia_dipasang == 'Tidak' "
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
