@@ -1,11 +1,9 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required, email, numeric } from 'vee-validate/dist/rules'
+	import { required } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
-	extend('email', email)
-	extend('numeric', numeric)
     localize('id', id);
 
 	export default {
@@ -29,12 +27,8 @@
 		},
 		data: () => ({
 			form_data: {
-				nama_developer:'',
-		    	email:'',
-		    	nomor_telepon:'',
-		    	alamat:'',
-		    	logo_developer:'',
-		    	deskripsi:''
+				nama_cluster: '',
+				deskripsi: ''
 			},
 			field_state: false,
 			form_alert_state: false,
@@ -55,13 +49,8 @@
     		            	if (response.data.success) {
     		            		let data = response.data.data
     		            		this.form_data = {
-	            					nama_developer: data.nama_developer,
-	            			    	email: data.email,
-	            			    	nomor_telepon: data.nomor_telepon,
-	            			    	alamat: data.alamat,
-	            			    	logo_developer: data.logo_developer,
-	            			    	deskripsi: data.deskripsi,
-	            			    	url_logo_developer: data.url_logo_developer
+    		            			nama_cluster: data.nama_cluster,
+    		            			deskripsi: data.deskripsi,
     		            		}
 
     			                this.field_state = false
@@ -82,12 +71,8 @@
     		},
 			clearForm() {
 				this.form_data = {
-					nama_developer:'',
-			    	email:'',
-			    	nomor_telepon:'',
-			    	alamat:'',
-			    	logo_developer:'',
-			    	deskripsi:''
+					nama_cluster: '',
+					deskripsi: ''
 				}
 				this.$refs.observer.reset()
 			},

@@ -25,16 +25,29 @@
 			dataUri: {
 				type: String,
 				default: ''
+			},
+			filterTipeProyek: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterTipeBangunan: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterDeveloper: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
 			}
 		},
 		data: () => ({
 			form_data: {
-				nama_developer:'',
-		    	email:'',
-		    	nomor_telepon:'',
-		    	alamat:'',
-		    	logo_developer:'',
-		    	deskripsi:''
+				fasilitas_umum: [],
 			},
 			field_state: false,
 			form_alert_state: false,
@@ -43,6 +56,7 @@
 		}),
 		mounted() {
             this.getFormData();
+            this.checkGoogleInit();
         },
 		methods: {
     		getFormData() {
@@ -55,13 +69,7 @@
     		            	if (response.data.success) {
     		            		let data = response.data.data
     		            		this.form_data = {
-	            					nama_developer: data.nama_developer,
-	            			    	email: data.email,
-	            			    	nomor_telepon: data.nomor_telepon,
-	            			    	alamat: data.alamat,
-	            			    	logo_developer: data.logo_developer,
-	            			    	deskripsi: data.deskripsi,
-	            			    	url_logo_developer: data.url_logo_developer
+	            					
     		            		}
 
     			                this.field_state = false
@@ -82,12 +90,7 @@
     		},
 			clearForm() {
 				this.form_data = {
-					nama_developer:'',
-			    	email:'',
-			    	nomor_telepon:'',
-			    	alamat:'',
-			    	logo_developer:'',
-			    	deskripsi:''
+					
 				}
 				this.$refs.observer.reset()
 			},
@@ -133,7 +136,70 @@
 	    		        this.form_alert_color = 'error'
 	                    this.form_alert_text = 'Oops, something went wrong. Please try again later.'
 	    		    });
-		    }
+		    },
+		    addFasilitasUmum() {
+		    	this.form_data.fasilitas_umum.push({
+					nama_fasilitas_umum: '',
+					detail_fasilitas_umum: '',
+					jarak: ''
+				})
+		    },
+		    removeFasilitasUmum(idx) {
+		    	this.form_data.fasilitas_umum = _.filter(this.form_data.fasilitas_umum, (el, key) => {
+		    		return key != idx
+		    	})
+		    },
+		    checkGoogleInit() {
+				var self = this;
+				setTimeout(function() {
+		            if(typeof google === 'undefined') {
+		                self.checkGoogleInit();
+		            } else {
+		                self.GMapsProyekPrimaryInit();
+		            }
+		        }, 500);
+        	},
+        	GMapsProyekPrimaryInit() {
+        		if (this.form_data.project_address_latitude && this.form_data.project_address_longitude) {
+	                var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+			          	center: {lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)},
+			          	zoom: 14
+			        });
+
+                    var marker = new google.maps.Marker({
+    	                position: {lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)},
+    	                map: map
+    	            });
+    	            map.panTo({lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)});
+        		} else {
+	                var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+			          	center: {lat: -6.1767287, lng: 106.829541},
+			          	zoom: 14
+			        });
+
+			        var marker
+        		}
+
+
+		        map.addListener('click', (mapsMouseEvent) => {
+		            this.form_data.project_address_latitude = mapsMouseEvent.latLng.lat()
+		            this.form_data.project_address_longitude = mapsMouseEvent.latLng.lng()
+		            if (marker) {
+			            marker.setMap(null)
+		            }
+		            marker = new google.maps.Marker({
+		                position: mapsMouseEvent.latLng,
+		                map: map
+		            });
+		            map.panTo(mapsMouseEvent.latLng);
+		        });
+        	},
 		}
 	}
 </script>
+<style>
+#office-map, #proyek-primary-map {
+	min-height: 400px;
+	height: 100%;
+}
+</style>

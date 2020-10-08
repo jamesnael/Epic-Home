@@ -36,11 +36,23 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 		'index', 'create', 'edit'
 	]);
 
+	Route::resource('proyek-primary', 'ProyekPrimaryController')->only([
+		'index', 'create', 'edit'
+	]);
+
+	Route::resource('cluster', 'ClusterController')->only([
+		'index', 'create', 'edit'
+	]);
+		
 	Route::resource('developer', 'DeveloperController')->only([
 	    'index', 'create', 'edit'
 	]);
 
 	Route::resource('bank', 'BankController')->only([
+	    'index', 'create', 'edit'
+	]);
+
+	Route::resource('secondary-unit', 'SecondaryUnitController')->only([
 	    'index', 'create', 'edit'
 	]);
 });

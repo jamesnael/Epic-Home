@@ -28,6 +28,13 @@ return [
                 ],
                 [
                     'icon' => 'mdi-adjust',
+                    'text' => 'Tipe Cluster',
+                    'uri' => 'cluster.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
                     'text' => 'Tipe Unit',
                     'uri' => 'tipe-unit.index',
                     'model' => false,
@@ -42,8 +49,8 @@ return [
                 ],
                 [
                     'icon' => 'mdi-adjust',
-                    'text' => 'Faq',
-                    'uri' => 'faq.index',
+                    'text' => 'Proyek Primary',
+                    'uri' => 'proyek-primary.index',
                     'model' => false,
                     'show' => true
                 ],
@@ -54,10 +61,24 @@ return [
                     'model' => false,
                     'show' => true
                 ],
-                   [
+                [
                     'icon' => 'mdi-adjust',
                     'text' => 'Bank',
                     'uri' => 'bank.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Secondary Unit',
+                    'uri' => 'secondary-unit.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'FAQ',
+                    'uri' => 'faq.index',
                     'model' => false,
                     'show' => true
                 ],

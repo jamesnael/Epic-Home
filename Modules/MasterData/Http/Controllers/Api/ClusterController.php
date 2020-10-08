@@ -5,11 +5,11 @@ namespace Modules\MasterData\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\TipeBangunan;
+use Modules\MasterData\Entities\Cluster;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class TipeBangunanController extends Controller
+class ClusterController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -26,9 +26,9 @@ class TipeBangunanController extends Controller
 
         DB::beginTransaction();
         try {
-            $data = TipeBangunan::create($request->all());
+            $data = Cluster::create($request->all());
             DB::commit();
-            return response_json(true, null, 'Tipe bangunan berhasil disimpan.', $data);
+            return response_json(true, null, 'Cluster berhasil disimpan.', $data);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -38,10 +38,10 @@ class TipeBangunanController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param TipeBangunan $tipe_bangunan
+     * @param Cluster $cluster
      * @return Renderable
      */
-    public function update(Request $request, TipeBangunan $tipe_bangunan)
+    public function update(Request $request, Cluster $cluster)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -51,9 +51,9 @@ class TipeBangunanController extends Controller
 
         DB::beginTransaction();
         try {
-            $tipe_bangunan->update($request->all());
+            $cluster->update($request->all());
             DB::commit();
-            return response_json(true, null, 'Tipe bangunan berhasil disimpan.', $tipe_bangunan);
+            return response_json(true, null, 'Cluster berhasil disimpan.', $cluster);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -62,16 +62,16 @@ class TipeBangunanController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param TipeBangunan $tipe_bangunan
+     * @param Cluster $cluster
      * @return Renderable
      */
-    public function destroy(TipeBangunan $tipe_bangunan)
+    public function destroy(Cluster $cluster)
     {
         DB::beginTransaction();
         try {
-            $tipe_bangunan->delete();
+            $cluster->delete();
             DB::commit();
-            return response_json(true, null, 'Tipe bangunan dihapus.');
+            return response_json(true, null, 'Cluster dihapus.');
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menghapus data, silahkan dicoba kembali beberapa saat lagi.');
@@ -80,12 +80,12 @@ class TipeBangunanController extends Controller
 
     /**
      * Get the specified resource from storage.
-     * @param TipeBangunan $tipe_bangunan
+     * @param Cluster $cluster
      * @return Renderable
      */
-    public function data(TipeBangunan $tipe_bangunan)
+    public function data(Cluster $cluster)
     {
-        return response_json(true, null, 'Data retrieved', $tipe_bangunan);
+        return response_json(true, null, 'Data retrieved', $cluster);
     }
 
     /**
@@ -96,7 +96,7 @@ class TipeBangunanController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'nama_tipe_bangunan' => 'bail|required',
+            'nama_cluster' => 'bail|required',
             'deskripsi' => 'bail|nullable'
         ]);
     }
@@ -115,11 +115,11 @@ class TipeBangunanController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = TipeBangunan::query();
+        $query = Cluster::query();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('nama_tipe_bangunan', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->where('nama_cluster', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('deskripsi', 'LIKE', '%' . $request->input('search') . '%');
             });
         }

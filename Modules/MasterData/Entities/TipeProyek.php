@@ -68,4 +68,12 @@ class TipeProyek extends Model
         return $this->hasMany('Modules\MasterData\Entities\TipeUnit', 'id_tipe_proyek');
     }
 
+    /**
+     * Get the relationship for the model.
+     */
+    public function proyek_primary()
+    {
+        return $this->hasOne('Modules\MasterData\Entities\ProyekPrimary', 'id_tipe_proyek');
+    }
+
 }
