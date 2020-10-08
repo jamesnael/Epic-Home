@@ -84,6 +84,23 @@ return [
                 ],
     	    ]
     	],
+        [
+            'icon' => 'mdi-account-tie',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Sales',
+            'model' => false,
+            'show' => true,
+            'children' => [
+               
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Data Sales',
+                    'uri' => 'sales.index',
+                    'model' => false,
+                    'show' => true
+                ],
+            ]
+        ],
         // [  
         //     'icon' => 'mdi-home-currency-usd',
         //     'icon-alt' => 'mdi-chevron-down',
