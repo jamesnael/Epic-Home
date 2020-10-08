@@ -1,6 +1,3 @@
-require('./bootstrap');
-require('./v-mixins');
-
 import Vue from 'vue';
 
 import Vuetify from 'vuetify';
