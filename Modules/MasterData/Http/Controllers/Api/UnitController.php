@@ -27,6 +27,19 @@ class UnitController extends Controller
         DB::beginTransaction();
         try {
             $data = Unit::create($request->all());
+
+            if ($request->hasFile('gambar_unit')) {
+                $file_gambar_units = $request->file('gambar_unit');
+                foreach($file_gambar_units as $file_gambar_unit) {
+                    $file_name = 'unit-' . uniqid() . '.' . $file_gambar_unit->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('unit', $file_gambar_unit, $file_name
+                    );
+                    $array_file_gambar_unit[] = $file_name;
+                }
+                $data->gambar_unit = $array_file_gambar_unit;
+            }
+            $data->save();
+
             DB::commit();
             return response_json(true, null, 'Unit berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -52,6 +65,19 @@ class UnitController extends Controller
         DB::beginTransaction();
         try {
             $unit->update($request->all());
+            
+            if ($request->hasFile('gambar_unit')) {
+                $file_gambar_units = $request->file('gambar_unit');
+                foreach($file_gambar_units as $file_gambar_unit) {
+                    $file_name = 'unit-' . uniqid() . '.' . $file_gambar_unit->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('unit', $file_gambar_unit, $file_name
+                    );
+                    $array_file_gambar_unit[] = $file_name;
+                }
+                $data->gambar_unit = $array_file_gambar_unit;
+            }
+            $data->save();
+
             DB::commit();
             return response_json(true, null, 'Unit berhasil disimpan.', $unit);
         } catch (\Exception $e) {
@@ -113,7 +139,7 @@ class UnitController extends Controller
             'listrik' => 'bail|required',
             'lebar_jalan_depan' => 'bail|required',
             'lingkungan_sekitar' => 'bail|required'
-            // 'gambar_unit' => 'bail|required'
+            'gambar_unit' => 'bail|nullable|image'
         ]);
     }
 

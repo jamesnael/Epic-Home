@@ -11,9 +11,9 @@
 	    				action-form="{{ route('faq.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('faq.index') }}"
 	    				data-uri="{{ route('faq.data', [ $data->slug ]) }}"
-	    				:filter_menu='@json($menu)'
-                        :filter_kategori='@json($kategori)'
-                        :filter_publish='@json($publish)'>
+	    				:filter-menu='@json($menu)'
+                        :filter-kategori='@json($kategori)'
+                        :filter-publish='@json($publish)'>
 		    			@include('masterdata::faq.form')
 		    		</faq-form>
 			    </v-card-text>

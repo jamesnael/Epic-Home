@@ -157,11 +157,11 @@ class FaqController extends Controller
 
         $data->getCollection()->transform(function($item) {
             if ($item->publish) {
-                $item->publish = "Diterbitkan";
+                $item->publish = "Publish";
             } else {
-                $item->publish = "Tidak diterbitkan";
+                $item->publish = "Unpublish";
             }
-            $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
+            $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             return $item;
         });
 

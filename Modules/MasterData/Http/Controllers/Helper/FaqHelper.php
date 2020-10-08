@@ -21,8 +21,12 @@ class FaqHelper extends Controller
             'kategori' => KategoriFaq::pluck('nama'),
             'publish' => [
                 array(
-                    '1' => 'Publish',
-                    '0' => 'Unpublish'
+                    'value' => '1',
+                    'text' => 'Publish',
+                ),
+                array(
+                    'value' => '0',
+                    'text' => 'Unpublish',
                 )
             ],
         ];

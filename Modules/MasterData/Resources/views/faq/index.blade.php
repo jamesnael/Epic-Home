@@ -1,5 +1,16 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.publish="{ item }">
+    <v-chip
+        :color="item.publish == 'Publish' ? 'green' : 'red'"
+        text-color="white"
+    >
+        @{{ item.publish.toUpperCase() }}
+    </v-chip>
+</template>
+@endpush
+
 @section('content')
     <v-row
 	    class="px-md-4 px-sm-2">

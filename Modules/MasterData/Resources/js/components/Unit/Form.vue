@@ -1,9 +1,11 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required, numeric } from 'vee-validate/dist/rules'
+	import { required, min, max, numeric } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
+	extend('min', min)
+	extend('max', max)
 	extend('numeric', numeric)
     localize('id', id);
 

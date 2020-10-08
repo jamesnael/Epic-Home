@@ -18,7 +18,7 @@ class UnitHelper extends Controller
     {
         return [
             'proyek_primari' => [array('value' => '1', 'text' => 'proyek 1')],
-            'tipe_unit' => TipeUnit::select('nama_tipe_unit AS value', 'nama_tipe_unit AS text')->get(),
+            'tipe_unit' => TipeUnit::select('id AS value', 'nama_tipe_unit AS text')->get(),
             'cluster' => [array('value' => '1', 'text' => 'cluster 1')],
         ];
     }

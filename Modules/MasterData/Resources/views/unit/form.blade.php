@@ -67,7 +67,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Harga Unit" rules="required">
+        <validation-provider v-slot="{ errors }" name="Harga Unit" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.harga_unit"
@@ -80,8 +80,9 @@
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
+            <small class="form-text text-muted">Rp @{{ form_data.harga_unit ? number_format(form_data.harga_unit) : 0 }}</small>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Harga Per Meter" rules="required">
+        <validation-provider v-slot="{ errors }" name="Harga Per Meter" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.harga_per_meter"
@@ -94,8 +95,9 @@
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
+            <small class="form-text text-muted">Rp @{{ form_data.harga_per_meter ? number_format(form_data.harga_per_meter) : 0 }}</small>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Luas Tanah" rules="required">
+        <validation-provider v-slot="{ errors }" name="Luas Tanah" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.luas_tanah"
@@ -109,7 +111,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Luas Bangunan" rules="required">
+        <validation-provider v-slot="{ errors }" name="Luas Bangunan" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.luas_bangunan"
@@ -137,7 +139,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Jumlah Kamar Tidur" rules="required|numeric">
+        <validation-provider v-slot="{ errors }" name="Jumlah Kamar Tidur" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.jumlah_kamar_tidur"
@@ -151,7 +153,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Jumlah Kamar Mandi" rules="required|numeric">
+        <validation-provider v-slot="{ errors }" name="Jumlah Kamar Mandi" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.jumlah_kamar_mandi"
@@ -165,7 +167,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Jumlah Lantai" rules="required|numeric">
+        <validation-provider v-slot="{ errors }" name="Jumlah Lantai" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.jumlah_lantai"
@@ -179,7 +181,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Jumlah Garasi Mobil" rules="required|numeric">
+        <validation-provider v-slot="{ errors }" name="Jumlah Garasi Mobil" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.jumlah_garasi_mobil"
@@ -193,7 +195,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Listrik" rules="required">
+        <validation-provider v-slot="{ errors }" name="Listrik" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.listrik"
@@ -207,7 +209,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Lebar Jalan Depan" rules="required">
+        <validation-provider v-slot="{ errors }" name="Lebar Jalan Depan" rules="required|numeric|min:0">
             <v-text-field
                 class="my-4"
                 v-model="form_data.lebar_jalan_depan"
@@ -234,6 +236,23 @@
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
+        </validation-provider>
+
+        <validation-provider v-slot="{ errors }" name="Gambar Unit" rules="image">
+            <v-file-input
+                class="my-4"
+                accept="image/*"
+                prepend-icon="mdi-camera"
+                hint="hanya menerima file dalam format image"
+                :persistent-hint="true"
+                show-size
+                label="Gambar Unit"
+                name="gambar_unit[]"
+                multiple
+              ></v-file-input>
+              <a :href="form_data.gambar_unit" target="_blank" class="ml-8">
+                <small>@{{form_data.gambar_unit}}</small>
+              </a>
         </validation-provider>
 
         <v-btn
