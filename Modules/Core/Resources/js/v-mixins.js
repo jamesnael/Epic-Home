@@ -1,7 +1,7 @@
 window.Vue = require('vue');
 
 import {Ziggy} from './ziggy'
-import route from '../../vendor/tightenco/ziggy/src/js/route'
+import route from '../../../../vendor/tightenco/ziggy/src/js/route'
 
 window.Ziggy = Ziggy;
 
