@@ -69,6 +69,19 @@ class ProyekPrimary extends Model
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'progress_update' => 'array',
+        'google_map_gallery' => 'array',
+        'sertifikat' => 'array',
+        'fasilitas' => 'array',
+    ];
+
+
+    /**
      * Return the sluggable configuration array for this model.
      *
      * @return array

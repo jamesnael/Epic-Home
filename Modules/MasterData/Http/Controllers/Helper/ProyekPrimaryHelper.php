@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\MasterData\Entities\TipeBangunan;
-use Modules\MasterData\Entities\TipeUnit;
+use Modules\MasterData\Entities\Developer;
 use Modules\MasterData\Entities\TipeProyek;
 use Modules\MasterData\Entities\Cluster;
 
@@ -22,6 +22,7 @@ class ProyekPrimaryHelper extends Controller
         return [
             'tipe_proyek' => TipeProyek::select('id AS value', 'nama AS text')->get(),
             'tipe_bangunan' => TipeBangunan::select('id AS value', 'nama_tipe_bangunan AS text')->get(),
+            'developer' => Developer::select('id AS value', 'nama_developer AS text')->get(),
         ];
     }
 

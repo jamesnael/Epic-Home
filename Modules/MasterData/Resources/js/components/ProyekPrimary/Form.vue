@@ -37,6 +37,12 @@
 			    default: function () {
 			        return []
 			    }
+			},
+			filterDeveloper: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
 			}
 		},
 		data: () => ({
@@ -50,6 +56,7 @@
 		}),
 		mounted() {
             this.getFormData();
+            this.checkGoogleInit();
         },
 		methods: {
     		getFormData() {
@@ -142,6 +149,57 @@
 		    		return key != idx
 		    	})
 		    },
+		    checkGoogleInit() {
+				var self = this;
+				setTimeout(function() {
+		            if(typeof google === 'undefined') {
+		                self.checkGoogleInit();
+		            } else {
+		                self.GMapsProyekPrimaryInit();
+		            }
+		        }, 500);
+        	},
+        	GMapsProyekPrimaryInit() {
+        		if (this.form_data.project_address_latitude && this.form_data.project_address_longitude) {
+	                var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+			          	center: {lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)},
+			          	zoom: 14
+			        });
+
+                    var marker = new google.maps.Marker({
+    	                position: {lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)},
+    	                map: map
+    	            });
+    	            map.panTo({lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)});
+        		} else {
+	                var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+			          	center: {lat: -6.1767287, lng: 106.829541},
+			          	zoom: 14
+			        });
+
+			        var marker
+        		}
+
+
+		        map.addListener('click', (mapsMouseEvent) => {
+		            this.form_data.project_address_latitude = mapsMouseEvent.latLng.lat()
+		            this.form_data.project_address_longitude = mapsMouseEvent.latLng.lng()
+		            if (marker) {
+			            marker.setMap(null)
+		            }
+		            marker = new google.maps.Marker({
+		                position: mapsMouseEvent.latLng,
+		                map: map
+		            });
+		            map.panTo(mapsMouseEvent.latLng);
+		        });
+        	},
 		}
 	}
 </script>
+<style>
+#office-map, #proyek-primary-map {
+	min-height: 400px;
+	height: 100%;
+}
+</style>

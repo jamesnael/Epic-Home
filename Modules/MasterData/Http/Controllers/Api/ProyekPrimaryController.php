@@ -28,13 +28,18 @@ class ProyekPrimaryController extends Controller
         DB::beginTransaction();
         try {
             $data = ProyekPrimary::create($request->all());
-            foreach ($request->input('fasilitas_umum') as $key => $value) {
-                $data->detail_fasilitas()->create([
-                    'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
-                    'detail_fasilitas_umum' => $value['detail_fasilitas_umum']
-                    'jarak' => $value['jarak']
-                ]);
+            if ($request->input('fasilitas_umum')) {
+                foreach ($request->input('fasilitas_umum') as $key => $value) {
+                    return $value;
+                    die();
+                    $data->detail_fasilitas()->create([
+                        'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
+                        'detail_fasilitas_umum' => $value['detail_fasilitas_umum'],
+                        'jarak' => $value['jarak']
+                    ]);
+                }
             }
+
             DB::commit();
             return response_json(true, null, 'Proyek primary berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -70,21 +75,24 @@ class ProyekPrimaryController extends Controller
                 ProyekPrimaryDetail::where('id_proyek_primary', $proyek_primary->id)->delete();
             }
 
-            foreach ($request->input('fasilitas_umum') as $key => $value) {
-                if (isset($value['id'])) {
-                    $proyek_primary->detail_fasilitas()->where('id', $value['id'])->update([
-                        'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
-                        'detail_fasilitas_umum' => $value['detail_fasilitas_umum']
-                        'jarak' => $value['jarak'] 
-                    ]);
-                } else {
-                    $proyek_primary->detail_fasilitas()->create([
-                        'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
-                        'detail_fasilitas_umum' => $value['detail_fasilitas_umum']
-                        'jarak' => $value['jarak']
-                    ]);
+            if ($request->input('fasilitas_umum')) {
+                foreach ($request->input('fasilitas_umum') as $key => $value) {
+                    if (isset($value['id'])) {
+                        $proyek_primary->detail_fasilitas()->where('id', $value['id'])->update([
+                            'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
+                            'detail_fasilitas_umum' => $value['detail_fasilitas_umum'],
+                            'jarak' => $value['jarak'] 
+                        ]);
+                    } else {
+                        $proyek_primary->detail_fasilitas()->create([
+                            'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
+                            'detail_fasilitas_umum' => $value['detail_fasilitas_umum'],
+                            'jarak' => $value['jarak']
+                        ]);
+                    }
                 }
             }
+
             DB::commit();
             return response_json(true, null, 'Proyek primary berhasil disimpan.', $proyek_primary);
         } catch (\Exception $e) {
@@ -139,7 +147,6 @@ class ProyekPrimaryController extends Controller
             'alamat' => 'bail|nullable',
             'longitude' => 'bail|nullable',
             'latitude' => 'bail|nullable',
-            'google_map_gallery' => 'bail|nullable',
             'harga_awal' => 'bail|numeric',
             'nup' => 'bail|required|numeric',
             'utj' => 'bail|required|numeric',
@@ -153,15 +160,11 @@ class ProyekPrimaryController extends Controller
             'jumlah_tower' => 'bail|required',
             'sertifikat' => 'bail|required',
             'fasilitas' => 'bail|required',
-            'profile_proyek' => 'bail|required',
             'id_developer' => 'bail|required',
             'nomor_handphone' => 'bail|required',
             'copywriting' => 'bail|required',
-            'broadcast_message' => 'bail|required',
-            'question_answer' => 'bail|required',
-            'banner_proyek' => 'bail|required',
-            'progress_update' => 'bail|required',
-            'product_knowledge' => 'bail|required',
+            'banner_proyek' => 'bail|nullable',
+            'product_knowledge' => 'bail|nullable',
         ]);
     }
 
