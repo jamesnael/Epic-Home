@@ -1,6 +1,6 @@
 <validation-observer v-slot="{ validate, reset }" ref="observer">
     <form method="post" enctype="multipart/form-data" ref="post-form">
-        <validation-provider v-slot="{ errors }" name="Tipe proyek" rules="">
+        <validation-provider v-slot="{ errors }" name="Tipe proyek" rules="required">
             <v-autocomplete
                 class="my-4"
                 v-model="form_data.id_tipe_proyek"
@@ -13,8 +13,8 @@
                 :disabled="field_state"
             ></v-autocomplete>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Tipe bangunan" rules="">
-            <v-autocomplete
+        <validation-provider v-slot="{ errors }" name="Tipe bangunan" rules="required">
+             <v-autocomplete
                 class="my-4"
                 v-model="form_data.id_tipe_bangunan"
                 label="Tipe Bangunan"
@@ -26,8 +26,8 @@
                 :disabled="field_state"
             ></v-autocomplete>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Status unit" rules="">
-            <v-autocomplete
+        <validation-provider v-slot="{ errors }" name="Status unit" rules="required">
+             <v-autocomplete
                 class="my-4"
                 v-model="form_data.status_unit"
                 label="Status Unit"
@@ -39,7 +39,7 @@
                 :disabled="field_state"
             ></v-autocomplete>
         </validation-provider>
-        <validation-provider rules="" name="Nama proyek" v-slot="{ errors }">
+        <validation-provider rules="required" name="Nama proyek" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nama_proyek"
@@ -53,7 +53,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Provinsi" rules="">
+        <validation-provider v-slot="{ errors }" name="Provinsi" rules="required">
             <v-text-field
                 class="my-4"
                 v-model="form_data.provinsi"
@@ -67,7 +67,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Kota" rules="">
+        <validation-provider v-slot="{ errors }" name="Kota" rules="required">
             <v-text-field
                 class="my-4"
                 v-model="form_data.kota"
@@ -81,7 +81,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Alamat lengkap" v-slot="{ errors }">
+        <validation-provider rules="required" name="Alamat lengkap" v-slot="{ errors }">
             <v-textarea
                 class="my-4"
                 v-model="form_data.alamat"
@@ -103,6 +103,7 @@
                 <div id="proyek-primary-map"></div>
             </div>
         </div>
+
         <v-row>
             <v-col cols="12" md="6">
                 <v-text-field
@@ -129,9 +130,9 @@
         
         <div  class="mb-4 my-4">
             <v-file-input
-                v-model="form_data.google_map_gallery"
-                small-chips
                 multiple
+                counter
+                small-chips
                 accept="image/*"
                 name="google_map_gallery[]"
                 label="Google Map Gallery"
@@ -139,8 +140,30 @@
                 :disabled="field_state"
             >
             </v-file-input>
+            <v-row>
+                <div v-for="(el, idx) in form_data.url_google_map_gallery">
+                    <v-col
+                        cols="12"
+                    >
+                        <a :href="el" target="_blank">
+                            <v-card
+                                class="mx-auto"
+                                max-width="434"
+                                tile
+                            >
+                                <v-img
+                                    height="200"
+                                    :src="el"
+                                ></v-img>
+                            </v-card>
+                            
+                        </a>
+                    </v-col>
+                </div>
+            </v-row>
         </div>
-        <validation-provider rules="|numeric" name="Harga mulai dari" v-slot="{ errors }">
+
+        <validation-provider rules="required|numeric" name="Harga mulai dari" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.harga_awal"
@@ -155,7 +178,7 @@
             ></v-text-field>
             <small class="form-text text-muted">Rp @{{ form_data.harga_awal ? number_format(form_data.harga_awal) : 0 }}</small>
         </validation-provider>
-        <validation-provider rules="|numeric" name="NUP" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="NUP" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nup"
@@ -170,7 +193,7 @@
             ></v-text-field>
             <small class="form-text text-muted">Rp @{{ form_data.nup ? number_format(form_data.nup) : 0 }}</small>
         </validation-provider>
-        <validation-provider rules="|numeric" name="UTJ" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="UTJ" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.utj"
@@ -185,7 +208,7 @@
             ></v-text-field>
             <small class="form-text text-muted">Rp @{{ form_data.utj ? number_format(form_data.utj) : 0 }}</small>
         </validation-provider>
-        <validation-provider rules="|numeric" name="Komisi" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="Komisi" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.komisi"
@@ -199,7 +222,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Closing fee hingga" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="Closing fee hingga" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.closing_fee"
@@ -214,7 +237,7 @@
             ></v-text-field>
             <small class="form-text text-muted">Rp @{{ form_data.closing_fee ? number_format(form_data.closing_fee) : 0 }}</small>
         </validation-provider>
-        <validation-provider rules="" name="Reward" v-slot="{ errors }">
+        <validation-provider rules="required" name="Reward" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.reward"
@@ -228,7 +251,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Jenis pembayaran tersedia" v-slot="{ errors }">
+        <validation-provider rules="required" name="Jenis pembayaran tersedia" v-slot="{ errors }">
             <v-autocomplete
                 class="my-4"
                 v-model="form_data.jenis_pembayaran"
@@ -244,7 +267,7 @@
         
 
         <h2 class="my-6">Spesifikasi</h2>
-        <validation-provider rules="" name="Tahun selesai" v-slot="{ errors }">
+        <validation-provider rules="required" name="Tahun selesai" v-slot="{ errors }">
             <v-text-field
                 v-model="form_data.tahun_selesai"
                 name="tahun_selesai"
@@ -257,7 +280,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Estimasi selesai" v-slot="{ errors }">
+        <validation-provider rules="required" name="Estimasi selesai" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.estimasi_selesai"
@@ -271,7 +294,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Lingkungan sekitar komplek" v-slot="{ errors }">
+        <validation-provider rules="required" name="Lingkungan sekitar komplek" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.lingkungan_sekitar"
@@ -285,7 +308,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Jumlah tower" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="Jumlah tower" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.jumlah_tower"
@@ -304,37 +327,38 @@
         <v-row>
             <v-col cols="12" md="2">
                 <v-checkbox
-                        v-model="form_data.sertifikat"
-                        label="HGB"
-                        value="HGB"
-                        name="sertifikat[]"
+                    v-model="form_data.sertifikat"
+                    label="HGB"
+                    value="HGB"
+                    name="sertifikat[]"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                        v-model="form_data.sertifikat"
-                        label="SHM"
-                        value="SHM"
-                        name="sertifikat[]"
+                    v-model="form_data.sertifikat"
+                    label="SHM"
+                    value="SHM"
+                    name="sertifikat[]"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                        v-model="form_data.sertifikat"
-                        label="Strata"
-                        value="Strata"
-                        name="sertifikat[]"
+                    v-model="form_data.sertifikat"
+                    label="Strata"
+                    value="Strata"
+                    name="sertifikat[]"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                        v-model="form_data.sertifikat"
-                        label="Lainya"
-                        value="Lainya"
-                        name="sertifikat[]"
+                    v-model="form_data.sertifikat"
+                    label="Lainya"
+                    value="Lainya"
+                    name="sertifikat[]"
                 ></v-checkbox>
             </v-col>
         </v-row>
+
         <h3  class="mt-4">Fasilitas :</h3>
         <v-row>
             <v-col cols="12" md="3">
@@ -395,12 +419,13 @@
             </v-col>
         </v-row>
         
-       <v-row>
+        <v-row>
             <v-col cols="12">
-                <validation-provider v-slot="{ errors }" name="Profile Proyek" rules="">
+                <validation-provider v-slot="{ errors }" name="Profile Proyek" rules="required">
                     <h3 class="font-weight-medium">Profile Proyek</h3>
                     <wysiwyg 
                         class="mt-1"
+                        v-model="form_data.profile_proyek"
                         name="profile_proyek"
                         label="Profile Proyek"
                         :error-messages="errors"
@@ -412,20 +437,20 @@
                 </validation-provider>
             </v-col>
         </v-row>
-        <validation-provider v-slot="{ errors }" name="Developer" rules="">
-            <v-autocomplete
+        <validation-provider v-slot="{ errors }" name="Developer" rules="required">
+             <v-autocomplete
                 class="my-4"
                 v-model="form_data.id_developer"
                 label="Developer"
-                name="id_developer"
                 :items="filterDeveloper"
+                name="id_developer"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-autocomplete>
         </validation-provider>
-        <validation-provider rules="" name="Nama PIC" v-slot="{ errors }">
+        <validation-provider rules="required" name="Nama PIC" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nama_pic"
@@ -440,7 +465,7 @@
                 :disabled="field_state">
             </v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Nomor handphone" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="Nomor handphone" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nomor_handphone"
@@ -455,7 +480,7 @@
                 :disabled="field_state">
             </v-text-field>
         </validation-provider>
-        <validation-provider rules="" name="Copywriting" v-slot="{ errors }">
+        <validation-provider rules="required" name="Copywriting" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.copywriting"
@@ -492,50 +517,62 @@
                 <v-col
                     cols="12"
                     md="4">
-                    <v-text-field
-                        class="mt-3"
-                        v-model="el.nama_fasilitas_umum"
-                        name="fasilitas_umum[][nama_fasilitas_umum]"
-                        clearable
-                        label="Fasilitas Umum"
-                        type="text"
-                        :disabled="field_state"
-                    ></v-text-field>
+                    <validation-provider rules="required" name="Fasilitas umum" v-slot="{ errors }">
+                        <v-text-field
+                            class="mt-3"
+                            v-model="el.nama_fasilitas_umum"
+                            name="fasilitas_umum[][nama_fasilitas_umum]"
+                            label="Fasilitas Umum"
+                            type="text"
+                            :error-messages="errors"
+                            hint="* harus diisi"
+                            :persistent-hint="true"
+                            :disabled="field_state"
+                        ></v-text-field>
+                    </validation-provider>
                 </v-col>
                 <v-col
                     cols="12"
                     md="4">
-                    <v-text-field
-                        class="mt-3"
-                        v-model="el.detail_fasilitas_umum"
-                        name="fasilitas_umum[][detail_fasilitas_umum]"
-                        clearable
-                        label="Nama Fasilitas Umum"
-                        type="text"
-                        :disabled="field_state"
-                    ></v-text-field>
+                    <validation-provider rules="required" name="Nama fasilitas umum" v-slot="{ errors }">
+                        <v-text-field
+                            class="mt-3"
+                            v-model="el.detail_fasilitas_umum"
+                            name="fasilitas_umum[][detail_fasilitas_umum]"
+                            label="Nama Fasilitas Umum"
+                            type="text"
+                            :error-messages="errors"
+                            hint="* harus diisi"
+                            :persistent-hint="true"
+                            :disabled="field_state"
+                        ></v-text-field>
+                    </validation-provider>
                 </v-col>
                 <v-col
                     cols="12"
                     md="4">
-                    <v-text-field
-                        class="mt-3"
-                        v-model="el.jarak"
-                        name="fasilitas_umum[][jarak]"
-                        clearable
-                        label="Jarak"
-                        type="text"
-                        append-outer-icon="mdi-delete-circle-outline"
-                        @click:append-outer="removeFasilitasUmum(idx)"
-                        :disabled="field_state"
-                    ></v-text-field>
+                    <validation-provider rules="required|numeric" name="jarak" v-slot="{ errors }">
+                        <v-text-field
+                            class="mt-3"
+                            v-model="el.jarak"
+                            name="fasilitas_umum[][jarak]"
+                            label="Jarak"
+                            type="text"
+                            append-outer-icon="mdi-delete-circle-outline"
+                            @click:append-outer="removeFasilitasUmum(idx)"
+                            hint="* harus diisi"
+                            :persistent-hint="true"
+                            :error-messages="errors"
+                            :disabled="field_state"
+                        ></v-text-field>
+                    </validation-provider>
                 </v-col>
             </v-row>
         </div>
 
         <v-row>
             <v-col cols="12">
-                <validation-provider v-slot="{ errors }" name="Broadcast message" rules="">
+                <validation-provider v-slot="{ errors }" name="Broadcast message" rules="required">
                     <h3 class="font-weight-medium">Broadcast Message</h3>
                     <wysiwyg 
                         class="mt-1"
@@ -553,7 +590,7 @@
 
         <v-row>
             <v-col cols="12">
-                <validation-provider v-slot="{ errors }" name="Q&A" rules="">
+                <validation-provider v-slot="{ errors }" name="Q&A" rules="required">
                     <h3 class="font-weight-medium">Q&A</h3>
                     <wysiwyg 
                         class="mt-1"
@@ -571,7 +608,6 @@
 
         <div  class="mb-4">
             <v-file-input
-                v-model="form_data.banner_proyek"
                 small-chips
                 multiple
                 accept="image/*"
@@ -581,11 +617,24 @@
                 :disabled="field_state"
             >
             </v-file-input>
+            <a :href="form_data.url_banner_proyek" target="_blank">
+                <v-card
+                    class="mx-auto"
+                    max-width="434"
+                    tile
+                >
+                    <v-img
+                        height="200"
+                        :src="form_data.url_banner_proyek"
+                    ></v-img>
+                </v-card>
+                
+            </a>
         </div>
 
         <div  class="mb-4">
             <v-file-input
-                v-model="form_data.progress_update"
+                counter
                 small-chips
                 multiple
                 accept="image/*"
@@ -595,11 +644,31 @@
                 :disabled="field_state"
             >
             </v-file-input>
+            <v-row>
+                <div v-for="(el, idx) in form_data.url_progress_update">
+                    <v-col
+                        cols="12"
+                    >
+                        <a :href="el" target="_blank">
+                            <v-card
+                                class="mx-auto"
+                                max-width="434"
+                                tile
+                            >
+                                <v-img
+                                    height="200"
+                                    :src="el"
+                                ></v-img>
+                            </v-card>
+                            
+                        </a>
+                    </v-col>
+                </div>
+            </v-row>
         </div>
 
         <div  class="mb-4">
             <v-file-input
-                v-model="form_data.product_knowledge"
                 small-chips
                 multiple
                 name="product_knowledge"
@@ -607,6 +676,9 @@
                 :disabled="field_state"
             >
             </v-file-input>
+            <a :href="form_data.url_product_knowledge" target="_blank" class="ml-8">
+                <small>@{{form_data.product_knowledge}}</small>
+            </a>
         </div>
     
         <v-btn
