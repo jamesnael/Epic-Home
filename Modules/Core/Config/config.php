@@ -110,5 +110,21 @@ return [
         //     'show' => true,
         //     'children' => null
         // ],
+            [
+                'icon' => 'mdi-account-group',
+                'icon-alt' => 'mdi-chevron-down',
+                'text' => 'Kelola User',
+                'model' => false,
+                'show' => true,
+                'children' => [
+                    [
+                        'icon' => 'mdi-adjust',
+                        'text' => 'User',
+                        'uri' => 'user.index',
+                        'model' => false,
+                        'show' => true
+                    ],
+                ]
+            ],
     ]
 ];
