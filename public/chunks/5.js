@@ -67,6 +67,11 @@ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('required', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('max', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["max"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('min', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["min"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('email', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["email"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('confirmed', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["confirmed"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('regex', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["regex"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -91,8 +96,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     return {
       form_data: {
         nama: '',
-        deskripsi: ''
+        email: '',
+        telepon: '',
+        password: '',
+        password_confirmation: ''
       },
+      show_password: false,
       field_state: false,
       form_alert_state: false,
       form_alert_color: '',
@@ -113,7 +122,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
             var data = response.data.data;
             _this.form_data = {
               nama: data.nama,
-              deskripsi: data.deskripsi
+              email: data.email,
+              telepon: data.telepon
             };
             _this.field_state = false;
           } else {
@@ -133,7 +143,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     clearForm: function clearForm() {
       this.form_data = {
         nama: '',
-        deskripsi: ''
+        email: '',
+        telepon: '',
+        password: '',
+        password_confirmation: ''
       };
       this.$refs.observer.reset();
     },
@@ -157,6 +170,9 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
 
       if (this.dataUri) {
         form_data.append("_method", "put");
+      } else {
+        form_data.append("password", this.form_data.password);
+        form_data.append("password_confirmation", this.form_data.password_confirmation);
       }
 
       axios.post(this.actionForm, form_data).then(function (response) {

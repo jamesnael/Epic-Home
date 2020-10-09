@@ -26,6 +26,9 @@ class AlterTipeUnitTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('ms_tipe_unit', function (Blueprint $table) {
+            \DB::select("ALTER TABLE `ms_tipe_unit` CHANGE `id_proyek_primary` `id_tipe_proyek` INT(11);
+            ");
+        });
     }
 }

@@ -5,7 +5,7 @@ namespace Modules\ManageUser\Http\Controllers\View;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\User;
+use Modules\ManageUser\Entities\User;
 
 class UserController extends Controller
 {

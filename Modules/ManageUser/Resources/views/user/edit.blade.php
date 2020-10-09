@@ -6,13 +6,13 @@
     	<v-col cols="12">
     		<v-card>
     			<v-card-text>
-    				<tipe-proyek-form
+    				<user-form
 	    				inline-template
-	    				action-form="{{ route('tipe-proyek.update', [ $data->slug ]) }}"
-	    				redirect-uri="{{ route('tipe-proyek.index') }}"
-	    				data-uri="{{ route('tipe-proyek.data', [ $data->slug ]) }}">
-		    			@include('masterdata::tipe_proyek.form')
-		    		</tipe-proyek-form>
+	    				action-form="{{ route('user.update', [ $data->slug ]) }}"
+	    				redirect-uri="{{ route('user.index') }}"
+	    				data-uri="{{ route('user.data', [ $data->slug ]) }}">
+		    			@include('manageuser::user.form')
+		    		</user-form>
 			    </v-card-text>
     		</v-card>
     	</v-col>

@@ -1,9 +1,14 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required } from 'vee-validate/dist/rules'
+	import { required, min, max, email, confirmed, regex } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
+	extend('max', max)
+	extend('min', min)
+	extend('email', email)
+	extend('confirmed', confirmed)
+	extend('regex', regex)
     localize('id', id);
 
 	export default {
@@ -28,8 +33,12 @@
 		data: () => ({
 			form_data: {
 				nama: '',
-				deskripsi: ''
+				email: '',
+				telepon: '',
+				password: '',
+				password_confirmation: '',
 			},
+			show_password: false,
 			field_state: false,
 			form_alert_state: false,
 			form_alert_color: '',
@@ -50,7 +59,8 @@
     		            		let data = response.data.data
     		            		this.form_data = {
     		            			nama: data.nama,
-    		            			deskripsi: data.deskripsi,
+									email: data.email,
+									telepon: data.telepon,
     		            		}
 
     			                this.field_state = false
@@ -72,7 +82,10 @@
 			clearForm() {
 				this.form_data = {
 					nama: '',
-					deskripsi: ''
+					email: '',
+					telepon: '',
+					password: '',
+					password_confirmation: '',
 				}
 				this.$refs.observer.reset()
 			},
@@ -92,6 +105,9 @@
 	    		
 	    		if (this.dataUri) {
 	    		    form_data.append("_method", "put");
+	    		} else {
+	    		    form_data.append("password", this.form_data.password);
+	    		    form_data.append("password_confirmation", this.form_data.password_confirmation);
 	    		}
 
 	    		axios.post(this.actionForm, form_data)

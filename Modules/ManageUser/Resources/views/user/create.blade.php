@@ -6,12 +6,12 @@
     	<v-col cols="12">
     		<v-card>
     			<v-card-text>
-    				<tipe-proyek-form
+    				<user-form
 	    				inline-template
-	    				action-form="{{ route('tipe-proyek.store') }}"
-	    				redirect-uri="{{ route('tipe-proyek.index') }}">
-		    			@include('masterdata::tipe_proyek.form')
-		    		</tipe-proyek-form>
+	    				action-form="{{ route('user.store') }}"
+	    				redirect-uri="{{ route('user.index') }}">
+		    			@include('manageuser::user.form')
+		    		</user-form>
 			    </v-card-text>
     		</v-card>
     	</v-col>

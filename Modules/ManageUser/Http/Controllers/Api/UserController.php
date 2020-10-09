@@ -5,7 +5,7 @@ namespace Modules\ManageUser\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\User;
+use Modules\ManageUser\Entities\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +21,7 @@ class UserController extends Controller
         $validator = $this->validateFormRequest($request);
 
         if ($validator->fails()) {
-            return response_json(false, $validator->errors()->get(), $validator->errors()->first());
+            return response_json(false, $validator->errors(), $validator->errors()->first());
         }
 
         DB::beginTransaction();
@@ -43,10 +43,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validator = $this->validateFormRequest($request);
+        $validator = $this->validateFormRequest($request, $user->id);
 
         if ($validator->fails()) {
-            return response_json(false, $validator->errors()->get(), $validator->errors()->first());
+            return response_json(false, $validator->errors(), $validator->errors()->first());
         }
 
         DB::beginTransaction();
@@ -93,11 +93,11 @@ class UserController extends Controller
      * Validation Rules for Store/Update Data
      *
      */
-    public function validateFormRequest($request)
+    public function validateFormRequest($request, $id = null)
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => 'bail|required|email|unique', // need update
+            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id",
             'telepon' => 'bail|required',
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);

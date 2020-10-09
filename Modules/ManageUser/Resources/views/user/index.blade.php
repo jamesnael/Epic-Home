@@ -1,5 +1,11 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.email="{ item }">
+    <a :href="'mailto:' + item.email">@{{ item.email }}</a>
+</template>
+@endpush
+
 @section('content')
     <v-row
 	    class="px-md-4 px-sm-2">
@@ -9,7 +15,7 @@
     				<table-component inline-template
     					table-number
     					with-actions
-    					uri="{{ route('tipe-proyek.table') }}"
+    					uri="{{ route('user.table') }}"
     					:headers='@json($table_headers)'
     					no-data-text="Tidak ada data ditemukan."
     					no-results-text="Tidak ada data ditemukan."
@@ -18,13 +24,13 @@
     					items-per-page-all-text="Semua"
     					items-per-page-text="Tampilkan"
     					page-text-locale="id"
-    					add-new-uri="{{ route('tipe-proyek.create') }}"
+    					add-new-uri="{{ route('user.create') }}"
     					add-new-text="Tambah"
     					add-new-color="light-blue lighten-2"
-    					edit-uri="tipe-proyek.edit"
+    					edit-uri="user.edit"
     					edit-uri-parameter="slug"
     					edit-text="Ubah"
-    					delete-uri="tipe-proyek.destroy"
+    					delete-uri="user.destroy"
     					delete-uri-parameter="slug"
     					delete-text="Hapus"
     					delete-confirmation-text="Apakah Anda yakin untuk menghapus data ini ?"

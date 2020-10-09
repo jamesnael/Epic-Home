@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('ms_users_backend', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('slug')->nullable();
             $table->string('nama');
             $table->string('email');
             $table->string('telepon');
