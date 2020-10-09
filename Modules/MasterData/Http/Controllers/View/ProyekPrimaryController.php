@@ -85,7 +85,7 @@ class ProyekPrimaryController extends Controller
                 "text" => 'Nomor Handphone',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'nama_pic',
+                "value" => 'nomor_handphone',
             ]
         ];
         return view('masterdata::proyek_primary.index')
@@ -131,6 +131,6 @@ class ProyekPrimaryController extends Controller
      */
     public function show(ProyekPrimary $proyek_primary)
     {
-        return redirect()->route('unit.index', ['proyek_primary' => $proyek_primary]);
+        return redirect()->route('proyek-primary.unit.index', ['proyek_primary' => $proyek_primary]);
     }
 }

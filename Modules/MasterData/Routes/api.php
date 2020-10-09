@@ -38,11 +38,6 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
-	Route::get('unit/table', 'UnitController@table')->name('unit.table');
-	Route::get('unit/{unit}/data', 'UnitController@data')->name('unit.data');
-	Route::apiResource('unit', 'UnitController')->only([
-	    'store', 'update', 'destroy'
-	]);
 
 	Route::get('faq/table', 'FaqController@table')->name('faq.table');
 	Route::get('faq/{faq}/data', 'FaqController@data')->name('faq.data');
@@ -61,6 +56,12 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	Route::apiResource('proyek-primary', 'ProyekPrimaryController')->only([
 	    'store', 'update', 'destroy'
 	]);
+
+	Route::get('proyek-primary/{proyek_primary}/unit/table', 'UnitController@table')->name('unit.table');
+	Route::get('unit/{unit}/data', 'UnitController@data')->name('unit.data');
+	Route::apiResource('proyek-primary.unit', 'UnitController')->only([
+	    'store', 'update', 'destroy'
+	])->shallow();
 
 	Route::get('developer/table', 'DeveloperController@table')->name('developer.table');
 	Route::get('developer/{developer}/data', 'DeveloperController@data')->name('developer.data');

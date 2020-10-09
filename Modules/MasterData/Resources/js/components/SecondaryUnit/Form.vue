@@ -1,11 +1,14 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required, email, numeric } from 'vee-validate/dist/rules'
+	import { required, email, numeric, image, regex, max } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
 	extend('email', email)
 	extend('numeric', numeric)
+	extend('image', image)
+	extend('regex', regex)
+	extend('max', max)
     localize('id', id);
 
 	export default {
@@ -79,7 +82,7 @@
 		    	bersedia_dipasang: '',
 		    	jangka_waktu_pemasangan: '',
 		    	open_house: '',
-		    	gallery_unit: '',
+		    	gallery_unit: [],
 		    	approved_status: ''
 
 			},
@@ -134,10 +137,11 @@
 							    	bersedia_dipasang: data.bersedia_dipasang,
 							    	jangka_waktu_pemasangan: data.jangka_waktu_pemasangan,
 							    	open_house: data.open_house,
-							    	gallery_unit: data.gallery_unit,
-							    	url_gallery_unit: data.url_gallery_unit,
+							    	gallery_unit: JSON.parse(data.gallery_unit),
 							    	approved_status : data.approved_status,
-							    	for_status : data.nama_unit
+							    	for_status : data.nama_unit,
+
+							    	url_gallery_unit: data.url_gallery_unit
     		            		}
 
     			                this.field_state = false

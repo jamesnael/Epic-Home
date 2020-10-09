@@ -197,6 +197,13 @@ class BeritaPropertiController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
+            $item->thumbnail = get_file_url('public', 'berita_properti/thumbnail/'.$item->thumbnail);
+            if ($item->publish) {
+                $item->publish = "Publish";
+            } else {
+                $item->publish = "Unpublish";
+            }
+            $item->publish_date = \Carbon\Carbon::parse($item->publish_date)->locale('id')->translatedFormat('d F Y');
             $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             return $item;
         });

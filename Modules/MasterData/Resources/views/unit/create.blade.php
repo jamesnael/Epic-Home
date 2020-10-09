@@ -9,10 +9,10 @@
     				<unit-form
 	    				inline-template
                         :filter-proyek-primari='@json($proyek_primari)'
-                        :filter-tipe-unit='@json($tipe_unit)'
                         :filter-cluster='@json($cluster)'
-	    				action-form="{{ route('unit.store') }}"
-	    				redirect-uri="{{ route('unit.index') }}">
+                        :filter-tipe-unit='@json($tipe_unit)'
+	    				action-form="{{ route('proyek-primary.unit.store', [$proyek_primary->slug]) }}"
+	    				redirect-uri="{{ route('proyek-primary.unit.index', [$proyek_primary->slug]) }}">
 		    			@include('masterdata::unit.form')
 		    		</unit-form>
 			    </v-card-text>

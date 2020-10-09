@@ -6,8 +6,10 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\MasterData\Entities\Unit;
+use Modules\MasterData\Entities\ProyekPrimary;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UnitController extends Controller
 {
@@ -16,7 +18,7 @@ class UnitController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ProyekPrimary $proyek_primary, Request $request)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -69,14 +71,14 @@ class UnitController extends Controller
             if ($request->hasFile('gambar_unit')) {
                 $file_gambar_units = $request->file('gambar_unit');
                 foreach($file_gambar_units as $file_gambar_unit) {
-                    $file_name = 'unit-' . $data->id . '-' . uniqid() . '.' . $file_gambar_unit->getClientOriginalExtension();
+                    $file_name = 'unit-' . $unit->id . '-' . uniqid() . '.' . $file_gambar_unit->getClientOriginalExtension();
                     Storage::disk('public')->putFileAs('unit', $file_gambar_unit, $file_name
                     );
                     $array_file_gambar_unit[] = $file_name;
                 }
-                $data->gambar_unit = $array_file_gambar_unit;
+                $unit->gambar_unit = $array_file_gambar_unit;
             }
-            $data->save();
+            $unit->save();
 
             DB::commit();
             return response_json(true, null, 'Unit berhasil disimpan.', $unit);
@@ -111,6 +113,13 @@ class UnitController extends Controller
      */
     public function data(Unit $unit)
     {
+        $array_gambar_unit = $unit->gambar_unit;
+        $gambar_units = [];
+        foreach ($array_gambar_unit as $key => $value) {
+            array_push($gambar_units, get_file_url('public', 'unit/' . $value));
+        }
+        $unit->url_gambar_unit = $gambar_units;
+
         return response_json(true, null, 'Data retrieved', $unit);
     }
 
@@ -124,7 +133,7 @@ class UnitController extends Controller
         return Validator::make($request->all(), [
             'id_proyek_primari' => 'bail|required',
             'id_cluster' => 'bail|required',
-            'tipe_unit' => 'bail|required',
+            'id_tipe_unit' => 'bail|required',
             'harga_unit' => 'bail|required',
             'harga_per_meter' => 'bail|required',
             'blok' => 'bail|required',
@@ -139,7 +148,7 @@ class UnitController extends Controller
             'listrik' => 'bail|required',
             'lebar_jalan_depan' => 'bail|required',
             'lingkungan_sekitar' => 'bail|required',
-            'gambar_unit' => 'bail|nullable|image'
+            'gambar_unit' => 'bail|nullable'
         ]);
     }
 
@@ -149,7 +158,7 @@ class UnitController extends Controller
      * @return Renderable
      *
      */
-    public function table(Request $request)
+    public function table(ProyekPrimary $proyek_primary, Request $request)
     {
         $validator = $this->validateTableRequest($request);
 
@@ -157,7 +166,9 @@ class UnitController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = Unit::with('tipe_unit');
+        $query = Unit::with('tipe_unit', 'proyek_primary')->whereHas('proyek_primary', function($subquery) use ($proyek_primary) {
+            $subquery->where('id', $proyek_primary->id);
+        });
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -177,8 +188,9 @@ class UnitController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
+            $item->nama_proyek = $item->proyek_primary->nama_proyek ?? '';
+            $item->nama_tipe_unit = $item->tipe_unit->nama_tipe_unit ?? '';
             $item->last_update = $item->updated_at->locale('id')->translatedFormat('d F Y H:i');
-            $item->nama_tipe_unit = $item->tipe_unit->nama ?? '';
             return $item;
         });
 

@@ -29,10 +29,10 @@
         <validation-provider v-slot="{ errors }" name="Tipe Unit" rules="required">
              <v-autocomplete
                 class="my-4"
-                v-model="form_data.tipe_unit" 
+                v-model="form_data.id_tipe_unit" 
                 :items="filterTipeUnit"
                 label="Tipe Unit"
-                name="tipe_unit"
+                name="id_tipe_unit"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
@@ -249,10 +249,31 @@
                 label="Gambar Unit"
                 name="gambar_unit[]"
                 multiple
-              ></v-file-input>
-              <a :href="form_data.gambar_unit" target="_blank" class="ml-8">
-                <small>@{{form_data.gambar_unit}}</small>
-              </a>
+            ></v-file-input>
+            <v-row class="mb-3">
+                <v-col
+                    v-for="(el, idx) in form_data.url_gambar_unit"
+                    cols="12"
+                    md="3"
+                >
+                    <a :href="el" target="_blank">
+                        <v-card
+                            class="mx-auto"
+                            min-height="150"
+                            max-height="150"
+                            max-width="250"
+                            tile
+                        >
+                            <v-img
+                                max-height="150"
+                                max-width="250"
+                                :src="el"
+                            ></v-img>
+                        </v-card>
+                        
+                    </a>
+                </v-col>
+            </v-row>
         </validation-provider>
 
         <v-btn

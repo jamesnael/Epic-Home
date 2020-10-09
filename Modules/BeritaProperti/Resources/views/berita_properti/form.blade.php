@@ -42,7 +42,7 @@
             </v-combobox>
         </validation-provider>
 
-        <validation-provider rules="required|min:12|max:320" name="Deskripsi" v-slot="{ errors }">
+        <validation-provider rules="required|min:120|max:320" name="Deskripsi" v-slot="{ errors }">
             <v-textarea
                 class="my-4"
                 rows="3"
@@ -85,7 +85,7 @@
                 label="Thumbnail"
                 name="thumbnail"
             ></v-file-input>
-            <a :href="form_data.url_thumbnail" target="_blank" class="ml-8">
+            <a :href="form_data.thumbnail" target="_blank" class="ml-8">
                 <small>@{{form_data.thumbnail}}</small>
             </a>
         </validation-provider>
@@ -101,7 +101,7 @@
                 name="banner[]"
                 multiple
             ></v-file-input>
-            <a :href="form_data.url_banner" target="_blank" class="ml-8">
+            <a :href="form_data.banner" target="_blank" class="ml-8">
                 <small>@{{form_data.banner}}</small>
             </a>
         </validation-provider>

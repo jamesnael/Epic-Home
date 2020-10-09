@@ -72,7 +72,6 @@
     		            .then(response => {
     		            	if (response.data.success) {
     		            		let data = response.data.data
-    		            		console.log(data)
     		            		this.form_data = {
     		            			judul: data.judul,
     		            			tag: data.tag,

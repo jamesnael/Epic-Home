@@ -79,26 +79,28 @@ class UnitController extends Controller
            
         ];
 
-        $this->breadcrumbs[] = ['href' => route('unit.index',[$proyek_primary->slug]), 'text' => 'Unit'];
-        $this->breadcrumbs[] = ['href' => route('unit.index',[$proyek_primary->slug]), 'text' => 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? ''];
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.index',[$proyek_primary->slug]), 'text' => 'Unit'];
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.index',[$proyek_primary->slug]), 'text' => 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? ''];
         return view('masterdata::unit.index')
             ->with('page_title', 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? '')
             ->with('breadcrumbs', $this->breadcrumbs)
-            ->with('table_headers', $table_headers);
+            ->with('table_headers', $table_headers)
+            ->with('proyek_primary', $proyek_primary);
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create(ProyekPrimary $proyek_primary)
     {
-        $this->breadcrumbs[] = ['href' => route('unit.create'), 'text' => 'Tambah Unit'];
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.create', [ $proyek_primary->slug ]), 'text' => 'Tambah Unit'];
 
         return view('masterdata::unit.create')
             ->with('page_title', 'Tambah Unit')
             ->with('breadcrumbs', $this->breadcrumbs)
-            ->with($this->helper->getHelper());
+            ->with($this->helper->getHelper())
+            ->with('proyek_primary', $proyek_primary);
     }
 
     /**

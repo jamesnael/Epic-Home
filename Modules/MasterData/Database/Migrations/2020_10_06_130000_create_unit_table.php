@@ -16,7 +16,7 @@ class CreateUnitTable extends Migration
         Schema::create('ms_unit', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('slug')->nullable();
-            $table->integer('id_proyek_primary');
+            $table->integer('id_proyek_primari');
             $table->integer('id_cluster');
             $table->integer('id_tipe_unit');
             $table->double('harga_unit', 20, 2)->default(0);

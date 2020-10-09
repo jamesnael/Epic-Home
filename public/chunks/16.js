@@ -113,7 +113,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       form_data: {
         id_proyek_primari: '',
         id_cluster: '',
-        tipe_unit: '',
+        id_tipe_unit: '',
         harga_unit: '',
         harga_per_meter: '',
         blok: '',
@@ -151,7 +151,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
             _this.form_data = {
               id_proyek_primari: data.id_proyek_primari,
               id_cluster: data.id_cluster,
-              tipe_unit: data.tipe_unit,
+              id_tipe_unit: data.id_tipe_unit,
               harga_unit: data.harga_unit,
               harga_per_meter: data.harga_per_meter,
               blok: data.blok,
@@ -166,7 +166,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               listrik: data.listrik,
               lebar_jalan_depan: data.lebar_jalan_depan,
               lingkungan_sekitar: data.lingkungan_sekitar,
-              gambar_unit: data.gambar_unit
+              gambar_unit: data.gambar_unit,
+              url_gambar_unit: data.url_gambar_unit
             };
             _this.field_state = false;
           } else {
@@ -187,7 +188,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       this.form_data = {
         id_proyek_primari: '',
         id_cluster: '',
-        tipe_unit: '',
+        id_tipe_unit: '',
         harga_unit: '',
         harga_per_meter: '',
         blok: '',

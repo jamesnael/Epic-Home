@@ -5,6 +5,8 @@ namespace Modules\MasterData\Http\Controllers\Helper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\MasterData\Entities\ProyekPrimary;
+use Modules\MasterData\Entities\Cluster;
 use Modules\MasterData\Entities\TipeUnit;
 
 class UnitHelper extends Controller
@@ -17,9 +19,9 @@ class UnitHelper extends Controller
     public function getHelper()
     {
         return [
-            'proyek_primari' => [array('value' => '1', 'text' => 'proyek 1')],
+            'proyek_primari' => ProyekPrimary::select('id AS value', 'nama_proyek AS text')->get(),
+            'cluster' => Cluster::select('id AS value', 'nama_cluster AS text')->get(),
             'tipe_unit' => TipeUnit::select('id AS value', 'nama_tipe_unit AS text')->get(),
-            'cluster' => [array('value' => '1', 'text' => 'cluster 1')],
         ];
     }
 

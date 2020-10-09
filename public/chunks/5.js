@@ -135,7 +135,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         axios.get(this.dataUri).then(function (response) {
           if (response.data.success) {
             var data = response.data.data;
-            console.log(data);
             _this.form_data = {
               judul: data.judul,
               tag: data.tag,

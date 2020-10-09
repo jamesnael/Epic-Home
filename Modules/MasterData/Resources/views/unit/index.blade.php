@@ -9,7 +9,7 @@
     				<table-component inline-template
     					table-number
     					with-actions
-    					uri="{{ route('unit.table') }}"
+    					uri="{{ route('unit.table', [$proyek_primary->slug]) }}"
     					:headers='@json($table_headers)'
     					no-data-text="Tidak ada data ditemukan."
     					no-results-text="Tidak ada data ditemukan."
@@ -18,7 +18,7 @@
     					items-per-page-all-text="Semua"
     					items-per-page-text="Tampilkan"
     					page-text-locale="id"
-    					add-new-uri="{{ route('unit.create') }}"
+    					add-new-uri="{{ route('proyek-primary.unit.create', [$proyek_primary->slug]) }}"
     					add-new-text="Tambah"
     					add-new-color="light-blue lighten-2"
     					edit-uri="unit.edit"

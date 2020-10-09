@@ -10,9 +10,9 @@
 	    				inline-template
 	    				action-form="{{ route('unit.update', [ $data->id ]) }}"
 	    				:filter-proyek-primari='@json($proyek_primari)'
-                        :filter-tipe-unit='@json($tipe_unit)'
                         :filter-cluster='@json($cluster)'
-	    				redirect-uri="{{ route('unit.index') }}"
+                        :filter-tipe-unit='@json($tipe_unit)'
+	    				redirect-uri=""
 	    				data-uri="{{ route('unit.data', [ $data->id ]) }}">
 		    			@include('masterdata::unit.form')
 		    		</unit-form>

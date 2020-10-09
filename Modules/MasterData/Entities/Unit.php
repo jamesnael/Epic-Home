@@ -24,7 +24,7 @@ class Unit extends Model
     protected $fillable = [
     	'id_proyek_primari',
         'id_cluster',
-        'tipe_unit',
+        'id_tipe_unit',
         'harga_unit',
         'harga_per_meter',
         'blok',
@@ -52,10 +52,27 @@ class Unit extends Model
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'gambar_unit' => 'array'
+    ];
+
+    /**
      * Get the relationship for the model.
      */
     public function tipe_unit()
     {
         return $this->belongsTo('Modules\MasterData\Entities\TipeUnit', 'id_tipe_unit');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function proyek_primary()
+    {
+        return $this->belongsTo('Modules\MasterData\Entities\ProyekPrimary', 'id_proyek_primari');
     }
 }
