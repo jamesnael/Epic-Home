@@ -681,8 +681,8 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "unit.index": {
-      "uri": "master-data\/unit",
+    "proyek-primary.show": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -718,11 +718,6 @@ var Ziggy = {
     },
     "proyek-primary.create": {
       "uri": "master-data\/proyek-primary\/tambah",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "proyek-primary.show": {
-      "uri": "master-data\/proyek-primary\/{proyek_primary}",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
