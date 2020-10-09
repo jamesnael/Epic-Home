@@ -9,3 +9,4 @@ Vue.component('unit-form', () => import('./components/Unit/Form.vue'));
 Vue.component('developer-form', () => import('./components/Developer/Form.vue'));
 Vue.component('bank-form', () => import('./components/Bank/Form.vue'));
 Vue.component('secondary-unit-form', () => import('./components/SecondaryUnit/Form.vue'));
+Vue.component('customer-form', () => import('./components/Customer/Form.vue'));
