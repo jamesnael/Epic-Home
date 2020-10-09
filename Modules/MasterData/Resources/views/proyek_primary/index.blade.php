@@ -1,5 +1,12 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.harga_awal="{ item }">
+       Rp @{{ number_format(item.harga_awal) }}
+    </span>
+</template>
+@endpush
+
 @section('content')
     <v-row
 	    class="px-md-4 px-sm-2">

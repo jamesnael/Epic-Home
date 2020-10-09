@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Storage;
 
 class Developer extends Model
 {
-	use Sluggable, SoftDeletes;
+    use Sluggable, SoftDeletes;
 
-	protected $table = 'ms_developer';
+    protected $table = 'ms_developer';
 
     protected $fillable = [
        'nama_developer',
@@ -21,7 +21,7 @@ class Developer extends Model
        'alamat',
        'deskripsi',
        'logo_developer'
-	];
+    ];
 
 
     protected $dates = [
