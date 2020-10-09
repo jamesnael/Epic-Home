@@ -422,12 +422,14 @@
             :disabled="field_state">
         </v-textarea>
 
-         <validation-provider v-slot="{ errors }" name="No telepon/HP" rules="required|numeric">
+         <validation-provider v-slot="{ errors }" name="No telepon/HP" rules="required|max:15">
             <v-text-field
                 class="my-4"
                 v-model="form_data.no_telepon_pemilik"
                 label="No Telepon/HP"
                 name="no_telepon_pemilik"
+                v-mask="'+62############'"
+                placeholder="+62817800000000"
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
