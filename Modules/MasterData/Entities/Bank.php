@@ -8,32 +8,32 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Bank extends Model
 {
-	use Sluggable, SoftDeletes;
+    use Sluggable, SoftDeletes;
 
-	protected $table = 'ms_bank';
+    protected $table = 'ms_bank';
 
     protected $fillable = [
-       'nama_bank',
-       'jenis_bank',
-       'nama_pinjaman',
-       'suku_bunga',
-       'masa_kredit',
-       'tenor_mulai_dari',
-       'tenor_sampai_dengan',
-       'status',
-       'flat_suku_bunga'
+         'nama_bank',
+         'jenis_bank',
+         'nama_pinjaman',
+         'suku_bunga',
+         'masa_kredit',
+         'tenor_mulai_dari',
+         'tenor_sampai_dengan',
+         'status',
+         'flat_suku_bunga'
     ];
 
     protected $dates = [
-        'deleted_at',
+         'deleted_at',
     ];
 
     protected $cast = [
-        'flat_suku_bunga' => 'boolean',
+         'flat_suku_bunga' => 'boolean',
     ];
 
 
-        public function sluggable()
+    public function sluggable()
     {
         return [
             'slug' => [
