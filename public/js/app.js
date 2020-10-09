@@ -721,8 +721,8 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "proyek-primary.show": {
-      "uri": "master-data\/proyek-primary\/{proyek_primary}",
+    "unit.index": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/unit",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -758,6 +758,11 @@ var Ziggy = {
     },
     "proyek-primary.create": {
       "uri": "master-data\/proyek-primary\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.show": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -872,9 +877,9 @@ var Ziggy = {
       "domain": null
     }
   },
-  baseUrl: 'http://localhost/',
+  baseUrl: 'http://epic-home.test/',
   baseProtocol: 'http',
-  baseDomain: 'localhost',
+  baseDomain: 'epic-home.test',
   basePort: false,
   defaultParameters: []
 };
@@ -925,7 +930,7 @@ Vue.component('faq-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
@@ -83732,8 +83737,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\epic_home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\epic_home\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic-home\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

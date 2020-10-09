@@ -85,7 +85,7 @@ class ProyekPrimaryController extends Controller
                 "text" => 'Nomor Handphone',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'nama_pic',
+                "value" => 'nomor_handphone',
             ]
         ];
         return view('masterdata::proyek_primary.index')
