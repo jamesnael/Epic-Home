@@ -14,6 +14,7 @@ Vue.use(Vuetify);
 require('./../../Modules/Core/Resources/js/app');
 require('./../../Modules/MasterData/Resources/js/app');
 require('./../../Modules/SalesData/Resources/js/app');
+require('./../../Modules/ManageUser/Resources/js/app');
 
 const vuetify = new Vuetify({
 	icons: {

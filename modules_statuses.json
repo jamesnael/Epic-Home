@@ -1,5 +1,6 @@
 {
     "Core": true,
     "MasterData": true,
-    "SalesData": true
+    "SalesData": true,
+    "ManageUser": true
 }

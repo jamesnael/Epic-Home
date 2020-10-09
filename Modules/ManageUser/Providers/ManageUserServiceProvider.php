@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\Core\Providers;
+namespace Modules\ManageUser\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class CoreServiceProvider extends ServiceProvider
+class ManageUserServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Core';
+    protected $moduleName = 'ManageUser';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'core';
+    protected $moduleNameLower = 'manageuser';
 
     /**
      * Boot the application events.
@@ -27,7 +27,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
-        $this->registerCommands();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
 
@@ -39,8 +38,6 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-
-        require __DIR__.'/HelpersProvider.php';
     }
 
     /**
@@ -90,18 +87,6 @@ class CoreServiceProvider extends ServiceProvider
         } else {
             $this->loadTranslationsFrom(module_path($this->moduleName, 'Resources/lang'), $this->moduleNameLower);
         }
-    }
-
-    /**
-     * Register commands
-     *
-     * @return void
-     */
-    protected function registerCommands()
-    {
-        $this->commands([
-            \Modules\Core\Console\GenerateZiggyCommand::class
-        ]);
     }
 
     /**
