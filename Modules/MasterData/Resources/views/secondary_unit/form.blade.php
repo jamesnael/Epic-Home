@@ -56,31 +56,29 @@
 
 
         <validation-provider v-slot="{ errors }" name="Kota" rules="required">
-             <v-autocomplete
+             <v-text-field
                 class="my-4"
                 v-model="form_data.kota" 
-                :items="['Bogor','Jakarta']"
                 label="Kota"
                 name="kota"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-autocomplete>
+            ></v-text-field>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Kecamatan" rules="required">
-             <v-autocomplete
+             <v-text-field
                 class="my-4"
                 v-model="form_data.kecamatan" 
-                :items="['Cipaku','Pondok indah']"
                 label="Kecamatan"
                 name="kecamatan"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-autocomplete>
+            ></v-text-field>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Luas tanah" rules="required|numeric">
@@ -502,15 +500,33 @@
                 small-chips
                 multiple
                 accept="image/*"
-                name="gallery_unit"
+                name="gallery_unit[]"
                 label="Gambar Rumah"
                 prepend-icon="mdi-camera"
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_gallery_unit" target="_blank" class="ml-8">
-                <small>@{{form_data.gallery_unit}}</small>
-            </a>
+             <v-row>
+                <div v-for="(el, idx) in form_data.url_gallery_unit">
+                    <v-col
+                        cols="12"
+                    >
+                        <a :href="el" target="_blank">
+                            <v-card
+                                class="mx-auto"
+                                max-width="434"
+                                tile
+                            >
+                                <v-img
+                                    height="200"
+                                    :src="el"
+                                ></v-img>
+                            </v-card>
+                            
+                        </a>
+                    </v-col>
+                </div>
+            </v-row>
         </div>
 
         <validation-provider v-slot="{ errors }" name="Approved status" rules="" v-if="form_data.for_status != null">

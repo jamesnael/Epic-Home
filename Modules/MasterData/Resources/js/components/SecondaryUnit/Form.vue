@@ -79,7 +79,7 @@
 		    	bersedia_dipasang: '',
 		    	jangka_waktu_pemasangan: '',
 		    	open_house: '',
-		    	gallery_unit: '',
+		    	gallery_unit: [],
 		    	approved_status: ''
 
 			},
@@ -134,10 +134,11 @@
 							    	bersedia_dipasang: data.bersedia_dipasang,
 							    	jangka_waktu_pemasangan: data.jangka_waktu_pemasangan,
 							    	open_house: data.open_house,
-							    	gallery_unit: data.gallery_unit,
-							    	url_gallery_unit: data.url_gallery_unit,
+							    	gallery_unit: JSON.parse(data.gallery_unit),
 							    	approved_status : data.approved_status,
-							    	for_status : data.nama_unit
+							    	for_status : data.nama_unit,
+
+							    	url_gallery_unit: data.url_gallery_unit
     		            		}
 
     			                this.field_state = false
