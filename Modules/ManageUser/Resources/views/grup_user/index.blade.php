@@ -1,26 +1,5 @@
 @extends('core::layouts.master')
 
-@push('table_slot')
-<template v-slot:item.url_logo_agent="{ item }">
-    <div v-if="item.url_logo_agent">
-        <a :href="item.url_logo_agent" target="_blank">
-            <v-card
-                align="left"
-                max-width="250"
-                tile
-            >
-                <v-img
-                    max-height="150"
-                    max-width="250"
-                    :src="item.url_logo_agent"
-                ></v-img>
-            </v-card>
-        </a>
-    </div>
-</template>
-@endpush
-
-
 @section('content')
     <v-row
 	    class="px-md-4 px-sm-2">
@@ -30,7 +9,7 @@
     				<table-component inline-template
     					table-number
     					with-actions
-    					uri="{{ route('agent-property.table') }}"
+    					uri="{{ route('grup-user.table') }}"
     					:headers='@json($table_headers)'
     					no-data-text="Tidak ada data ditemukan."
     					no-results-text="Tidak ada data ditemukan."
@@ -39,13 +18,13 @@
     					items-per-page-all-text="Semua"
     					items-per-page-text="Tampilkan"
     					page-text-locale="id"
-    					add-new-uri="{{ route('agent-property.create') }}"
+    					add-new-uri="{{ route('grup-user.create') }}"
     					add-new-text="Tambah"
     					add-new-color="light-blue lighten-2"
-    					edit-uri="agent-property.edit"
+    					edit-uri="grup-user.edit"
     					edit-uri-parameter="slug"
     					edit-text="Ubah"
-    					delete-uri="agent-property.destroy"
+    					delete-uri="grup-user.destroy"
     					delete-uri-parameter="slug"
     					delete-text="Hapus"
     					delete-confirmation-text="Apakah Anda yakin untuk menghapus data ini ?"

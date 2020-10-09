@@ -119,6 +119,13 @@ return [
                 'children' => [
                     [
                         'icon' => 'mdi-adjust',
+                        'text' => 'Grup User',
+                        'uri' => 'grup-user.index',
+                        'model' => false,
+                        'show' => true
+                    ],
+                    [
+                        'icon' => 'mdi-adjust',
                         'text' => 'User',
                         'uri' => 'user.index',
                         'model' => false,

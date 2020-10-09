@@ -47,6 +47,24 @@
             ></v-text-field>
         </validation-provider>
 
+        <validation-provider rules="required" name="Grup User" v-slot="{ errors }">
+            <v-autocomplete
+                class="my-4"
+                v-model="form_data.grup_user_id"
+                :items="filterGrupUser"
+                item-text="text"
+                item-value="value"
+                label="Grup User"
+                name="grup_user_id"
+                clearable
+                clear-icon="mdi-eraser-variant"
+                hint="* harus diisi"
+                :persistent-hint="true"
+                :error-messages="errors"
+                :disabled="field_state"
+            ></v-autocomplete>
+        </validation-provider>
+
         <validation-provider v-if="!dataUri" rules="required|min:8" vid="password_confirmation" name="Password" v-slot="{ errors }">
             <v-text-field
                 class="my-4"

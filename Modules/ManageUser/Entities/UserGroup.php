@@ -2,26 +2,20 @@
 
 namespace Modules\ManageUser\Entities;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class User extends Authenticatable
+class UserGroup extends Model
 {
-    use HasFactory;
-    use Notifiable;
-    use Sluggable;
-    use SoftDeletes;
+    use Sluggable, SoftDeletes;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'ms_users_backend';
+    protected $table = 'ms_user_group';
 
     /**
      * The attributes that are mass assignable.
@@ -29,23 +23,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'slug',
-        'nama',
-        'email',
-        'telepon',
-        'email_verified_at',
-        'password',
-        'grup_user_id',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    	'slug',
+    	'nama',
+    	'deskripsi',
+    	'hak_akses'
     ];
 
     /**
@@ -58,12 +39,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'hak_akses' => 'array',
     ];
 
     /**
@@ -75,7 +56,7 @@ class User extends Authenticatable
     {
         return [
             'slug' => [
-                'source' => ['nama', 'telepon']
+                'source' => ['nama']
             ]
         ];
     }
@@ -93,8 +74,8 @@ class User extends Authenticatable
     /**
      * Get the relationship for the model.
      */
-    public function grup_user()
+    public function users()
     {
-        return $this->belongsTo('Modules\ManageUser\Entities\UserGroup', 'grup_user_id', 'id');
+        return $this->hasMany('Modules\ManageUser\Entities\User', 'grup_user_id', 'id');
     }
 }

@@ -1,14 +1,9 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required, min, max, email, confirmed, regex } from 'vee-validate/dist/rules'
+	import { required } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
-	extend('max', max)
-	extend('min', min)
-	extend('email', email)
-	extend('confirmed', confirmed)
-	extend('regex', regex)
     localize('id', id);
 
 	export default {
@@ -29,19 +24,16 @@
 				type: String,
 				default: ''
 			},
-			filterGrupUser: {
-				type: Array,
+			accessUri: {
+				type: Object,
 				required: true
 			}
 		},
 		data: () => ({
 			form_data: {
 				nama: '',
-				email: '',
-				telepon: '',
-				password: '',
-				password_confirmation: '',
-				grup_user_id: '',
+				deskripsi: '',
+				hak_akses: [],
 			},
 			show_password: false,
 			field_state: false,
@@ -64,9 +56,8 @@
     		            		let data = response.data.data
     		            		this.form_data = {
     		            			nama: data.nama,
-									email: data.email,
-									telepon: data.telepon,
-									grup_user_id: data.grup_user_id,
+									deskripsi: data.deskripsi,
+									hak_akses: data.hak_akses,
     		            		}
 
     			                this.field_state = false
@@ -88,11 +79,8 @@
 			clearForm() {
 				this.form_data = {
 					nama: '',
-					email: '',
-					telepon: '',
-					grup_user_id: '',
-					password: '',
-					password_confirmation: '',
+					deskripsi: '',
+					hak_akses: [],
 				}
 				this.$refs.observer.reset()
 			},
@@ -112,9 +100,6 @@
 	    		
 	    		if (this.dataUri) {
 	    		    form_data.append("_method", "put");
-	    		} else {
-	    		    form_data.append("password", this.form_data.password);
-	    		    form_data.append("password_confirmation", this.form_data.password_confirmation);
 	    		}
 
 	    		axios.post(this.actionForm, form_data)

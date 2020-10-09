@@ -9,7 +9,8 @@
     				<user-form
 	    				inline-template
 	    				action-form="{{ route('user.store') }}"
-	    				redirect-uri="{{ route('user.index') }}">
+	    				redirect-uri="{{ route('user.index') }}"
+                        :filter-grup-user='@json($grup_user)'>
 		    			@include('manageuser::user.form')
 		    		</user-form>
 			    </v-card-text>

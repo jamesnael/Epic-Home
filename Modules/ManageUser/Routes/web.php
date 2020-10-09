@@ -12,6 +12,10 @@
 */
 
 Route::prefix('kelola-user')->namespace('View')->group(function() {
+	Route::resource('grup-user', 'GrupUserController')->only([
+	    'index', 'create', 'edit'
+	]);
+
 	Route::resource('user', 'UserController')->only([
 	    'index', 'create', 'edit'
 	]);

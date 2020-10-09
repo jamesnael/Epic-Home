@@ -69,6 +69,9 @@ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('required', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('email', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["email"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('numeric', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["numeric"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('image', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["image"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('regex', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["regex"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('max', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["max"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -142,7 +145,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         bersedia_dipasang: '',
         jangka_waktu_pemasangan: '',
         open_house: '',
-        gallery_unit: '',
+        gallery_unit: [],
         approved_status: ''
       },
       field_state: false,
@@ -196,10 +199,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               bersedia_dipasang: _data.bersedia_dipasang,
               jangka_waktu_pemasangan: _data.jangka_waktu_pemasangan,
               open_house: _data.open_house,
-              gallery_unit: _data.gallery_unit,
-              url_gallery_unit: _data.url_gallery_unit,
+              gallery_unit: JSON.parse(_data.gallery_unit),
               approved_status: _data.approved_status,
-              for_status: _data.nama_unit
+              for_status: _data.nama_unit,
+              url_gallery_unit: _data.url_gallery_unit
             };
             _this.field_state = false;
           } else {
