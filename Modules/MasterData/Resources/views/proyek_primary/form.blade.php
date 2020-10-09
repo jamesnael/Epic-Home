@@ -98,11 +98,11 @@
             </v-textarea>
         </validation-provider>
 
-        <div class="form-group row">
+        {{-- <div class="form-group row">
             <div class="col-md-12">
                 <div id="proyek-primary-map"></div>
             </div>
-        </div>
+        </div> --}}
 
         <v-row>
             <v-col cols="12" md="6">

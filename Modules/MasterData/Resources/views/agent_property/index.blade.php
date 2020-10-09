@@ -1,5 +1,26 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.url_logo_agent="{ item }">
+    <div v-if="item.url_logo_agent">
+        <a :href="item.url_logo_agent" target="_blank">
+            <v-card
+                align="left"
+                max-width="250"
+                tile
+            >
+                <v-img
+                    max-height="150"
+                    max-width="250"
+                    :src="item.url_logo_agent"
+                ></v-img>
+            </v-card>
+        </a>
+    </div>
+</template>
+@endpush
+
+
 @section('content')
     <v-row
 	    class="px-md-4 px-sm-2">
