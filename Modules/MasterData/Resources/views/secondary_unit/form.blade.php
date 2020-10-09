@@ -507,25 +507,28 @@
             >
             </v-file-input>
              <v-row>
-                <div v-for="(el, idx) in form_data.url_gallery_unit">
-                    <v-col
-                        cols="12"
-                    >
-                        <a :href="el" target="_blank">
-                            <v-card
-                                class="mx-auto"
-                                max-width="434"
-                                tile
-                            >
-                                <v-img
-                                    height="200"
-                                    :src="el"
-                                ></v-img>
-                            </v-card>
-                            
-                        </a>
-                    </v-col>
-                </div>
+               <v-col
+                    v-for="(el, idx) in form_data.url_gallery_unit"
+                    cols="12"
+                    md="3"
+                >
+                    <a :href="el" target="_blank">
+                        <v-card
+                            class="mx-auto"
+                            min-height="150"
+                            max-height="150"
+                            max-width="250"
+                            tile
+                        >
+                            <v-img
+                                max-height="150"
+                                max-width="250"
+                                :src="el"
+                            ></v-img>
+                        </v-card>
+                        
+                    </a>
+                </v-col>
             </v-row>
         </div>
 
