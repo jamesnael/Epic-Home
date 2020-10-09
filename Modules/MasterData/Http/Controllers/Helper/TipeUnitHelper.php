@@ -5,7 +5,7 @@ namespace Modules\MasterData\Http\Controllers\Helper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\TipeProyek;
+use Modules\MasterData\Entities\ProyekPrimary;
 
 class TipeUnitHelper extends Controller
 {
@@ -17,7 +17,7 @@ class TipeUnitHelper extends Controller
     public function getHelper()
     {
         return [
-            'tipe_proyek' => TipeProyek::select('id AS value', 'nama AS text')->get(),
+            'proyek_primary' => ProyekPrimary::select('id AS value', 'nama_proyek AS text')->get(),
         ];
     }
 

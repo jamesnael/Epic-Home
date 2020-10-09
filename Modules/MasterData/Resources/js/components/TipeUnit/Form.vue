@@ -24,7 +24,7 @@
 				type: String,
 				default: ''
 			},
-			filterTipeProyek: {
+			filterProyekPrimary: {
 			    type: Array,
 			    default: function () {
 			        return []
@@ -33,7 +33,7 @@
 		},
 		data: () => ({
 			form_data: {
-				id_tipe_proyek: '',
+				id_proyek_primary: '',
 				nama_tipe_unit: '',
 				deskripsi: ''
 			},
@@ -56,7 +56,7 @@
     		            	if (response.data.success) {
     		            		let data = response.data.data
     		            		this.form_data = {
-    		            			id_tipe_proyek:data.id_tipe_proyek,
+    		            			id_proyek_primary:data.id_proyek_primary,
     		            			nama_tipe_unit: data.nama_tipe_unit,
     		            			deskripsi: data.deskripsi,
     		            		}
@@ -79,6 +79,7 @@
     		},
 			clearForm() {
 				this.form_data = {
+					id_proyek_primary: '',
 					nama_tipe_unit: '',
 					deskripsi: ''
 				}

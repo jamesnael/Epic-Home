@@ -12,16 +12,17 @@ class Bank extends Model
 
 	protected $table = 'ms_bank';
 
-    protected $fillable = ['nama_bank',
-    					   'jenis_bank',
-    					   'nama_pinjaman',
-    					   'suku_bunga',
-    					   'masa_kredit',
-    					   'tenor_mulai_dari',
-    					   'tenor_sampai_dengan',
-                           'status',
-                           'flat_suku_bunga'
-];
+    protected $fillable = [
+       'nama_bank',
+       'jenis_bank',
+       'nama_pinjaman',
+       'suku_bunga',
+       'masa_kredit',
+       'tenor_mulai_dari',
+       'tenor_sampai_dengan',
+       'status',
+       'flat_suku_bunga'
+    ];
 
     protected $dates = [
         'deleted_at',

@@ -93,6 +93,23 @@ return [
             'show' => true,
             'children' => null
         ],
+        [
+            'icon' => 'mdi-account-tie',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Sales',
+            'model' => false,
+            'show' => true,
+            'children' => [
+               
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Data Sales',
+                    'uri' => 'sales.index',
+                    'model' => false,
+                    'show' => true
+                ],
+            ]
+        ],
         // [  
         //     'icon' => 'mdi-home-currency-usd',
         //     'icon-alt' => 'mdi-chevron-down',
@@ -102,5 +119,21 @@ return [
         //     'show' => true,
         //     'children' => null
         // ],
+        [
+            'icon' => 'mdi-account-group',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Kelola User',
+            'model' => false,
+            'show' => true,
+            'children' => [
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'User',
+                    'uri' => 'user.index',
+                    'model' => false,
+                    'show' => true
+                ],
+            ]
+        ],
     ]
 ];

@@ -27,6 +27,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerCommands();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
 
@@ -89,6 +90,18 @@ class CoreServiceProvider extends ServiceProvider
         } else {
             $this->loadTranslationsFrom(module_path($this->moduleName, 'Resources/lang'), $this->moduleNameLower);
         }
+    }
+
+    /**
+     * Register commands
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        $this->commands([
+            \Modules\Core\Console\GenerateZiggyCommand::class
+        ]);
     }
 
     /**

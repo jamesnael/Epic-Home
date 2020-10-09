@@ -18,7 +18,8 @@ class TipeUnitController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => url('tipe-unit.index'), 'text' => 'Master Data'],
             ['href' => route('tipe-unit.index'), 'text' => 'Tipe Unit'],
         ];
 
@@ -36,7 +37,7 @@ class TipeUnitController extends Controller
                 "text" => 'Tipe Proyek',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'nama_tipe_proyek',
+                "value" => 'nama_proyek_primary',
             ],
             [
                 "text" => 'Tipe Unit',

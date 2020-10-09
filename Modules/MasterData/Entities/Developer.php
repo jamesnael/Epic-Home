@@ -14,12 +14,13 @@ class Developer extends Model
 
 	protected $table = 'ms_developer';
 
-    protected $fillable = ['nama_developer',
-						   'email',
-						   'nomor_telepon',
-						   'alamat',
-						   'deskripsi',
-						   'logo_developer'
+    protected $fillable = [
+       'nama_developer',
+       'email',
+       'nomor_telepon',
+       'alamat',
+       'deskripsi',
+       'logo_developer'
 	];
 
 

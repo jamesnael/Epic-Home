@@ -96,7 +96,7 @@ class TipeUnitController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'id_tipe_proyek' => 'bail|required|exists:Modules\MasterData\Entities\TipeProyek,id',
+            'id_proyek_primary' => 'bail|required|exists:Modules\MasterData\Entities\ProyekPrimary,id',
             'nama_tipe_unit' => 'bail|required',
             'deskripsi' => 'bail|nullable'
         ]);
@@ -116,7 +116,7 @@ class TipeUnitController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = TipeUnit::with('tipe_proyek');
+        $query = TipeUnit::with('proyek_primary');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -124,8 +124,8 @@ class TipeUnitController extends Controller
                 $subquery->orWhere('deskripsi', 'LIKE', '%' . $request->input('search') . '%');
             });
 
-            $query->orWhereHas('tipe_proyek', function($subquery) use ($request) {
-                $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+            $query->orWhereHas('proyek_primary', function($subquery) use ($request) {
+                $subquery->where('nama_proyek', 'LIKE', '%' . $request->input('search') . '%');
             });
         }
         
@@ -134,7 +134,7 @@ class TipeUnitController extends Controller
 
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
-            $item->nama_tipe_proyek = $item->tipe_proyek->nama ?? '';
+            $item->nama_proyek_primary = $item->proyek_primary->nama_proyek ?? '';
             return $item;
         });
 

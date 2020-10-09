@@ -28,8 +28,9 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	    'index', 'create', 'edit'
 	]);
 
+	Route::get('proyek-primary/{proyek_primary}/unit', 'UnitController@index')->name('unit.index');
 	Route::resource('unit', 'UnitController')->only([
-	    'index', 'create', 'edit'
+	    'create', 'edit'
 	]);
 
 	Route::resource('faq', 'FaqController')->only([
@@ -37,7 +38,7 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	]);
 
 	Route::resource('proyek-primary', 'ProyekPrimaryController')->only([
-		'index', 'create', 'edit'
+		'index', 'create', 'edit', 'show'
 	]);
 
 	Route::resource('cluster', 'ClusterController')->only([

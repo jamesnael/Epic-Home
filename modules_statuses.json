@@ -1,5 +1,7 @@
 {
     "Core": true,
     "MasterData": true,
-    "BeritaProperti": true
+    "BeritaProperti": true,
+    "SalesData": true,
+    "ManageUser": true
 }

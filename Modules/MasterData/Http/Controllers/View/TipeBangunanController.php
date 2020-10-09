@@ -17,7 +17,8 @@ class TipeBangunanController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => url('tipe-bangunan.index'), 'text' => 'Master Data'],
             ['href' => route('tipe-bangunan.index'), 'text' => 'Tipe Bangunan'],
         ];
     }

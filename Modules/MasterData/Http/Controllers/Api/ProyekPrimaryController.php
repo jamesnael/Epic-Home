@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\MasterData\Entities\ProyekPrimary;
 use Modules\MasterData\Entities\ProyekPrimaryDetail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class ProyekPrimaryController extends Controller
@@ -28,10 +29,11 @@ class ProyekPrimaryController extends Controller
         DB::beginTransaction();
         try {
             $data = ProyekPrimary::create($request->all());
+
+
             if ($request->input('fasilitas_umum')) {
-                foreach ($request->input('fasilitas_umum') as $key => $value) {
-                    return $value;
-                    die();
+                $array_detail = (array) json_decode($request->input('fasilitas_umum'), true);
+                foreach ($array_detail as $key => $value) {
                     $data->detail_fasilitas()->create([
                         'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
                         'detail_fasilitas_umum' => $value['detail_fasilitas_umum'],
@@ -39,6 +41,49 @@ class ProyekPrimaryController extends Controller
                     ]);
                 }
             }
+
+            if ($request->hasFile('google_map_gallery')) {
+                $files = [];
+                foreach ($request->file('google_map_gallery') ?? [] as $key => $file) {
+                    $file_name = $data->nama_proyek . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('proyek_primary/google_map_gallery', $file, $file_name
+                    );
+                    array_push($files, $file_name);
+                }
+                $data->google_map_gallery = json_encode($files);
+                $data->save();
+
+            }
+
+            if ($request->hasFile('progress_update')) {
+                $files = [];
+                foreach ($request->file('progress_update') ?? [] as $key => $file) {
+                    $file_name = $data->nama_proyek . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('proyek_primary/progress_update', $file, $file_name
+                    );
+                    array_push($files, $file_name);
+                }
+                $data->progress_update = json_encode($files);
+                $data->save();
+
+            }
+
+            if ($request->hasFile('banner_proyek')) {
+                $file_name = $data->nama_proyek . '-' . uniqid() . '.' . $request->file('banner_proyek')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('proyek_primary/banner_proyek', $request->file('banner_proyek'), $file_name
+                );
+                $data->banner_proyek = $file_name;
+
+            }
+
+            if ($request->hasFile('product_knowledge')) {
+                $file_name = $data->nama_proyek . '-' . uniqid() . '.' . $request->file('product_knowledge')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('proyek_primary/product_knowledge', $request->file('product_knowledge'), $file_name
+                );
+                $data->product_knowledge = $file_name;
+
+            }
+            $data->save();
 
             DB::commit();
             return response_json(true, null, 'Proyek primary berhasil disimpan.', $data);
@@ -75,8 +120,9 @@ class ProyekPrimaryController extends Controller
                 ProyekPrimaryDetail::where('id_proyek_primary', $proyek_primary->id)->delete();
             }
 
-            if ($request->input('fasilitas_umum')) {
-                foreach ($request->input('fasilitas_umum') as $key => $value) {
+             if ($request->input('fasilitas_umum')) {
+                $array_detail = (array) json_decode($request->input('fasilitas_umum'), true);
+                foreach ($array_detail as $key => $value) {
                     if (isset($value['id'])) {
                         $proyek_primary->detail_fasilitas()->where('id', $value['id'])->update([
                             'nama_fasilitas_umum' => $value['nama_fasilitas_umum'], 
@@ -92,6 +138,50 @@ class ProyekPrimaryController extends Controller
                     }
                 }
             }
+
+            if ($request->hasFile('google_map_gallery')) {
+                $files = [];
+                foreach ($request->file('google_map_gallery') ?? [] as $key => $file) {
+                    $file_name = $proyek_primary->nama_proyek . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('proyek_primary/google_map_gallery', $file, $file_name
+                    );
+                    array_push($files, $file_name);
+                }
+                $proyek_primary->google_map_gallery = json_encode($files);
+                $proyek_primary->save();
+
+            }
+
+            if ($request->hasFile('progress_update')) {
+                $files = [];
+                foreach ($request->file('progress_update') ?? [] as $key => $file) {
+                    $file_name = $proyek_primary->nama_proyek . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('proyek_primary/progress_update', $file, $file_name
+                    );
+                    array_push($files, $file_name);
+                }
+                $proyek_primary->progress_update = json_encode($files);
+                $proyek_primary->save();
+
+            }
+
+            if ($request->hasFile('banner_proyek')) {
+                $file_name = $proyek_primary->nama_proyek . '-' . uniqid() . '.' . $request->file('banner_proyek')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('proyek_primary/banner_proyek', $request->file('banner_proyek'), $file_name
+                );
+                $proyek_primary->banner_proyek = $file_name;
+
+            }
+
+            if ($request->hasFile('product_knowledge')) {
+                $file_name = $proyek_primary->nama_proyek . '-' . uniqid() . '.' . $request->file('product_knowledge')->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('proyek_primary/product_knowledge', $request->file('product_knowledge'), $file_name
+                );
+                $proyek_primary->product_knowledge = $file_name;
+
+            }
+
+            $proyek_primary->save();
 
             DB::commit();
             return response_json(true, null, 'Proyek primary berhasil disimpan.', $proyek_primary);
@@ -126,7 +216,27 @@ class ProyekPrimaryController extends Controller
      */
     public function data(ProyekPrimary $proyek_primary)
     {
-        return response_json(true, null, 'Data retrieved', $proyek_primary);
+        $proyek_primary->url_banner_proyek = get_file_url('public', 'proyek_primary/banner_proyek/' . $proyek_primary->banner_proyek);
+        
+        $proyek_primary->url_product_knowledge = get_file_url('public', 'proyek_primary/product_knowledge/' . $proyek_primary->product_knowledge);
+
+        $array_google_map_gallery = json_decode($proyek_primary->google_map_gallery, true);
+        $google_map_galleries=[];
+        foreach ($array_google_map_gallery as $key => $value) {
+            array_push($google_map_galleries, get_file_url('public', 'proyek_primary/google_map_gallery/' . $value));
+        }
+
+        $proyek_primary->url_google_map_gallery = $google_map_galleries;
+
+        $array_progress_update = json_decode($proyek_primary->progress_update, true);
+        $files_progress_update=[];
+        foreach ($array_progress_update as $key => $value) {
+            array_push($files_progress_update, get_file_url('public', 'proyek_primary/progress_update/' . $value));
+        }
+
+        $proyek_primary->url_progress_update = $files_progress_update;
+
+        return response_json(true, null, 'Data retrieved', $proyek_primary->load('detail_fasilitas'));
     }
 
     /**
@@ -139,6 +249,7 @@ class ProyekPrimaryController extends Controller
         return Validator::make($request->all(), [
             'id_tipe_proyek' => 'bail|required|exists:Modules\MasterData\Entities\TipeProyek,id',
             'id_tipe_bangunan' => 'bail|required|exists:Modules\MasterData\Entities\TipeBangunan,id',
+            'id_developer' => 'bail|required|exists:Modules\MasterData\Entities\Developer,id',
             'status_unit' => 'bail|required',
             'nama_proyek' => 'bail|required',
             'provinsi' => 'bail|required',
@@ -158,9 +269,6 @@ class ProyekPrimaryController extends Controller
             'estimasi_selesai' => 'bail|required',
             'lingkungan_sekitar' => 'bail|required',
             'jumlah_tower' => 'bail|required',
-            'sertifikat' => 'bail|required',
-            'fasilitas' => 'bail|required',
-            'id_developer' => 'bail|required',
             'nomor_handphone' => 'bail|required',
             'copywriting' => 'bail|required',
             'banner_proyek' => 'bail|nullable',
@@ -192,6 +300,18 @@ class ProyekPrimaryController extends Controller
                 $subquery->orWhere('harga_awal', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('nama_pic', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('nomor_handphone', 'LIKE', '%' . $request->input('search') . '%');
+            });
+
+            $query->orWhereHas('tipe_bangunan', function($subquery) use ($request) {
+                $subquery->where('nama_tipe_bangunan', 'LIKE', '%' . $request->input('search') . '%');
+            });
+
+            $query->orWhereHas('tipe_proyek', function($subquery) use ($request) {
+                $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+            });
+
+            $query->orWhereHas('developer', function($subquery) use ($request) {
+                $subquery->where('nama_developer', 'LIKE', '%' . $request->input('search') . '%');
             });
         }
         

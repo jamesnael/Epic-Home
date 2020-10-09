@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\MasterData\Entities\Unit;
+use Modules\MasterData\Entities\ProyekPrimary;
 use Modules\MasterData\Http\Controllers\Helper\UnitHelper;
 
 class UnitController extends Controller
@@ -20,7 +21,7 @@ class UnitController extends Controller
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
             ['href' => url('/'), 'text' => 'Master Data'],
-            ['href' => route('unit.index'), 'text' => 'Unit'],
+            ['href' => url('proyek-primary.index'), 'text' => 'Proyek Primary'],
         ];
 
         $this->helper = new UnitHelper;
@@ -30,7 +31,7 @@ class UnitController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(ProyekPrimary $proyek_primary)
     {
         $table_headers = [
             [
@@ -77,8 +78,11 @@ class UnitController extends Controller
             ]
            
         ];
+
+        $this->breadcrumbs[] = ['href' => route('unit.index',[$proyek_primary->slug]), 'text' => 'Unit'];
+        $this->breadcrumbs[] = ['href' => route('unit.index',[$proyek_primary->slug]), 'text' => 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? ''];
         return view('masterdata::unit.index')
-            ->with('page_title', 'Unit')
+            ->with('page_title', 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? '')
             ->with('breadcrumbs', $this->breadcrumbs)
             ->with('table_headers', $table_headers);
     }
