@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 */
 
 Route::prefix('kelola-user')->namespace('Api')->group(function() {
+	Route::get('grup-user/table', 'GrupUserController@table')->name('grup-user.table');
+	Route::get('grup-user/{grup_user}/data', 'GrupUserController@data')->name('grup-user.data');
+	Route::apiResource('grup-user', 'GrupUserController')->only([
+	    'store', 'update', 'destroy'
+	]);
+
 	Route::get('user/table', 'UserController@table')->name('user.table');
 	Route::get('user/{user}/data', 'UserController@data')->name('user.data');
 	Route::apiResource('user', 'UserController')->only([

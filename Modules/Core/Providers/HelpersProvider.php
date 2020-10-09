@@ -126,3 +126,83 @@ if (! function_exists('get_file_url')) {
         return $file_name;
     }
 }
+
+if (! function_exists('get_access_url')) {
+    function get_access_url() {
+        \Artisan::call('route:list --json');
+        $routes = json_decode(\Artisan::output(), true);
+        $collection = collect($routes);
+        $filtered = $collection->transform(function($item) {
+            return collect($item)->only(['method', 'uri', 'name']);
+        })
+        ->filter(function($item, $key) {
+            $available_method = [
+                "GET|HEAD", 
+                "DELETE"
+            ];
+            $unavailable_name = [
+                "underconstruction", 
+                "debugbar", 
+                "ignition"
+            ];
+            $unavailable_uri = [
+                "register", 
+                "logout", 
+                "password/", 
+                "login", 
+                "fallbackPlaceholder", 
+                "table", 
+                "/data", 
+                "helper"
+            ];
+
+            if (! Str::contains($item['name'], $unavailable_name) &&
+                Str::contains($item['method'], $available_method) &&
+                !Str::contains($item['uri'], $unavailable_uri) &&
+                $item['name']
+                ) {
+                return $item;
+            }
+            return;
+        });
+
+        $routes = $filtered->filter()->values();
+
+        $output = [];
+        foreach ($routes as $key => $route) {
+            $path = str_replace('api/', '', $route['uri']);
+            $array_path = explode('/', $path);
+            $main_menu = Str::title($path = str_replace('-', ' ', $array_path[0]));
+            if (!isset($array_path[1]) ||  
+                (isset($array_path[1]) && Str::contains($array_path[1], ['{', '}']))
+            ) {
+                $menu = $main_menu;
+            } else {
+                $menu = Str::title($path = str_replace('-', ' ', $array_path[1]));
+            }
+            $route['main_menu'] = $main_menu;
+            $route['menu'] = $menu;
+            $array_name = explode('.', $route['name']);
+            if (end($array_name) == 'index') {
+                $route['deskripsi'] = 'Tabel ' . Str::title(str_replace('-', ' ', $array_path[1]));
+            } elseif (end($array_name) == 'create') {
+                $route['deskripsi'] = 'Tambah ' . Str::title(str_replace('-', ' ', $array_path[1]));
+            } elseif (end($array_name) == 'edit') {
+                $route['deskripsi'] = 'Ubah ' . Str::title(str_replace('-', ' ', $array_path[1]));
+            } elseif (end($array_name) == 'show') {
+                $route['deskripsi'] = 'Detil ' . Str::title(str_replace('-', ' ', $array_path[1]));
+            } elseif (end($array_name) == 'destroy') {
+                $route['deskripsi'] = 'Hapus ' . Str::title(str_replace('-', ' ', $array_path[1]));
+            } else {
+                $route['deskripsi'] = '';
+            }
+            $output[] = $route;
+        }
+
+        $group_by_menu = collect($output)->groupBy('main_menu')->toArray();
+
+        return collect($group_by_menu)->transform(function($item) {
+            return collect($item)->groupBy('menu');
+        })->toArray();
+    }
+}

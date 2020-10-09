@@ -28,6 +28,10 @@
 			dataUri: {
 				type: String,
 				default: ''
+			},
+			filterGrupUser: {
+				type: Array,
+				required: true
 			}
 		},
 		data: () => ({
@@ -37,6 +41,7 @@
 				telepon: '',
 				password: '',
 				password_confirmation: '',
+				grup_user_id: '',
 			},
 			show_password: false,
 			field_state: false,
@@ -61,6 +66,7 @@
     		            			nama: data.nama,
 									email: data.email,
 									telepon: data.telepon,
+									grup_user_id: data.grup_user_id,
     		            		}
 
     			                this.field_state = false
@@ -84,6 +90,7 @@
 					nama: '',
 					email: '',
 					telepon: '',
+					grup_user_id: '',
 					password: '',
 					password_confirmation: '',
 				}

@@ -87,14 +87,14 @@ return [
         [
             'icon' => 'mdi-account-tie',
             'icon-alt' => 'mdi-chevron-down',
-            'text' => 'Sales',
+            'text' => 'Kelola Sales',
             'model' => false,
             'show' => true,
             'children' => [
                
                 [
                     'icon' => 'mdi-adjust',
-                    'text' => 'Data Sales',
+                    'text' => 'Sales',
                     'uri' => 'sales.index',
                     'model' => false,
                     'show' => true
@@ -117,6 +117,13 @@ return [
                 'model' => false,
                 'show' => true,
                 'children' => [
+                    [
+                        'icon' => 'mdi-adjust',
+                        'text' => 'Grup User',
+                        'uri' => 'grup-user.index',
+                        'model' => false,
+                        'show' => true
+                    ],
                     [
                         'icon' => 'mdi-adjust',
                         'text' => 'User',

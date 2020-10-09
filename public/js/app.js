@@ -341,6 +341,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
+    "grup-user.table": {
+      "uri": "api\/kelola-user\/grup-user\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "grup-user.data": {
+      "uri": "api\/kelola-user\/grup-user\/{grup_user}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "grup-user.store": {
+      "uri": "api\/kelola-user\/grup-user",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "grup-user.update": {
+      "uri": "api\/kelola-user\/grup-user\/{grup_user}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "grup-user.destroy": {
+      "uri": "api\/kelola-user\/grup-user\/{grup_user}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "user.table": {
       "uri": "api\/kelola-user\/user\/table",
       "methods": ["GET", "HEAD"],
@@ -364,6 +389,21 @@ var Ziggy = {
     "user.destroy": {
       "uri": "api\/kelola-user\/user\/{user}",
       "methods": ["DELETE"],
+      "domain": null
+    },
+    "grup-user.index": {
+      "uri": "kelola-user\/grup-user",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "grup-user.create": {
+      "uri": "kelola-user\/grup-user\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "grup-user.edit": {
+      "uri": "kelola-user\/grup-user\/{grup_user}\/ubah",
+      "methods": ["GET", "HEAD"],
       "domain": null
     },
     "user.index": {
@@ -877,9 +917,9 @@ var Ziggy = {
       "domain": null
     }
   },
-  baseUrl: 'http://epic-home.test/',
+  baseUrl: 'http://localhost/',
   baseProtocol: 'http',
-  baseDomain: 'epic-home.test',
+  baseDomain: 'localhost',
   basePort: false,
   defaultParameters: []
 };
@@ -903,6 +943,9 @@ if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
 
 Vue.component('user-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));
+});
+Vue.component('grup-user-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
 });
 
 /***/ }),
@@ -83737,8 +83780,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\epic-home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic_home\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic_home\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

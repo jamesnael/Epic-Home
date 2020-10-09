@@ -1,14 +1,9 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required, email, numeric, image , regex, max } from 'vee-validate/dist/rules'
+	import { required } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
-	extend('email', email)
-	extend('numeric', numeric)
-	extend('image', image)
-	extend('regex', regex)
-	extend('max', max)
     localize('id', id);
 
 	export default {
@@ -28,32 +23,19 @@
 			dataUri: {
 				type: String,
 				default: ''
+			},
+			accessUri: {
+				type: Object,
+				required: true
 			}
 		},
 		data: () => ({
-			menu3: false,
 			form_data: {
-				nama_sales:'',
-		    	no_telepon:'',
-		    	no_telepon_agent_referensi:'',
-		    	tipe_agent:'',
-		    	kantor_agent:'',
-		    	email:'',
-		    	nama_depan:'',
-		    	nama_belakang:'',
-		    	jenis_kelamin:'',
-		    	tempat_lahir:'',
-		    	tanggal_lahir:'',
-		    	alamat:'',
-		    	no_rekening:'',
-		    	nama_rekening:'',
-		    	bank:'',
-		    	no_npwp:'',
-		    	note:'',
-		    	foto_ktp:'',
-		    	foto_selfie:'',
-		    	status_sales:''
+				nama: '',
+				deskripsi: '',
+				hak_akses: [],
 			},
+			show_password: false,
 			field_state: false,
 			form_alert_state: false,
 			form_alert_color: '',
@@ -73,28 +55,9 @@
     		            	if (response.data.success) {
     		            		let data = response.data.data
     		            		this.form_data = {
-	            					nama_sales: data.nama_sales,
-							    	no_telepon: data.no_telepon,
-							    	no_telepon_agent_referensi: data.no_telepon_agent_referensi,
-							    	tipe_agent: data.tipe_agent,
-							    	kantor_agent: data.kantor_agent,
-							    	email: data.email,
-							    	nama_depan: data.nama_depan,
-							    	nama_belakang: data.nama_belakang,
-							    	jenis_kelamin: data.jenis_kelamin,
-							    	tempat_lahir: data.tempat_lahir,
-							    	tanggal_lahir: data.tanggal_lahir,
-							    	alamat: data.alamat,
-							    	no_rekening:data.no_rekening,
-							    	nama_rekening:data.nama_rekening,
-							    	bank: data.bank,
-							    	no_npwp: data.no_npwp,
-							    	note: data.note,
-							    	foto_ktp: data.foto_ktp,
-							    	foto_selfie: data.foto_selfie,
-							    	status_sales: data.status_sales,
-							    	url_foto_ktp: data.url_foto_ktp,
-							    	url_foto_selfie: data.url_foto_selfie
+    		            			nama: data.nama,
+									deskripsi: data.deskripsi,
+									hak_akses: data.hak_akses,
     		            		}
 
     			                this.field_state = false
@@ -115,26 +78,9 @@
     		},
 			clearForm() {
 				this.form_data = {
-					nama_sales:'',
-			    	no_telepon:'',
-			    	no_telepon_agent_referensi:'',
-			    	tipe_agent:'',
-			    	kantor_agent:'',
-			    	email:'',
-			    	nama_depan:'',
-			    	nama_belakang:'',
-			    	jenis_kelamin:'',
-			    	tempat_lahir:'',
-			    	tanggal_lahir:'',
-			    	alamat:'',
-			    	no_rekening:'',
-			    	nama_rekening:'',
-			    	bank:'',
-			    	no_npwp:'',
-			    	note:'',
-			    	foto_ktp:'',
-			    	foto_selfie:'',
-			    	status_sales:''
+					nama: '',
+					deskripsi: '',
+					hak_akses: [],
 				}
 				this.$refs.observer.reset()
 			},
@@ -154,7 +100,6 @@
 	    		
 	    		if (this.dataUri) {
 	    		    form_data.append("_method", "put");
-	    		    form_data.append("tanggal_lahir", this.form_data.tanggal_lahir);
 	    		}
 
 	    		axios.post(this.actionForm, form_data)

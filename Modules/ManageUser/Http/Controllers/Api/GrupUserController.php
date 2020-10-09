@@ -5,12 +5,11 @@ namespace Modules\ManageUser\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\ManageUser\Entities\User;
+use Modules\ManageUser\Entities\UserGroup;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Builder;
 
-class UserController extends Controller
+class GrupUserController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -27,9 +26,9 @@ class UserController extends Controller
 
         DB::beginTransaction();
         try {
-            $data = User::create($request->all());
+            $data = UserGroup::create($request->all());
             DB::commit();
-            return response_json(true, null, 'User berhasil disimpan.', $data);
+            return response_json(true, null, 'Grup user berhasil disimpan.', $data);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -39,12 +38,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param User $user
+     * @param UserGroup $grup_user
      * @return Renderable
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, UserGroup $grup_user)
     {
-        $validator = $this->validateFormRequest($request, $user->id);
+        $validator = $this->validateFormRequest($request);
 
         if ($validator->fails()) {
             return response_json(false, $validator->errors(), $validator->errors()->first());
@@ -52,9 +51,9 @@ class UserController extends Controller
 
         DB::beginTransaction();
         try {
-            $user->update($request->all());
+            $grup_user->update($request->all());
             DB::commit();
-            return response_json(true, null, 'User berhasil disimpan.', $user);
+            return response_json(true, null, 'Grup user berhasil disimpan.', $grup_user);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -63,16 +62,16 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param User $user
+     * @param UserGroup $grup_user
      * @return Renderable
      */
-    public function destroy(User $user)
+    public function destroy(UserGroup $grup_user)
     {
         DB::beginTransaction();
         try {
-            $user->delete();
+            $grup_user->delete();
             DB::commit();
-            return response_json(true, null, 'User berhasil dihapus.');
+            return response_json(true, null, 'Grup user berhasil dihapus.');
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menghapus data, silahkan dicoba kembali beberapa saat lagi.');
@@ -81,12 +80,12 @@ class UserController extends Controller
 
     /**
      * Get the specified resource from storage.
-     * @param User $user
+     * @param UserGroup $grup_user
      * @return Renderable
      */
-    public function data(User $user)
+    public function data(UserGroup $grup_user)
     {
-        return response_json(true, null, 'Data retrieved', $user);
+        return response_json(true, null, 'Data retrieved', $grup_user);
     }
 
     /**
@@ -94,13 +93,16 @@ class UserController extends Controller
      * Validation Rules for Store/Update Data
      *
      */
-    public function validateFormRequest($request, $id = null)
+    public function validateFormRequest($request)
     {
+        if (!$request->has('hak_akses')) {
+            $request->merge(['hak_akses' => []]);
+        }
+
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
-            'password' => 'bail|sometimes|confirmed|min:8'
+            'deskripsi' => 'bail|nullable',
+            'hak_akses' => 'bail|present|array'
         ]);
     }
 
@@ -118,16 +120,12 @@ class UserController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = User::query();
+        $query = UserGroup::query();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
                 $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
-                $subquery->orWhere('email', 'LIKE', '%' . $request->input('search') . '%');
-                $subquery->orWhere('telepon', 'LIKE', '%' . $request->input('search') . '%');
-                $subquery->orWhereHas('grup_user', function(Builder $subquery2) use ($request) {
-                    $subquery2->where('nama', 'LIKE', '%' . $request->input('search') . '%');
-                });
+                $subquery->orWhere('deskripsi', 'LIKE', '%' . $request->input('search') . '%');
             });
         }
         
@@ -136,7 +134,6 @@ class UserController extends Controller
 
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
-            $item->nama_grup_user = $item->grup_user->nama;
             return $item;
         });
 
