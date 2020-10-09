@@ -86,7 +86,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       type: String,
       "default": ''
     },
-    filterTipeProyek: {
+    filterProyekPrimary: {
       type: Array,
       "default": function _default() {
         return [];
@@ -96,7 +96,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   data: function data() {
     return {
       form_data: {
-        id_tipe_proyek: '',
+        id_proyek_primary: '',
         nama_tipe_unit: '',
         deskripsi: ''
       },
@@ -119,7 +119,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           if (response.data.success) {
             var data = response.data.data;
             _this.form_data = {
-              id_tipe_proyek: data.id_tipe_proyek,
+              id_proyek_primary: data.id_proyek_primary,
               nama_tipe_unit: data.nama_tipe_unit,
               deskripsi: data.deskripsi
             };
@@ -140,6 +140,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     },
     clearForm: function clearForm() {
       this.form_data = {
+        id_proyek_primary: '',
         nama_tipe_unit: '',
         deskripsi: ''
       };

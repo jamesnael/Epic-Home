@@ -85,12 +85,26 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     dataUri: {
       type: String,
       "default": ''
+<<<<<<< HEAD
+=======
+    },
+    filterProyekPrimary: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+>>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
     }
   },
   data: function data() {
     return {
       form_data: {
+<<<<<<< HEAD
         nama: '',
+=======
+        id_proyek_primary: '',
+        nama_tipe_unit: '',
+>>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
         deskripsi: ''
       },
       field_state: false,
@@ -112,7 +126,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           if (response.data.success) {
             var data = response.data.data;
             _this.form_data = {
+<<<<<<< HEAD
               nama: data.nama,
+=======
+              id_proyek_primary: data.id_proyek_primary,
+              nama_tipe_unit: data.nama_tipe_unit,
+>>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
               deskripsi: data.deskripsi
             };
             _this.field_state = false;
@@ -132,7 +151,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     },
     clearForm: function clearForm() {
       this.form_data = {
+<<<<<<< HEAD
         nama: '',
+=======
+        id_proyek_primary: '',
+        nama_tipe_unit: '',
+>>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
         deskripsi: ''
       };
       this.$refs.observer.reset();

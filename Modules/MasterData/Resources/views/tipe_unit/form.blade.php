@@ -1,12 +1,12 @@
 <validation-observer v-slot="{ validate, reset }" ref="observer">
     <form method="post" enctype="multipart/form-data" ref="post-form">
-        <validation-provider v-slot="{ errors }" name="Tipe proyek" rules="required">
+        <validation-provider v-slot="{ errors }" name="Proyek primary" rules="required">
              <v-autocomplete
                 class="my-4"
-                v-model="form_data.id_tipe_proyek" 
-                :items="filterTipeProyek"
-                label="Tipe Proyek"
-                name="id_tipe_proyek"
+                v-model="form_data.id_proyek_primary" 
+                :items="filterProyekPrimary"
+                label="Proyek Primary"
+                name="id_proyek_primary"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"

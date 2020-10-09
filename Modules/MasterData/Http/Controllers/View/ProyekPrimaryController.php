@@ -5,6 +5,7 @@ namespace Modules\MasterData\Http\Controllers\View;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\MasterData\Entities\ProyekPrimary;
 use Modules\MasterData\Http\Controllers\Helper\ProyekPrimaryHelper;
 
 class ProyekPrimaryController extends Controller
@@ -17,7 +18,8 @@ class ProyekPrimaryController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => url('proyek-primary.index'), 'text' => 'Master Data'],
             ['href' => route('proyek-primary.index'), 'text' => 'Proyek Primary'],
         ];
 

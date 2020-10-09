@@ -23,7 +23,7 @@ class TipeUnit extends Model
      * @var array
      */
     protected $fillable = [
-    	'id_tipe_proyek',
+    	'id_proyek_primary',
     	'nama_tipe_unit',
     	'deskripsi',
     ];
@@ -67,5 +67,13 @@ class TipeUnit extends Model
     public function tipe_proyek()
     {
         return $this->belongsTo('Modules\MasterData\Entities\TipeProyek', 'id_tipe_proyek');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function proyek_primary()
+    {
+        return $this->belongsTo('Modules\MasterData\Entities\ProyekPrimary', 'id_proyek_primary');
     }
 }

@@ -9,7 +9,7 @@
     				<tipe-unit-form
 	    				inline-template
 	    				action-form="{{ route('tipe-unit.update', [ $data->slug ]) }}"
-	    				:filter-tipe-proyek='@json($tipe_proyek)'
+	    				:filter-proyek-primary='@json($proyek_primary)'
 	    				redirect-uri="{{ route('tipe-unit.index') }}"
 	    				data-uri="{{ route('tipe-unit.data', [ $data->slug ]) }}">
 		    			@include('masterdata::tipe_unit.form')

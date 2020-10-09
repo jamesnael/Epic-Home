@@ -17,7 +17,8 @@ class ClusterController extends Controller
     {
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
-            ['href' => url('/'), 'text' => 'Master Data'],
+            ['href' => url('/'), 'text' => 'mdi-home'],
+            ['href' => url('cluster.index'), 'text' => 'Master Data'],
             ['href' => route('cluster.index'), 'text' => 'Cluster'],
         ];
     }

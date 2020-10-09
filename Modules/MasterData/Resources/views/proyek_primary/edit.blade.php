@@ -8,6 +8,9 @@
     			<v-card-text>
     				<proyek-primary-form
 	    				inline-template
+	    				:filter-tipe-proyek='@json($tipe_proyek)'
+                        :filter-tipe-bangunan='@json($tipe_bangunan)'
+                        :filter-developer='@json($developer)'
 	    				action-form="{{ route('proyek-primary.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('proyek-primary.index') }}"
 	    				data-uri="{{ route('proyek-primary.data', [ $data->slug ]) }}">
