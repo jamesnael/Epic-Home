@@ -63,6 +63,26 @@
 	            type: String,
 	            default: "en"
 	        },
+	        detailUri: {
+	            type: String,
+	            default: ""
+	        },
+	        detailUriParameter: {
+	            type: String,
+	            default: ""
+	        },
+	        detailText: {
+	            type: String,
+	            default: "Detail"
+	        },
+	        detailIcon: {
+	            type: String,
+	            default: "mdi-eye"
+	        },
+	        detailColor: {
+	            type: String,
+	            default: "primary"
+	        },
 	        editUri: {
 	            type: String,
 	            default: ""

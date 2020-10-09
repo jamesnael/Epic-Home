@@ -123,4 +123,14 @@ class ProyekPrimaryController extends Controller
             ->with('breadcrumbs', $this->breadcrumbs)
             ->with($this->helper->getHelper());
     }
+
+    /**
+     * Show the form with specified resource.
+     * @param ProyekPrimary $proyek_primary
+     * @return Renderable
+     */
+    public function show(ProyekPrimary $proyek_primary)
+    {
+        return redirect()->route('unit.index', ['proyek_primary' => $proyek_primary]);
+    }
 }

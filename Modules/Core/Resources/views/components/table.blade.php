@@ -77,6 +77,21 @@
 		    @{{ noResultsText }}
 		</template>
 		<template v-slot:item.actions="{ item }">
+			<v-tooltip top :color="detailColor">
+			    <template v-slot:activator="{ on, attrs }">
+		    		<v-btn 
+			    		v-if="detailUri" 
+			    		icon 
+			    		:color="detailColor" 
+			    		v-bind="attrs" 
+			    		v-on="on" 
+			    		:href="ziggy(detailUri, [item[detailUriParameter]]).url()"
+		    		>
+						<v-icon small>@{{ detailIcon }}</v-icon>
+		            </v-btn>
+			    </template>
+			    <span>@{{ detailText }}</span>
+			</v-tooltip>
 			<v-tooltip top :color="editColor">
 			    <template v-slot:activator="{ on, attrs }">
 		    		<v-btn 
