@@ -82,4 +82,10 @@ Route::prefix('master-data')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
+	Route::get('customer/table', 'CustomerController@table')->name('customer.table');
+	Route::get('customer/table/approved', 'CustomerController@tableApproved')->name('customer-approved.table');
+	Route::get('customer/{user}/data', 'CustomerController@data')->name('customer.data');
+	Route::apiResource('customer', 'CustomerController')->parameters(['customer' => 'user'])->only([
+	    'update', 'destroy'
+	]);
 });

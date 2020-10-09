@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\ManageUser\Entities\User;
+use Modules\ManageUser\Http\Controllers\Helper\UserHelper;
 
 class UserController extends Controller
 {
@@ -21,6 +22,7 @@ class UserController extends Controller
             ['href' => route('user.index'), 'text' => 'Kelola User'],
             ['href' => route('user.index'), 'text' => 'User'],
         ];
+        $this->helper = new UserHelper;
     }
 
     /**
@@ -44,9 +46,15 @@ class UserController extends Controller
             ],
             [
                 "text" => 'Nomor Handphone',
-                "align" => 'left',
+                "align" => 'center',
                 "sortable" => false,
                 "value" => 'telepon',
+            ],
+            [
+                "text" => 'Grup User',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'nama_grup_user',
             ],
             [
                 "text" => 'Terakhir Diubah',
@@ -72,7 +80,8 @@ class UserController extends Controller
 
         return view('manageuser::user.create')
              ->with('page_title', 'Tambah User')
-             ->with('breadcrumbs', $this->breadcrumbs);
+             ->with('breadcrumbs', $this->breadcrumbs)
+             ->with($this->helper->getHelper());
     }
 
     /**
@@ -87,6 +96,7 @@ class UserController extends Controller
         return view('manageuser::user.edit')
              ->with('data', $user)
              ->with('page_title', 'Ubah User ' . $user->nama)
-             ->with('breadcrumbs', $this->breadcrumbs);
+             ->with('breadcrumbs', $this->breadcrumbs)
+             ->with($this->helper->getHelper());
     }
 }

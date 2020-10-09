@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\ManageUser\Entities\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
@@ -97,7 +98,7 @@ class UserController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id",
+            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
             'telepon' => 'bail|required',
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
@@ -124,6 +125,9 @@ class UserController extends Controller
                 $subquery->where('nama', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('email', 'LIKE', '%' . $request->input('search') . '%');
                 $subquery->orWhere('telepon', 'LIKE', '%' . $request->input('search') . '%');
+                $subquery->orWhereHas('grup_user', function(Builder $subquery2) use ($request) {
+                    $subquery2->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+                });
             });
         }
         
@@ -132,6 +136,7 @@ class UserController extends Controller
 
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
+            $item->nama_grup_user = $item->grup_user->nama;
             return $item;
         });
 

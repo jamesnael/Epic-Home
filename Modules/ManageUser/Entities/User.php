@@ -8,9 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
+    use HasApiTokens;
     use HasFactory;
     use Notifiable;
     use Sluggable;
@@ -35,6 +37,7 @@ class User extends Authenticatable
         'telepon',
         'email_verified_at',
         'password',
+        'grup_user_id',
     ];
 
     /**
@@ -87,5 +90,13 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function grup_user()
+    {
+        return $this->belongsTo('Modules\ManageUser\Entities\UserGroup', 'grup_user_id', 'id');
     }
 }

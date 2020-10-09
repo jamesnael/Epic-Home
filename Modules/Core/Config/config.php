@@ -82,6 +82,13 @@ return [
                     'model' => false,
                     'show' => true
                 ],
+                 [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Customer',
+                    'uri' => 'customer.index',
+                    'model' => false,
+                    'show' => true
+                ],
     	    ]
     	],
         [  
@@ -126,6 +133,13 @@ return [
             'model' => false,
             'show' => true,
             'children' => [
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Grup User',
+                    'uri' => 'grup-user.index',
+                    'model' => false,
+                    'show' => true
+                ],
                 [
                     'icon' => 'mdi-adjust',
                     'text' => 'User',
