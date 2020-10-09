@@ -5,13 +5,13 @@ namespace Modules\ManageUser\Http\Controllers\View;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\ManageUser\Entities\User;
-use Modules\ManageUser\Http\Controllers\Helper\UserHelper;
+use Modules\ManageUser\Entities\UserGroup;
+use Modules\ManageUser\Http\Controllers\Helper\GrupUserHelper;
 
-class UserController extends Controller
+class GrupUserController extends Controller
 {
     /**
-     * UserController constructor.
+     * GrupUserController constructor.
      *
      */
     public function __construct()
@@ -19,10 +19,10 @@ class UserController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
-            ['href' => route('user.index'), 'text' => 'Kelola User'],
-            ['href' => route('user.index'), 'text' => 'User'],
+            ['href' => route('grup-user.index'), 'text' => 'Kelola User'],
+            ['href' => route('grup-user.index'), 'text' => 'Grup User'],
         ];
-        $this->helper = new UserHelper;
+        $this->helper = new GrupUserHelper;
     }
 
     /**
@@ -33,28 +33,16 @@ class UserController extends Controller
     {
         $table_headers = [
             [
-                "text" => 'User',
+                "text" => 'Nama Grup User',
                 "align" => 'center',
                 "sortable" => false,
                 "value" => 'nama',
             ],
             [
-                "text" => 'Email',
+                "text" => 'Deskripsi',
                 "align" => 'left',
                 "sortable" => false,
-                "value" => 'email',
-            ],
-            [
-                "text" => 'Nomor Handphone',
-                "align" => 'center',
-                "sortable" => false,
-                "value" => 'telepon',
-            ],
-            [
-                "text" => 'Grup User',
-                "align" => 'center',
-                "sortable" => false,
-                "value" => 'nama_grup_user',
+                "value" => 'deskripsi',
             ],
             [
                 "text" => 'Terakhir Diubah',
@@ -64,7 +52,7 @@ class UserController extends Controller
             ]
            
         ];
-        return view('manageuser::user.index')
+        return view('manageuser::grup_user.index')
              ->with('page_title', 'User')
              ->with('breadcrumbs', $this->breadcrumbs)
              ->with('table_headers', $table_headers);
@@ -76,26 +64,26 @@ class UserController extends Controller
      */
     public function create()
     {
-        $this->breadcrumbs[] = ['href' => route('user.create'), 'text' => 'Tambah User'];
+        $this->breadcrumbs[] = ['href' => route('grup-user.create'), 'text' => 'Tambah Grup User'];
 
-        return view('manageuser::user.create')
-             ->with('page_title', 'Tambah User')
+        return view('manageuser::grup_user.create')
+             ->with('page_title', 'Tambah Grup User')
              ->with('breadcrumbs', $this->breadcrumbs)
              ->with($this->helper->getHelper());
     }
 
     /**
      * Show the form for editing the specified resource.
-     * @param User $user
+     * @param User $grup_user
      * @return Renderable
      */
-    public function edit(User $user)
+    public function edit(UserGroup $grup_user)
     {
-        $this->breadcrumbs[] = ['href' => route('user.edit', [ $user->slug ]), 'text' => 'Ubah User ' . $user->nama];
+        $this->breadcrumbs[] = ['href' => route('grup-user.edit', [ $grup_user->slug ]), 'text' => 'Ubah Grup User ' . $grup_user->nama];
 
-        return view('manageuser::user.edit')
-             ->with('data', $user)
-             ->with('page_title', 'Ubah User ' . $user->nama)
+        return view('manageuser::grup_user.edit')
+             ->with('data', $grup_user)
+             ->with('page_title', 'Ubah Grup User ' . $grup_user->nama)
              ->with('breadcrumbs', $this->breadcrumbs)
              ->with($this->helper->getHelper());
     }

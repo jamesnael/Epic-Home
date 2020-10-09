@@ -10,7 +10,8 @@
 	    				inline-template
 	    				action-form="{{ route('user.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('user.index') }}"
-	    				data-uri="{{ route('user.data', [ $data->slug ]) }}">
+	    				data-uri="{{ route('user.data', [ $data->slug ]) }}"
+                        :filter-grup-user='@json($grup_user)'>
 		    			@include('manageuser::user.form')
 		    		</user-form>
 			    </v-card-text>
