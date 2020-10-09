@@ -117,7 +117,12 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = User::where('group','Customer')->whereNull('email');
+        $query = User::with('grup_user')->whereNull('email');
+
+         $query->whereHas('grup_user', function($subquery){ 
+            $subquery->where('nama', 'Customer');
+            });
+           
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -146,7 +151,12 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = User::where('group','Customer')->whereNotNull('email');
+       $query = User::with('grup_user')->whereNotNull('email');
+
+         $query->whereHas('grup_user', function($subquery){ 
+            $subquery->where('nama', 'Customer');
+            });
+        
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
