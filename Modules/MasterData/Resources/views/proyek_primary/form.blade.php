@@ -579,6 +579,7 @@
                         v-model="form_data.broadcast_message"
                         name="broadcast_message"
                         label="Broadcast Message"
+                        hint="* harus diisi"
                         :persistent-hint="true"
                         :error-messages="errors"
                         :readonly="field_state">
@@ -619,6 +620,7 @@
             </v-file-input>
             <a :href="form_data.url_banner_proyek" target="_blank">
                 <v-card
+                    v-if="form_data.url_banner_proyek"
                     class="mx-auto"
                     max-width="434"
                     tile

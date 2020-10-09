@@ -1,6 +1,7 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[15],{
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /***/ "./Modules/MasterData/Resources/js/components/Unit/Form.vue":
 /*!******************************************************************!*\
   !*** ./Modules/MasterData/Resources/js/components/Unit/Form.vue ***!
@@ -24,10 +25,18 @@ module.exports = JSON.parse("{\"code\":\"id\",\"messages\":{\"alpha\":\"{_field_
   \*************************************************/
 /*! exports provided: alpha, alpha_dash, alpha_num, alpha_spaces, between, confirmed, digits, dimensions, email, excluded, ext, image, integer, is, is_not, length, max, max_value, mimes, min, min_value, numeric, oneOf, regex, required, required_if, size */
 >>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
+=======
+/***/ "./Modules/SalesData/Resources/js/components/Sales/Form.vue":
+/*!******************************************************************!*\
+  !*** ./Modules/SalesData/Resources/js/components/Sales/Form.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
@@ -718,94 +727,54 @@ var required = {
     params: params$h,
     computesRequired: computesRequired
 };
-
-var testEmpty = function (value) {
-    return isEmptyArray(value) || includes([false, null, undefined], value) || !String(value).trim().length;
-};
-var validate$p = function (value, _a) {
-    var target = _a.target, values = _a.values;
-    var required;
-    if (values && values.length) {
-        if (!Array.isArray(values) && typeof values === 'string') {
-            values = [values];
-        }
-        // eslint-disable-next-line
-        required = values.some(function (val) { return val == String(target).trim(); });
-    }
-    else {
-        required = !testEmpty(target);
-    }
-    if (!required) {
-        return {
-            valid: true,
-            required: required
-        };
-    }
-    return {
-        valid: !testEmpty(value),
-        required: required
-    };
-};
-var params$i = [
-    {
-        name: 'target',
-        isTarget: true
-    },
-    {
-        name: 'values'
-    }
-];
-var computesRequired$1 = true;
-var required_if = {
-    validate: validate$p,
-    params: params$i,
-    computesRequired: computesRequired$1
-};
-
-var validate$q = function (files, _a) {
-    var size = _a.size;
-    if (isNaN(size)) {
-        return false;
-    }
-    var nSize = size * 1024;
-    if (!Array.isArray(files)) {
-        return files.size <= nSize;
-    }
-    for (var i = 0; i < files.length; i++) {
-        if (files[i].size > nSize) {
-            return false;
-        }
-    }
-    return true;
-};
-var params$j = [
-    {
-        name: 'size',
-        cast: function (value) {
-            return Number(value);
-        }
-    }
-];
-var size = {
-    validate: validate$q,
-    params: params$j
-};
+=======
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/SalesData/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 
 
 
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "Modules/SalesData/Resources/js/components/Sales/Form.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/vee-validate/dist/vee-validate.esm.js":
 /*!************************************************************!*\
   !*** ./node_modules/vee-validate/dist/vee-validate.esm.js ***!
   \************************************************************/
 /*! exports provided: ValidationObserver, ValidationProvider, configure, extend, localeChanged, localize, normalizeRules, setInteractionMode, validate, version, withValidation */
 >>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
+=======
+/***/ "./Modules/SalesData/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./Modules/SalesData/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Unit/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
@@ -2826,12 +2795,26 @@ var version = '3.4.0';
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
   \********************************************************************/
 >>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
+=======
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/SalesData/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/SalesData/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/SalesData/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 /* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 /* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
 /* harmony import */ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate/dist/locale/id.json */ "./node_modules/vee-validate/dist/locale/id.json");
@@ -2840,6 +2823,10 @@ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('required', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]);
+<<<<<<< HEAD
+=======
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('email', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["email"]);
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('numeric', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["numeric"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2859,6 +2846,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     dataUri: {
       type: String,
       "default": ''
+<<<<<<< HEAD
     },
     filterProyekPrimari: {
       type: Array,
@@ -2877,10 +2865,13 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
+=======
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
     }
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       form_data: {
         id_proyek_primari: '',
         id_cluster: '',
@@ -2900,6 +2891,30 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         lebar_jalan_depan: '',
         lingkungan_sekitar: '',
         gambar_unit: ''
+=======
+      menu3: false,
+      form_data: {
+        nama_sales: '',
+        no_telepon: '',
+        no_telepon_agent_referensi: '',
+        tipe_agent: '',
+        kantor_agent: '',
+        email: '',
+        nama_depan: '',
+        nama_belakang: '',
+        jenis_kelamin: '',
+        tempat_lahir: '',
+        tanggal_lahir: '',
+        alamat: '',
+        no_rekening: '',
+        nama_rekening: '',
+        bank: '',
+        no_npwp: '',
+        note: '',
+        foto_ktp: '',
+        foto_selfie: '',
+        status_sales: ''
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
       },
       field_state: false,
       form_alert_state: false,
@@ -2920,6 +2935,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           if (response.data.success) {
             var data = response.data.data;
             _this.form_data = {
+<<<<<<< HEAD
               id_proyek_primari: data.id_proyek_primari,
               id_cluster: data.id_cluster,
               tipe_unit: data.tipe_unit,
@@ -2938,6 +2954,30 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               lebar_jalan_depan: data.lebar_jalan_depan,
               lingkungan_sekitar: data.lingkungan_sekitar,
               gambar_unit: data.gambar_unit
+=======
+              nama_sales: data.nama_sales,
+              no_telepon: data.no_telepon,
+              no_telepon_agent_referensi: data.no_telepon_agent_referensi,
+              tipe_agent: data.tipe_agent,
+              kantor_agent: data.kantor_agent,
+              email: data.email,
+              nama_depan: data.nama_depan,
+              nama_belakang: data.nama_belakang,
+              jenis_kelamin: data.jenis_kelamin,
+              tempat_lahir: data.tempat_lahir,
+              tanggal_lahir: data.tanggal_lahir,
+              alamat: data.alamat,
+              no_rekening: data.no_rekening,
+              nama_rekening: data.nama_rekening,
+              bank: data.bank,
+              no_npwp: data.no_npwp,
+              note: data.note,
+              foto_ktp: data.foto_ktp,
+              foto_selfie: data.foto_selfie,
+              status_sales: data.status_sales,
+              url_foto_ktp: data.url_foto_ktp,
+              url_foto_selfie: data.url_foto_selfie
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
             };
             _this.field_state = false;
           } else {
@@ -2952,6 +2992,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           _this.form_alert_text = response.data.message;
           _this.field_state = false;
         });
+<<<<<<< HEAD
       }
     },
     clearForm: function clearForm() {
@@ -3081,41 +3122,81 @@ function normalizeComponent (
       // register component module identifier for async chunk inferrence
       if (context && context._registeredComponents) {
         context._registeredComponents.add(moduleIdentifier)
+=======
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
       }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
+    },
+    clearForm: function clearForm() {
+      this.form_data = {
+        nama_sales: '',
+        no_telepon: '',
+        no_telepon_agent_referensi: '',
+        tipe_agent: '',
+        kantor_agent: '',
+        email: '',
+        nama_depan: '',
+        nama_belakang: '',
+        jenis_kelamin: '',
+        tempat_lahir: '',
+        tanggal_lahir: '',
+        alamat: '',
+        no_rekening: '',
+        nama_rekening: '',
+        bank: '',
+        no_npwp: '',
+        note: '',
+        foto_ktp: '',
+        foto_selfie: '',
+        status_sales: ''
+      };
+      this.$refs.observer.reset();
+    },
+    submitForm: function submitForm() {
+      var _this2 = this;
 
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
+      this.$refs.observer.validate().then(function (success) {
+        if (!success) {
+          return;
+        }
+
+        _this2.field_state = true;
+
+        _this2.postFormData();
+      });
+    },
+    postFormData: function postFormData() {
+      var _this3 = this;
+
+      var form_data = new FormData(this.$refs['post-form']);
+
+      if (this.dataUri) {
+        form_data.append("_method", "put");
+        form_data.append("tanggal_lahir", this.form_data.tanggal_lahir);
       }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
+
+      axios.post(this.actionForm, form_data).then(function (response) {
+        if (response.data.success) {
+          _this3.form_alert_state = true;
+          _this3.form_alert_color = 'success';
+          _this3.form_alert_text = response.data.message;
+          setTimeout(function () {
+            _this3["goto"](_this3.redirectUri);
+          }, 6000);
+        } else {
+          _this3.field_state = false;
+          _this3.form_alert_state = true;
+          _this3.form_alert_color = 'error';
+          _this3.form_alert_text = response.data.message;
+        }
+      })["catch"](function (error) {
+        _this3.field_state = false;
+        _this3.form_alert_state = true;
+        _this3.form_alert_color = 'error';
+        _this3.form_alert_text = 'Oops, something went wrong. Please try again later.';
+      });
     }
   }
+<<<<<<< HEAD
 
   return {
     exports: scriptExports,
@@ -3124,6 +3205,9 @@ function normalizeComponent (
 }
 
 >>>>>>> 244cdd6b1bbe361b91d54485e9b958e8d28ff3f4
+=======
+});
+>>>>>>> e8b7b4178d409dc64384a1269eb79710515e2ca4
 
 /***/ })
 

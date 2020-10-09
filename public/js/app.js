@@ -761,6 +761,11 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
+    "proyek-primary.show": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "proyek-primary.edit": {
       "uri": "master-data\/proyek-primary\/{proyek_primary}\/ubah",
       "methods": ["GET", "HEAD"],
