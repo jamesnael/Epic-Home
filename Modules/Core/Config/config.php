@@ -84,6 +84,15 @@ return [
                 ],
     	    ]
     	],
+        [  
+            'icon' => 'mdi-newspaper-variant',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Berita Properti',
+            'uri' => 'berita-properti.index',
+            'model' => false,
+            'show' => true,
+            'children' => null
+        ],
         // [  
         //     'icon' => 'mdi-home-currency-usd',
         //     'icon-alt' => 'mdi-chevron-down',

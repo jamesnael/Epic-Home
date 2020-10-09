@@ -201,6 +201,19 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./Modules/BeritaProperti/Resources/js/app.js":
+/*!****************************************************!*\
+  !*** ./Modules/BeritaProperti/Resources/js/app.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+Vue.component('berita-properti-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/BeritaProperti/Form.vue */ "./Modules/BeritaProperti/Resources/js/components/BeritaProperti/Form.vue"));
+});
+
+/***/ }),
+
 /***/ "./Modules/Core/Resources/js/app.js":
 /*!******************************************!*\
   !*** ./Modules/Core/Resources/js/app.js ***!
@@ -228,37 +241,37 @@ Vue.component('main-menu-component', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
 });
 Vue.component('tipe-bangunan-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
 });
 Vue.component('tipe-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
 });
 Vue.component('agent-property-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
 });
 Vue.component('unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
 });
 Vue.component('faq-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
 Vue.component('developer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
 });
 Vue.component('bank-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
 });
 Vue.component('secondary-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
 });
 
 /***/ }),
@@ -82810,6 +82823,8 @@ __webpack_require__(/*! ./../../Modules/Core/Resources/js/app */ "./Modules/Core
 
 __webpack_require__(/*! ./../../Modules/MasterData/Resources/js/app */ "./Modules/MasterData/Resources/js/app.js");
 
+__webpack_require__(/*! ./../../Modules/BeritaProperti/Resources/js/app */ "./Modules/BeritaProperti/Resources/js/app.js");
+
 var vuetify = new vuetify__WEBPACK_IMPORTED_MODULE_1___default.a({
   icons: {
     iconfont: 'mdi'
@@ -82938,8 +82953,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
-    "generated::ALkQy4QzSkctfxVF": {
+    "generated::NcAcB9l508PLQbMn": {
       "uri": "\/",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.table": {
+      "uri": "api\/berita-properti\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.data": {
+      "uri": "api\/berita-properti\/{tipe_proyek}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.store": {
+      "uri": "api\/berita-properti",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "berita-properti.update": {
+      "uri": "api\/berita-properti\/{berita_properti}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "berita-properti.destroy": {
+      "uri": "api\/berita-properti\/{berita_properti}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "berita-properti.index": {
+      "uri": "berita-properti",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.create": {
+      "uri": "berita-properti\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.edit": {
+      "uri": "berita-properti\/{berita_properti}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -83093,6 +83148,56 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "cluster.table": {
+      "uri": "api\/master-data\/cluster\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.data": {
+      "uri": "api\/master-data\/cluster\/{cluster}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.store": {
+      "uri": "api\/master-data\/cluster",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "cluster.update": {
+      "uri": "api\/master-data\/cluster\/{cluster}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "cluster.destroy": {
+      "uri": "api\/master-data\/cluster\/{cluster}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "proyek-primary.table": {
+      "uri": "api\/master-data\/proyek-primary\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.data": {
+      "uri": "api\/master-data\/proyek-primary\/{proyek_primary}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.store": {
+      "uri": "api\/master-data\/proyek-primary",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "proyek-primary.update": {
+      "uri": "api\/master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "proyek-primary.destroy": {
+      "uri": "api\/master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "developer.table": {
       "uri": "api\/master-data\/developer\/table",
       "methods": ["GET", "HEAD"],
@@ -83140,6 +83245,36 @@ var Ziggy = {
     },
     "bank.destroy": {
       "uri": "api\/master-data\/bank\/{bank}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "secondary-unit.table": {
+      "uri": "api\/master-data\/secondary-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.table-approved": {
+      "uri": "api\/master-data\/secondary-unit\/table-approved",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.data": {
+      "uri": "api\/master-data\/secondary-unit\/{secondary_unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.store": {
+      "uri": "api\/master-data\/secondary-unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "secondary-unit.update": {
+      "uri": "api\/master-data\/secondary-unit\/{secondary_unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "secondary-unit.destroy": {
+      "uri": "api\/master-data\/secondary-unit\/{secondary_unit}",
       "methods": ["DELETE"],
       "domain": null
     },
@@ -83233,6 +83368,36 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
+    "proyek-primary.index": {
+      "uri": "master-data\/proyek-primary",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.create": {
+      "uri": "master-data\/proyek-primary\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.edit": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.index": {
+      "uri": "master-data\/cluster",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.create": {
+      "uri": "master-data\/cluster\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.edit": {
+      "uri": "master-data\/cluster\/{cluster}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "developer.index": {
       "uri": "master-data\/developer",
       "methods": ["GET", "HEAD"],
@@ -83260,6 +83425,21 @@ var Ziggy = {
     },
     "bank.edit": {
       "uri": "master-data\/bank\/{bank}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.index": {
+      "uri": "master-data\/secondary-unit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.create": {
+      "uri": "master-data\/secondary-unit\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.edit": {
+      "uri": "master-data\/secondary-unit\/{secondary_unit}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     }

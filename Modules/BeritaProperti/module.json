@@ -1,0 +1,13 @@
+{
+    "name": "BeritaProperti",
+    "alias": "beritaproperti",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\BeritaProperti\\Providers\\BeritaPropertiServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

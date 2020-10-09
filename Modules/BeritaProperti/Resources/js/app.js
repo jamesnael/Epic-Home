@@ -1,0 +1,1 @@
+Vue.component('berita-properti-form', () => import('./components/BeritaProperti/Form.vue'));
