@@ -31,14 +31,27 @@ class SecondaryUnitController extends Controller
             $request->merge(['approved_status' => 'Pending']);
 
             $data = SecondaryUnit::create($request->all());
-            if ($request->hasFile('gallery_unit')) {
-                $file_name = $data->nama_unit .'-'. uniqid() . '.' . $request->file('gallery_unit')->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('SecondaryUnit/gallery_unit', $request->file('gallery_unit'), $file_name
-                );
-                $data->gallery_unit = $file_name;
+            // if ($request->hasFile('gallery_unit')) {
+            //     $file_name = $data->nama_unit .'-'. uniqid() . '.' . $request->file('gallery_unit')->getClientOriginalExtension();
+            //     Storage::disk('public')->putFileAs('SecondaryUnit/gallery_unit', $request->file('gallery_unit'), $file_name
+            //     );
+            //     $data->gallery_unit = $file_name;
+
+            // }
+            // $data->save();
+
+             if ($request->hasFile('gallery_unit')) {
+                $files = [];
+                foreach ($request->file('gallery_unit') ?? [] as $key => $file) {
+                    $file_name = $data->nama_unit . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('secondary_unit/gallery_unit', $file, $file_name
+                    );
+                    array_push($files, $file_name);
+                }
+                $data->gallery_unit = json_encode($files);
+                $data->save();
 
             }
-            $data->save();
 
             DB::commit();
             return response_json(true, null, 'Secondary unit berhasil disimpan.', $data);
@@ -62,15 +75,22 @@ class SecondaryUnitController extends Controller
         try {
             $secondary_unit->update($request->all());
 
+         
+
             if ($request->hasFile('gallery_unit')) {
-                $file_name = $data->nama_unit .'-'. uniqid() . '.' . $request->file('gallery_unit')->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('SecondaryUnit/gallery_unit', $request->file('gallery_unit'), $file_name
-                );
-                $data->gallery_unit = $file_name;
+                $files = [];
+                foreach ($request->file('gallery_unit') ?? [] as $key => $file) {
+                    $file_name = $secondary_unit->nama_proyek . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs('secondary_unit/gallery_unit', $file, $file_name
+                    );
+                    array_push($files, $file_name);
+                }
+                $secondary_unit->gallery_unit = json_encode($files);
+                $secondary_unit->save();
 
             }
-            $secondary_unit->save();
 
+            $secondary_unit->save();
 
             DB::commit();
             return response_json(true, null, 'Secondary unit berhasil disimpan.', $secondary_unit);
@@ -99,7 +119,16 @@ class SecondaryUnitController extends Controller
 
     public function data(SecondaryUnit $secondary_unit)
     {
-        $secondary_unit->url_gallery_unit = get_file_url('public', 'SecondaryUnit/gallery_unit/' . $secondary_unit->gallery_unit);
+        // $secondary_unit->url_gallery_unit = get_file_url('public', 'SecondaryUnit/gallery_unit/' . $secondary_unit->gallery_unit);
+
+        $array_gallery_unit = json_decode($secondary_unit->gallery_unit, true);
+        $files_gallery_unit=[];
+        foreach ($array_gallery_unit as $key => $value) {
+            array_push($files_gallery_unit, get_file_url('public', 'SecondaryUnit/gallery_unit/' . $value));
+        }
+
+        $secondary_unit->url_gallery_unit = $files_gallery_unit;
+
         return response_json(true, null, 'Data retrieved', $secondary_unit);
     }
 

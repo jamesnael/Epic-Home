@@ -141,25 +141,28 @@
             >
             </v-file-input>
             <v-row>
-                <div v-for="(el, idx) in form_data.url_google_map_gallery">
-                    <v-col
-                        cols="12"
-                    >
-                        <a :href="el" target="_blank">
-                            <v-card
-                                class="mx-auto"
-                                max-width="434"
-                                tile
-                            >
-                                <v-img
-                                    height="200"
-                                    :src="el"
-                                ></v-img>
-                            </v-card>
-                            
-                        </a>
-                    </v-col>
-                </div>
+                <v-col
+                    v-for="(el, idx) in form_data.url_google_map_gallery"
+                    cols="12"
+                    md="3"
+                >
+                    <a :href="el" target="_blank">
+                        <v-card
+                            class="mx-auto"
+                            min-height="150"
+                            max-height="150"
+                            max-width="250"
+                            tile
+                        >
+                            <v-img
+                                max-height="150"
+                                max-width="250"
+                                :src="el"
+                            ></v-img>
+                        </v-card>
+                        
+                    </a>
+                </v-col>
             </v-row>
         </div>
 
@@ -465,20 +468,21 @@
                 :disabled="field_state">
             </v-text-field>
         </validation-provider>
-        <validation-provider rules="required|numeric" name="Nomor handphone" v-slot="{ errors }">
+        <validation-provider rules="required|max:15" name="Nomor handphone" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nomor_handphone"
-                name="nomor_handphone"
                 label="Nomor Handphone"
-                auto-grow
+                name="nomor_handphone"
                 clearable
-                rows="3"
+                clear-icon="mdi-eraser-variant"
+                v-mask="'+62############'"
+                placeholder="+62817800000000"
+                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
-                clear-icon="mdi-eraser-variant"
-                :disabled="field_state">
-            </v-text-field>
+                :disabled="field_state"
+            ></v-text-field>
         </validation-provider>
         <validation-provider rules="required" name="Copywriting" v-slot="{ errors }">
             <v-text-field
@@ -622,15 +626,15 @@
                 <v-card
                     v-if="form_data.url_banner_proyek"
                     class="mx-auto"
-                    max-width="434"
+                    max-width="250"
                     tile
                 >
                     <v-img
-                        height="200"
+                        max-height="150"
+                        max-width="250"
                         :src="form_data.url_banner_proyek"
                     ></v-img>
                 </v-card>
-                
             </a>
         </div>
 
@@ -647,25 +651,28 @@
             >
             </v-file-input>
             <v-row>
-                <div v-for="(el, idx) in form_data.url_progress_update">
-                    <v-col
-                        cols="12"
-                    >
-                        <a :href="el" target="_blank">
-                            <v-card
-                                class="mx-auto"
-                                max-width="434"
-                                tile
-                            >
-                                <v-img
-                                    height="200"
-                                    :src="el"
-                                ></v-img>
-                            </v-card>
-                            
-                        </a>
-                    </v-col>
-                </div>
+                <v-col
+                    v-for="(el, idx) in form_data.url_progress_update"
+                    cols="12"
+                    md="3"
+                >
+                    <a :href="el" target="_blank">
+                        <v-card
+                            class="mx-auto"
+                            min-height="150"
+                            max-height="150"
+                            max-width="250"
+                            tile
+                        >
+                            <v-img
+                                max-height="150"
+                                max-width="250"
+                                :src="el"
+                            ></v-img>
+                        </v-card>
+                        
+                    </a>
+                </v-col>
             </v-row>
         </div>
 

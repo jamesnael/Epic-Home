@@ -15,12 +15,14 @@
             ></v-text-field>
         </validation-provider>
 
-        <validation-provider rules="required|numeric" name="No handphone" v-slot="{ errors }">
+        <validation-provider rules="required|max:15" name="No handphone" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.no_telepon"
                 label="No handphone"
                 name="no_telepon"
+                v-mask="'+62############'"
+                placeholder="+62817800000000"
                 clearable
                 clear-icon="mdi-eraser-variant"
                 hint="* harus diisi"
@@ -30,12 +32,14 @@
             ></v-text-field>
         </validation-provider>
     
-        <validation-provider rules="required|numeric" name="No handphone (agen referensi)" v-slot="{ errors }">
+        <validation-provider rules="required|max:15" name="No handphone (agen referensi)" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.no_telepon_agent_referensi"
                 label="No Handphone (Agen Referensi)"
                 name="no_telepon_agent_referensi"
+                v-mask="'+62############'"
+                placeholder="+62817800000000"
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"

@@ -60,6 +60,7 @@ class SecondaryUnit extends Model
     protected $casts = [
         'kelengkapan_surat' => 'array',
         'furniture_termasuk'=> 'array',
+        'gallery_unit'      => 'array',
     ];
 
     public function sluggable()

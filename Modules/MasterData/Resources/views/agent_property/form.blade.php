@@ -14,7 +14,6 @@
 	    		:disabled="field_state"
             ></v-text-field>
         </validation-provider>
-
         <validation-provider rules="required|email" name="Email" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
@@ -29,8 +28,7 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-    
-        <validation-provider rules="numeric" name="Nomor telepon" v-slot="{ errors }">
+        <validation-provider rules="required|max:15" name="Nomor telepon" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nomor_telepon"
@@ -38,12 +36,14 @@
                 name="nomor_telepon"
                 clearable
                 clear-icon="mdi-eraser-variant"
+                v-mask="'+62############'"
+                placeholder="+62100000000"
+                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-
         <v-textarea
             class="my-4"
             v-model="form_data.alamat"
@@ -55,7 +55,6 @@
             clear-icon="mdi-eraser-variant"
             :disabled="field_state">
         </v-textarea>
-
 		<v-textarea
 			class="my-4"
 			v-model="form_data.deskripsi"
@@ -67,7 +66,6 @@
 	      	clear-icon="mdi-eraser-variant"
     		:disabled="field_state">
 		</v-textarea>
-        
         <div  class="mb-4">
             <v-file-input
                 small-chips
@@ -79,13 +77,24 @@
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_logo_agent" target="_blank" class="ml-8">
-                <small>@{{form_data.logo_agent}}</small>
+            <a :href="form_data.url_logo_agent" target="_blank">
+                <v-card
+                    align="left"
+                    v-if="form_data.url_logo_agent"
+                    max-width="250"
+                    tile
+                >
+                    <v-img
+                        max-height="150"
+                        max-width="250"
+                        :src="form_data.url_logo_agent"
+                    ></v-img>
+                </v-card>
             </a>
         </div>
 
         <v-btn
-        	class="mr-4"
+        	class="mr-4 mt-4"
           	:loading="field_state"
           	:disabled="field_state"
             color="primary"
@@ -99,6 +108,7 @@
             </template>
         </v-btn>
         <v-btn
+            class="mt-4"
 	        type="button"
 	        @click="clearForm"
 	        :disabled="field_state"

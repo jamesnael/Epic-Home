@@ -762,7 +762,7 @@ var Ziggy = {
       "domain": null
     },
     "unit.index": {
-      "uri": "master-data\/unit",
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/unit",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
