@@ -24,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var string
      */
-    protected $table = 'ms_users_backend';
+    protected $table = 'ms_users';
 
     /**
      * The attributes that are mass assignable.
