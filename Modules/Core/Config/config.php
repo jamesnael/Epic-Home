@@ -5,6 +5,15 @@ return [
     'app_version' => '1.0.0',
     'app_timezone' => 'Asia/Jakarta',
     'main_menu' => [
+        [  
+            'icon' => 'mdi-desktop-mac-dashboard',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Dashboard',
+            'uri' => 'tipe-proyek.index',
+            'model' => false,
+            'show' => true,
+            'children' => null
+        ],
     	[
     	    'icon' => 'mdi-database',
     	    'icon-alt' => 'mdi-chevron-down',

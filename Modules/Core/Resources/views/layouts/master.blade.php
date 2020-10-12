@@ -35,7 +35,7 @@
                                         src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
                                         alt="Vuetify"
                                     ></v-img>
-                                </v-avatar> <span class="ml-2">{{ config('app.name', 'Laravel') }}</span>
+                                </v-avatar> <a href="{{ url('/') }}" class="ml-2 white--text text-decoration-none">{{ config('app.name', 'Laravel') }}</a>
                             </v-toolbar-title>
                             
                             <v-app-bar-nav-icon

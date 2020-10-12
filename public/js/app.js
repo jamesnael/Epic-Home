@@ -554,6 +554,11 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
+    "login": {
+      "uri": "auth\/login",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "tipe-proyek.table": {
       "uri": "api\/master-data\/tipe-proyek\/table",
       "methods": ["GET", "HEAD"],
@@ -1029,6 +1034,9 @@ if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+Vue.component('login-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ./components/Auth/LoginForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/LoginForm.vue"));
+});
 Vue.component('user-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));
 });

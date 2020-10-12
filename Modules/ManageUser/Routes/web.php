@@ -27,4 +27,9 @@ Route::prefix('kelola-user')->namespace('View')->group(function() {
 	Route::resource('customer', 'CustomerController')->only([
 	    'index', 'edit'
 	]);
+
+});
+
+Route::prefix('auth')->namespace('View')->group(function() {
+	Route::get('login', 'LoginController@showLoginForm')->name('login');
 });

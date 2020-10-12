@@ -1,0 +1,71 @@
+@extends('core::layouts.auth')
+
+@section('content')
+    <v-img
+        max-width="34"
+        src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+        alt="Vuetify"
+    ></v-img>
+    <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Sign in</h2>
+    <login-form
+        inline-template
+        {{-- action-form="{{ route('post-login') }}" --}}
+        redirect-uri="{{ url('/') }}"
+    >
+        <validation-observer v-slot="{ validate, reset }" ref="observer">
+            <form method="post" enctype="multipart/form-data" ref="post-form">
+                <validation-provider rules="required|email" name="Alamat Email" v-slot="{ errors }">
+                    <v-text-field
+                        class="my-4"
+                        v-model="form_data.email"
+                        label="Alamat Email"
+                        name="email"
+                        clearable
+                        clear-icon="mdi-eraser-variant"
+                        hint="* harus diisi"
+                        :persistent-hint="true"
+                        :error-messages="errors"
+                        :disabled="field_state"
+                    ></v-text-field>
+                </validation-provider>
+
+                <validation-provider rules="required|min:8" name="Password" v-slot="{ errors }">
+                    <v-text-field
+                        class="my-4"
+                        v-model="form_data.password"
+                        name="password"
+                        :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="show_password ? 'text' : 'password'"
+                        @click:append="show_password = !show_password"
+                        label="Password"
+                        clearable
+                        clear-icon="mdi-eraser-variant"
+                        hint="* harus diisi"
+                        :persistent-hint="true"
+                        :error-messages="errors"
+                        :disabled="field_state"
+                    ></v-text-field>
+                </validation-provider>
+
+                <div class="d-block d-sm-flex align-center mb-4 mb-sm-0">
+                    <v-checkbox
+                        v-model="form_data.selected"
+                        label="Ingat Saya?"
+                    ></v-checkbox>
+                    <div class="ml-auto">
+                        <a href="#" class="link">Lupa Password?</a>
+                    </div>
+                </div>
+
+                <v-btn 
+                    class="mr-4"
+                    light
+                    color="info"
+                    block
+                >
+                    SIGN IN
+                </v-btn>
+            </form>
+        </validation-observer>
+    </login-form>
+@endsection
