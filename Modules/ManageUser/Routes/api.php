@@ -26,4 +26,11 @@ Route::prefix('kelola-user')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
+	Route::get('customer/table', 'CustomerController@table')->name('customer.table');
+	Route::get('customer/table/verified', 'CustomerController@tableApproved')->name('customer.table-verified');
+	Route::get('customer/{customer}/data', 'CustomerController@data')->name('customer.data');
+	Route::apiResource('customer', 'CustomerController')->only([
+	    'update', 'destroy'
+	]);
+
 });

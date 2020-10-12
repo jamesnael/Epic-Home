@@ -1,15 +1,15 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[8],{
 
-/***/ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue":
-/*!***************************************************************************!*\
-  !*** ./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue ***!
-  \***************************************************************************/
+/***/ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue":
+/*!*******************************************************************!*\
+  !*** ./Modules/ManageUser/Resources/js/components/Sales/Form.vue ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
 
@@ -31,29 +31,29 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"
+component.options.__file = "Modules/ManageUser/Resources/js/components/Sales/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************!*\
-  !*** ./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************/
+/***/ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./Modules/ManageUser/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/ManageUser/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/ManageUser/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/ManageUser/Resources/js/components/Sales/Form.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -94,13 +94,28 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   },
   data: function data() {
     return {
+      menu3: false,
       form_data: {
-        nama_agent_property: '',
+        nama_sales: '',
+        no_telepon: '',
+        no_telepon_agent_referensi: '',
+        tipe_agent: '',
+        kantor_agent: '',
         email: '',
-        nomor_telepon: '',
+        nama_depan: '',
+        nama_belakang: '',
+        jenis_kelamin: '',
+        tempat_lahir: '',
+        tanggal_lahir: '',
         alamat: '',
-        logo_agent: '',
-        deskrips: ''
+        no_rekening: '',
+        nama_rekening: '',
+        bank: '',
+        no_npwp: '',
+        note: '',
+        foto_ktp: '',
+        foto_selfie: '',
+        status_sales: ''
       },
       field_state: false,
       form_alert_state: false,
@@ -121,13 +136,28 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           if (response.data.success) {
             var data = response.data.data;
             _this.form_data = {
-              nama_agent_property: data.nama_agent_property,
+              nama_sales: data.nama_sales,
+              no_telepon: data.no_telepon,
+              no_telepon_agent_referensi: data.no_telepon_agent_referensi,
+              tipe_agent: data.tipe_agent,
+              kantor_agent: data.kantor_agent,
               email: data.email,
-              nomor_telepon: data.nomor_telepon,
+              nama_depan: data.nama_depan,
+              nama_belakang: data.nama_belakang,
+              jenis_kelamin: data.jenis_kelamin,
+              tempat_lahir: data.tempat_lahir,
+              tanggal_lahir: data.tanggal_lahir,
               alamat: data.alamat,
-              logo_agent: data.logo_agent,
-              deskripsi: data.deskripsi,
-              url_logo_agent: data.url_logo_agent
+              no_rekening: data.no_rekening,
+              nama_rekening: data.nama_rekening,
+              bank: data.bank,
+              no_npwp: data.no_npwp,
+              note: data.note,
+              foto_ktp: data.foto_ktp,
+              foto_selfie: data.foto_selfie,
+              status_sales: data.status_sales,
+              url_foto_ktp: data.url_foto_ktp,
+              url_foto_selfie: data.url_foto_selfie
             };
             _this.field_state = false;
           } else {
@@ -146,12 +176,26 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     },
     clearForm: function clearForm() {
       this.form_data = {
-        nama_agent_property: '',
+        nama_sales: '',
+        no_telepon: '',
+        no_telepon_agent_referensi: '',
+        tipe_agent: '',
+        kantor_agent: '',
         email: '',
-        nomor_telepon: '',
+        nama_depan: '',
+        nama_belakang: '',
+        jenis_kelamin: '',
+        tempat_lahir: '',
+        tanggal_lahir: '',
         alamat: '',
-        logo_agent: '',
-        deskrips: ''
+        no_rekening: '',
+        nama_rekening: '',
+        bank: '',
+        no_npwp: '',
+        note: '',
+        foto_ktp: '',
+        foto_selfie: '',
+        status_sales: ''
       };
       this.$refs.observer.reset();
     },
@@ -175,6 +219,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
 
       if (this.dataUri) {
         form_data.append("_method", "put");
+        form_data.append("tanggal_lahir", this.form_data.tanggal_lahir);
       }
 
       axios.post(this.actionForm, form_data).then(function (response) {

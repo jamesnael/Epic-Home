@@ -444,6 +444,31 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "customer.table": {
+      "uri": "api\/kelola-user\/customer\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.table-verified": {
+      "uri": "api\/kelola-user\/customer\/table\/verified",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.data": {
+      "uri": "api\/kelola-user\/customer\/{customer}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.update": {
+      "uri": "api\/kelola-user\/customer\/{customer}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "customer.destroy": {
+      "uri": "api\/kelola-user\/customer\/{customer}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "grup-user.index": {
       "uri": "kelola-user\/grup-user",
       "methods": ["GET", "HEAD"],
@@ -486,6 +511,16 @@ var Ziggy = {
     },
     "sales.edit": {
       "uri": "kelola-user\/sales\/{sales}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.index": {
+      "uri": "kelola-user\/customer",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.edit": {
+      "uri": "kelola-user\/customer\/{customer}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -769,31 +804,6 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
-    "customer.table": {
-      "uri": "api\/master-data\/customer\/table",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer-approved.table": {
-      "uri": "api\/master-data\/customer\/table\/approved",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer.data": {
-      "uri": "api\/master-data\/customer\/{user}\/data",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer.update": {
-      "uri": "api\/master-data\/customer\/{user}",
-      "methods": ["PUT", "PATCH"],
-      "domain": null
-    },
-    "customer.destroy": {
-      "uri": "api\/master-data\/customer\/{user}",
-      "methods": ["DELETE"],
-      "domain": null
-    },
     "tipe-proyek.index": {
       "uri": "master-data\/tipe-proyek",
       "methods": ["GET", "HEAD"],
@@ -963,16 +973,6 @@ var Ziggy = {
       "uri": "master-data\/secondary-unit\/{secondary_unit}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
-    },
-    "customer.index": {
-      "uri": "master-data\/customer",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer.edit": {
-      "uri": "master-data\/customer\/{user}\/ubah",
-      "methods": ["GET", "HEAD"],
-      "domain": null
     }
   },
   baseUrl: 'http://epic-home.test/',
@@ -1000,13 +1000,16 @@ if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('user-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));
 });
 Vue.component('grup-user-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
 });
 Vue.component('sales-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, /*! ./components/Sales/Form.vue */ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/Sales/Form.vue */ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue"));
+});
+Vue.component('customer-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/ManageUser/Resources/js/components/Customer/Form.vue"));
 });
 
 /***/ }),
@@ -1019,40 +1022,37 @@ Vue.component('sales-form', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
 });
 Vue.component('tipe-bangunan-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
 });
 Vue.component('tipe-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
 });
 Vue.component('agent-property-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
 });
 Vue.component('unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
 });
 Vue.component('faq-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
 Vue.component('developer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
 });
 Vue.component('bank-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
 });
 Vue.component('secondary-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
-});
-Vue.component('customer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/MasterData/Resources/js/components/Customer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
 });
 
 /***/ }),
