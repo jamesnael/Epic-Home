@@ -1005,9 +1005,9 @@ var Ziggy = {
       "domain": null
     }
   },
-  baseUrl: 'http://epic-home.test/',
+  baseUrl: 'http://localhost/',
   baseProtocol: 'http',
-  baseDomain: 'epic-home.test',
+  baseDomain: 'localhost',
   basePort: false,
   defaultParameters: []
 };
