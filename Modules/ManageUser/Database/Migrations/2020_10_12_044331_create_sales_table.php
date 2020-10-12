@@ -13,16 +13,17 @@ class CreateSalesTable extends Migration
      */
     public function up()
     {
-     Schema::create('ms_sales', function (Blueprint $table) {
+        Schema::dropIfExists('ms_sales');
+        Schema::create('ms_sales', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user')->nullable();
             $table->string('slug')->nullable();
-            $table->string('nama_sales')->nullable();
-            $table->string('no_telepon')->nullable();
+            // $table->string('nama_sales')->nullable();
+            // $table->string('no_telepon')->nullable();
             $table->string('no_telepon_agent_referensi')->nullable();
             $table->string('tipe_agent')->nullable();
             $table->string('kantor_agent')->nullable();
-            $table->string('email')->nullable();
+            // $table->string('email')->nullable();
             $table->string('nama_depan')->nullable();
             $table->string('nama_belakang')->nullable();
             $table->string('no_ktp')->nullable();

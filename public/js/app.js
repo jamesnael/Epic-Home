@@ -474,6 +474,21 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
+    "sales.index": {
+      "uri": "kelola-user\/sales",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.create": {
+      "uri": "kelola-user\/sales\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.edit": {
+      "uri": "kelola-user\/sales\/{sales}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "tipe-proyek.table": {
       "uri": "api\/master-data\/tipe-proyek\/table",
       "methods": ["GET", "HEAD"],
@@ -958,51 +973,6 @@ var Ziggy = {
       "uri": "master-data\/customer\/{user}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
-    },
-    "sales.table": {
-      "uri": "api\/sales-data\/sales\/table",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales-approved.table": {
-      "uri": "api\/sales-data\/sales\/table\/approved",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.data": {
-      "uri": "api\/sales-data\/sales\/{sales}\/data",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.store": {
-      "uri": "api\/sales-data\/sales",
-      "methods": ["POST"],
-      "domain": null
-    },
-    "sales.update": {
-      "uri": "api\/sales-data\/sales\/{sales}",
-      "methods": ["PUT", "PATCH"],
-      "domain": null
-    },
-    "sales.destroy": {
-      "uri": "api\/sales-data\/sales\/{sales}",
-      "methods": ["DELETE"],
-      "domain": null
-    },
-    "sales.index": {
-      "uri": "sales-data\/sales",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.create": {
-      "uri": "sales-data\/sales\/tambah",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.edit": {
-      "uri": "sales-data\/sales\/{sales}\/ubah",
-      "methods": ["GET", "HEAD"],
-      "domain": null
     }
   },
   baseUrl: 'http://epic-home.test/',
@@ -1035,6 +1005,9 @@ Vue.component('user-form', function () {
 Vue.component('grup-user-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
 });
+Vue.component('sales-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, /*! ./components/Sales/Form.vue */ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue"));
+});
 
 /***/ }),
 
@@ -1058,7 +1031,7 @@ Vue.component('agent-property-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
@@ -1080,19 +1053,6 @@ Vue.component('secondary-unit-form', function () {
 });
 Vue.component('customer-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/MasterData/Resources/js/components/Customer/Form.vue"));
-});
-
-/***/ }),
-
-/***/ "./Modules/SalesData/Resources/js/app.js":
-/*!***********************************************!*\
-  !*** ./Modules/SalesData/Resources/js/app.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-Vue.component('sales-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./components/Sales/Form.vue */ "./Modules/SalesData/Resources/js/components/Sales/Form.vue"));
 });
 
 /***/ }),
@@ -83517,8 +83477,6 @@ __webpack_require__(/*! ./../../Modules/Core/Resources/js/app */ "./Modules/Core
 __webpack_require__(/*! ./../../Modules/MasterData/Resources/js/app */ "./Modules/MasterData/Resources/js/app.js");
 
 __webpack_require__(/*! ./../../Modules/BeritaProperti/Resources/js/app */ "./Modules/BeritaProperti/Resources/js/app.js");
-
-__webpack_require__(/*! ./../../Modules/SalesData/Resources/js/app */ "./Modules/SalesData/Resources/js/app.js");
 
 __webpack_require__(/*! ./../../Modules/ManageUser/Resources/js/app */ "./Modules/ManageUser/Resources/js/app.js");
 

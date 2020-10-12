@@ -19,4 +19,8 @@ Route::prefix('kelola-user')->namespace('View')->group(function() {
 	Route::resource('user', 'UserController')->only([
 	    'index', 'create', 'edit'
 	]);
+
+	Route::resource('sales', 'SalesController')->parameters(['sales' => 'sales'])->only([
+	    'index', 'create', 'edit'
+	]);
 });

@@ -1,15 +1,17 @@
 <?php
 
-namespace Modules\SalesData\Http\Controllers\View;
+namespace Modules\ManageUser\Http\Controllers\View;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\SalesData\Entities\Sales;
 
 class SalesController extends Controller
 {
-     
+    /**
+     * SalesController constructor.
+     *
+     */
     public function __construct()
     {
         // $this->middleware(['auth']);
