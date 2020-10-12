@@ -28,3 +28,9 @@ Route::prefix('kelola-user')->namespace('View')->group(function() {
 	    'index', 'edit'
 	]);
 });
+
+Route::prefix('security')->namespace('Auth')->group(function() {
+	Route::get('/email/verify', 'VerifyController@notice')->name('verification.notice');
+	Route::get('/email/verify/{id}/{hash}', 'VerifyController@verify')->middleware(['signed'])->name('verification.verify');
+	Route::post('/email/verify/resend', 'VerifyController@resend')->middleware(['throttle:6,1'])->name('verification.send');
+});

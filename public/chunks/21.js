@@ -95,9 +95,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   data: function data() {
     return {
       menu3: false,
+      showPassword: false,
       form_data: {
-        nama_sales: '',
-        no_telepon: '',
+        nama: '',
+        telepon: '',
         no_telepon_agent_referensi: '',
         tipe_agent: '',
         kantor_agent: '',
@@ -135,29 +136,30 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         axios.get(this.dataUri).then(function (response) {
           if (response.data.success) {
             var data = response.data.data;
+            console.log(response.data.message);
             _this.form_data = {
-              nama_sales: data.nama_sales,
-              no_telepon: data.no_telepon,
-              no_telepon_agent_referensi: data.no_telepon_agent_referensi,
-              tipe_agent: data.tipe_agent,
-              kantor_agent: data.kantor_agent,
+              nama: data.nama,
+              telepon: data.telepon,
               email: data.email,
-              nama_depan: data.nama_depan,
-              nama_belakang: data.nama_belakang,
-              jenis_kelamin: data.jenis_kelamin,
-              tempat_lahir: data.tempat_lahir,
-              tanggal_lahir: data.tanggal_lahir,
-              alamat: data.alamat,
-              no_rekening: data.no_rekening,
-              nama_rekening: data.nama_rekening,
-              bank: data.bank,
-              no_npwp: data.no_npwp,
-              note: data.note,
-              foto_ktp: data.foto_ktp,
-              foto_selfie: data.foto_selfie,
-              status_sales: data.status_sales,
-              url_foto_ktp: data.url_foto_ktp,
-              url_foto_selfie: data.url_foto_selfie
+              no_telepon_agent_referensi: data.sales.no_telepon_agent_referensi,
+              tipe_agent: data.sales.tipe_agent,
+              kantor_agent: data.sales.kantor_agent,
+              nama_depan: data.sales.nama_depan,
+              nama_belakang: data.sales.nama_belakang,
+              jenis_kelamin: data.sales.jenis_kelamin,
+              tempat_lahir: data.sales.tempat_lahir,
+              tanggal_lahir: data.sales.tanggal_lahir,
+              alamat: data.sales.alamat,
+              no_rekening: data.sales.no_rekening,
+              nama_rekening: data.sales.nama_rekening,
+              bank: data.sales.bank,
+              no_npwp: data.sales.no_npwp,
+              note: data.sales.note,
+              foto_ktp: data.sales.foto_ktp,
+              foto_selfie: data.sales.foto_selfie,
+              status_sales: data.sales.status_sales,
+              url_foto_ktp: data.sales.url_foto_ktp,
+              url_foto_selfie: data.sales.url_foto_selfie
             };
             _this.field_state = false;
           } else {
@@ -176,8 +178,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     },
     clearForm: function clearForm() {
       this.form_data = {
-        nama_sales: '',
-        no_telepon: '',
+        nama: '',
+        telepon: '',
         no_telepon_agent_referensi: '',
         tipe_agent: '',
         kantor_agent: '',
@@ -216,10 +218,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       var _this3 = this;
 
       var form_data = new FormData(this.$refs['post-form']);
+      form_data.append("tanggal_lahir", this.form_data.tanggal_lahir ? this.form_data.tanggal_lahir : '');
 
       if (this.dataUri) {
         form_data.append("_method", "put");
-        form_data.append("tanggal_lahir", this.form_data.tanggal_lahir);
       }
 
       axios.post(this.actionForm, form_data).then(function (response) {

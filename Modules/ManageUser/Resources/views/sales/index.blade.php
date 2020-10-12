@@ -1,8 +1,6 @@
 @extends('core::layouts.master')
 
-@section('content')
 @push('table_slot')
-
 <template v-slot:item.status_sales="{ item }">
     <v-chip
         :color="item.status_sales == 'Sukses' ? 'green' : item.status_sales == 'Verifikasi' ? 'yellow' : 'red'"
@@ -13,7 +11,7 @@
 </template>
 @endpush
 
-
+@section('content')
  <v-tabs>
     <v-tab>
         Pending
@@ -36,9 +34,6 @@
     					items-per-page-all-text="Semua"
     					items-per-page-text="Tampilkan"
     					page-text-locale="id"
-                        {{-- add-new-uri="{{ route('sales.create') }}"
-                        add-new-text="Tambah"
-                        add-new-color="light-blue lighten-2" --}}
     					edit-uri="sales.edit"
     					edit-uri-parameter="slug"
     					edit-text="Ubah"

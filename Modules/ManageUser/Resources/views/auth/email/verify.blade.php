@@ -6,12 +6,7 @@
     	<v-col cols="12">
     		<v-card>
     			<v-card-text>
-    				<customer-form
-	    				inline-template
-	    				action-form="{{ route('customer.store') }}"
-	    				redirect-uri="{{ route('customer.index') }}">
-		    			@include('manageuser::customer.form')
-		    		</customer-form>
+    				PLEASE VERIFY YOUR EMAIL ADDRESS
 			    </v-card-text>
     		</v-card>
     	</v-col>

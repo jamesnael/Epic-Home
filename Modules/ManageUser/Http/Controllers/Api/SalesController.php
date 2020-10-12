@@ -34,8 +34,7 @@ class SalesController extends Controller
             $user->is_sales = true;
             $user->save();
             
-            $request->merge(['id_user' => $user->id]);
-            $data = Sales::create($request->all());
+            $data = $user->sales->create($request->all());
            
             if ($request->hasFile('foto_ktp')) {
                 $file_name = $data->nama_sales .'-'. uniqid() . '.' . $request->file('foto_ktp')->getClientOriginalExtension();
@@ -53,7 +52,7 @@ class SalesController extends Controller
 
             }
             $data->save();
-
+            
             DB::commit();
             return response_json(true, null, 'Sales berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -76,9 +75,8 @@ class SalesController extends Controller
         try {
 
             $sales->update($request->only(['nama','email','telepon']));
-            $data = $sales->sales;
-
-            $data->update($request->all());
+            
+            $sales->sales->update($request->all());
 
             if ($request->hasFile('foto_ktp')) {
                 $file_name =  $sales->nama .'-'. uniqid() . '.' . $request->file('foto_ktp')->getClientOriginalExtension();

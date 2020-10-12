@@ -2,7 +2,8 @@
 
 @push('table_slot')
 <template v-slot:item.email="{ item }">
-    <a :href="'mailto:' + item.email">@{{ item.email }}</a>
+    <a v-if="item.email" :href="'mailto:' + item.email">@{{ item.email }}</a>
+    <span v-else> - </span>
 </template>
 @endpush
 

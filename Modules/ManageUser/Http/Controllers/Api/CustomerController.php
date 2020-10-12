@@ -8,7 +8,6 @@ use Illuminate\Routing\Controller;
 use Modules\ManageUser\Entities\User as Customer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Auth\Events\Registered;
 
 class CustomerController extends Controller
 {
@@ -29,7 +28,7 @@ class CustomerController extends Controller
         try {
             $request->merge(['is_customer' => true]);
             $data = Customer::create($request->all());
-            event(new Registered($data));
+            
             DB::commit();
             return response_json(true, null, 'Customer berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -120,7 +119,7 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = Customer::where('is_customer', true)->whereNull('email_verified_at');
+        $query = Customer::where('is_customer', true)->whereNull('email');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -156,7 +155,7 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = Customer::where('is_customer', true)->whereNotNull('email_verified_at');
+        $query = Customer::where('is_customer', true)->whereNotNull('email');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
