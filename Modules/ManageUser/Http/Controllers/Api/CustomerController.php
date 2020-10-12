@@ -99,7 +99,7 @@ class CustomerController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            // 'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
             'telepon' => 'bail|required',
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
