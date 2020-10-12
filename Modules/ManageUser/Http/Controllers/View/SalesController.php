@@ -5,6 +5,7 @@ namespace Modules\ManageUser\Http\Controllers\View;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\ManageUser\Entities\User;
 
 class SalesController extends Controller
 {
@@ -39,13 +40,13 @@ class SalesController extends Controller
                 "text" => 'Nama Sales',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'nama_sales',
+                "value" => 'nama',
             ],
             [
                 "text" => 'No. Handphone',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'no_telepon',
+                "value" => 'telepon',
             ],
             [
                 "text" => 'No. Handphone Agen Referensi',
@@ -60,7 +61,7 @@ class SalesController extends Controller
                 "value" => 'tipe_agent',
             ],
             [
-                "text" => 'Nama Agent',
+                "text" => 'Kantor Agent',
                 "align" => 'center',
                 "sortable" => false,
                 "value" => 'kantor_agent',
@@ -79,7 +80,7 @@ class SalesController extends Controller
             ]
            
         ];
-        return view('salesdata::sales.index')
+        return view('manageuser::sales.index')
             ->with('page_title', 'Sales')
             ->with('breadcrumbs', $this->breadcrumbs)
             ->with('table_headers', $table_headers);
@@ -93,20 +94,20 @@ class SalesController extends Controller
     {
         $this->breadcrumbs[] = ['href' => route('sales.create'), 'text' => 'Tambah Sales'];
 
-        return view('salesdata::sales.create')
+        return view('manageuser::sales.create')
             ->with('page_title', 'Tambah Sales')
             ->with('breadcrumbs', $this->breadcrumbs);
     }
 
 
 
-    public function edit(Sales $sales)
+    public function edit(User $sales)
     {
-        $this->breadcrumbs[] = ['href' => route('sales.edit', [ $sales->slug ]), 'text' => 'Ubah Sales ' . $sales->nama_sales];
+        $this->breadcrumbs[] = ['href' => route('sales.edit', [ $sales->slug ]), 'text' => 'Ubah Sales ' . $sales->nama];
 
-        return view('salesdata::sales.edit')
-            ->with('data', $sales)
-            ->with('page_title', 'Ubah Sales ' . $sales->nama_sales)
+        return view('manageuser::sales.edit')
+            ->with('data', $sales->load('sales'))
+            ->with('page_title', 'Ubah Sales ' . $sales->nama)
             ->with('breadcrumbs', $this->breadcrumbs);
     }
 }

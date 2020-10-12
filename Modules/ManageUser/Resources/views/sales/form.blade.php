@@ -3,9 +3,9 @@
         <validation-provider rules="required" name="Nama sales" v-slot="{ errors }">
             <v-text-field
             	class="my-4"
-                v-model="form_data.nama_sales"
+                v-model="form_data.nama"
                 label="Nama Sales"
-    			name="nama_sales"
+    			name="nama"
     			clearable
     			clear-icon="mdi-eraser-variant"
 	    		hint="* harus diisi"
@@ -18,9 +18,9 @@
         <validation-provider rules="required|max:15" name="No handphone" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
-                v-model="form_data.no_telepon"
+                v-model="form_data.telepon"
                 label="No handphone"
-                name="no_telepon"
+                name="telepon"
                 v-mask="'+62############'"
                 placeholder="+62817800000000"
                 clearable
@@ -95,6 +95,22 @@
             ></v-text-field>
         </validation-provider>
 
+        <validation-provider v-if="!dataUri" v-slot="{ errors }" name="Password" rules="required">
+            <v-text-field
+                v-model="form_data.password"
+                :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                :type="showPassword ? 'text' : 'password'"
+                hint="* harus diisi minimal 8 karakter"
+                :persistent-hint="true"
+                :error-messages="errors"
+                :readonly="field_state"
+                name="password"
+                label="Password"
+                counter
+                @click:append="showPassword = !showPassword"
+              ></v-text-field>
+        </validation-provider>
+
         <validation-provider rules="required" name="Nama depan" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
@@ -155,31 +171,31 @@
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="" rules="">
-                    <v-menu
-                        v-model="menu3"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                        <v-text-field
-                            class="mt-4"
-                            :value="reformatDateTime(form_data.tanggal_lahir, 'YYYY-MM-DD', 'DD MMMM YYYY')"
-                            label="Tanggal Lahir"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                            :persistent-hint="true"
-                            :error-messages="errors"
-                            :readonly="!field_state"
-                            :disabled="field_state">
-                        </v-text-field>
-                        </template>
-                        <v-date-picker name="tanggal_lahir" v-model="form_data.tanggal_lahir" @input="menu3 = false" :disabled="field_state"></v-date-picker>
-                    </v-menu>
-                </validation-provider>
+            <v-menu
+                v-model="menu3"
+                :close-on-content-click="false"
+                :nudge-right="40"
+                transition="scale-transition"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                    class="mt-4"
+                    :value="reformatDateTime(form_data.tanggal_lahir, 'YYYY-MM-DD', 'DD MMMM YYYY')"
+                    label="Tanggal Lahir"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                    :persistent-hint="true"
+                    :error-messages="errors"
+                    :readonly="!field_state"
+                    :disabled="field_state">
+                </v-text-field>
+                </template>
+                <v-date-picker name="tanggal_lahir" v-model="form_data.tanggal_lahir" @input="menu3 = false" :disabled="field_state"></v-date-picker>
+            </v-menu>
+        </validation-provider>
 
         <v-textarea
             class="my-4"
@@ -276,8 +292,19 @@
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_foto_ktp" target="_blank" class="ml-8">
-                <small>@{{form_data.foto_ktp}}</small>
+            <a :href="form_data.url_foto_ktp" target="_blank">
+                <v-card
+                    align="left"
+                    v-if="form_data.url_foto_ktp"
+                    max-width="250"
+                    tile
+                >
+                    <v-img
+                        max-height="150"
+                        max-width="250"
+                        :src="form_data.url_foto_ktp"
+                    ></v-img>
+                </v-card>
             </a>
         </div>
 
@@ -292,8 +319,19 @@
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_foto_selfie" target="_blank" class="ml-8">
-                <small>@{{form_data.foto_selfie}}</small>
+            <a :href="form_data.url_foto_selfie" target="_blank">
+                <v-card
+                    align="left"
+                    v-if="form_data.url_foto_selfie"
+                    max-width="250"
+                    tile
+                >
+                    <v-img
+                        max-height="150"
+                        max-width="250"
+                        :src="form_data.url_foto_selfie"
+                    ></v-img>
+                </v-card>
             </a>
         </div>
 

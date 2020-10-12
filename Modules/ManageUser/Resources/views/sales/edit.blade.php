@@ -11,7 +11,7 @@
 	    				action-form="{{ route('sales.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('sales.index') }}"
 	    				data-uri="{{ route('sales.data', [ $data->slug ]) }}">
-		    			@include('salesdata::sales.form')
+		    			@include('manageuser::sales.form')
 		    		</sales-form>
 			    </v-card-text>
     		</v-card>

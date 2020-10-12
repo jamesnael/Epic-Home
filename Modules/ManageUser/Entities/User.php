@@ -115,4 +115,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo('Modules\ManageUser\Entities\UserGroup', 'grup_user_id', 'id');
     }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function sales()
+    {
+        return $this->hasOne('Modules\ManageUser\Entities\Sales', 'id_user');
+    }
 }

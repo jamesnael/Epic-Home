@@ -33,4 +33,11 @@ Route::prefix('kelola-user')->namespace('Api')->group(function() {
 	    'update', 'destroy'
 	]);
 
+	Route::get('sales/table', 'SalesController@table')->name('sales.table');
+	Route::get('sales/table/approved', 'SalesController@tableApproved')->name('sales-approved.table');
+	Route::get('sales/{sales}/data', 'SalesController@data')->name('sales.data');
+	Route::apiResource('sales', 'SalesController')->parameters(['sales' => 'sales'])->only([
+	    'store', 'update', 'destroy'
+	]);
+
 });

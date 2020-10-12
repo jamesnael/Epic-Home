@@ -85,23 +85,6 @@ return [
     	    ]
     	],
         [
-            'icon' => 'mdi-account-tie',
-            'icon-alt' => 'mdi-chevron-down',
-            'text' => 'Kelola Sales',
-            'model' => false,
-            'show' => true,
-            'children' => [
-               
-                [
-                    'icon' => 'mdi-adjust',
-                    'text' => 'Sales',
-                    'uri' => 'sales.index',
-                    'model' => false,
-                    'show' => true
-                ],
-            ]
-        ],
-        [
             'icon' => 'mdi-account-group',
             'icon-alt' => 'mdi-chevron-down',
             'text' => 'Kelola User',
@@ -126,6 +109,13 @@ return [
                     'icon' => 'mdi-adjust',
                     'text' => 'Customer',
                     'uri' => 'customer.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Sales',
+                    'uri' => 'sales.index',
                     'model' => false,
                     'show' => true
                 ],

@@ -469,6 +469,36 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "sales.table": {
+      "uri": "api\/kelola-user\/sales\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales-approved.table": {
+      "uri": "api\/kelola-user\/sales\/table\/approved",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.data": {
+      "uri": "api\/kelola-user\/sales\/{sales}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.store": {
+      "uri": "api\/kelola-user\/sales",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "sales.update": {
+      "uri": "api\/kelola-user\/sales\/{sales}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "sales.destroy": {
+      "uri": "api\/kelola-user\/sales\/{sales}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "grup-user.index": {
       "uri": "kelola-user\/grup-user",
       "methods": ["GET", "HEAD"],
