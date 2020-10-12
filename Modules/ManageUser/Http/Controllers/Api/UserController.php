@@ -9,7 +9,6 @@ use Modules\ManageUser\Entities\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -29,7 +28,7 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $data = User::create($request->all());
-            event(new Registered($data));
+            
             DB::commit();
             return response_json(true, null, 'User berhasil disimpan.', $data);
         } catch (\Exception $e) {
