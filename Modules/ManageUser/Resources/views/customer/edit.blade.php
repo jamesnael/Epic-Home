@@ -11,7 +11,7 @@
 	    				action-form="{{ route('customer.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('customer.index') }}"
 	    				data-uri="{{ route('customer.data', [ $data->slug ]) }}">
-		    			@include('masterdata::customer.form')
+		    			@include('manageuser::customer.form')
 		    		</customer-form>
 			    </v-card-text>
     		</v-card>

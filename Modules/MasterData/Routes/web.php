@@ -55,8 +55,4 @@ Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('secondary-unit', 'SecondaryUnitController')->only([
 	    'index', 'create', 'edit'
 	]);
-
-	Route::resource('customer', 'CustomerController')->parameters(['customer' => 'user'])->only([
-	    'index', 'edit'
-	]);
 });

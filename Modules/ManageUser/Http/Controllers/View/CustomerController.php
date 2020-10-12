@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\MasterData\Http\Controllers\View;
+namespace Modules\ManageUser\Http\Controllers\View;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\ManageUser\Entities\User;
+use Modules\ManageUser\Entities\User as Customer;
 
 class CustomerController extends Controller
 {
@@ -18,7 +18,7 @@ class CustomerController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
-            ['href' => route('customer.index'), 'text' => 'Kelola Customer'],
+            ['href' => route('customer.index'), 'text' => 'Kelola User'],
             ['href' => route('customer.index'), 'text' => 'Customer'],
         ];
     }
@@ -43,51 +43,38 @@ class CustomerController extends Controller
                 "value" => 'nama',
             ],
             [
+                "text" => 'Email',
+                "align" => 'center',
+                "sortable" => false,
+                "value" => 'email',
+            ],
+            [
                 "text" => 'No Handphone',
                 "align" => 'center',
                 "sortable" => false,
                 "value" => 'telepon',
             ],
-            [
-                "text" => 'Email',
-                "align" => 'center',
-                "sortable" => false,
-                "value" => 'email',
-            ]
             
            
         ];
-        return view('masterdata::customer.index')
+        return view('manageuser::customer.index')
              ->with('page_title', 'Customer')
              ->with('breadcrumbs', $this->breadcrumbs)
              ->with('table_headers', $table_headers);
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    // public function create()
-    // {
-    //     $this->breadcrumbs[] = ['href' => route('customer.create'), 'text' => 'Tambah Customer'];
-
-    //     return view('masterdata::customer.create')
-    //          ->with('page_title', 'Tambah Customer')
-    //          ->with('breadcrumbs', $this->breadcrumbs);
-    // }
-
-    /**
      * Show the form for editing the specified resource.
-     * @param User $user
+     * @param Customer $customer
      * @return Renderable
      */
-    public function edit(User $user)
+    public function edit(Customer $customer)
     {
-        $this->breadcrumbs[] = ['href' => route('customer.edit', [ $user->slug ]), 'text' => 'Ubah Customer ' . $user->nama];
+        $this->breadcrumbs[] = ['href' => route('customer.edit', [ $customer->slug ]), 'text' => 'Ubah Customer ' . $customer->nama];
 
-        return view('masterdata::customer.edit')
-             ->with('data', $user)
-             ->with('page_title', 'Ubah Customer ' . $user->nama)
+        return view('manageuser::customer.edit')
+             ->with('data', $customer)
+             ->with('page_title', 'Ubah Customer ' . $customer->nama)
              ->with('breadcrumbs', $this->breadcrumbs);
     }
 }

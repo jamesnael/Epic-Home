@@ -444,6 +444,31 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "customer.table": {
+      "uri": "api\/kelola-user\/customer\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.table-verified": {
+      "uri": "api\/kelola-user\/customer\/table\/verified",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.data": {
+      "uri": "api\/kelola-user\/customer\/{customer}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.update": {
+      "uri": "api\/kelola-user\/customer\/{customer}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "customer.destroy": {
+      "uri": "api\/kelola-user\/customer\/{customer}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "grup-user.index": {
       "uri": "kelola-user\/grup-user",
       "methods": ["GET", "HEAD"],
@@ -471,6 +496,16 @@ var Ziggy = {
     },
     "user.edit": {
       "uri": "kelola-user\/user\/{user}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.index": {
+      "uri": "kelola-user\/customer",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.edit": {
+      "uri": "kelola-user\/customer\/{customer}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -754,31 +789,6 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
-    "customer.table": {
-      "uri": "api\/master-data\/customer\/table",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer-approved.table": {
-      "uri": "api\/master-data\/customer\/table\/approved",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer.data": {
-      "uri": "api\/master-data\/customer\/{user}\/data",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer.update": {
-      "uri": "api\/master-data\/customer\/{user}",
-      "methods": ["PUT", "PATCH"],
-      "domain": null
-    },
-    "customer.destroy": {
-      "uri": "api\/master-data\/customer\/{user}",
-      "methods": ["DELETE"],
-      "domain": null
-    },
     "tipe-proyek.index": {
       "uri": "master-data\/tipe-proyek",
       "methods": ["GET", "HEAD"],
@@ -949,16 +959,6 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "customer.index": {
-      "uri": "master-data\/customer",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "customer.edit": {
-      "uri": "master-data\/customer\/{user}\/ubah",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
     "sales.table": {
       "uri": "api\/sales-data\/sales\/table",
       "methods": ["GET", "HEAD"],
@@ -1005,9 +1005,9 @@ var Ziggy = {
       "domain": null
     }
   },
-  baseUrl: 'http://epic-home.test/',
+  baseUrl: 'http://localhost/',
   baseProtocol: 'http',
-  baseDomain: 'epic-home.test',
+  baseDomain: 'localhost',
   basePort: false,
   defaultParameters: []
 };
@@ -1035,6 +1035,9 @@ Vue.component('user-form', function () {
 Vue.component('grup-user-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
 });
+Vue.component('customer-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/ManageUser/Resources/js/components/Customer/Form.vue"));
+});
 
 /***/ }),
 
@@ -1058,7 +1061,7 @@ Vue.component('agent-property-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
@@ -1077,9 +1080,6 @@ Vue.component('bank-form', function () {
 });
 Vue.component('secondary-unit-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
-});
-Vue.component('customer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/MasterData/Resources/js/components/Customer/Form.vue"));
 });
 
 /***/ }),
@@ -83873,8 +83873,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\epic-home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic_home\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic_home\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

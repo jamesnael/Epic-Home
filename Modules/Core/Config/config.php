@@ -82,24 +82,8 @@ return [
                     'model' => false,
                     'show' => true
                 ],
-                 [
-                    'icon' => 'mdi-adjust',
-                    'text' => 'Customer',
-                    'uri' => 'customer.index',
-                    'model' => false,
-                    'show' => true
-                ],
     	    ]
     	],
-        [  
-            'icon' => 'mdi-newspaper-variant',
-            'icon-alt' => 'mdi-chevron-down',
-            'text' => 'Berita Properti',
-            'uri' => 'berita-properti.index',
-            'model' => false,
-            'show' => true,
-            'children' => null
-        ],
         [
             'icon' => 'mdi-account-tie',
             'icon-alt' => 'mdi-chevron-down',
@@ -117,15 +101,6 @@ return [
                 ],
             ]
         ],
-        // [  
-        //     'icon' => 'mdi-home-currency-usd',
-        //     'icon-alt' => 'mdi-chevron-down',
-        //     'text' => 'Tipe Proyek',
-        //     'uri' => 'tipe-proyek.index',
-        //     'model' => false,
-        //     'show' => true,
-        //     'children' => null
-        // ],
         [
             'icon' => 'mdi-account-group',
             'icon-alt' => 'mdi-chevron-down',
@@ -147,7 +122,23 @@ return [
                     'model' => false,
                     'show' => true
                 ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Customer',
+                    'uri' => 'customer.index',
+                    'model' => false,
+                    'show' => true
+                ],
             ]
+        ],
+        [  
+            'icon' => 'mdi-newspaper-variant',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Berita Properti',
+            'uri' => 'berita-properti.index',
+            'model' => false,
+            'show' => true,
+            'children' => null
         ],
     ]
 ];

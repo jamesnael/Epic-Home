@@ -1,13 +1,14 @@
 <?php
 
-namespace Modules\MasterData\Http\Controllers\Api;
+namespace Modules\ManageUser\Http\Controllers\Api;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\ManageUser\Entities\User;
+use Modules\ManageUser\Entities\User as Customer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Auth\Events\Registered;
 
 class CustomerController extends Controller
 {
@@ -16,34 +17,9 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    // public function store(Request $request)
-    // {
-    //     $validator = $this->validateFormRequest($request);
-
-    //     if ($validator->fails()) {
-    //         return response_json(false, $validator->errors(), $validator->errors()->first());
-    //     }
-
-    //     DB::beginTransaction();
-    //     try {
-    //         $data = User::create($request->all());
-    //         DB::commit();
-    //         return response_json(true, null, 'User berhasil disimpan.', $data);
-    //     } catch (\Exception $e) {
-    //         DB::rollback();
-    //         return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
-    //     }
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param User $user
-     * @return Renderable
-     */
-    public function update(Request $request, User $user)
+    public function store(Request $request)
     {
-        $validator = $this->validateFormRequest($request, $user->id);
+        $validator = $this->validateFormRequest($request);
 
         if ($validator->fails()) {
             return response_json(false, $validator->errors(), $validator->errors()->first());
@@ -51,9 +27,36 @@ class CustomerController extends Controller
 
         DB::beginTransaction();
         try {
-            $user->update($request->all());
+            $request->merge(['is_customer' => true]);
+            $data = Customer::create($request->all());
+            event(new Registered($data));
             DB::commit();
-            return response_json(true, null, 'Customer berhasil disimpan.', $user);
+            return response_json(true, null, 'Customer berhasil disimpan.', $data);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Customer $customer
+     * @return Renderable
+     */
+    public function update(Request $request, Customer $customer)
+    {
+        $validator = $this->validateFormRequest($request, $customer->id);
+
+        if ($validator->fails()) {
+            return response_json(false, $validator->errors(), $validator->errors()->first());
+        }
+
+        DB::beginTransaction();
+        try {
+            $customer->update($request->all());
+            DB::commit();
+            return response_json(true, null, 'Customer berhasil disimpan.', $customer);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -62,14 +65,14 @@ class CustomerController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param User $user
+     * @param Customer $customer
      * @return Renderable
      */
-    public function destroy(User $user)
+    public function destroy(Customer $customer)
     {
         DB::beginTransaction();
         try {
-            $user->delete();
+            $customer->delete();
             DB::commit();
             return response_json(true, null, 'Customer berhasil dihapus.');
         } catch (\Exception $e) {
@@ -80,12 +83,12 @@ class CustomerController extends Controller
 
     /**
      * Get the specified resource from storage.
-     * @param User $user
+     * @param Customer $customer
      * @return Renderable
      */
-    public function data(User $user)
+    public function data(Customer $customer)
     {
-        return response_json(true, null, 'Data retrieved', $user);
+        return response_json(true, null, 'Data retrieved', $customer);
     }
 
     /**
@@ -97,7 +100,7 @@ class CustomerController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id",
+            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
             'telepon' => 'bail|required',
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
@@ -117,12 +120,7 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = User::with('grup_user')->whereNull('email');
-
-         $query->whereHas('grup_user', function($subquery){ 
-            $subquery->where('nama', 'Customer');
-            });
-           
+        $query = Customer::where('is_customer', true)->whereNull('email_verified_at');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -136,6 +134,7 @@ class CustomerController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
+            $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->tanggal_registrasi = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             return $item;
         });
@@ -143,7 +142,13 @@ class CustomerController extends Controller
         return response_json(true, null, 'Data retrieved.', $data);
     }
 
-     public function tableApproved(Request $request)
+    /**
+     *
+     * Get the resources from storage.
+     * @return Renderable
+     *
+     */
+    public function tableApproved(Request $request)
     {
         $validator = $this->validateTableRequest($request);
 
@@ -151,12 +156,7 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-       $query = User::with('grup_user')->whereNotNull('email');
-
-         $query->whereHas('grup_user', function($subquery){ 
-            $subquery->where('nama', 'Customer');
-            });
-        
+        $query = Customer::where('is_customer', true)->whereNotNull('email_verified_at');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -170,13 +170,13 @@ class CustomerController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
+            $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->tanggal_registrasi = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             return $item;
         });
 
         return response_json(true, null, 'Data retrieved.', $data);
     }
-
 
     /**
      *

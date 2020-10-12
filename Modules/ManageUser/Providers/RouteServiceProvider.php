@@ -4,6 +4,7 @@ namespace Modules\ManageUser\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Modules\ManageUser\Entities\User;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Route::bind('customer', function ($value) {
+            return User::where('is_customer', true)->firstOrFail();
+        });
     }
 
     /**

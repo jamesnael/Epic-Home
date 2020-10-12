@@ -10,7 +10,7 @@
 	    				inline-template
 	    				action-form="{{ route('customer.store') }}"
 	    				redirect-uri="{{ route('customer.index') }}">
-		    			@include('masterdata::customer.form')
+		    			@include('manageuser::customer.form')
 		    		</customer-form>
 			    </v-card-text>
     		</v-card>
