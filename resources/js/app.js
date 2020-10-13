@@ -14,6 +14,7 @@ require('./../../Modules/Core/Resources/js/app');
 require('./../../Modules/MasterData/Resources/js/app');
 require('./../../Modules/BeritaProperti/Resources/js/app');
 require('./../../Modules/ManageUser/Resources/js/app');
+require('./../../Modules/Transaksi/Resources/js/app');
 
 const vuetify = new Vuetify({
 	icons: {

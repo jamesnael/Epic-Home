@@ -23,5 +23,5 @@
 @endsection
 
 @section('scripts')
-	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf2A8kz27OJUP6iuajQCam--Y4z9s9jA4" async defer></script> --}}
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbEzICmcP-W38WP-1GQpAZ7ZVPAakGYr0" async defer></script>
 @endsection
