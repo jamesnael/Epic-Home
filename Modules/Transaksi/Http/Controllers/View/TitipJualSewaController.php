@@ -19,7 +19,7 @@ class TitipJualSewaController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
-            ['href' => url('titip-jual-sewa.index'), 'text' => 'Master Data'],
+            ['href' => url('titip-jual-sewa.index'), 'text' => 'Transaksi'],
             ['href' => route('titip-jual-sewa.index'), 'text' => 'Titip Jual/Sewa Unit'],
         ];
 

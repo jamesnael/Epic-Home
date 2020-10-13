@@ -144,6 +144,20 @@ return [
                     'model' => false,
                     'show' => true
                 ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Proyek Primary',
+                    'uri' => 'transaksi-proyek-primary.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Seconday Unit',
+                    'uri' => 'transaksi-secondary-unit.index',
+                    'model' => false,
+                    'show' => true
+                ],
             ]
         ],
         [  

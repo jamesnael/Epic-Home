@@ -1452,32 +1452,32 @@ var Ziggy = {
       "domain": null
     },
     "titip-jual-sewa.table": {
-      "uri": "api\/transaksi\/titip-jual-sewa\/table",
+      "uri": "transaksi\/titip-jual-sewa\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
     "titip-jual-sewa-sukses.table": {
-      "uri": "api\/transaksi\/titip-jual-sewa\/table-sukses",
+      "uri": "transaksi\/titip-jual-sewa\/table-sukses",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
     "titip-jual-sewa.data": {
-      "uri": "api\/transaksi\/titip-jual-sewa\/{titip_jual_sewa}\/data",
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
     "titip-jual-sewa.store": {
-      "uri": "api\/transaksi\/titip-jual-sewa",
+      "uri": "transaksi\/titip-jual-sewa",
       "methods": ["POST"],
       "domain": null
     },
     "titip-jual-sewa.update": {
-      "uri": "api\/transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
     "titip-jual-sewa.destroy": {
-      "uri": "api\/transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
       "methods": ["DELETE"],
       "domain": null
     },
@@ -1493,6 +1493,36 @@ var Ziggy = {
     },
     "titip-jual-sewa.edit": {
       "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary.index": {
+      "uri": "transaksi\/transaksi-proyek-primary",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary.create": {
+      "uri": "transaksi\/transaksi-proyek-primary\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary.edit": {
+      "uri": "transaksi\/transaksi-proyek-primary\/{transaksi_proyek_primary}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.index": {
+      "uri": "transaksi\/transaksi-secondary-unit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.create": {
+      "uri": "transaksi\/transaksi-secondary-unit\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.edit": {
+      "uri": "transaksi\/transaksi-secondary-unit\/{transaksi_secondary_unit}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     }
