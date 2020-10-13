@@ -38,8 +38,8 @@
                 v-model="form_data.no_telepon_agent_referensi"
                 label="No Handphone (Agen Referensi)"
                 name="no_telepon_agent_referensi"
-                v-mask="'+62############'"
-                placeholder="+62817800000000"
+                v-mask="'+##############'"
+                placeholder="+62812411111111"
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"

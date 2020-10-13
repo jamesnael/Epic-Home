@@ -476,8 +476,8 @@
                 name="nomor_handphone"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                v-mask="'+62############'"
-                placeholder="+62817800000000"
+                v-mask="'+##############'"
+                placeholder="+62812411111111"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
