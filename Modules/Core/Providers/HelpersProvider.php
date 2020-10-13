@@ -209,6 +209,16 @@ if (! function_exists('get_access_url')) {
     }
 }
 
+if (! function_exists('get_file_content')) {
+    function get_file_content($disk_name = 'public', $file_name) {
+        if ($file_name) {
+            return json_decode(Storage::disk($disk_name)->get($file_name), true);
+        }
+
+        return $file_name;
+    }
+}
+
 if (! function_exists('log_activity')) {
     function log_activity($description, $properties = [], $causer = null, $log_name = null) {
         activity($log_name ?: config('activitylog.default_log_name', 'default'))
