@@ -131,7 +131,7 @@ return [
             ]
         ],
         [  
-            'icon' => 'mdi-newspaper-variant',
+            'icon' => 'mdi-newspaper-variant-outline',
             'icon-alt' => 'mdi-chevron-down',
             'text' => 'Berita Properti',
             'uri' => 'berita-properti.index',
