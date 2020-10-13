@@ -11,4 +11,8 @@
 |
 */
 
+Route::middleware('auth')->group(function() {
+	require __DIR__.'/api.php';
+});
+
 Route::get('/', 'DashboardController@index')->name('dashboard');

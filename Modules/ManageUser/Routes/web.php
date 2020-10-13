@@ -11,6 +11,10 @@
 |
 */
 
+Route::middleware('auth')->group(function() {
+	require __DIR__.'/api.php';
+});
+
 Route::prefix('kelola-user')->namespace('View')->group(function() {
 	Route::resource('grup-user', 'GrupUserController')->only([
 	    'index', 'create', 'edit'

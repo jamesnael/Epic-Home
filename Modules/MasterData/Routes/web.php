@@ -11,6 +11,10 @@
 |
 */
 
+Route::middleware('auth')->group(function() {
+	require __DIR__.'/api.php';
+});
+
 Route::prefix('master-data')->namespace('View')->group(function() {
 	Route::resource('tipe-proyek', 'TipeProyekController')->only([
 	    'index', 'create', 'edit'

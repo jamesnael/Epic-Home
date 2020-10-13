@@ -55,6 +55,10 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $user->update($request->all());
+            log_activity(
+                'Update user ' . $user->nama,
+                $user
+            );
             DB::commit();
             return response_json(true, null, 'User berhasil disimpan.', $user);
         } catch (\Exception $e) {

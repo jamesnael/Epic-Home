@@ -206,3 +206,12 @@ if (! function_exists('get_access_url')) {
         })->toArray();
     }
 }
+
+if (! function_exists('log_activity')) {
+    function log_activity($description, $properties = [], $causer = null, $log_name = null) {
+        activity($log_name ?: config('activitylog.default_log_name', 'default'))
+            ->by($causer ?: (Auth::user() ?? null))
+            ->withProperties($properties)
+            ->log($description);
+    }
+}

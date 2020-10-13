@@ -62,7 +62,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
+            ->middleware(['api', 'auth:api'])
+            ->as('api.')
             ->namespace($this->moduleNamespace)
             ->group(module_path('BeritaProperti', '/Routes/api.php'));
     }
