@@ -32,4 +32,6 @@ Route::prefix('kelola-user')->namespace('View')->group(function() {
 
 Route::prefix('auth')->namespace('View')->group(function() {
 	Route::get('login', 'LoginController@showLoginForm')->name('login');
+	Route::post('login', 'LoginController@login')->name('post-login');
+	Route::match(['GET', 'POST'], 'logout', 'LoginController@logout')->name('logout');
 });

@@ -139,5 +139,12 @@ return [
             'show' => true,
             'children' => null
         ],
+    ],
+    'user_menu' => [
+        [  
+            'icon' => 'mdi-power',
+            'text' => 'Logout',
+            'uri' => 'logout',
+        ],
     ]
 ];

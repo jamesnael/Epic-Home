@@ -49,47 +49,7 @@
                                 <v-icon>mdi-bell-ring</v-icon>
                             </v-btn>
 
-                            <v-menu
-                                bottom
-                                min-width="200px"
-                                rounded
-                                offset-y
-                            >
-                                <template v-slot:activator="{ on }">
-                                    <v-btn
-                                        icon
-                                        x-large
-                                        v-on="on"
-                                        class="mr-1"
-                                    >
-                                        <v-avatar
-                                            size="36">
-                                            <img
-                                                src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                                alt="John"
-                                            >
-                                        </v-avatar>
-                                    </v-btn>
-                                </template>
-                                <v-list dense>
-                                    <v-list-item-group
-                                        v-model="item"
-                                        color="primary"
-                                    >
-                                        <v-list-item
-                                            v-for="(item, i) in items"
-                                            :key="i"
-                                        >
-                                            <v-list-item-icon>
-                                                <v-icon v-text="item.icon"></v-icon>
-                                            </v-list-item-icon>
-                                            <v-list-item-content>
-                                                <v-list-item-title v-text="item.text"></v-list-item-title>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-list-item-group>
-                                </v-list>
-                            </v-menu>
+                            @include('core::components.user_menu')
                         </v-app-bar>
                         
                         <v-navigation-drawer 

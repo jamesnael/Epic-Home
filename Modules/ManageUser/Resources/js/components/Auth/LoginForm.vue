@@ -16,11 +16,7 @@
 			actionForm: {
 				type: String,
 				required: true
-			},
-			redirectUri: {
-				type: String,
-				required: true
-			},
+			}
 		},
 		data: () => ({
 			form_data: {
@@ -65,7 +61,7 @@
 	    		            this.form_alert_text = response.data.message
 
 	    		            setTimeout(() => {
-			                    this.goto(this.redirectUri);
+			                    this.goto(response.data.data);
 			                }, 6000);
 	    		        } else {
 		    		        this.field_state = false

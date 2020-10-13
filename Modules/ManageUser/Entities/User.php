@@ -109,6 +109,39 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Scope a query to only include admin user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsAdmin($query)
+    {
+        return $query->where('is_sales', false)->where('is_customer', false);
+    }
+
+    /**
+     * Scope a query to only include customer user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsCustomer($query)
+    {
+        return $query->where('is_customer', true);
+    }
+
+    /**
+     * Scope a query to only include sales user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsSales($query)
+    {
+        return $query->where('is_sales', true);
+    }
+
+    /**
      * Get the relationship for the model.
      */
     public function grup_user()

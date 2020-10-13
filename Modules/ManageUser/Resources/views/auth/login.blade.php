@@ -9,7 +9,7 @@
     <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Sign in</h2>
     <login-form
         inline-template
-        {{-- action-form="{{ route('post-login') }}" --}}
+        action-form="{{ route('post-login') }}"
         redirect-uri="{{ url('/') }}"
     >
         <validation-observer v-slot="{ validate, reset }" ref="observer">
@@ -29,7 +29,7 @@
                     ></v-text-field>
                 </validation-provider>
 
-                <validation-provider rules="required|min:8" name="Password" v-slot="{ errors }">
+                <validation-provider rules="required" name="Password" v-slot="{ errors }">
                     <v-text-field
                         class="my-4"
                         v-model="form_data.password"
@@ -51,6 +51,8 @@
                     <v-checkbox
                         v-model="form_data.selected"
                         label="Ingat Saya?"
+                        name="remember"
+                        :disabled="field_state"
                     ></v-checkbox>
                     <div class="ml-auto">
                         <a href="#" class="link">Lupa Password?</a>
@@ -62,9 +64,22 @@
                     light
                     color="info"
                     block
+                    type="submit"
+                    @click.prevent="submitForm"
                 >
                     SIGN IN
                 </v-btn>
+
+                <v-snackbar
+                    v-model="form_alert_state"
+                    top
+                    multi-line
+                    :color="form_alert_color"
+                    elevation="5"
+                    timeout="6000"
+                >
+                    @{{ form_alert_text }}
+                </v-snackbar>
             </form>
         </validation-observer>
     </login-form>

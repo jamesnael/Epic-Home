@@ -119,7 +119,7 @@ class UserController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = User::where('is_sales', false)->where('is_customer', false);
+        $query = User::isAdmin();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
