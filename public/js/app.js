@@ -391,6 +391,11 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
+    "dashboard": {
+      "uri": "\/",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "grup-user.table": {
       "uri": "api\/kelola-user\/grup-user\/table",
       "methods": ["GET", "HEAD"],
@@ -564,6 +569,26 @@ var Ziggy = {
     "logout": {
       "uri": "auth\/logout",
       "methods": ["GET", "POST", "HEAD"],
+      "domain": null
+    },
+    "password.request": {
+      "uri": "auth\/password\/request",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "password.email": {
+      "uri": "auth\/password\/email",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "password.update": {
+      "uri": "auth\/password\/reset",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "password.reset": {
+      "uri": "auth\/password\/reset\/{token}",
+      "methods": ["GET", "HEAD"],
       "domain": null
     },
     "tipe-proyek.table": {
@@ -1043,6 +1068,12 @@ if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
 
 Vue.component('login-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/Auth/LoginForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/LoginForm.vue"));
+});
+Vue.component('forgot-password-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ./components/Auth/ForgotPasswordForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/ForgotPasswordForm.vue"));
+});
+Vue.component('reset-password-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./components/Auth/ResetPasswordForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/ResetPasswordForm.vue"));
 });
 Vue.component('user-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));

@@ -13,7 +13,7 @@ class SecondaryUnitController extends Controller
      
     public function __construct()
     {
-        // $this->middleware(['auth']);
+        $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
             ['href' => route('secondary-unit.index'), 'text' => 'Master Data'],

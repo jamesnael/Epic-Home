@@ -15,7 +15,7 @@ class AgentPropertyController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(['auth']);
+        $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
             ['href' => url('agent-property.index'), 'text' => 'Master Data'],

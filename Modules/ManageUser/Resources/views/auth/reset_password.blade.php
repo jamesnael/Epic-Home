@@ -6,10 +6,11 @@
         src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
         alt="Vuetify"
     ></v-img>
-    <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Masuk Dengan Akun Anda</h2>
-    <login-form
+    <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Atur Ulang Password</h2>
+    <reset-password-form
         inline-template
-        action-form="{{ route('post-login') }}"
+        token="{{ $token }}"
+        action-form="{{ route('password.update') }}"
     >
         <validation-observer v-slot="{ validate, reset }" ref="observer">
             <form method="post" enctype="multipart/form-data" ref="post-form">
@@ -28,7 +29,7 @@
                     ></v-text-field>
                 </validation-provider>
 
-                <validation-provider rules="required" name="Password" v-slot="{ errors }">
+                <validation-provider rules="required|min:8" vid="password_confirmation" name="Password" v-slot="{ errors }">
                     <v-text-field
                         class="my-4"
                         v-model="form_data.password"
@@ -46,17 +47,23 @@
                     ></v-text-field>
                 </validation-provider>
 
-                <div class="d-block d-sm-flex align-center mb-4 mb-sm-0">
-                    <v-checkbox
-                        v-model="form_data.selected"
-                        label="Ingat Saya?"
-                        name="remember"
+                <validation-provider rules="required|confirmed:password_confirmation" name="Konfirmasi Password" v-slot="{ errors }">
+                    <v-text-field
+                        class="my-4"
+                        v-model="form_data.password_confirmation"
+                        name="password_confirmation"
+                        :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="show_password ? 'text' : 'password'"
+                        @click:append="show_password = !show_password"
+                        label="Konfirmasi Password"
+                        clearable
+                        clear-icon="mdi-eraser-variant"
+                        hint="* harus diisi"
+                        :persistent-hint="true"
+                        :error-messages="errors"
                         :disabled="field_state"
-                    ></v-checkbox>
-                    <div class="ml-auto">
-                        <a href="{{ route('password.request') }}" class="link">Lupa Password?</a>
-                    </div>
-                </div>
+                    ></v-text-field>
+                </validation-provider>
 
                 <v-btn
                     class="mr-4"
@@ -68,7 +75,7 @@
                     :loading="field_state"
                     :disabled="field_state"
                 >
-                    Masuk
+                    Atur Ulang Password
                     <template v-slot:loader>
                         <span class="custom-loader">
                             <v-icon light>mdi-cached</v-icon>
@@ -88,5 +95,5 @@
                 </v-snackbar>
             </form>
         </validation-observer>
-    </login-form>
+    </reset-password-form>
 @endsection
