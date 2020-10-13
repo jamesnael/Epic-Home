@@ -21,8 +21,8 @@
                 v-model="form_data.telepon"
                 label="No handphone"
                 name="telepon"
-                v-mask="'+62############'"
-                placeholder="+62817800000000"
+                v-mask="'+##############'"
+                placeholder="+62812411111111"
                 clearable
                 clear-icon="mdi-eraser-variant"
                 hint="* harus diisi"

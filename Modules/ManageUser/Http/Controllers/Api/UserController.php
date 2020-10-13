@@ -9,6 +9,7 @@ use Modules\ManageUser\Entities\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class UserController extends Controller
 {
@@ -100,7 +101,7 @@ class UserController extends Controller
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
             'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
+            'telepon' => ['bail', 'required', new SignedPhoneNumber],
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
     }

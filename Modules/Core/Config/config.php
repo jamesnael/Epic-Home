@@ -9,7 +9,7 @@ return [
             'icon' => 'mdi-desktop-mac-dashboard',
             'icon-alt' => 'mdi-chevron-down',
             'text' => 'Dashboard',
-            'uri' => 'tipe-proyek.index',
+            'uri' => 'dashboard',
             'model' => false,
             'show' => true,
             'children' => null
