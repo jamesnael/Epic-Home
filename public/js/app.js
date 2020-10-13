@@ -416,7 +416,7 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "dashboard": {
+    "dashboard.index": {
       "uri": "\/",
       "methods": ["GET", "HEAD"],
       "domain": null

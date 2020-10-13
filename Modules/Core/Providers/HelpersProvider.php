@@ -129,10 +129,11 @@ if (! function_exists('get_file_url')) {
 
 if (! function_exists('get_access_url')) {
     function get_access_url() {
-        \Artisan::call('route:list --json');
+        \Artisan::call('route:list --json --columns=method,uri,name');
         $routes = json_decode(\Artisan::output(), true);
         $collection = collect($routes);
-        $filtered = $collection->transform(function($item) {
+        
+        $routes = $collection->transform(function($item) {
             return collect($item)->only(['method', 'uri', 'name']);
         })
         ->filter(function($item, $key) {
@@ -146,13 +147,11 @@ if (! function_exists('get_access_url')) {
                 "ignition"
             ];
             $unavailable_uri = [
-                "register", 
-                "logout", 
-                "password/", 
-                "login", 
+                "auth", 
                 "fallbackPlaceholder", 
                 "table", 
                 "/data", 
+                "api/", 
                 "helper"
             ];
 
@@ -164,46 +163,49 @@ if (! function_exists('get_access_url')) {
                 return $item;
             }
             return;
-        });
-
-        $routes = $filtered->filter()->values();
+        })->filter()->values();
 
         $output = [];
         foreach ($routes as $key => $route) {
-            $path = str_replace('api/', '', $route['uri']);
-            $array_path = explode('/', $path);
-            $main_menu = Str::title($path = str_replace('-', ' ', $array_path[0]));
-            if (!isset($array_path[1]) ||  
-                (isset($array_path[1]) && Str::contains($array_path[1], ['{', '}']))
-            ) {
-                $menu = $main_menu;
+            $array_name = explode('.', $route['name']);
+            $signed_name = [
+                "index", 
+                "create",
+                "store",
+                "show",
+                "edit",
+                "update",
+                "destroy",
+                "table",
+                "data",
+                "helper",
+            ];
+
+            if (Str::contains($array_name[1], $signed_name)) {
+                $menu = Str::title($path = str_replace('-', ' ', $array_name[0]));
             } else {
-                $menu = Str::title($path = str_replace('-', ' ', $array_path[1]));
+                $menu = Str::title($path = str_replace('-', ' ', $array_name[1]));
             }
-            $route['main_menu'] = $main_menu;
+            
             $route['menu'] = $menu;
             $array_name = explode('.', $route['name']);
             if (end($array_name) == 'index') {
-                $route['deskripsi'] = 'Tabel ' . Str::title(str_replace('-', ' ', $array_path[1]));
+                $route['deskripsi'] = 'Tabel ' . Str::title(str_replace('-', ' ', $menu));
             } elseif (end($array_name) == 'create') {
-                $route['deskripsi'] = 'Tambah ' . Str::title(str_replace('-', ' ', $array_path[1]));
+                $route['deskripsi'] = 'Tambah ' . Str::title(str_replace('-', ' ', $menu));
             } elseif (end($array_name) == 'edit') {
-                $route['deskripsi'] = 'Ubah ' . Str::title(str_replace('-', ' ', $array_path[1]));
+                $route['deskripsi'] = 'Ubah ' . Str::title(str_replace('-', ' ', $menu));
             } elseif (end($array_name) == 'show') {
-                $route['deskripsi'] = 'Detil ' . Str::title(str_replace('-', ' ', $array_path[1]));
+                $route['deskripsi'] = 'Detil ' . Str::title(str_replace('-', ' ', $menu));
             } elseif (end($array_name) == 'destroy') {
-                $route['deskripsi'] = 'Hapus ' . Str::title(str_replace('-', ' ', $array_path[1]));
+                $route['deskripsi'] = 'Hapus ' . Str::title(str_replace('-', ' ', $menu));
             } else {
                 $route['deskripsi'] = '';
             }
             $output[] = $route;
         }
 
-        $group_by_menu = collect($output)->groupBy('main_menu')->toArray();
-
-        return collect($group_by_menu)->transform(function($item) {
-            return collect($item)->groupBy('menu');
-        })->toArray();
+        return collect($output)->groupBy('menu')->toArray();
     }
 }
 

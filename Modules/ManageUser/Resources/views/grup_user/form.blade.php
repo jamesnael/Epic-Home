@@ -29,29 +29,22 @@
 
         <p>Hak Akses</p>
         <div
-            v-for="(el, idx) in accessUri"
-            :key="idx"
+            v-for="(element, index) in accessUri"
+            :key="index"
             class="pl-3 mt-6"
         >
-            <p class="mb-0"><strong>@{{ idx }}</strong></p>
-            <div
-                v-for="(element, index) in el"
-                :key="index"
-                class="pl-3 mt-6"
-            >
-                <p class="mb-0"><strong>@{{ index }}</strong></p>
-                
-                <v-checkbox
-                    v-for="akses in element"
-                    v-model="form_data.hak_akses"
-                    name="hak_akses[]"
-                    :label="akses.deskripsi"
-                    :value="akses.name"
-                    hide-details
-                    class="mt-2"
-                    :disabled="field_state"
-                ></v-checkbox>
-            </div>
+            <p class="mb-0"><strong>@{{ index }}</strong></p>
+            
+            <v-checkbox
+                v-for="akses in element"
+                v-model="form_data.hak_akses"
+                name="hak_akses[]"
+                :label="akses.deskripsi"
+                :value="akses.name"
+                hide-details
+                class="mt-2"
+                :disabled="field_state"
+            ></v-checkbox>
         </div>
 
         <v-btn
