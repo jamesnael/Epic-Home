@@ -94,7 +94,7 @@
 		}),
 		mounted() {
             this.getFormData();
-            // this.checkGoogleInit();
+            this.checkGoogleInit();
         },
 		methods: {
     		getFormData() {
@@ -107,8 +107,6 @@
     		            	if (response.data.success) {
     		            		let data = response.data.data
 
-    		            		console.log(data.progress_update)
-		            			
     		            		this.form_data = {
     		            			fasilitas_umum:[],
 	            			    	id_tipe_bangunan: data.id_tipe_bangunan,
@@ -291,41 +289,40 @@
 		            }
 		        }, 500);
         	},
-        	// GMapsProyekPrimaryInit() {
-        	// 	if (this.form_data.project_address_latitude && this.form_data.project_address_longitude) {
-	        //         var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
-			      //     	center: {lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)},
-			      //     	zoom: 14
-			      //   });
+        	GMapsProyekPrimaryInit() {
+        		if (this.form_data.latitude && this.form_data.longitude) {
+	                var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+			          	center: {lat: parseFloat(this.form_data.latitude), lng: parseFloat(this.form_data.longitude)},
+			          	zoom: 14
+			        });
 
-         //            var marker = new google.maps.Marker({
-    	    //             position: {lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)},
-    	    //             map: map
-    	    //         });
-    	    //         map.panTo({lat: parseFloat(this.form_data.project_address_latitude), lng: parseFloat(this.form_data.project_address_longitude)});
-        	// 	} else {
-	        //         var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
-			      //     	center: {lat: -6.1767287, lng: 106.829541},
-			      //     	zoom: 14
-			      //   });
+                    var marker = new google.maps.Marker({
+    	                position: {lat: parseFloat(this.form_data.latitude), lng: parseFloat(this.form_data.longitude)},
+    	                map: map
+    	            });
+    	            map.panTo({lat: parseFloat(this.form_data.latitude), lng: parseFloat(this.form_data.longitude)});
+        		} else {
+	                var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+			          	center: {lat: -6.1767287, lng: 106.829541},
+			          	zoom: 14
+			        });
 
-			      //   var marker
-        	// 	}
+			        var marker
+        		}
 
-
-		       //  map.addListener('click', (mapsMouseEvent) => {
-		       //      this.form_data.project_address_latitude = mapsMouseEvent.latLng.lat()
-		       //      this.form_data.project_address_longitude = mapsMouseEvent.latLng.lng()
-		       //      if (marker) {
-			      //       marker.setMap(null)
-		       //      }
-		       //      marker = new google.maps.Marker({
-		       //          position: mapsMouseEvent.latLng,
-		       //          map: map
-		       //      });
-		       //      map.panTo(mapsMouseEvent.latLng);
-		       //  });
-        	// },
+		        map.addListener('click', (mapsMouseEvent) => {
+		            this.form_data.latitude = mapsMouseEvent.latLng.lat()
+		            this.form_data.longitude = mapsMouseEvent.latLng.lng()
+		            if (marker) {
+			            marker.setMap(null)
+		            }
+		            marker = new google.maps.Marker({
+		                position: mapsMouseEvent.latLng,
+		                map: map
+		            });
+		            map.panTo(mapsMouseEvent.latLng);
+		        });
+        	},
 		}
 	}
 </script>

@@ -130,6 +130,22 @@ return [
                 ],
             ]
         ],
+        [
+            'icon' => 'mdi-calculator',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Transaksi',
+            'model' => false,
+            'show' => true,
+            'children' => [
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Titip Jual/Sewa Unit',
+                    'uri' => 'titip-jual-sewa.index',
+                    'model' => false,
+                    'show' => true
+                ],
+            ]
+        ],
         [  
             'icon' => 'mdi-newspaper-variant',
             'icon-alt' => 'mdi-chevron-down',

@@ -72,4 +72,9 @@ class TipeBangunan extends Model
     {
         return $this->hasMany('Modules\MasterData\Entities\SecondaryUnit', 'id_tipe_bangunan');
     }
+
+    public function titip_jual_sewa()
+    {
+        return $this->hasOne('Modules\Transaksi\Entities\TitipJualSewa', 'id_tipe_bangunan');
+    }
 }
