@@ -6,11 +6,10 @@
         src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
         alt="Vuetify"
     ></v-img>
-    <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Sign in</h2>
+    <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Masuk Dengan Akun Anda</h2>
     <login-form
         inline-template
-        {{-- action-form="{{ route('post-login') }}" --}}
-        redirect-uri="{{ url('/') }}"
+        action-form="{{ route('post-login') }}"
     >
         <validation-observer v-slot="{ validate, reset }" ref="observer">
             <form method="post" enctype="multipart/form-data" ref="post-form">
@@ -29,7 +28,7 @@
                     ></v-text-field>
                 </validation-provider>
 
-                <validation-provider rules="required|min:8" name="Password" v-slot="{ errors }">
+                <validation-provider rules="required" name="Password" v-slot="{ errors }">
                     <v-text-field
                         class="my-4"
                         v-model="form_data.password"
@@ -51,20 +50,42 @@
                     <v-checkbox
                         v-model="form_data.selected"
                         label="Ingat Saya?"
+                        name="remember"
+                        :disabled="field_state"
                     ></v-checkbox>
                     <div class="ml-auto">
-                        <a href="#" class="link">Lupa Password?</a>
+                        <a href="{{ route('password.request') }}" class="link">Lupa Password?</a>
                     </div>
                 </div>
 
-                <v-btn 
+                <v-btn
                     class="mr-4"
                     light
                     color="info"
                     block
+                    type="submit"
+                    @click.prevent="submitForm"
+                    :loading="field_state"
+                    :disabled="field_state"
                 >
-                    SIGN IN
+                    Masuk
+                    <template v-slot:loader>
+                        <span class="custom-loader">
+                            <v-icon light>mdi-cached</v-icon>
+                        </span>
+                    </template>
                 </v-btn>
+
+                <v-snackbar
+                    v-model="form_alert_state"
+                    top
+                    multi-line
+                    :color="form_alert_color"
+                    elevation="5"
+                    timeout="6000"
+                >
+                    @{{ form_alert_text }}
+                </v-snackbar>
             </form>
         </validation-observer>
     </login-form>

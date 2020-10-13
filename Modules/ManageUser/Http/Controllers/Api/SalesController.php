@@ -163,7 +163,7 @@ class SalesController extends Controller
 
         $query = User::with('sales')->whereHas('sales',  function($subquery){
             $subquery->whereNull('status_sales');
-        })->where('is_sales', true);
+        })->isSales();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -212,7 +212,7 @@ class SalesController extends Controller
 
         $query = User::with('sales')->whereHas('sales',  function($subquery){
             $subquery->whereNotNull('status_sales');
-        })->where('is_sales', true);
+        })->isSales();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {

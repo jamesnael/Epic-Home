@@ -9,6 +9,7 @@ use Modules\ManageUser\Entities\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class UserController extends Controller
 {
@@ -54,6 +55,10 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $user->update($request->all());
+            log_activity(
+                'Update user ' . $user->nama,
+                $user
+            );
             DB::commit();
             return response_json(true, null, 'User berhasil disimpan.', $user);
         } catch (\Exception $e) {
@@ -100,7 +105,7 @@ class UserController extends Controller
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
             'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
+            'telepon' => ['bail', 'required', new SignedPhoneNumber],
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
     }
@@ -119,7 +124,7 @@ class UserController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = User::where('is_sales', false)->where('is_customer', false);
+        $query = User::isAdmin();
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {

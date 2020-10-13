@@ -119,7 +119,7 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = Customer::where('is_customer', true)->whereNull('email');
+        $query = Customer::isCustomer()->whereNull('email');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
@@ -155,7 +155,7 @@ class CustomerController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = Customer::where('is_customer', true)->whereNotNull('email');
+        $query = Customer::isCustomer()->whereNotNull('email');
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {

@@ -100,7 +100,8 @@ class CoreServiceProvider extends ServiceProvider
     protected function registerCommands()
     {
         $this->commands([
-            \Modules\Core\Console\GenerateZiggyCommand::class
+            \Modules\Core\Console\GenerateZiggyCommand::class,
+            \Modules\Core\Console\GenerateMainMenuCommand::class
         ]);
     }
 

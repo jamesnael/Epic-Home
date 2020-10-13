@@ -9,7 +9,7 @@ return [
             'icon' => 'mdi-desktop-mac-dashboard',
             'icon-alt' => 'mdi-chevron-down',
             'text' => 'Dashboard',
-            'uri' => 'tipe-proyek.index',
+            'uri' => 'dashboard.index',
             'model' => false,
             'show' => true,
             'children' => null
@@ -147,13 +147,20 @@ return [
             ]
         ],
         [  
-            'icon' => 'mdi-newspaper-variant',
+            'icon' => 'mdi-newspaper-variant-outline',
             'icon-alt' => 'mdi-chevron-down',
             'text' => 'Berita Properti',
             'uri' => 'berita-properti.index',
             'model' => false,
             'show' => true,
             'children' => null
+        ],
+    ],
+    'user_menu' => [
+        [  
+            'icon' => 'mdi-power',
+            'text' => 'Logout',
+            'uri' => 'logout',
         ],
     ]
 ];

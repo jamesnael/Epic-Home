@@ -12,7 +12,7 @@ class DeveloperController extends Controller
      
     public function __construct()
     {
-        // $this->middleware(['auth']);
+        $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
             ['href' => route('developer.index'), 'text' => 'Master Data'],
