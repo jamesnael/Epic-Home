@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\ManageUser\Http\Controllers\View;
+namespace Modules\ManageUser\Http\Controllers\Auth\Backend;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
