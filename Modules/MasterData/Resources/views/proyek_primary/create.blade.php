@@ -11,6 +11,7 @@
                         :filter-tipe-proyek='@json($tipe_proyek)'
                         :filter-tipe-bangunan='@json($tipe_bangunan)'
                         :filter-developer='@json($developer)'
+                        :filter-status_unit='@json($status_unit)'
 	    				action-form="{{ route('proyek-primary.store') }}"
 	    				redirect-uri="{{ route('proyek-primary.index') }}">
 		    			@include('masterdata::proyek_primary.form')

@@ -46,6 +46,12 @@
 			    default: function () {
 			        return []
 			    }
+			},
+			filterStatusUnit: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
 			}
 		},
 		data: () => ({

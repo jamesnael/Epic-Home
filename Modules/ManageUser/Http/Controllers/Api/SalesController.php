@@ -24,7 +24,7 @@ class SalesController extends Controller
         $validator = $this->validateFormRequest($request);
 
         if ($validator->fails()) {
-            return response_json(false, $validator->errors()->get(), $validator->errors()->first());
+            return response_json(false, $validator->errors(), $validator->errors()->first());
         }
 
         DB::beginTransaction();
@@ -68,7 +68,7 @@ class SalesController extends Controller
         $validator = $this->validateFormRequest($request);
 
         if ($validator->fails()) {
-            return response_json(false, $validator->errors()->get(), $validator->errors()->first());
+            return response_json(false, $validator->errors(), $validator->errors()->first());
         }
 
         DB::beginTransaction();
@@ -137,13 +137,37 @@ class SalesController extends Controller
      * Validation Rules for Store/Update Data
      *
      */
-    public function validateFormRequest($request)
+    public function validateFormRequest($request, $id = null)
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            // 'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
             'telepon' => 'bail|required',
-            'password' => 'bail|sometimes|confirmed|min:8'
+            'password' => 'bail|sometimes|confirmed|min:8',
+            'no_telepon_agent_referensi' => 'bail|nullable',
+            'tipe_agent' => 'bail|nullable',
+            'kantor_agent' => 'bail|nullable',
+            'nama_depan' => 'bail|nullable',
+            'nama_belakang' => 'bail|nullable',
+            'no_ktp' => 'bail|nullable',
+            'jenis_kelamin' => 'bail|nullable',
+            'tempat_lahir' => 'bail|nullable',
+            'tanggal_lahir' => 'bail|nullable',
+            'alamat' => 'bail|nullable',
+            'provinsi' => 'bail|nullable',
+            'kota' => 'bail|nullable',
+            'kecamatan' => 'bail|nullable',
+            'kelurahan' => 'bail|nullable',
+            'rt' => 'bail|nullable',
+            'rw' => 'bail|nullable',
+            'no_rekening' => 'bail|nullable',
+            'nama_rekening' => 'bail|nullable',
+            'bank' => 'bail|nullable',
+            'no_npwp' => 'bail|nullable',
+            'note' => 'bail|nullable',
+            'foto_ktp' => 'bail|nullable',
+            'foto_selfie' => 'bail|nullable',
+            'status_sales' => 'bail|nullable'
         ]);
     }
 

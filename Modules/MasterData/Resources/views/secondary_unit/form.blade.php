@@ -516,6 +516,7 @@
                 >
                     <a :href="el" target="_blank">
                         <v-card
+                            v-if="el"
                             class="mx-auto"
                             min-height="150"
                             max-height="150"

@@ -1481,6 +1481,16 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "transaksi-pemesanan.store": {
+      "uri": "transaksi\/transaksi-pemesanan",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "klien.store": {
+      "uri": "transaksi\/klien",
+      "methods": ["POST"],
+      "domain": null
+    },
     "titip-jual-sewa.index": {
       "uri": "transaksi\/titip-jual-sewa",
       "methods": ["GET", "HEAD"],
@@ -1595,7 +1605,7 @@ Vue.component('agent-property-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));

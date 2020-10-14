@@ -11,6 +11,9 @@
 |
 */
 
+Auth::loginUsingId(5);
+
+
 Route::middleware('auth')->group(function() {
 	require __DIR__.'/api.php';
 });

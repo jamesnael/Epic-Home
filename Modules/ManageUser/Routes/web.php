@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::loginUsingId(1);
 
 Route::middleware('auth')->group(function() {
 	require __DIR__.'/api.php';

@@ -12,7 +12,7 @@ class SecondaryUnit extends Model
 {
     use Sluggable, SoftDeletes;
 
-    protected $table = 'ms_secondary_unit';
+    protected $table = 'ms_unit';
 
     protected $fillable = [
          'id_tipe_bangunan',
@@ -53,24 +53,40 @@ class SecondaryUnit extends Model
 
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
     protected $dates = [
-            'deleted_at',
+        'deleted_at',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
-            'kelengkapan_surat' => 'array',
-            'furniture_termasuk'=> 'array',
-            'gallery_unit'      => 'array',
+        'kelengkapan_surat' => 'array',
+        'furniture_termasuk'=> 'array',
+        'gallery_unit'      => 'array',
     ];
 
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
     public function sluggable()
     {
-            return [
-                    'slug' => [
-                            'source' => ['nama_unit']
-                    ]
-            ];
+        return [
+            'slug' => [
+                'source' => ['nama_unit']
+            ]
+        ];
     }
+
 
     /**
      * Get the route key for the model.
@@ -82,9 +98,13 @@ class SecondaryUnit extends Model
             return 'slug';
     }
 
-        public function tipe_bangunan()
+    /**
+     * Get the relationship for the model.
+     */
+
+    public function tipe_bangunan()
     {
-            return $this->belongsTo('Modules\MasterData\Entities\TipeBangunan', 'id_tipe_bangunan');
+        return $this->belongsTo('Modules\MasterData\Entities\TipeBangunan', 'id_tipe_bangunan');
     }
 
 

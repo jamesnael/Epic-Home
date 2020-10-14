@@ -3,6 +3,8 @@
 namespace Modules\Transaksi\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Klien extends Model
 {

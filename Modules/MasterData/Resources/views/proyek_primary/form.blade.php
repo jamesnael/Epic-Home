@@ -33,7 +33,7 @@
                 label="Status Unit"
                 hint="* harus diisi"
                 name="status_unit"
-                :items="['Dijual', 'Disewa', 'Dijual/Disewa']"
+                :items="filterStatusUnit"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -113,6 +113,7 @@
                     clearable
                     name="latitude"
                     :disabled="field_state"
+                    :readonly="!field_state"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
@@ -124,6 +125,7 @@
                     name="longitude"
                     :persistent-hint="true"
                     :disabled="field_state"
+                    :readonly="!field_state"
                 ></v-text-field>
             </v-col>
         </v-row>
@@ -137,6 +139,8 @@
                 name="google_map_gallery[]"
                 label="Google Map Gallery"
                 prepend-icon="mdi-camera"
+                clearable
+                clear-icon="mdi-eraser-variant"
                 :disabled="field_state"
             >
             </v-file-input>
@@ -168,7 +172,7 @@
 
         <validation-provider rules="required|numeric" name="Harga mulai dari" v-slot="{ errors }">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_awal"
                 label="Harga Mulai Dari"
                 clearable
@@ -183,7 +187,7 @@
         </validation-provider>
         <validation-provider rules="required|numeric" name="NUP" v-slot="{ errors }">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.nup"
                 label="NUP"
                 clearable
@@ -198,7 +202,7 @@
         </validation-provider>
         <validation-provider rules="required|numeric" name="UTJ" v-slot="{ errors }">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.utj"
                 label="UTJ"
                 name="utj"
@@ -227,7 +231,7 @@
         </validation-provider>
         <validation-provider rules="required|numeric" name="Closing fee hingga" v-slot="{ errors }">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.closing_fee"
                 name="closing_fee"
                 label="Closing Fee Hingga"

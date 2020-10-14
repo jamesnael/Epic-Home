@@ -15,7 +15,7 @@ class TransaksiPemesanan extends Model
      *
      * @var string
      */
-    protected $table = 'tb_transaksi_penjualan';
+    protected $table = 'tb_transaksi_pemesanan';
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +29,7 @@ class TransaksiPemesanan extends Model
 		'jumlah_bayar',
 		'terbilang',
 		'keterangan',
+        'status',
     ];
 
     /**

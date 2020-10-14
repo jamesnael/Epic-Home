@@ -15,8 +15,17 @@ use Illuminate\Http\Request;
 Route::prefix('transaksi')->namespace('Api')->group(function() {
 	Route::get('titip-jual-sewa/table', 'TitipJualSewaController@table')->name('titip-jual-sewa.table');
 	Route::get('titip-jual-sewa/table-sukses', 'TitipJualSewaController@tableSucess')->name('titip-jual-sewa-sukses.table');
+
 	Route::get('titip-jual-sewa/{titip_jual_sewa}/data', 'TitipJualSewaController@data')->name('titip-jual-sewa.data');
 	Route::apiResource('titip-jual-sewa', 'TitipJualSewaController')->only([
 	    'store', 'update', 'destroy'
+	]);
+
+	Route::apiResource('transaksi-pemesanan', 'TransaksiPemesananController')->only([
+	    'store'
+	]);
+
+	Route::apiResource('klien', 'KlienController')->only([
+	    'store'
 	]);
 });

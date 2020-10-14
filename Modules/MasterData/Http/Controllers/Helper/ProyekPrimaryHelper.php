@@ -23,6 +23,7 @@ class ProyekPrimaryHelper extends Controller
             'tipe_proyek' => TipeProyek::select('id AS value', 'nama AS text')->get(),
             'tipe_bangunan' => TipeBangunan::select('id AS value', 'nama_tipe_bangunan AS text')->get(),
             'developer' => Developer::select('id AS value', 'nama_developer AS text')->get(),
+            'status_unit' => ['Dijual', 'Disewa', 'Dijual/Disewa'],
         ];
     }
 
