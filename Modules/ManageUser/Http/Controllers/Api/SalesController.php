@@ -53,7 +53,13 @@ class SalesController extends Controller
 
             }
             $data->save();
-            
+            log_activity(
+                'Tambah sales ' . $user->nama,
+                [
+                    $user,
+                    $user->sales
+                ]
+            );
             DB::commit();
             return response_json(true, null, 'Sales berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -77,7 +83,8 @@ class SalesController extends Controller
 
             $sales->update($request->only(['nama','email','telepon']));
             
-            $sales->sales->update($request->all());
+            $data = $sales->sales;
+            $data->update($request->all());
 
             if ($request->hasFile('foto_ktp')) {
                 $file_name =  $sales->nama .'-'. uniqid() . '.' . $request->file('foto_ktp')->getClientOriginalExtension();
@@ -97,7 +104,13 @@ class SalesController extends Controller
 
             $data->save();
 
-
+            log_activity(
+                'Ubah sales ' . $sales->nama,
+                [
+                    $sales,
+                    $sales->sales
+                ]
+            );
             DB::commit();
             return response_json(true, null, 'Sales berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -112,6 +125,13 @@ class SalesController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus sales ' . $sales->nama,
+                [
+                    $sales,
+                    $sales->sales
+                ]
+            );
             $sales->sales->delete();
             $sales->delete();
             DB::commit();

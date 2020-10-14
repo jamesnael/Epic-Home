@@ -29,7 +29,10 @@ class CustomerController extends Controller
         try {
             $request->merge(['is_customer' => true]);
             $data = Customer::create($request->all());
-            
+            log_activity(
+                'Tambah customer ' . $data->nama,
+                $data
+            );
             DB::commit();
             return response_json(true, null, 'Customer berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -55,6 +58,10 @@ class CustomerController extends Controller
         DB::beginTransaction();
         try {
             $customer->update($request->all());
+            log_activity(
+                'Ubah customer ' . $customer->nama,
+                $customer
+            );
             DB::commit();
             return response_json(true, null, 'Customer berhasil disimpan.', $customer);
         } catch (\Exception $e) {
@@ -72,6 +79,10 @@ class CustomerController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus customer ' . $customer->nama,
+                $customer
+            );
             $customer->delete();
             DB::commit();
             return response_json(true, null, 'Customer berhasil dihapus.');

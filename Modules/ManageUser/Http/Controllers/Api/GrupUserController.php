@@ -27,6 +27,10 @@ class GrupUserController extends Controller
         DB::beginTransaction();
         try {
             $data = UserGroup::create($request->all());
+            log_activity(
+                'Tambah grup user ' . $data->nama,
+                $data
+            );
             DB::commit();
             return response_json(true, null, 'Grup user berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -52,6 +56,10 @@ class GrupUserController extends Controller
         DB::beginTransaction();
         try {
             $grup_user->update($request->all());
+            log_activity(
+                'Ubah grup user ' . $grup_user->nama,
+                $grup_user
+            );
             DB::commit();
             return response_json(true, null, 'Grup user berhasil disimpan.', $grup_user);
         } catch (\Exception $e) {
@@ -69,6 +77,10 @@ class GrupUserController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus grup user ' . $grup_user->nama,
+                $grup_user
+            );
             $grup_user->delete();
             DB::commit();
             return response_json(true, null, 'Grup user berhasil dihapus.');
