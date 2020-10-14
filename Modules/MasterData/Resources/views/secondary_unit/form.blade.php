@@ -94,6 +94,7 @@
                     v-model="form_data.latitude"
                     label="Latitude"
                     clearable
+                    clear-icon="mdi-eraser-variant"
                     name="latitude"
                     :disabled="field_state"
                 ></v-text-field>
@@ -104,6 +105,7 @@
                     v-model="form_data.longitude"
                     label="Longitude"
                     clearable
+                    clear-icon="mdi-eraser-variant"
                     name="longitude"
                     :persistent-hint="true"
                     :disabled="field_state"
@@ -386,6 +388,7 @@
                 v-model="form_data.harga_unit"
                 label="Harga Unit"
                 name="harga_unit"
+                hide-details
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
@@ -401,6 +404,7 @@
                 v-model="form_data.harga_per_meter"
                 label="Harga/Meter"
                 name="harga_per_meter"
+                hide-details
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
@@ -531,6 +535,7 @@
             <v-file-input
                 small-chips
                 multiple
+                clear-icon="mdi-eraser-variant"
                 accept="image/*"
                 name="gallery_unit[]"
                 label="Gambar Rumah"

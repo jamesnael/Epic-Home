@@ -73,6 +73,7 @@
                 accept="image/*"
                 name="logo_agent"
                 label="Logo"
+                clear-icon="mdi-eraser-variant"
                 prepend-icon="mdi-camera"
                 :disabled="field_state"
             >

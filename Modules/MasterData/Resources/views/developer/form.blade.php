@@ -69,6 +69,7 @@
                     v-model="form_data.latitude"
                     label="Latitude"
                     clearable
+                    clear-icon="mdi-eraser-variant"
                     name="latitude"
                     :disabled="field_state"
                 ></v-text-field>
@@ -79,6 +80,7 @@
                     v-model="form_data.longitude"
                     label="Longitude"
                     clearable
+                    clear-icon="mdi-eraser-variant"
                     name="longitude"
                     :persistent-hint="true"
                     :disabled="field_state"
@@ -104,6 +106,7 @@
                 multiple
                 accept="image/*"
                 name="logo_developer"
+                clear-icon="mdi-eraser-variant"
                 label="Logo"
                 prepend-icon="mdi-camera"
                 :disabled="field_state"
