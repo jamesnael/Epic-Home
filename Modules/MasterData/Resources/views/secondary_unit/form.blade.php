@@ -310,7 +310,9 @@
                     :persistent-hint="true"
                     :error-messages="errors"
                     :disabled="field_state"
-                ></v-text-field>
+                >
+                    <span slot="append">Watt</span>
+                </v-text-field>
         </validation-provider>
         <v-row>
             <v-col cols="12" md="6">
