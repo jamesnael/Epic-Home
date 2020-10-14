@@ -18,16 +18,6 @@ class BeritaPropertiHelper extends Controller
     {
         return [
             'tag' => TagBerita::pluck('nama'),
-            'publish' => [
-                array(
-                    'value' => '1',
-                    'text' => 'Publish',
-                ),
-                array(
-                    'value' => '0',
-                    'text' => 'Unpublish',
-                )
-            ],
         ];
     }
 

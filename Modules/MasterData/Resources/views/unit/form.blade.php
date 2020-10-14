@@ -3,11 +3,12 @@
         <validation-provider v-slot="{ errors }" name="Nama Proyek" rules="required">
              <v-autocomplete
                 class="my-4"
-                v-model="form_data.id_proyek_primari" 
+                v-model="idProyekPrimary" 
                 :items="filterProyekPrimari"
                 label="Nama Proyek"
                 name="id_proyek_primari"
                 hint="* harus diisi"
+                readonly
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"

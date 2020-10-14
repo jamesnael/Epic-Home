@@ -97,16 +97,11 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
-    },
-    filterPublish: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
     }
   },
   data: function data() {
     return {
+      search_kategori: null,
       form_data: {
         menu: '',
         kategori: '',
@@ -132,6 +127,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         axios.get(this.dataUri).then(function (response) {
           if (response.data.success) {
             var data = response.data.data;
+            console.log(data);
             _this.form_data = {
               menu: data.menu,
               kategori: data.kategori,
@@ -185,9 +181,11 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       if (this.dataUri) {
         form_data.append("_method", "put");
         form_data.append("jawaban", this.form_data.jawaban);
+        form_data.append("publish", this.form_data.publish);
       }
 
       form_data.append("jawaban", this.form_data.jawaban);
+      form_data.append("publish", this.form_data.publish);
       axios.post(this.actionForm, form_data).then(function (response) {
         if (response.data.success) {
           _this3.form_alert_state = true;

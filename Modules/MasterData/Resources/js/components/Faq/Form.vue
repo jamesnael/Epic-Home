@@ -36,14 +36,9 @@
 			        return []
 			    }
 			},
-			filterPublish: {
-			    type: Array,
-			    default: function () {
-			        return []
-			    }
-			},
 		},
 		data: () => ({
+			search_kategori: null,
 			form_data: {
 				menu: '',
 				kategori: '',
@@ -69,6 +64,7 @@
     		            .then(response => {
     		            	if (response.data.success) {
     		            		let data = response.data.data
+    		            			console.log(data)
     		            		this.form_data = {
     		            			menu: data.menu,
     		            			kategori: data.kategori,
@@ -120,8 +116,10 @@
 	    		if (this.dataUri) {
 	    		    form_data.append("_method", "put");
 	    		    form_data.append("jawaban", this.form_data.jawaban)
+	    		    form_data.append("publish", this.form_data.publish)
 	    		}
 	    		form_data.append("jawaban", this.form_data.jawaban)
+	    		form_data.append("publish", this.form_data.publish)
 
 	    		axios.post(this.actionForm, form_data)
 	    		    .then((response) => {

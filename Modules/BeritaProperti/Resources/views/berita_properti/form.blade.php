@@ -26,6 +26,7 @@
                 hint="* harus diisi"
                 hide-selected
                 multiple
+                chips
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -85,9 +86,30 @@
                 label="Thumbnail"
                 name="thumbnail"
             ></v-file-input>
-            <a :href="form_data.thumbnail" target="_blank" class="ml-8">
-                <small>@{{form_data.thumbnail}}</small>
-            </a>
+            <v-row class="mb-3">
+                <v-col
+                    v-if="form_data.url_thumbnail"
+                    cols="12"
+                    md="3"
+                >
+                    <a :href="form_data.url_thumbnail" target="_blank">
+                        <v-card
+                            class="mx-auto"
+                            min-height="150"
+                            max-height="150"
+                            max-width="250"
+                            tile
+                        >
+                            <v-img
+                                max-height="150"
+                                max-width="250"
+                                :src="form_data.url_thumbnail"
+                            ></v-img>
+                        </v-card>
+                        
+                    </a>
+                </v-col>
+            </v-row>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Banner" rules="image">
@@ -101,9 +123,30 @@
                 name="banner[]"
                 multiple
             ></v-file-input>
-            <a :href="form_data.banner" target="_blank" class="ml-8">
-                <small>@{{form_data.banner}}</small>
-            </a>
+            <v-row class="mb-3">
+                <v-col
+                    v-for="(el, idx) in form_data.url_banner"
+                    cols="12"
+                    md="3"
+                >
+                    <a :href="el" target="_blank">
+                        <v-card
+                            class="mx-auto"
+                            min-height="150"
+                            max-height="150"
+                            max-width="250"
+                            tile
+                        >
+                            <v-img
+                                max-height="150"
+                                max-width="250"
+                                :src="el"
+                            ></v-img>
+                        </v-card>
+                        
+                    </a>
+                </v-col>
+            </v-row>
         </validation-provider>
         
         <validation-provider rules="required" name="Penulis|max:190" v-slot="{ errors }">
@@ -147,19 +190,15 @@
             <v-date-picker name="publish_date" v-model="form_data.publish_date" @input="menu1 = false"></v-date-picker>
         </v-menu>
 
-        <validation-provider rules="required" name="Publish" v-slot="{ errors }">
-            <v-select
-                class="my-4"
-                v-model="form_data.publish" 
-                :items="filterPublish"
-                label="Publish"
-                name="publish"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :readonly="field_state"
-            ></v-select>
-        </validation-provider>
+        <v-switch
+            class="my-4"
+            v-model="form_data.publish"
+            name="publish"
+            label="Publish"
+            :true-value="1"
+            :false-value="0"
+            inset
+        ></v-switch>
 
         <v-btn
         	class="mr-4"

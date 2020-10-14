@@ -20,8 +20,8 @@ class UnitController extends Controller
         // $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
-            ['href' => url('/'), 'text' => 'Master Data'],
-            ['href' => url('proyek-primary.index'), 'text' => 'Proyek Primary'],
+            ['href' => route('proyek-primary.index'), 'text' => 'Master Data'],
+            ['href' => route('proyek-primary.index'), 'text' => 'Proyek Primary'],
         ];
 
         $this->helper = new UnitHelper;
@@ -94,12 +94,14 @@ class UnitController extends Controller
      */
     public function create(ProyekPrimary $proyek_primary)
     {
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.index',[$proyek_primary->slug]), 'text' => 'Unit'];
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.index',[$proyek_primary->slug]), 'text' => 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? ''];
         $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.create', [ $proyek_primary->slug ]), 'text' => 'Tambah Unit'];
 
         return view('masterdata::unit.create')
             ->with('page_title', 'Tambah Unit')
             ->with('breadcrumbs', $this->breadcrumbs)
-            ->with($this->helper->getHelper())
+            ->with($this->helper->getHelper($proyek_primary))
             ->with('proyek_primary', $proyek_primary);
     }
 
@@ -110,12 +112,19 @@ class UnitController extends Controller
      */
     public function edit(Unit $unit)
     {
-        $this->breadcrumbs[] = ['href' => route('unit.edit', [ $unit->id ]), 'text' => 'Ubah Unit ' . $unit->nama];
+        $unit_proyek_primary = Unit::with('proyek_primary')->first();
+        $proyek_primary      = $unit_proyek_primary->proyek_primary;
+
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.index',[$proyek_primary->slug]), 'text' => 'Unit'];
+        $this->breadcrumbs[] = ['href' => route('proyek-primary.unit.index',[$proyek_primary->slug]), 'text' => 'Unit Proyek Primary ' . $proyek_primary->nama_proyek ?? ''];
+        $this->breadcrumbs[] = ['href' => route('unit.edit', [ $unit->id ]), 'text' => 'Ubah Unit Blok ' . $unit->blok . ' No.' . $unit->nomor_unit];
+
 
         return view('masterdata::unit.edit')
             ->with('data', $unit)
-            ->with('page_title', 'Ubah Unit ' . $unit->nama_tipe_unit)
+            ->with('proyek_primary', $proyek_primary)
+            ->with('page_title', 'Ubah Unit Blok ' . $unit->blok . ' No.' . $unit->nomor_unit)
             ->with('breadcrumbs', $this->breadcrumbs)
-            ->with($this->helper->getHelper());
+            ->with($this->helper->getHelper($proyek_primary));
     }
 }
