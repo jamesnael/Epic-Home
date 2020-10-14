@@ -48,7 +48,7 @@ class ForgotPasswordController extends Controller
         $validator = $this->validateFormRequest($request);
 
         if ($validator->fails()) {
-            return response_json(false, $validator->errors()->get(), $validator->errors()->first());
+            return response_json(false, $validator->errors(), $validator->errors()->first());
         }
 
         $status = Password::sendResetLink(
