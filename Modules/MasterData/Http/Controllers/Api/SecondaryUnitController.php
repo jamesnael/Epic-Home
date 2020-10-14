@@ -9,6 +9,7 @@ use Modules\MasterData\Entities\SecondaryUnit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class SecondaryUnitController extends Controller
 {
@@ -141,7 +142,7 @@ class SecondaryUnitController extends Controller
     {
         return Validator::make($request->all(), [
             'nama_unit' => 'bail|required'
-            
+            'no_telepon_pemilik' => ['bail', 'required', new SignedPhoneNumber],
         ]);
     }
 

@@ -10,6 +10,7 @@ use Modules\MasterData\Entities\ProyekPrimaryDetail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class ProyekPrimaryController extends Controller
 {
@@ -269,7 +270,7 @@ class ProyekPrimaryController extends Controller
             'estimasi_selesai' => 'bail|required',
             'lingkungan_sekitar' => 'bail|required',
             'jumlah_tower' => 'bail|required',
-            'nomor_handphone' => 'bail|required',
+            'nomor_handphone' => ['bail', 'required', new SignedPhoneNumber],
             'copywriting' => 'bail|required',
             'banner_proyek' => 'bail|nullable',
             'product_knowledge' => 'bail|nullable',
