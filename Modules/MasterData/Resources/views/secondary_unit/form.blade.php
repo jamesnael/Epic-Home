@@ -124,7 +124,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">m<sup>2</sup></span>
+            </v-text-field>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Luas bangunan" rules="required|numeric">
@@ -138,7 +140,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">m<sup>2</sup></span>
+            </v-text-field>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Status bangunan" rules="required">
@@ -384,7 +388,7 @@
 
          <validation-provider v-slot="{ errors }" name="Harga Unit" rules="required|numeric">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_unit"
                 label="Harga Unit"
                 name="harga_unit"
@@ -400,7 +404,7 @@
 
          <validation-provider v-slot="{ errors }" name="Harga/Meter" rules="required|numeric">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_per_meter"
                 label="Harga/Meter"
                 name="harga_per_meter"
@@ -428,7 +432,7 @@
             ></v-autocomplete>
         </validation-provider>
 
-        <h3 class="mt-4">DATA PEMILIK</h3>
+        <h3 class="mt-8">DATA PEMILIK</h3>
         
           <validation-provider v-slot="{ errors }" name="Nama pemilik" rules="required">
             <v-text-field
