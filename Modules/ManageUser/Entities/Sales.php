@@ -66,5 +66,13 @@ class Sales extends Model
         return $this->belongsTo('Modules\ManageUser\Entities\User', 'id_user');
     }
 
+    /**
+     * Get the relationship for the model.
+     */
+    public function units()
+    {
+        return $this->hasMany('Modules\MasterData\Entities\Unit', 'id_sales');
+    }
+
 
 }

@@ -45,6 +45,32 @@ class TransaksiPemesananController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param TransaksiPemesanan $transaksi_pemesanan
+     * @return Renderable
+     */
+    public function update(Request $request, TransaksiPemesanan $transaksi_pemesanan)
+    {
+        $validator = $this->validateFormRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, $validator->errors(), $validator->errors()->first());
+        }
+
+        DB::beginTransaction();
+        try {
+            $transaksi_pemesanan->update($request->all());
+
+            DB::commit();
+            return response_json(true, null, 'Transaksi pemesanan unit berhasil disimpan.', $transaksi_pemesanan);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
+        }
+    }
+
+    /**
      *
      * Validation Rules for Store/Update Data
      *
@@ -68,6 +94,7 @@ class TransaksiPemesananController extends Controller
      */
     public function data(TransaksiPemesanan $transaksi_pemesanan)
     {
+        $transaksi_pemesanan->load('klien', 'unit', 'unit.sales.user', 'unit.tipe_unit', 'unit.proyek_primary');
         return response_json(true, null, 'Data retrieved', $transaksi_pemesanan);
     }
 

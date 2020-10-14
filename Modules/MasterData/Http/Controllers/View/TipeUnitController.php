@@ -34,7 +34,7 @@ class TipeUnitController extends Controller
     {
         $table_headers = [
             [
-                "text" => 'Tipe Proyek',
+                "text" => 'Proyek Primary',
                 "align" => 'center',
                 "sortable" => false,
                 "value" => 'nama_proyek_primary',

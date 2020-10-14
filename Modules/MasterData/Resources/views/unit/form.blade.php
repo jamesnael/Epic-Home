@@ -69,13 +69,13 @@
         </validation-provider>
         <validation-provider v-slot="{ errors }" name="Harga Unit" rules="required|numeric|min:0">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_unit"
                 label="Harga Unit"
                 name="harga_unit"
                 clearable
+                hide-details
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -84,13 +84,13 @@
         </validation-provider>
         <validation-provider v-slot="{ errors }" name="Harga Per Meter" rules="required|numeric|min:0">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_per_meter"
                 label="Harga Per Meter"
                 name="harga_per_meter"
                 clearable
+                hide-details
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -109,7 +109,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">m<sup>2</sup></span>
+            </v-text-field>
         </validation-provider>
         <validation-provider v-slot="{ errors }" name="Luas Bangunan" rules="required|numeric|min:0">
             <v-text-field
@@ -123,7 +125,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">m<sup>2</sup></span>
+            </v-text-field>
         </validation-provider>
         <validation-provider v-slot="{ errors }" name="Arah Bangunan" rules="required">
             <v-text-field
@@ -207,7 +211,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">Watt</span>
+            </v-text-field>
         </validation-provider>
         <validation-provider v-slot="{ errors }" name="Lebar Jalan Depan" rules="required|numeric|min:0">
             <v-text-field

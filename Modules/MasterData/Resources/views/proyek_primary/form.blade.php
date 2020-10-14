@@ -130,45 +130,43 @@
             </v-col>
         </v-row>
         
-        <div  class="mb-4 my-4">
-            <v-file-input
-                multiple
-                counter
-                small-chips
-                accept="image/*"
-                name="google_map_gallery[]"
-                label="Google Map Gallery"
-                prepend-icon="mdi-camera"
-                clearable
-                clear-icon="mdi-eraser-variant"
-                :disabled="field_state"
+        <v-file-input
+            multiple
+            counter
+            small-chips
+            accept="image/*"
+            name="google_map_gallery[]"
+            label="Google Map Gallery"
+            prepend-icon="mdi-camera"
+            clearable
+            clear-icon="mdi-eraser-variant"
+            :disabled="field_state"
+        >
+        </v-file-input>
+        <v-row>
+            <v-col
+                v-for="(el, idx) in form_data.url_google_map_gallery"
+                cols="12"
+                md="3"
             >
-            </v-file-input>
-            <v-row>
-                <v-col
-                    v-for="(el, idx) in form_data.url_google_map_gallery"
-                    cols="12"
-                    md="3"
-                >
-                    <a :href="el" target="_blank">
-                        <v-card
-                            class="mx-auto"
-                            min-height="150"
+                <a :href="el" target="_blank">
+                    <v-card
+                        class="mx-auto"
+                        min-height="150"
+                        max-height="150"
+                        max-width="250"
+                        tile
+                    >
+                        <v-img
                             max-height="150"
                             max-width="250"
-                            tile
-                        >
-                            <v-img
-                                max-height="150"
-                                max-width="250"
-                                :src="el"
-                            ></v-img>
-                        </v-card>
-                        
-                    </a>
-                </v-col>
-            </v-row>
-        </div>
+                            :src="el"
+                        ></v-img>
+                    </v-card>
+                    
+                </a>
+            </v-col>
+        </v-row>
 
         <validation-provider rules="required|numeric" name="Harga mulai dari" v-slot="{ errors }">
             <v-text-field
@@ -176,9 +174,9 @@
                 v-model="form_data.harga_awal"
                 label="Harga Mulai Dari"
                 clearable
+                hide-details
                 clear-icon="mdi-eraser-variant"
                 name="harga_awal"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -191,9 +189,9 @@
                 v-model="form_data.nup"
                 label="NUP"
                 clearable
+                hide-details
                 clear-icon="mdi-eraser-variant"
                 name="nup"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -207,8 +205,8 @@
                 label="UTJ"
                 name="utj"
                 clearable
+                hide-details
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -236,8 +234,8 @@
                 name="closing_fee"
                 label="Closing Fee Hingga"
                 clearable
+                hide-details
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"

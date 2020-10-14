@@ -75,4 +75,20 @@ class Unit extends Model
     {
         return $this->belongsTo('Modules\MasterData\Entities\ProyekPrimary', 'id_proyek_primari');
     }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function transaksi()
+    {
+        return $this->hasMany('Modules\Transaksi\Entities\TransaksiPemesanan', 'id_unit');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function sales()
+    {
+        return $this->belongsTo('Modules\ManageUser\Entities\Sales', 'id_sales');
+    }
 }

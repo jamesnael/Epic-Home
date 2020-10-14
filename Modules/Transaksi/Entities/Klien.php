@@ -64,4 +64,12 @@ class Klien extends Model
         return 'slug';
     }
 
+    /**
+     * Get the relationship for the model.
+     */
+    public function transaksi()
+    {
+        return $this->belongsTo('Modules\Transaksi\Entities\TransaksiPemesanan', 'id_klien');
+    }
+
 }

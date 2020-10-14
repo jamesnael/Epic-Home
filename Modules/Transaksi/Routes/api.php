@@ -21,11 +21,20 @@ Route::prefix('transaksi')->namespace('Api')->group(function() {
 	    'store', 'update', 'destroy'
 	]);
 
+	Route::get('transaksi-proyek-primary/table', 'TransaksiProyekPrimaryController@table')->name('transaksi-proyek-primary.table');
+	Route::get('transaksi-proyek-primary/table-bayar', 'TransaksiProyekPrimaryController@tableBayar')->name('transaksi-proyek-primary-bayar.table');
+
+	Route::get('transaksi-secondary-unit/table', 'TransaksiSecondaryUnitController@table')->name('transaksi-secondary-unit.table');
+	Route::get('transaksi-secondary-unit/table-bayar', 'TransaksiSecondaryUnitController@tableBayar')->name('transaksi-secondary-unit-bayar.table');
+
+	Route::get('transaksi-pemesanan/{transaksi_pemesanan}/data', 'TransaksiPemesananController@data')->name('transaksi-pemesanan.data');	
 	Route::apiResource('transaksi-pemesanan', 'TransaksiPemesananController')->only([
-	    'store'
+	    'store','update'
 	]);
 
 	Route::apiResource('klien', 'KlienController')->only([
 	    'store'
 	]);
+
+
 });

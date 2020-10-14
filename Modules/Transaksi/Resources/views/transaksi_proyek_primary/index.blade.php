@@ -14,7 +14,7 @@
                             <table-component inline-template
                                 table-number
                                 with-actions
-                                uri=""
+                                uri="{{ route('transaksi-proyek-primary.table') }}"
                                 :headers='@json($table_headers)'
                                 no-data-text="Tidak ada data ditemukan."
                                 no-results-text="Tidak ada data ditemukan."
@@ -23,6 +23,9 @@
                                 items-per-page-all-text="Semua"
                                 items-per-page-text="Tampilkan"
                                 page-text-locale="id"
+                                edit-uri="transaksi-proyek-primary.edit"
+                                edit-uri-parameter="slug"
+                                edit-text="Ubah"
                             >
                                 
                                 @include('core::components.table')
@@ -45,7 +48,7 @@
                         <table-component inline-template
                             table-number
                             with-actions
-                            uri=""
+                            uri="{{ route('transaksi-proyek-primary-bayar.table') }}"
                             :headers='@json($table_headers)'
                             no-data-text="Tidak ada data ditemukan."
                             no-results-text="Tidak ada data ditemukan."
@@ -54,6 +57,9 @@
                             items-per-page-all-text="Semua"
                             items-per-page-text="Tampilkan"
                             page-text-locale="id"
+                            edit-uri="transaksi-proyek-primary.edit"
+                            edit-uri-parameter="slug"
+                            edit-text="Ubah"
                             >
                             
                             @include('core::components.table')

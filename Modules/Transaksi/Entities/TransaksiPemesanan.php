@@ -66,4 +66,21 @@ class TransaksiPemesanan extends Model
         return 'slug';
     }
 
+    /**
+     * Get the relationship for the model.
+     */
+    public function unit()
+    {
+        return $this->belongsTo('Modules\MasterData\Entities\Unit', 'id_unit');
+    }
+
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function klien()
+    {
+        return $this->belongsTo('Modules\Transaksi\Entities\Klien', 'id_klien');
+    }
+
 }

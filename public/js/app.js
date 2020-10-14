@@ -1451,6 +1451,76 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
+    "api.titip-jual-sewa.table": {
+      "uri": "api\/transaksi\/titip-jual-sewa\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.titip-jual-sewa-sukses.table": {
+      "uri": "api\/transaksi\/titip-jual-sewa\/table-sukses",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.titip-jual-sewa.data": {
+      "uri": "api\/transaksi\/titip-jual-sewa\/{titip_jual_sewa}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.titip-jual-sewa.store": {
+      "uri": "api\/transaksi\/titip-jual-sewa",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.titip-jual-sewa.update": {
+      "uri": "api\/transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "api.titip-jual-sewa.destroy": {
+      "uri": "api\/transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "api.transaksi-proyek-primary.table": {
+      "uri": "api\/transaksi\/transaksi-proyek-primary\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.transaksi-proyek-primary-bayar.table": {
+      "uri": "api\/transaksi\/transaksi-proyek-primary\/table-bayar",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.transaksi-secondary-unit.table": {
+      "uri": "api\/transaksi\/transaksi-secondary-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.transaksi-secondary-unit-bayar.table": {
+      "uri": "api\/transaksi\/transaksi-secondary-unit\/table-bayar",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.transaksi-pemesanan.data": {
+      "uri": "api\/transaksi\/transaksi-pemesanan\/{transaksi_pemesanan}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.transaksi-pemesanan.store": {
+      "uri": "api\/transaksi\/transaksi-pemesanan",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.transaksi-pemesanan.update": {
+      "uri": "api\/transaksi\/transaksi-pemesanan\/{transaksi_pemesanan}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "api.klien.store": {
+      "uri": "api\/transaksi\/klien",
+      "methods": ["POST"],
+      "domain": null
+    },
     "titip-jual-sewa.table": {
       "uri": "transaksi\/titip-jual-sewa\/table",
       "methods": ["GET", "HEAD"],
@@ -1481,9 +1551,39 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "transaksi-proyek-primary.table": {
+      "uri": "transaksi\/transaksi-proyek-primary\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary-bayar.table": {
+      "uri": "transaksi\/transaksi-proyek-primary\/table-bayar",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.table": {
+      "uri": "transaksi\/transaksi-secondary-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit-bayar.table": {
+      "uri": "transaksi\/transaksi-secondary-unit\/table-bayar",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-pemesanan.data": {
+      "uri": "transaksi\/transaksi-pemesanan\/{transaksi_pemesanan}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "transaksi-pemesanan.store": {
       "uri": "transaksi\/transaksi-pemesanan",
       "methods": ["POST"],
+      "domain": null
+    },
+    "transaksi-pemesanan.update": {
+      "uri": "transaksi\/transaksi-pemesanan\/{transaksi_pemesanan}",
+      "methods": ["PUT", "PATCH"],
       "domain": null
     },
     "klien.store": {
@@ -1605,11 +1705,7 @@ Vue.component('agent-property-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-<<<<<<< HEAD
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
-=======
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
->>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
@@ -1621,13 +1717,13 @@ Vue.component('faq-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
 Vue.component('developer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
 });
 Vue.component('bank-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
 });
 Vue.component('secondary-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
 });
 
 /***/ }),
@@ -1641,6 +1737,9 @@ Vue.component('secondary-unit-form', function () {
 
 Vue.component('titip-jual-sewa-form', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./components/TitipJualSewa/Form.vue */ "./Modules/Transaksi/Resources/js/components/TitipJualSewa/Form.vue"));
+});
+Vue.component('transaksi-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/Transaksi/Form.vue */ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue"));
 });
 
 /***/ }),
@@ -84421,8 +84520,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\epic_home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\epic_home\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic-home\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
