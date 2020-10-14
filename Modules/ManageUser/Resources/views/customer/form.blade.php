@@ -15,7 +15,7 @@
             ></v-text-field>
         </validation-provider>
 
-        <validation-provider rules="required|email" name="Alamat Email" v-slot="{ errors }">
+        <validation-provider rules="email" name="Alamat Email" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.email"
@@ -23,7 +23,6 @@
                 name="email"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"

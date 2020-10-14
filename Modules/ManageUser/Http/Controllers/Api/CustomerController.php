@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\ManageUser\Entities\User as Customer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class CustomerController extends Controller
 {
@@ -99,9 +100,8 @@ class CustomerController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            // 'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
-            'password' => 'bail|sometimes|confirmed|min:8'
+            'email' => "bail|nullable|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
         ]);
     }
 
