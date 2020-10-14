@@ -34,7 +34,9 @@
 		    	nomor_telepon:'',
 		    	alamat:'',
 		    	logo_developer:'',
-		    	deskripsi:''
+		    	deskripsi:'',
+		    	latitude: '',
+		    	longitude: '',
 			},
 			field_state: false,
 			form_alert_state: false,
@@ -43,6 +45,7 @@
 		}),
 		mounted() {
             this.getFormData();
+            this.checkGoogleInit();
         },
 		methods: {
     		getFormData() {
@@ -61,7 +64,9 @@
 	            			    	alamat: data.alamat,
 	            			    	logo_developer: data.logo_developer,
 	            			    	deskripsi: data.deskripsi,
-	            			    	url_logo_developer: data.url_logo_developer
+	            			    	url_logo_developer: data.url_logo_developer,
+	            			    	latitude: data.latitude,
+	            			    	longitude: data.longitude,
     		            		}
 
     			                this.field_state = false
@@ -87,7 +92,9 @@
 			    	nomor_telepon:'',
 			    	alamat:'',
 			    	logo_developer:'',
-			    	deskripsi:''
+			    	deskripsi:'',
+			    	latitude: '',
+			    	longitude: '',
 				}
 				this.$refs.observer.reset()
 			},
@@ -133,7 +140,60 @@
 	    		        this.form_alert_color = 'error'
 	                    this.form_alert_text = 'Oops, something went wrong. Please try again later.'
 	    		    });
-		    }
+		    },
+
+		     checkGoogleInit() {
+				var self = this;
+				setTimeout(function() {
+		            if(typeof google === 'undefined') {
+		                self.checkGoogleInit();
+		            } else {
+		                self.GMapsDeveloperInit();
+		            }
+		        }, 500);
+        	},
+        	GMapsDeveloperInit() {
+        		if (this.form_data.latitude && this.form_data.longitude) {
+	                var map = new google.maps.Map(document.getElementById('developer-map'), {
+			          	center: {lat: parseFloat(this.form_data.latitude), lng: parseFloat(this.form_data.longitude)},
+			          	zoom: 14
+			        });
+
+                    var marker = new google.maps.Marker({
+    	                position: {lat: parseFloat(this.form_data.latitude), lng: parseFloat(this.form_data.longitude)},
+    	                map: map
+    	            });
+    	            map.panTo({lat: parseFloat(this.form_data.latitude), lng: parseFloat(this.form_data.longitude)});
+        		} else {
+	                var map = new google.maps.Map(document.getElementById('developer-map'), {
+			          	center: {lat: -6.1767287, lng: 106.829541},
+			          	zoom: 14
+			        });
+
+			        var marker
+        		}
+
+		        map.addListener('click', (mapsMouseEvent) => {
+		            this.form_data.latitude = mapsMouseEvent.latLng.lat()
+		            this.form_data.longitude = mapsMouseEvent.latLng.lng()
+		            if (marker) {
+			            marker.setMap(null)
+		            }
+		            marker = new google.maps.Marker({
+		                position: mapsMouseEvent.latLng,
+		                map: map
+		            });
+		            map.panTo(mapsMouseEvent.latLng);
+		        });
+        	},
+
+
 		}
 	}
 </script>
+<style>
+#office-map, #developer-map {
+	min-height: 400px;
+	height: 100%;
+}
+</style>

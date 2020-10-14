@@ -81,6 +81,36 @@
             ></v-text-field>
         </validation-provider>
 
+         <div class="form-group row">
+            <div class="col-md-12">
+                <div id="unit-secondary-map"></div>
+            </div>
+        </div>
+
+        <v-row>
+            <v-col cols="12" md="6">
+                <v-text-field
+                    class="my-4"
+                    v-model="form_data.latitude"
+                    label="Latitude"
+                    clearable
+                    name="latitude"
+                    :disabled="field_state"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+                <v-text-field
+                    class="my-4"
+                    v-model="form_data.longitude"
+                    label="Longitude"
+                    clearable
+                    name="longitude"
+                    :persistent-hint="true"
+                    :disabled="field_state"
+                ></v-text-field>
+            </v-col>
+        </v-row>
+
         <validation-provider v-slot="{ errors }" name="Luas tanah" rules="required|numeric">
             <v-text-field
                 class="my-4"
