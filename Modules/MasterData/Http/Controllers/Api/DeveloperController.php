@@ -110,9 +110,9 @@ class DeveloperController extends Controller
         return Validator::make($request->all(), [
             'nama_developer' => 'bail|required',
             'email' => 'bail|required',
-            'nomor_telepon => bail|nullable',
-            'alamat => bail|nullable',
-            'deskripsi => bail|nullable'
+            'nomor_telepon' => 'bail|nullable',
+            'alamat' => 'bail|nullable',
+            'deskripsi' => 'bail|nullable',
         ]);
     }
 

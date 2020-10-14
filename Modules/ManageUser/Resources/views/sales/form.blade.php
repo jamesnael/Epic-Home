@@ -80,7 +80,7 @@
 
          <h3  class="mt-4">Data Diri :</h3>
 
-        <validation-provider rules="required" name="Email" v-slot="{ errors }">
+        <validation-provider rules="email" name="Email" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.email"
@@ -88,7 +88,6 @@
                 name="email"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"

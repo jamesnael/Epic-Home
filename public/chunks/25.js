@@ -1,16 +1,28 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[25],{
 
+<<<<<<< HEAD
 /***/ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue":
 /*!***************************************************************************!*\
   !*** ./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue ***!
   \***************************************************************************/
+=======
+/***/ "./Modules/MasterData/Resources/js/components/Developer/Form.vue":
+/*!***********************************************************************!*\
+  !*** ./Modules/MasterData/Resources/js/components/Developer/Form.vue ***!
+  \***********************************************************************/
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 /* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=style&index=0&lang=css& */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css&");
+=======
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=style&index=0&lang=css& */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&");
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
 
@@ -33,45 +45,78 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
+<<<<<<< HEAD
 component.options.__file = "Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"
+=======
+component.options.__file = "Modules/MasterData/Resources/js/components/Developer/Form.vue"
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************!*\
   !*** ./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************/
+=======
+/***/ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=script&lang=js&");
+=======
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&");
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css&":
 /*!************************************************************************************************************!*\
   !*** ./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css& ***!
   \************************************************************************************************************/
+=======
+/***/ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************/
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css&");
+=======
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&");
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -87,9 +132,12 @@ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('required', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('email', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["email"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('numeric', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["numeric"]);
+<<<<<<< HEAD
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('image', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["image"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('regex', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["regex"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('max', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["max"]);
+=======
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -108,6 +156,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     dataUri: {
       type: String,
       "default": ''
+<<<<<<< HEAD
     },
     filterTipeProyek: {
       type: Array,
@@ -132,11 +181,14 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
+=======
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
     }
   },
   data: function data() {
     return {
       form_data: {
+<<<<<<< HEAD
         fasilitas_umum: [],
         id_tipe_bangunan: '',
         id_tipe_proyek: '',
@@ -172,6 +224,16 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         banner_proyek: '',
         progress_update: [],
         product_knowledge: ''
+=======
+        nama_developer: '',
+        email: '',
+        nomor_telepon: '',
+        alamat: '',
+        logo_developer: '',
+        deskripsi: '',
+        latitude: '',
+        longitude: ''
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
       },
       field_state: false,
       form_alert_state: false,
@@ -193,6 +255,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           if (response.data.success) {
             var data = response.data.data;
             _this.form_data = {
+<<<<<<< HEAD
               fasilitas_umum: [],
               id_tipe_bangunan: data.id_tipe_bangunan,
               id_tipe_proyek: data.id_tipe_proyek,
@@ -241,6 +304,18 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
                 id: value.id
               });
             });
+=======
+              nama_developer: data.nama_developer,
+              email: data.email,
+              nomor_telepon: data.nomor_telepon,
+              alamat: data.alamat,
+              logo_developer: data.logo_developer,
+              deskripsi: data.deskripsi,
+              url_logo_developer: data.url_logo_developer,
+              latitude: data.latitude,
+              longitude: data.longitude
+            };
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
             _this.field_state = false;
           } else {
             _this.form_alert_state = true;
@@ -258,6 +333,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     },
     clearForm: function clearForm() {
       this.form_data = {
+<<<<<<< HEAD
         fasilitas_umum: [],
         id_tipe_bangunan: '',
         id_tipe_proyek: '',
@@ -293,6 +369,16 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         banner_proyek: '',
         progress_update: '',
         product_knowledge: ''
+=======
+        nama_developer: '',
+        email: '',
+        nomor_telepon: '',
+        alamat: '',
+        logo_developer: '',
+        deskripsi: '',
+        latitude: '',
+        longitude: ''
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
       };
       this.$refs.observer.reset();
     },
@@ -313,10 +399,13 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       var _this3 = this;
 
       var form_data = new FormData(this.$refs['post-form']);
+<<<<<<< HEAD
       form_data.append("fasilitas_umum", this.form_data.fasilitas_umum ? JSON.stringify(this.form_data.fasilitas_umum) : []);
       form_data.append("profile_proyek", this.form_data.profile_proyek);
       form_data.append("broadcast_message", this.form_data.broadcast_message);
       form_data.append("question_answer", this.form_data.question_answer);
+=======
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 
       if (this.dataUri) {
         form_data.append("_method", "put");
@@ -343,6 +432,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         _this3.form_alert_text = 'Oops, something went wrong. Please try again later.';
       });
     },
+<<<<<<< HEAD
     addFasilitasUmum: function addFasilitasUmum() {
       this.form_data.fasilitas_umum.push({
         nama_fasilitas_umum: '',
@@ -355,12 +445,15 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         return key != idx;
       });
     },
+=======
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
     checkGoogleInit: function checkGoogleInit() {
       var self = this;
       setTimeout(function () {
         if (typeof google === 'undefined') {
           self.checkGoogleInit();
         } else {
+<<<<<<< HEAD
           self.GMapsProyekPrimaryInit();
         }
       }, 500);
@@ -370,6 +463,17 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
 
       if (this.form_data.latitude && this.form_data.longitude) {
         var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+=======
+          self.GMapsDeveloperInit();
+        }
+      }, 500);
+    },
+    GMapsDeveloperInit: function GMapsDeveloperInit() {
+      var _this4 = this;
+
+      if (this.form_data.latitude && this.form_data.longitude) {
+        var map = new google.maps.Map(document.getElementById('developer-map'), {
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
           center: {
             lat: parseFloat(this.form_data.latitude),
             lng: parseFloat(this.form_data.longitude)
@@ -388,7 +492,11 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
           lng: parseFloat(this.form_data.longitude)
         });
       } else {
+<<<<<<< HEAD
         var map = new google.maps.Map(document.getElementById('proyek-primary-map'), {
+=======
+        var map = new google.maps.Map(document.getElementById('developer-map'), {
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
           center: {
             lat: -6.1767287,
             lng: 106.829541
@@ -418,10 +526,17 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -430,22 +545,37 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
+<<<<<<< HEAD
 exports.push([module.i, "\n#office-map, #proyek-primary-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
+=======
+exports.push([module.i, "\n#office-map, #developer-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 
 // exports
 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
+<<<<<<< HEAD
 var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue?vue&type=style&index=0&lang=css&");
+=======
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&");
+>>>>>>> 61306ba58b9b61482a634d9d6b2828fb4fd1065d
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

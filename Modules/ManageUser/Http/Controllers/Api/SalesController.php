@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class SalesController extends Controller
 {
@@ -52,7 +53,13 @@ class SalesController extends Controller
 
             }
             $data->save();
-            
+            log_activity(
+                'Tambah sales ' . $user->nama,
+                [
+                    $user,
+                    $user->sales
+                ]
+            );
             DB::commit();
             return response_json(true, null, 'Sales berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -65,7 +72,7 @@ class SalesController extends Controller
 
     public function update(Request $request, User $sales)
     {
-        $validator = $this->validateFormRequest($request);
+        $validator = $this->validateFormRequest($request, $sales->id);
 
         if ($validator->fails()) {
             return response_json(false, $validator->errors(), $validator->errors()->first());
@@ -76,7 +83,8 @@ class SalesController extends Controller
 
             $sales->update($request->only(['nama','email','telepon']));
             
-            $sales->sales->update($request->all());
+            $data = $sales->sales;
+            $data->update($request->all());
 
             if ($request->hasFile('foto_ktp')) {
                 $file_name =  $sales->nama .'-'. uniqid() . '.' . $request->file('foto_ktp')->getClientOriginalExtension();
@@ -96,7 +104,13 @@ class SalesController extends Controller
 
             $data->save();
 
-
+            log_activity(
+                'Ubah sales ' . $sales->nama,
+                [
+                    $sales,
+                    $sales->sales
+                ]
+            );
             DB::commit();
             return response_json(true, null, 'Sales berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -111,6 +125,13 @@ class SalesController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus sales ' . $sales->nama,
+                [
+                    $sales,
+                    $sales->sales
+                ]
+            );
             $sales->sales->delete();
             $sales->delete();
             DB::commit();
@@ -141,8 +162,8 @@ class SalesController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
+            'email' => "bail|nullable|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
             'password' => 'bail|sometimes|confirmed|min:8',
             'no_telepon_agent_referensi' => 'bail|nullable',
             'tipe_agent' => 'bail|nullable',

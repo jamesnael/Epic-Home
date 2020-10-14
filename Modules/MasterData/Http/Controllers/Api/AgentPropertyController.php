@@ -9,6 +9,7 @@ use Modules\MasterData\Entities\AgentProperty;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class AgentPropertyController extends Controller
 {
@@ -120,7 +121,7 @@ class AgentPropertyController extends Controller
         return Validator::make($request->all(), [
             'nama_agent_property' => 'bail|required',
             'email' => 'bail|required',
-            'nomor_telepon => bail|nullable',
+            'nomor_telepon' => ['bail', 'nullable', new SignedPhoneNumber],
             'alamat => bail|nullable',
             'deskripsi => bail|nullable'
         ]);

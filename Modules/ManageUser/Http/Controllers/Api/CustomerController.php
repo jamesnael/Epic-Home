@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\ManageUser\Entities\User as Customer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class CustomerController extends Controller
 {
@@ -28,7 +29,10 @@ class CustomerController extends Controller
         try {
             $request->merge(['is_customer' => true]);
             $data = Customer::create($request->all());
-            
+            log_activity(
+                'Tambah customer ' . $data->nama,
+                $data
+            );
             DB::commit();
             return response_json(true, null, 'Customer berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -54,6 +58,10 @@ class CustomerController extends Controller
         DB::beginTransaction();
         try {
             $customer->update($request->all());
+            log_activity(
+                'Ubah customer ' . $customer->nama,
+                $customer
+            );
             DB::commit();
             return response_json(true, null, 'Customer berhasil disimpan.', $customer);
         } catch (\Exception $e) {
@@ -71,6 +79,10 @@ class CustomerController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus customer ' . $customer->nama,
+                $customer
+            );
             $customer->delete();
             DB::commit();
             return response_json(true, null, 'Customer berhasil dihapus.');
@@ -99,9 +111,8 @@ class CustomerController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            // 'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
-            'password' => 'bail|sometimes|confirmed|min:8'
+            'email' => "bail|nullable|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
         ]);
     }
 

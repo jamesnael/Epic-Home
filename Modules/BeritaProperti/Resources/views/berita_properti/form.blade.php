@@ -81,6 +81,7 @@
                 prepend-icon="mdi-camera"
                 hint="hanya menerima file dalam format image"
                 :persistent-hint="true"
+                clear-icon="mdi-eraser-variant"
                 show-size
                 label="Thumbnail"
                 name="thumbnail"
@@ -96,6 +97,7 @@
                 prepend-icon="mdi-camera"
                 hint="hanya menerima file dalam format image"
                 :persistent-hint="true"
+                clear-icon="mdi-eraser-variant"
                 show-size
                 label="Banner"
                 name="banner[]"

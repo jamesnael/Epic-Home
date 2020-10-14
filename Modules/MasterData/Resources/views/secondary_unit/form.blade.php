@@ -81,6 +81,38 @@
             ></v-text-field>
         </validation-provider>
 
+         <div class="form-group row">
+            <div class="col-md-12">
+                <div id="unit-secondary-map"></div>
+            </div>
+        </div>
+
+        <v-row>
+            <v-col cols="12" md="6">
+                <v-text-field
+                    class="my-4"
+                    v-model="form_data.latitude"
+                    label="Latitude"
+                    clearable
+                    clear-icon="mdi-eraser-variant"
+                    name="latitude"
+                    :disabled="field_state"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+                <v-text-field
+                    class="my-4"
+                    v-model="form_data.longitude"
+                    label="Longitude"
+                    clearable
+                    clear-icon="mdi-eraser-variant"
+                    name="longitude"
+                    :persistent-hint="true"
+                    :disabled="field_state"
+                ></v-text-field>
+            </v-col>
+        </v-row>
+
         <validation-provider v-slot="{ errors }" name="Luas tanah" rules="required|numeric">
             <v-text-field
                 class="my-4"
@@ -92,7 +124,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">m<sup>2</sup></span>
+            </v-text-field>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Luas bangunan" rules="required|numeric">
@@ -106,7 +140,9 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <span slot="append">m<sup>2</sup></span>
+            </v-text-field>
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" name="Status bangunan" rules="required">
@@ -352,10 +388,11 @@
 
          <validation-provider v-slot="{ errors }" name="Harga Unit" rules="required|numeric">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_unit"
                 label="Harga Unit"
                 name="harga_unit"
+                hide-details
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
@@ -367,10 +404,11 @@
 
          <validation-provider v-slot="{ errors }" name="Harga/Meter" rules="required|numeric">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.harga_per_meter"
                 label="Harga/Meter"
                 name="harga_per_meter"
+                hide-details
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
@@ -394,7 +432,7 @@
             ></v-autocomplete>
         </validation-provider>
 
-        <h3 class="mt-4">DATA PEMILIK</h3>
+        <h3 class="mt-8">DATA PEMILIK</h3>
         
           <validation-provider v-slot="{ errors }" name="Nama pemilik" rules="required">
             <v-text-field
@@ -501,6 +539,7 @@
             <v-file-input
                 small-chips
                 multiple
+                clear-icon="mdi-eraser-variant"
                 accept="image/*"
                 name="gallery_unit[]"
                 label="Gambar Rumah"

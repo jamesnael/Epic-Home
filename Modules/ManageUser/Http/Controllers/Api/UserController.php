@@ -29,7 +29,10 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $data = User::create($request->all());
-            
+            log_activity(
+                'Tambah user ' . $data->nama,
+                $data
+            );
             DB::commit();
             return response_json(true, null, 'User berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -54,11 +57,11 @@ class UserController extends Controller
 
         DB::beginTransaction();
         try {
-            $user->update($request->all());
             log_activity(
                 'Update user ' . $user->nama,
                 $user
             );
+            $user->update($request->all());
             DB::commit();
             return response_json(true, null, 'User berhasil disimpan.', $user);
         } catch (\Exception $e) {
@@ -76,6 +79,10 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus user ' . $user->nama,
+                $user
+            );
             $user->delete();
             DB::commit();
             return response_json(true, null, 'User berhasil dihapus.');
@@ -104,8 +111,8 @@ class UserController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => ['bail', 'required', new SignedPhoneNumber],
+            'email' => "bail|required|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
     }

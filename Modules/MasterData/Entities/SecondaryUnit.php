@@ -49,7 +49,9 @@ class SecondaryUnit extends Model
          'jangka_waktu_pemasangan',
          'open_house',
          'gallery_unit',
-         'approved_status'
+         'approved_status',
+         'latitude',
+         'longitude',
 
     ];
 

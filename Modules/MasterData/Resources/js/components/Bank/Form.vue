@@ -1,9 +1,10 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required } from 'vee-validate/dist/rules'
+	import { required, numeric } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
+	extend('numeric', numeric)
     localize('id', id);
 
 	export default {
@@ -36,7 +37,7 @@
 				tenor_mulai_dari: '',
 				tenor_sampai_dengan:'',
 				status:'',
-				flat_suku_bunga:''
+				flat_suku_bunga:false
 			},
 			field_state: false,
 			form_alert_state: false,
@@ -94,7 +95,7 @@
 					tenor_mulai_dari: '',
 					tenor_sampai_dengan:'',
 					status: '',
-					flat_suku_bunga:'',
+					flat_suku_bunga:false
 				}
 				this.$refs.observer.reset()
 			},
