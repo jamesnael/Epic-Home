@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class SalesController extends Controller
 {
@@ -65,7 +66,7 @@ class SalesController extends Controller
 
     public function update(Request $request, User $sales)
     {
-        $validator = $this->validateFormRequest($request);
+        $validator = $this->validateFormRequest($request, $sales->id);
 
         if ($validator->fails()) {
             return response_json(false, $validator->errors()->get(), $validator->errors()->first());
@@ -137,13 +138,12 @@ class SalesController extends Controller
      * Validation Rules for Store/Update Data
      *
      */
-    public function validateFormRequest($request)
+    public function validateFormRequest($request, $id = null)
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            // 'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => 'bail|required',
-            'password' => 'bail|sometimes|confirmed|min:8'
+            'email' => "bail|nullable|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
         ]);
     }
 

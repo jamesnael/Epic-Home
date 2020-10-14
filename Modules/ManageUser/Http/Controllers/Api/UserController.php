@@ -104,8 +104,8 @@ class UserController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|required|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => ['bail', 'required', new SignedPhoneNumber],
+            'email' => "bail|required|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
+            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
             'password' => 'bail|sometimes|confirmed|min:8'
         ]);
     }

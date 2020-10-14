@@ -43,6 +43,7 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
         'grup_user_id',
         'is_sales',
         'is_customer',
+        'kode_otp',
     ];
 
     /**
