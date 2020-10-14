@@ -44,13 +44,13 @@
             ></v-text-field>
         </validation-provider>
 
-        <validation-provider v-slot="{ errors }" name="Suku bunga" rules="">
+        <validation-provider v-slot="{ errors }" name="Suku bunga" rules="numeric">
             <v-text-field
                 class="mt-4"
                 v-model="form_data.suku_bunga"
                 name="suku_bunga"
                 label="Suku Bunga"
-                type="number"
+                {{-- type="number" --}}
                 hint="* harus diisi"
                 :readonly="form_data.flat_suku_bunga"
                 :persistent-hint="true"
@@ -67,13 +67,13 @@
             @change="form_data.suku_bunga = ''"
         ></v-checkbox>
 
-        <validation-provider rules="required" name="Masa kredit fix" v-slot="{ errors }">
+        <validation-provider rules="required|numeric" name="Masa kredit fix" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.masa_kredit"
                 label="Masa kredit fix"
                 name="masa_kredit"
-                type="number"
+                {{-- type="number" --}}
                 clearable
                 clear-icon="mdi-eraser-variant"
                 hint="* harus diisi"
@@ -84,18 +84,18 @@
         </validation-provider>
         
         
-        <h3 class="mt-4">TENOR</h3>
+        <h3 class="mt-8">TENOR</h3>
 
         <v-row>
             <v-col cols="12"
             md="6">
-                <validation-provider rules="required" name="Mulai dari" v-slot="{ errors }">
+                <validation-provider rules="required|numeric" name="Mulai dari" v-slot="{ errors }">
                     <v-text-field
-                        class="my-4"
+                        class="mt-4"
                         v-model="form_data.tenor_mulai_dari"
                         label="Mulai dari"
                         name="tenor_mulai_dari"
-                        type="number"
+                        {{-- type="number" --}}
                         clearable
                         clear-icon="mdi-eraser-variant"
                         hint="* harus diisi"
@@ -103,17 +103,18 @@
                         :error-messages="errors"
                         :disabled="field_state"
                     ></v-text-field>
+                    <small class="form-text text-muted">Rp @{{number_format(form_data.tenor_mulai_dari)}}</small>
                 </validation-provider>
             </v-col>
             <v-col cols="12"
             md="6">
-                <validation-provider rules="required" name="Sampai dengan" v-slot="{ errors }">
+                <validation-provider rules="required|numeric" name="Sampai dengan" v-slot="{ errors }">
                     <v-text-field
-                        class="my-4"
+                        class="mt-4"
                         v-model="form_data.tenor_sampai_dengan"
                         label="Sampai Dengan"
                         name="tenor_sampai_dengan"
-                        type="number"
+                        {{-- type="number" --}}
                         clearable
                         clear-icon="mdi-eraser-variant"
                         hint="* harus diisi"
@@ -121,6 +122,7 @@
                         :error-messages="errors"
                         :disabled="field_state"
                     ></v-text-field>
+                    <small class="form-text text-muted">Rp @{{number_format(form_data.tenor_sampai_dengan)}}</small>
                 </validation-provider>
             </v-col>
         </v-row>

@@ -16,7 +16,7 @@ class GrupUserHelper extends Controller
     public function getHelper()
     {
         return [
-            'hak_akses' => get_access_url(),
+            'hak_akses' => get_file_content('public', 'application_main_menu.json'),
         ];
     }
 

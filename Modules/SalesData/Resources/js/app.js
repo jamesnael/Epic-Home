@@ -1,1 +1,0 @@
-Vue.component('sales-form', () => import('./components/Sales/Form.vue'));

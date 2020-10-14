@@ -15,7 +15,7 @@ class TipeBangunanController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(['auth']);
+        $this->middleware(['auth']);
         $this->breadcrumbs = [
             ['href' => url('/'), 'text' => 'mdi-home'],
             ['href' => url('tipe-bangunan.index'), 'text' => 'Master Data'],

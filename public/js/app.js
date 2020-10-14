@@ -209,7 +209,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('berita-properti-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./components/BeritaProperti/Form.vue */ "./Modules/BeritaProperti/Resources/js/components/BeritaProperti/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/BeritaProperti/Form.vue */ "./Modules/BeritaProperti/Resources/js/components/BeritaProperti/Form.vue"));
 });
 
 /***/ }),
@@ -226,13 +226,10 @@ __webpack_require__(/*! ./bootstrap */ "./Modules/Core/Resources/js/bootstrap.js
 __webpack_require__(/*! ./v-mixins */ "./Modules/Core/Resources/js/v-mixins.js");
 
 Vue.component('base-layout', function () {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
+  return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./components/BaseLayout.vue */ "./Modules/Core/Resources/js/components/BaseLayout.vue"));
 });
 Vue.component('table-component', function () {
-  return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
-});
-Vue.component('main-menu-component', function () {
-  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./components/MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
+  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./components/TableComponent.vue */ "./Modules/Core/Resources/js/components/TableComponent.vue"));
 });
 
 /***/ }),
@@ -354,28 +351,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
-    "berita-properti.table": {
+    "api.berita-properti.table": {
       "uri": "api\/berita-properti\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "berita-properti.data": {
+    "api.berita-properti.data": {
       "uri": "api\/berita-properti\/{berita_properti}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "berita-properti.store": {
+    "api.berita-properti.store": {
       "uri": "api\/berita-properti",
       "methods": ["POST"],
       "domain": null
     },
-    "berita-properti.update": {
+    "api.berita-properti.update": {
       "uri": "api\/berita-properti\/{berita_properti}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "berita-properti.destroy": {
+    "api.berita-properti.destroy": {
       "uri": "api\/berita-properti\/{berita_properti}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "berita-properti.table": {
+      "uri": "berita-properti\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.data": {
+      "uri": "berita-properti\/{berita_properti}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.store": {
+      "uri": "berita-properti",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "berita-properti.update": {
+      "uri": "berita-properti\/{berita_properti}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "berita-properti.destroy": {
+      "uri": "berita-properti\/{berita_properti}",
       "methods": ["DELETE"],
       "domain": null
     },
@@ -394,53 +416,218 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "grup-user.table": {
+    "dashboard.index": {
+      "uri": "\/",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.grup-user.table": {
       "uri": "api\/kelola-user\/grup-user\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "grup-user.data": {
+    "api.grup-user.data": {
       "uri": "api\/kelola-user\/grup-user\/{grup_user}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "grup-user.store": {
+    "api.grup-user.store": {
       "uri": "api\/kelola-user\/grup-user",
       "methods": ["POST"],
       "domain": null
     },
-    "grup-user.update": {
+    "api.grup-user.update": {
       "uri": "api\/kelola-user\/grup-user\/{grup_user}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "grup-user.destroy": {
+    "api.grup-user.destroy": {
       "uri": "api\/kelola-user\/grup-user\/{grup_user}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "user.table": {
+    "api.user.table": {
       "uri": "api\/kelola-user\/user\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "user.data": {
+    "api.user.data": {
       "uri": "api\/kelola-user\/user\/{user}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "user.store": {
+    "api.user.store": {
       "uri": "api\/kelola-user\/user",
       "methods": ["POST"],
       "domain": null
     },
-    "user.update": {
+    "api.user.update": {
       "uri": "api\/kelola-user\/user\/{user}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "user.destroy": {
+    "api.user.destroy": {
       "uri": "api\/kelola-user\/user\/{user}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "api.customer.table": {
+      "uri": "api\/kelola-user\/customer\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.customer.table-verified": {
+      "uri": "api\/kelola-user\/customer\/table\/verified",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.customer.data": {
+      "uri": "api\/kelola-user\/customer\/{customer}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.customer.update": {
+      "uri": "api\/kelola-user\/customer\/{customer}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "api.customer.destroy": {
+      "uri": "api\/kelola-user\/customer\/{customer}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "api.sales.table": {
+      "uri": "api\/kelola-user\/sales\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.sales-approved.table": {
+      "uri": "api\/kelola-user\/sales\/table\/approved",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.sales.data": {
+      "uri": "api\/kelola-user\/sales\/{sales}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.sales.store": {
+      "uri": "api\/kelola-user\/sales",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.sales.update": {
+      "uri": "api\/kelola-user\/sales\/{sales}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "api.sales.destroy": {
+      "uri": "api\/kelola-user\/sales\/{sales}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "grup-user.table": {
+      "uri": "kelola-user\/grup-user\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "grup-user.data": {
+      "uri": "kelola-user\/grup-user\/{grup_user}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "grup-user.store": {
+      "uri": "kelola-user\/grup-user",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "grup-user.update": {
+      "uri": "kelola-user\/grup-user\/{grup_user}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "grup-user.destroy": {
+      "uri": "kelola-user\/grup-user\/{grup_user}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "user.table": {
+      "uri": "kelola-user\/user\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "user.data": {
+      "uri": "kelola-user\/user\/{user}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "user.store": {
+      "uri": "kelola-user\/user",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "user.update": {
+      "uri": "kelola-user\/user\/{user}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "user.destroy": {
+      "uri": "kelola-user\/user\/{user}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "customer.table": {
+      "uri": "kelola-user\/customer\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.table-verified": {
+      "uri": "kelola-user\/customer\/table\/verified",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.data": {
+      "uri": "kelola-user\/customer\/{customer}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.update": {
+      "uri": "kelola-user\/customer\/{customer}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "customer.destroy": {
+      "uri": "kelola-user\/customer\/{customer}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "sales.table": {
+      "uri": "kelola-user\/sales\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales-approved.table": {
+      "uri": "kelola-user\/sales\/table\/approved",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.data": {
+      "uri": "kelola-user\/sales\/{sales}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.store": {
+      "uri": "kelola-user\/sales",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "sales.update": {
+      "uri": "kelola-user\/sales\/{sales}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "sales.destroy": {
+      "uri": "kelola-user\/sales\/{sales}",
       "methods": ["DELETE"],
       "domain": null
     },
@@ -474,308 +661,623 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-proyek.table": {
+    "sales.index": {
+      "uri": "kelola-user\/sales",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.create": {
+      "uri": "kelola-user\/sales\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "sales.edit": {
+      "uri": "kelola-user\/sales\/{sales}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.index": {
+      "uri": "kelola-user\/customer",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "customer.edit": {
+      "uri": "kelola-user\/customer\/{customer}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "login": {
+      "uri": "auth\/login",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "post-login": {
+      "uri": "auth\/login",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "logout": {
+      "uri": "auth\/logout",
+      "methods": ["GET", "POST", "HEAD"],
+      "domain": null
+    },
+    "password.request": {
+      "uri": "auth\/password\/request",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "password.email": {
+      "uri": "auth\/password\/email",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "password.update": {
+      "uri": "auth\/password\/reset",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "password.reset": {
+      "uri": "auth\/password\/reset\/{token}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.tipe-proyek.table": {
       "uri": "api\/master-data\/tipe-proyek\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-proyek.data": {
+    "api.tipe-proyek.data": {
       "uri": "api\/master-data\/tipe-proyek\/{tipe_proyek}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-proyek.store": {
+    "api.tipe-proyek.store": {
       "uri": "api\/master-data\/tipe-proyek",
       "methods": ["POST"],
       "domain": null
     },
-    "tipe-proyek.update": {
+    "api.tipe-proyek.update": {
       "uri": "api\/master-data\/tipe-proyek\/{tipe_proyek}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "tipe-proyek.destroy": {
+    "api.tipe-proyek.destroy": {
       "uri": "api\/master-data\/tipe-proyek\/{tipe_proyek}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "tipe-bangunan.table": {
+    "api.tipe-bangunan.table": {
       "uri": "api\/master-data\/tipe-bangunan\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-bangunan.data": {
+    "api.tipe-bangunan.data": {
       "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-bangunan.store": {
+    "api.tipe-bangunan.store": {
       "uri": "api\/master-data\/tipe-bangunan",
       "methods": ["POST"],
       "domain": null
     },
-    "tipe-bangunan.update": {
+    "api.tipe-bangunan.update": {
       "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "tipe-bangunan.destroy": {
+    "api.tipe-bangunan.destroy": {
       "uri": "api\/master-data\/tipe-bangunan\/{tipe_bangunan}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "tipe-unit.table": {
+    "api.tipe-unit.table": {
       "uri": "api\/master-data\/tipe-unit\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-unit.data": {
+    "api.tipe-unit.data": {
       "uri": "api\/master-data\/tipe-unit\/{tipe_unit}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "tipe-unit.store": {
+    "api.tipe-unit.store": {
       "uri": "api\/master-data\/tipe-unit",
       "methods": ["POST"],
       "domain": null
     },
-    "tipe-unit.update": {
+    "api.tipe-unit.update": {
       "uri": "api\/master-data\/tipe-unit\/{tipe_unit}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "tipe-unit.destroy": {
+    "api.tipe-unit.destroy": {
       "uri": "api\/master-data\/tipe-unit\/{tipe_unit}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "agent-property.table": {
+    "api.agent-property.table": {
       "uri": "api\/master-data\/agent-property\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "agent-property.data": {
+    "api.agent-property.data": {
       "uri": "api\/master-data\/agent-property\/{agent_property}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "agent-property.store": {
+    "api.agent-property.store": {
       "uri": "api\/master-data\/agent-property",
       "methods": ["POST"],
       "domain": null
     },
-    "agent-property.update": {
+    "api.agent-property.update": {
       "uri": "api\/master-data\/agent-property\/{agent_property}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "agent-property.destroy": {
+    "api.agent-property.destroy": {
       "uri": "api\/master-data\/agent-property\/{agent_property}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "faq.table": {
+    "api.faq.table": {
       "uri": "api\/master-data\/faq\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "faq.data": {
+    "api.faq.data": {
       "uri": "api\/master-data\/faq\/{faq}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "faq.store": {
+    "api.faq.store": {
       "uri": "api\/master-data\/faq",
       "methods": ["POST"],
       "domain": null
     },
-    "faq.update": {
+    "api.faq.update": {
       "uri": "api\/master-data\/faq\/{faq}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "faq.destroy": {
+    "api.faq.destroy": {
       "uri": "api\/master-data\/faq\/{faq}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "cluster.table": {
+    "api.cluster.table": {
       "uri": "api\/master-data\/cluster\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "cluster.data": {
+    "api.cluster.data": {
       "uri": "api\/master-data\/cluster\/{cluster}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "cluster.store": {
+    "api.cluster.store": {
       "uri": "api\/master-data\/cluster",
       "methods": ["POST"],
       "domain": null
     },
-    "cluster.update": {
+    "api.cluster.update": {
       "uri": "api\/master-data\/cluster\/{cluster}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "cluster.destroy": {
+    "api.cluster.destroy": {
       "uri": "api\/master-data\/cluster\/{cluster}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "proyek-primary.table": {
+    "api.proyek-primary.table": {
       "uri": "api\/master-data\/proyek-primary\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "proyek-primary.data": {
+    "api.proyek-primary.data": {
       "uri": "api\/master-data\/proyek-primary\/{proyek_primary}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "proyek-primary.store": {
+    "api.proyek-primary.store": {
       "uri": "api\/master-data\/proyek-primary",
       "methods": ["POST"],
       "domain": null
     },
-    "proyek-primary.update": {
+    "api.proyek-primary.update": {
       "uri": "api\/master-data\/proyek-primary\/{proyek_primary}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "proyek-primary.destroy": {
+    "api.proyek-primary.destroy": {
       "uri": "api\/master-data\/proyek-primary\/{proyek_primary}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "unit.table": {
+    "api.unit.table": {
       "uri": "api\/master-data\/proyek-primary\/{proyek_primary}\/unit\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "unit.data": {
+    "api.unit.data": {
       "uri": "api\/master-data\/unit\/{unit}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "proyek-primary.unit.store": {
+    "api.proyek-primary.unit.store": {
       "uri": "api\/master-data\/proyek-primary\/{proyek_primary}\/unit",
       "methods": ["POST"],
       "domain": null
     },
-    "unit.update": {
+    "api.unit.update": {
       "uri": "api\/master-data\/unit\/{unit}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "unit.destroy": {
+    "api.unit.destroy": {
       "uri": "api\/master-data\/unit\/{unit}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "developer.table": {
+    "api.developer.table": {
       "uri": "api\/master-data\/developer\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "developer.data": {
+    "api.developer.data": {
       "uri": "api\/master-data\/developer\/{developer}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "developer.store": {
+    "api.developer.store": {
       "uri": "api\/master-data\/developer",
       "methods": ["POST"],
       "domain": null
     },
-    "developer.update": {
+    "api.developer.update": {
       "uri": "api\/master-data\/developer\/{developer}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "developer.destroy": {
+    "api.developer.destroy": {
       "uri": "api\/master-data\/developer\/{developer}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "bank.table": {
+    "api.bank.table": {
       "uri": "api\/master-data\/bank\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "bank.data": {
+    "api.bank.data": {
       "uri": "api\/master-data\/bank\/{bank}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "bank.store": {
+    "api.bank.store": {
       "uri": "api\/master-data\/bank",
       "methods": ["POST"],
       "domain": null
     },
-    "bank.update": {
+    "api.bank.update": {
       "uri": "api\/master-data\/bank\/{bank}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "bank.destroy": {
+    "api.bank.destroy": {
       "uri": "api\/master-data\/bank\/{bank}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "secondary-unit.table": {
+    "api.secondary-unit.table": {
       "uri": "api\/master-data\/secondary-unit\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "secondary-unit.table-approved": {
+    "api.secondary-unit.table-approved": {
       "uri": "api\/master-data\/secondary-unit\/table-approved",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "secondary-unit.data": {
+    "api.secondary-unit.data": {
       "uri": "api\/master-data\/secondary-unit\/{secondary_unit}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "secondary-unit.store": {
+    "api.secondary-unit.store": {
       "uri": "api\/master-data\/secondary-unit",
       "methods": ["POST"],
       "domain": null
     },
-    "secondary-unit.update": {
+    "api.secondary-unit.update": {
       "uri": "api\/master-data\/secondary-unit\/{secondary_unit}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "secondary-unit.destroy": {
+    "api.secondary-unit.destroy": {
       "uri": "api\/master-data\/secondary-unit\/{secondary_unit}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "customer.table": {
-      "uri": "api\/master-data\/customer\/table",
+    "tipe-proyek.table": {
+      "uri": "master-data\/tipe-proyek\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "customer-approved.table": {
-      "uri": "api\/master-data\/customer\/table\/approved",
+    "tipe-proyek.data": {
+      "uri": "master-data\/tipe-proyek\/{tipe_proyek}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "customer.data": {
-      "uri": "api\/master-data\/customer\/{user}\/data",
-      "methods": ["GET", "HEAD"],
+    "tipe-proyek.store": {
+      "uri": "master-data\/tipe-proyek",
+      "methods": ["POST"],
       "domain": null
     },
-    "customer.update": {
-      "uri": "api\/master-data\/customer\/{user}",
+    "tipe-proyek.update": {
+      "uri": "master-data\/tipe-proyek\/{tipe_proyek}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "customer.destroy": {
-      "uri": "api\/master-data\/customer\/{user}",
+    "tipe-proyek.destroy": {
+      "uri": "master-data\/tipe-proyek\/{tipe_proyek}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "tipe-bangunan.table": {
+      "uri": "master-data\/tipe-bangunan\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.data": {
+      "uri": "master-data\/tipe-bangunan\/{tipe_bangunan}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-bangunan.store": {
+      "uri": "master-data\/tipe-bangunan",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "tipe-bangunan.update": {
+      "uri": "master-data\/tipe-bangunan\/{tipe_bangunan}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "tipe-bangunan.destroy": {
+      "uri": "master-data\/tipe-bangunan\/{tipe_bangunan}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "tipe-unit.table": {
+      "uri": "master-data\/tipe-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.data": {
+      "uri": "master-data\/tipe-unit\/{tipe_unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "tipe-unit.store": {
+      "uri": "master-data\/tipe-unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "tipe-unit.update": {
+      "uri": "master-data\/tipe-unit\/{tipe_unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "tipe-unit.destroy": {
+      "uri": "master-data\/tipe-unit\/{tipe_unit}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "agent-property.table": {
+      "uri": "master-data\/agent-property\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.data": {
+      "uri": "master-data\/agent-property\/{agent_property}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "agent-property.store": {
+      "uri": "master-data\/agent-property",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "agent-property.update": {
+      "uri": "master-data\/agent-property\/{agent_property}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "agent-property.destroy": {
+      "uri": "master-data\/agent-property\/{agent_property}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "faq.table": {
+      "uri": "master-data\/faq\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.data": {
+      "uri": "master-data\/faq\/{faq}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "faq.store": {
+      "uri": "master-data\/faq",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "faq.update": {
+      "uri": "master-data\/faq\/{faq}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "faq.destroy": {
+      "uri": "master-data\/faq\/{faq}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "cluster.table": {
+      "uri": "master-data\/cluster\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.data": {
+      "uri": "master-data\/cluster\/{cluster}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cluster.store": {
+      "uri": "master-data\/cluster",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "cluster.update": {
+      "uri": "master-data\/cluster\/{cluster}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "cluster.destroy": {
+      "uri": "master-data\/cluster\/{cluster}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "proyek-primary.table": {
+      "uri": "master-data\/proyek-primary\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.data": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.store": {
+      "uri": "master-data\/proyek-primary",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "proyek-primary.update": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "proyek-primary.destroy": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "unit.table": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "unit.data": {
+      "uri": "master-data\/unit\/{unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "proyek-primary.unit.store": {
+      "uri": "master-data\/proyek-primary\/{proyek_primary}\/unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "unit.update": {
+      "uri": "master-data\/unit\/{unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "unit.destroy": {
+      "uri": "master-data\/unit\/{unit}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "developer.table": {
+      "uri": "master-data\/developer\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.data": {
+      "uri": "master-data\/developer\/{developer}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "developer.store": {
+      "uri": "master-data\/developer",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "developer.update": {
+      "uri": "master-data\/developer\/{developer}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "developer.destroy": {
+      "uri": "master-data\/developer\/{developer}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "bank.table": {
+      "uri": "master-data\/bank\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.data": {
+      "uri": "master-data\/bank\/{bank}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "bank.store": {
+      "uri": "master-data\/bank",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "bank.update": {
+      "uri": "master-data\/bank\/{bank}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "bank.destroy": {
+      "uri": "master-data\/bank\/{bank}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "secondary-unit.table": {
+      "uri": "master-data\/secondary-unit\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.table-approved": {
+      "uri": "master-data\/secondary-unit\/table-approved",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.data": {
+      "uri": "master-data\/secondary-unit\/{secondary_unit}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "secondary-unit.store": {
+      "uri": "master-data\/secondary-unit",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "secondary-unit.update": {
+      "uri": "master-data\/secondary-unit\/{secondary_unit}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "secondary-unit.destroy": {
+      "uri": "master-data\/secondary-unit\/{secondary_unit}",
       "methods": ["DELETE"],
       "domain": null
     },
@@ -949,58 +1451,78 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "customer.index": {
-      "uri": "master-data\/customer",
+    "titip-jual-sewa.table": {
+      "uri": "transaksi\/titip-jual-sewa\/table",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "customer.edit": {
-      "uri": "master-data\/customer\/{user}\/ubah",
+    "titip-jual-sewa-sukses.table": {
+      "uri": "transaksi\/titip-jual-sewa\/table-sukses",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "sales.table": {
-      "uri": "api\/sales-data\/sales\/table",
+    "titip-jual-sewa.data": {
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}\/data",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "sales-approved.table": {
-      "uri": "api\/sales-data\/sales\/table\/approved",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.data": {
-      "uri": "api\/sales-data\/sales\/{sales}\/data",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.store": {
-      "uri": "api\/sales-data\/sales",
+    "titip-jual-sewa.store": {
+      "uri": "transaksi\/titip-jual-sewa",
       "methods": ["POST"],
       "domain": null
     },
-    "sales.update": {
-      "uri": "api\/sales-data\/sales\/{sales}",
+    "titip-jual-sewa.update": {
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
       "methods": ["PUT", "PATCH"],
       "domain": null
     },
-    "sales.destroy": {
-      "uri": "api\/sales-data\/sales\/{sales}",
+    "titip-jual-sewa.destroy": {
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}",
       "methods": ["DELETE"],
       "domain": null
     },
-    "sales.index": {
-      "uri": "sales-data\/sales",
+    "titip-jual-sewa.index": {
+      "uri": "transaksi\/titip-jual-sewa",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "sales.create": {
-      "uri": "sales-data\/sales\/tambah",
+    "titip-jual-sewa.create": {
+      "uri": "transaksi\/titip-jual-sewa\/tambah",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "sales.edit": {
-      "uri": "sales-data\/sales\/{sales}\/ubah",
+    "titip-jual-sewa.edit": {
+      "uri": "transaksi\/titip-jual-sewa\/{titip_jual_sewa}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary.index": {
+      "uri": "transaksi\/transaksi-proyek-primary",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary.create": {
+      "uri": "transaksi\/transaksi-proyek-primary\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-proyek-primary.edit": {
+      "uri": "transaksi\/transaksi-proyek-primary\/{transaksi_proyek_primary}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.index": {
+      "uri": "transaksi\/transaksi-secondary-unit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.create": {
+      "uri": "transaksi\/transaksi-secondary-unit\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "transaksi-secondary-unit.edit": {
+      "uri": "transaksi\/transaksi-secondary-unit\/{transaksi_secondary_unit}\/ubah",
       "methods": ["GET", "HEAD"],
       "domain": null
     }
@@ -1029,11 +1551,26 @@ if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+Vue.component('login-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Auth/LoginForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/LoginForm.vue"));
+});
+Vue.component('forgot-password-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Auth/ForgotPasswordForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/ForgotPasswordForm.vue"));
+});
+Vue.component('reset-password-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Auth/ResetPasswordForm.vue */ "./Modules/ManageUser/Resources/js/components/Auth/ResetPasswordForm.vue"));
+});
 Vue.component('user-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./components/User/Form.vue */ "./Modules/ManageUser/Resources/js/components/User/Form.vue"));
 });
 Vue.component('grup-user-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/GrupUser/Form.vue */ "./Modules/ManageUser/Resources/js/components/GrupUser/Form.vue"));
+});
+Vue.component('sales-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/Sales/Form.vue */ "./Modules/ManageUser/Resources/js/components/Sales/Form.vue"));
+});
+Vue.component('customer-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/ManageUser/Resources/js/components/Customer/Form.vue"));
 });
 
 /***/ }),
@@ -1046,53 +1583,50 @@ Vue.component('grup-user-form', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('tipe-proyek-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, /*! ./components/TipeProyek/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeProyek/Form.vue"));
 });
 Vue.component('tipe-bangunan-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./components/TipeBangunan/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeBangunan/Form.vue"));
 });
 Vue.component('tipe-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ./components/TipeUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/TipeUnit/Form.vue"));
 });
 Vue.component('agent-property-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./components/AgentProperty/Form.vue */ "./Modules/MasterData/Resources/js/components/AgentProperty/Form.vue"));
 });
 Vue.component('proyek-primary-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(2), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/ProyekPrimary/Form.vue */ "./Modules/MasterData/Resources/js/components/ProyekPrimary/Form.vue"));
 });
 Vue.component('cluster-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./components/Cluster/Form.vue */ "./Modules/MasterData/Resources/js/components/Cluster/Form.vue"));
 });
 Vue.component('unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ./components/Unit/Form.vue */ "./Modules/MasterData/Resources/js/components/Unit/Form.vue"));
 });
 Vue.component('faq-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./components/Faq/Form.vue */ "./Modules/MasterData/Resources/js/components/Faq/Form.vue"));
 });
 Vue.component('developer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./components/Developer/Form.vue */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue"));
 });
 Vue.component('bank-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./components/Bank/Form.vue */ "./Modules/MasterData/Resources/js/components/Bank/Form.vue"));
 });
 Vue.component('secondary-unit-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
-});
-Vue.component('customer-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./components/Customer/Form.vue */ "./Modules/MasterData/Resources/js/components/Customer/Form.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./components/SecondaryUnit/Form.vue */ "./Modules/MasterData/Resources/js/components/SecondaryUnit/Form.vue"));
 });
 
 /***/ }),
 
-/***/ "./Modules/SalesData/Resources/js/app.js":
+/***/ "./Modules/Transaksi/Resources/js/app.js":
 /*!***********************************************!*\
-  !*** ./Modules/SalesData/Resources/js/app.js ***!
+  !*** ./Modules/Transaksi/Resources/js/app.js ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('sales-form', function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./components/Sales/Form.vue */ "./Modules/SalesData/Resources/js/components/Sales/Form.vue"));
+Vue.component('titip-jual-sewa-form', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./components/TitipJualSewa/Form.vue */ "./Modules/Transaksi/Resources/js/components/TitipJualSewa/Form.vue"));
 });
 
 /***/ }),
@@ -83518,9 +84052,9 @@ __webpack_require__(/*! ./../../Modules/MasterData/Resources/js/app */ "./Module
 
 __webpack_require__(/*! ./../../Modules/BeritaProperti/Resources/js/app */ "./Modules/BeritaProperti/Resources/js/app.js");
 
-__webpack_require__(/*! ./../../Modules/SalesData/Resources/js/app */ "./Modules/SalesData/Resources/js/app.js");
-
 __webpack_require__(/*! ./../../Modules/ManageUser/Resources/js/app */ "./Modules/ManageUser/Resources/js/app.js");
+
+__webpack_require__(/*! ./../../Modules/Transaksi/Resources/js/app */ "./Modules/Transaksi/Resources/js/app.js");
 
 var vuetify = new vuetify__WEBPACK_IMPORTED_MODULE_1___default.a({
   icons: {

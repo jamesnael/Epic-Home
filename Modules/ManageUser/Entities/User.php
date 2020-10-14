@@ -9,21 +9,24 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Activitylog\Traits\CausesActivity;
 
-class User extends Authenticatable
+class User extends Authenticatable /*implements MustVerifyEmail*/
 {
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
     use Sluggable;
     use SoftDeletes;
+    use CausesActivity;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'ms_users_backend';
+    protected $table = 'ms_users';
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +41,9 @@ class User extends Authenticatable
         'email_verified_at',
         'password',
         'grup_user_id',
+        'is_sales',
+        'is_customer',
+        'kode_otp',
     ];
 
     /**
@@ -66,6 +72,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_sales' => 'boolean',
+        'is_customer' => 'boolean',
     ];
 
     /**
@@ -93,10 +101,62 @@ class User extends Authenticatable
     }
 
     /**
+     * Set the mode's password.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+    /**
+     * Scope a query to only include admin user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsAdmin($query)
+    {
+        return $query->where('is_sales', false)->where('is_customer', false);
+    }
+
+    /**
+     * Scope a query to only include customer user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsCustomer($query)
+    {
+        return $query->where('is_customer', true);
+    }
+
+    /**
+     * Scope a query to only include sales user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsSales($query)
+    {
+        return $query->where('is_sales', true);
+    }
+
+    /**
      * Get the relationship for the model.
      */
     public function grup_user()
     {
         return $this->belongsTo('Modules\ManageUser\Entities\UserGroup', 'grup_user_id', 'id');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function sales()
+    {
+        return $this->hasOne('Modules\ManageUser\Entities\Sales', 'id_user');
     }
 }

@@ -103,6 +103,7 @@
         	class="my-4 mr-4"
           	:loading="field_state"
           	:disabled="field_state"
+            type="submit"
             color="primary"
             @click="submitForm"
         >

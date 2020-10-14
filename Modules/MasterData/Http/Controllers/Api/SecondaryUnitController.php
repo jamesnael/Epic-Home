@@ -9,6 +9,7 @@ use Modules\MasterData\Entities\SecondaryUnit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Modules\Core\Rules\SignedPhoneNumber;
 
 class SecondaryUnitController extends Controller
 {
@@ -140,7 +141,47 @@ class SecondaryUnitController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'nama_unit' => 'bail|required'
+            'id_tipe_bangunan' => 'bail|required|exists:Modules\MasterData\Entities\TipeBangunan,id',
+            'status_unit' => 'bail|required',
+            'nama_unit' => 'bail|required',
+            'alamat' => 'bail|required',
+            'kota' => 'bail|nullable',
+            'kecamatan' => 'bail|nullable',
+            'luas_tanah' => 'bail|required',
+            'luas_bangunan' => 'bail|required',
+            'kondisi_bangunan' => 'bail|required',
+            'lebar_jalan_depan' => 'bail|required',
+            'sertifikat' => 'bail|required',
+            'atas_nama' => 'bail|required',
+            'kelengkapan_surat' => 'bail|required',
+            'jumlah_kamar_tidur' => 'bail|nullable',
+            'jumlah_kamar_mandi' => 'bail|nullable',
+            'jumlah_lantai' => 'bail|nullable',
+            'jumlah_garasi' => 'bail|nullable',
+            'listrik' => 'bail|nullable',
+            'line_telepon' => 'bail|nullable',
+            'air' => 'bail|nullable',
+            'furniture_termasuk' => 'bail|nullable',
+            'deskripsi_unit' => 'bail|nullable',
+            'harga_unit' => 'bail|required',
+            'harga_per_meter' => 'bail|required',
+            'jenis_pembayaran' => 'bail|required',
+            'nama_pemilik' => 'bail|required',
+            'alamat_lengkap_pemilik' => 'bail|required',
+            'no_telepon_pemilik' => ['bail', 'required', new SignedPhoneNumber],
+            'no_npwp_pemilik' => 'bail|required',
+            'bersedia_dipasang' => 'bail|nullable',
+            'jangka_waktu_pemasangan' => 'bail|nullable',
+            'open_house' => 'bail|nullable',
+            'gallery_unit' => 'bail|nullable',
+            'approved_status' => 'bail|nullable',
+            'longitude' => 'bail|nullable',
+            'latitude' => 'bail|nullable',
+
+            
+            
+            
+             
             
         ]);
     }

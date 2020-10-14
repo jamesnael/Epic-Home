@@ -35,7 +35,7 @@
                                         src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
                                         alt="Vuetify"
                                     ></v-img>
-                                </v-avatar> <span class="ml-2">{{ config('app.name', 'Laravel') }}</span>
+                                </v-avatar> <a href="{{ url('/') }}" class="ml-2 white--text text-decoration-none">{{ config('app.name', 'Laravel') }}</a>
                             </v-toolbar-title>
                             
                             <v-app-bar-nav-icon
@@ -49,47 +49,7 @@
                                 <v-icon>mdi-bell-ring</v-icon>
                             </v-btn>
 
-                            <v-menu
-                                bottom
-                                min-width="200px"
-                                rounded
-                                offset-y
-                            >
-                                <template v-slot:activator="{ on }">
-                                    <v-btn
-                                        icon
-                                        x-large
-                                        v-on="on"
-                                        class="mr-1"
-                                    >
-                                        <v-avatar
-                                            size="36">
-                                            <img
-                                                src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                                alt="John"
-                                            >
-                                        </v-avatar>
-                                    </v-btn>
-                                </template>
-                                <v-list dense>
-                                    <v-list-item-group
-                                        v-model="item"
-                                        color="primary"
-                                    >
-                                        <v-list-item
-                                            v-for="(item, i) in items"
-                                            :key="i"
-                                        >
-                                            <v-list-item-icon>
-                                                <v-icon v-text="item.icon"></v-icon>
-                                            </v-list-item-icon>
-                                            <v-list-item-content>
-                                                <v-list-item-title v-text="item.text"></v-list-item-title>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-list-item-group>
-                                </v-list>
-                            </v-menu>
+                            @include('core::components.user_menu')
                         </v-app-bar>
                         
                         <v-navigation-drawer 

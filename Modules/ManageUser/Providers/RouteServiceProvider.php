@@ -4,6 +4,7 @@ namespace Modules\ManageUser\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Modules\ManageUser\Entities\User;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Route::bind('customer', function ($value) {
+            return User::isCustomer()->where('slug', $value)->firstOrFail();
+        });
     }
 
     /**
@@ -62,7 +67,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
+            ->middleware(['api', 'auth:api'])
+            ->as('api.')
             ->namespace($this->moduleNamespace)
             ->group(module_path('ManageUser', '/Routes/api.php'));
     }

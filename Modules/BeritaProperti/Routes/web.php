@@ -11,6 +11,10 @@
 |
 */
 
+Route::middleware('auth')->group(function() {
+	require __DIR__.'/api.php';
+});
+
 Route::namespace('View')->group(function() {
 	Route::resource('berita-properti', 'BeritaPropertiController')->only([
 	    'index', 'create', 'edit'

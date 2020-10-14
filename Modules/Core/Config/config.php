@@ -5,6 +5,15 @@ return [
     'app_version' => '1.0.0',
     'app_timezone' => 'Asia/Jakarta',
     'main_menu' => [
+        [  
+            'icon' => 'mdi-desktop-mac-dashboard',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Dashboard',
+            'uri' => 'dashboard.index',
+            'model' => false,
+            'show' => true,
+            'children' => null
+        ],
     	[
     	    'icon' => 'mdi-database',
     	    'icon-alt' => 'mdi-chevron-down',
@@ -82,50 +91,8 @@ return [
                     'model' => false,
                     'show' => true
                 ],
-                 [
-                    'icon' => 'mdi-adjust',
-                    'text' => 'Customer',
-                    'uri' => 'customer.index',
-                    'model' => false,
-                    'show' => true
-                ],
     	    ]
     	],
-        [  
-            'icon' => 'mdi-newspaper-variant',
-            'icon-alt' => 'mdi-chevron-down',
-            'text' => 'Berita Properti',
-            'uri' => 'berita-properti.index',
-            'model' => false,
-            'show' => true,
-            'children' => null
-        ],
-        [
-            'icon' => 'mdi-account-tie',
-            'icon-alt' => 'mdi-chevron-down',
-            'text' => 'Kelola Sales',
-            'model' => false,
-            'show' => true,
-            'children' => [
-               
-                [
-                    'icon' => 'mdi-adjust',
-                    'text' => 'Sales',
-                    'uri' => 'sales.index',
-                    'model' => false,
-                    'show' => true
-                ],
-            ]
-        ],
-        // [  
-        //     'icon' => 'mdi-home-currency-usd',
-        //     'icon-alt' => 'mdi-chevron-down',
-        //     'text' => 'Tipe Proyek',
-        //     'uri' => 'tipe-proyek.index',
-        //     'model' => false,
-        //     'show' => true,
-        //     'children' => null
-        // ],
         [
             'icon' => 'mdi-account-group',
             'icon-alt' => 'mdi-chevron-down',
@@ -147,7 +114,67 @@ return [
                     'model' => false,
                     'show' => true
                 ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Customer',
+                    'uri' => 'customer.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Sales',
+                    'uri' => 'sales.index',
+                    'model' => false,
+                    'show' => true
+                ],
             ]
+        ],
+        [
+            'icon' => 'mdi-calculator',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Transaksi',
+            'model' => false,
+            'show' => true,
+            'children' => [
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Titip Jual/Sewa Unit',
+                    'uri' => 'titip-jual-sewa.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Proyek Primary',
+                    'uri' => 'transaksi-proyek-primary.index',
+                    'model' => false,
+                    'show' => true
+                ],
+                [
+                    'icon' => 'mdi-adjust',
+                    'text' => 'Seconday Unit',
+                    'uri' => 'transaksi-secondary-unit.index',
+                    'model' => false,
+                    'show' => true
+                ],
+            ]
+        ],
+        [  
+            'icon' => 'mdi-newspaper-variant-outline',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Berita Properti',
+            'uri' => 'berita-properti.index',
+            'model' => false,
+            'show' => true,
+            'children' => null
+        ],
+    ],
+    'user_menu' => [
+        [  
+            'icon' => 'mdi-power',
+            'text' => 'Logout',
+            'uri' => 'logout',
         ],
     ]
 ];

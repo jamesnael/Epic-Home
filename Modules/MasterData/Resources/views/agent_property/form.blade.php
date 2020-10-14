@@ -36,8 +36,8 @@
                 name="nomor_telepon"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                v-mask="'+62############'"
-                placeholder="+62100000000"
+                v-mask="'+##############'"
+                placeholder="+62812411111111"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
@@ -73,6 +73,7 @@
                 accept="image/*"
                 name="logo_agent"
                 label="Logo"
+                clear-icon="mdi-eraser-variant"
                 prepend-icon="mdi-camera"
                 :disabled="field_state"
             >

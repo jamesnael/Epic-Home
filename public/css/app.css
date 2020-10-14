@@ -458,6 +458,16 @@
   font-weight: 400;
 }
 
+.v-application .display-1,
+.v-application .subtitle-1 {
+  font-family: Poppins, sans-serif !important;
+}
+
+.v-application a.link {
+  color: #455a64;
+  text-decoration: none;
+}
+
 .custom-loader {
   -webkit-animation: loader 1s infinite;
           animation: loader 1s infinite;
@@ -503,5 +513,9 @@
   background-color: #1e88e5 !important;
   border-color: #1e88e5 !important;
   color: #fff !important;
+}
+
+.op-5 {
+  opacity: 0.5;
 }
 

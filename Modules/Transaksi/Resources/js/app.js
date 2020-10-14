@@ -1,0 +1,1 @@
+Vue.component('titip-jual-sewa-form', () => import('./components/TitipJualSewa/Form.vue'));
