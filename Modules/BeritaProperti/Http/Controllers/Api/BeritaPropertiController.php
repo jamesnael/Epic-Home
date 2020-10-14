@@ -147,6 +147,15 @@ class BeritaPropertiController extends Controller
      */
     public function data(BeritaProperti $berita_properti)
     {
+        $berita_properti->url_thumbnail = get_file_url('public', 'berita_properti/thumbnail/' . $berita_properti->thumbnail);
+
+        $array_banner = $berita_properti->banner;
+        $banners = [];
+        foreach ($array_banner as $key => $value) {
+            array_push($banners, get_file_url('public', 'berita_properti/banner/' . $value));
+        }
+        $berita_properti->url_banner = $banners;
+
         return response_json(true, null, 'Data retrieved', $berita_properti);
     }
 

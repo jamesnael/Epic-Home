@@ -27,6 +27,10 @@
 				type: String,
 				default: ''
 			},
+			idProyekPrimary: {
+				type: Number,
+				required: true
+			},
 			filterProyekPrimari: {
 			    type: Array,
 			    default: function () {
@@ -48,7 +52,7 @@
 		},
 		data: () => ({
 			form_data: {
-				id_proyek_primari: '',
+				// id_proyek_primari: '',
 				id_cluster: '',
 				id_tipe_unit: '',
 				harga_unit: '',

@@ -19,16 +19,6 @@ class FaqHelper extends Controller
         return [
             'menu' => ['Untuk Pelanggan', 'Untuk Agen Properti', 'Untuk Pemilik Properti'],
             'kategori' => KategoriFaq::pluck('nama'),
-            'publish' => [
-                array(
-                    'value' => '1',
-                    'text' => 'Publish',
-                ),
-                array(
-                    'value' => '0',
-                    'text' => 'Unpublish',
-                )
-            ],
         ];
     }
 

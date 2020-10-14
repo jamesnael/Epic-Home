@@ -9,7 +9,6 @@
 					<berita-properti-form
     					inline-template
     					:filter-tag='@json($tag)'
-    					:filter-publish='@json($publish)'
     					action-form="{{ route('berita-properti.store') }}"
     					redirect-uri="{{ route('berita-properti.index') }}">
     					@include('beritaproperti::berita_properti.form')

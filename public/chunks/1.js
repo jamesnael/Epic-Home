@@ -1,24 +1,26 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue":
-/*!**********************************************************************!*\
-  !*** ./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue ***!
-  \**********************************************************************/
+/***/ "./Modules/MasterData/Resources/js/components/Developer/Form.vue":
+/*!***********************************************************************!*\
+  !*** ./Modules/MasterData/Resources/js/components/Developer/Form.vue ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=style&index=0&lang=css& */ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
+
 
 
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
   render,
   staticRenderFns,
@@ -31,145 +33,302 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "Modules/Transaksi/Resources/js/components/Transaksi/Form.vue"
+component.options.__file = "Modules/MasterData/Resources/js/components/Developer/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************!*\
-  !*** ./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************/
+/***/ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ "./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\laragon\\www\\epic-home\\Modules\\Transaksi\\Resources\\js\\components\\Transaksi\\Form.vue: Unexpected token (134:39)\n\n\u001b[0m \u001b[90m 132 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 133 | \u001b[39m\t    \t\t            setTimeout(() \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 134 | \u001b[39m\t    \t\t            \t\u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mform_data\u001b[33m.\u001b[39m) {}\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\t    \t\t            \t                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 135 | \u001b[39m\t\t\t                    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgoto(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mredirectUri)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 136 | \u001b[39m\t\t\t                }\u001b[33m,\u001b[39m \u001b[35m6000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 137 | \u001b[39m\t    \t\t        } \u001b[36melse\u001b[39m {\u001b[0m\n    at Parser._raise (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:766:17)\n    at Parser.raiseWithData (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:759:17)\n    at Parser.raise (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:753:17)\n    at Parser.unexpected (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:8966:16)\n    at Parser.parseIdentifierName (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11086:18)\n    at Parser.parseIdentifier (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11059:23)\n    at Parser.parseMaybePrivateName (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:10363:19)\n    at Parser.parseMember (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9910:63)\n    at Parser.parseSubscript (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9898:19)\n    at Parser.parseSubscripts (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9867:19)\n    at Parser.parseExprSubscripts (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9850:17)\n    at Parser.parseUpdate (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9824:21)\n    at Parser.parseMaybeUnary (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9813:17)\n    at Parser.parseExprOps (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9683:23)\n    at Parser.parseMaybeConditional (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9657:23)\n    at Parser.parseMaybeAssign (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9620:21)\n    at Parser.parseExpressionBase (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9564:23)\n    at D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9558:39\n    at Parser.allowInAnd (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11303:12)\n    at Parser.parseExpression (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9558:17)\n    at Parser.parseHeaderExpression (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11702:22)\n    at Parser.parseIfStatement (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11784:22)\n    at Parser.parseStatementContent (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11476:21)\n    at Parser.parseStatement (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11431:17)\n    at Parser.parseBlockOrModuleBlockBody (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:12013:25)\n    at Parser.parseBlockBody (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11999:10)\n    at Parser.parseBlock (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:11983:10)\n    at Parser.parseFunctionBody (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:10963:24)\n    at Parser.parseArrowExpression (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:10932:10)\n    at Parser.parseParenAndDistinguishExpression (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:10501:12)\n    at Parser.parseExprAtom (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:10177:21)\n    at Parser.parseExprSubscripts (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9844:23)\n    at Parser.parseUpdate (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9824:21)\n    at Parser.parseMaybeUnary (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9813:17)\n    at Parser.parseExprOps (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9683:23)\n    at Parser.parseMaybeConditional (D:\\laragon\\www\\epic-home\\node_modules\\@babel\\parser\\lib\\index.js:9657:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate/dist/locale/id.json */ "./node_modules/vee-validate/dist/locale/id.json");
+var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! vee-validate/dist/locale/id.json */ "./node_modules/vee-validate/dist/locale/id.json", 1);
 
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
 
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
 
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('required', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('email', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["email"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('numeric', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["numeric"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationObserver"],
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationProvider"]
+  },
+  props: {
+    actionForm: {
+      type: String,
+      required: true
+    },
+    redirectUri: {
+      type: String,
+      required: true
+    },
+    dataUri: {
+      type: String,
+      "default": ''
     }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
+  },
+  data: function data() {
+    return {
+      form_data: {
+        nama_developer: '',
+        email: '',
+        nomor_telepon: '',
+        alamat: '',
+        logo_developer: '',
+        deskripsi: '',
+        latitude: '',
+        longitude: ''
+      },
+      field_state: false,
+      form_alert_state: false,
+      form_alert_color: '',
+      form_alert_text: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getFormData();
+    this.checkGoogleInit();
+  },
+  methods: {
+    getFormData: function getFormData() {
+      var _this = this;
 
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
+      if (this.dataUri) {
+        this.field_state = true;
+        axios.get(this.dataUri).then(function (response) {
+          if (response.data.success) {
+            var data = response.data.data;
+            _this.form_data = {
+              nama_developer: data.nama_developer,
+              email: data.email,
+              nomor_telepon: data.nomor_telepon,
+              alamat: data.alamat,
+              logo_developer: data.logo_developer,
+              deskripsi: data.deskripsi,
+              url_logo_developer: data.url_logo_developer,
+              latitude: data.latitude,
+              longitude: data.longitude
+            };
+            _this.field_state = false;
+          } else {
+            _this.form_alert_state = true;
+            _this.form_alert_color = 'error';
+            _this.form_alert_text = response.data.message;
+            _this.field_state = false;
+          }
+        })["catch"](function (error) {
+          _this.form_alert_state = true;
+          _this.form_alert_color = 'error';
+          _this.form_alert_text = response.data.message;
+          _this.field_state = false;
+        });
       }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
+    },
+    clearForm: function clearForm() {
+      this.form_data = {
+        nama_developer: '',
+        email: '',
+        nomor_telepon: '',
+        alamat: '',
+        logo_developer: '',
+        deskripsi: '',
+        latitude: '',
+        longitude: ''
+      };
+      this.$refs.observer.reset();
+    },
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      this.$refs.observer.validate().then(function (success) {
+        if (!success) {
+          return;
+        }
+
+        _this2.field_state = true;
+
+        _this2.postFormData();
+      });
+    },
+    postFormData: function postFormData() {
+      var _this3 = this;
+
+      var form_data = new FormData(this.$refs['post-form']);
+
+      if (this.dataUri) {
+        form_data.append("_method", "put");
+      }
+
+      axios.post(this.actionForm, form_data).then(function (response) {
+        if (response.data.success) {
+          _this3.form_alert_state = true;
+          _this3.form_alert_color = 'success';
+          _this3.form_alert_text = response.data.message;
+          setTimeout(function () {
+            _this3["goto"](_this3.redirectUri);
+          }, 6000);
+        } else {
+          _this3.field_state = false;
+          _this3.form_alert_state = true;
+          _this3.form_alert_color = 'error';
+          _this3.form_alert_text = response.data.message;
+        }
+      })["catch"](function (error) {
+        _this3.field_state = false;
+        _this3.form_alert_state = true;
+        _this3.form_alert_color = 'error';
+        _this3.form_alert_text = 'Oops, something went wrong. Please try again later.';
+      });
+    },
+    checkGoogleInit: function checkGoogleInit() {
+      var self = this;
+      setTimeout(function () {
+        if (typeof google === 'undefined') {
+          self.checkGoogleInit();
+        } else {
+          self.GMapsDeveloperInit();
+        }
+      }, 500);
+    },
+    GMapsDeveloperInit: function GMapsDeveloperInit() {
+      var _this4 = this;
+
+      if (this.form_data.latitude && this.form_data.longitude) {
+        var map = new google.maps.Map(document.getElementById('developer-map'), {
+          center: {
+            lat: parseFloat(this.form_data.latitude),
+            lng: parseFloat(this.form_data.longitude)
+          },
+          zoom: 14
+        });
+        var marker = new google.maps.Marker({
+          position: {
+            lat: parseFloat(this.form_data.latitude),
+            lng: parseFloat(this.form_data.longitude)
+          },
+          map: map
+        });
+        map.panTo({
+          lat: parseFloat(this.form_data.latitude),
+          lng: parseFloat(this.form_data.longitude)
+        });
+      } else {
+        var map = new google.maps.Map(document.getElementById('developer-map'), {
+          center: {
+            lat: -6.1767287,
+            lng: 106.829541
+          },
+          zoom: 14
+        });
+        var marker;
+      }
+
+      map.addListener('click', function (mapsMouseEvent) {
+        _this4.form_data.latitude = mapsMouseEvent.latLng.lat();
+        _this4.form_data.longitude = mapsMouseEvent.latLng.lng();
+
+        if (marker) {
+          marker.setMap(null);
+        }
+
+        marker = new google.maps.Marker({
+          position: mapsMouseEvent.latLng,
+          map: map
+        });
+        map.panTo(mapsMouseEvent.latLng);
+      });
     }
   }
+});
 
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
+/***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#office-map, #developer-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/MasterData/Resources/js/components/Developer/Form.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ })
 

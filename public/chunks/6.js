@@ -94,12 +94,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
-    },
-    filterPublish: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
     }
   },
   data: function data() {
@@ -114,7 +108,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         banner: '',
         konten: '',
         penulis: '',
-        publish: '',
+        publish: 1,
         publish_date: new Date().toISOString().substr(0, 10)
       },
       field_state: false,
@@ -144,7 +138,9 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               konten: data.konten,
               penulis: data.penulis,
               publish: data.publish,
-              publish_date: data.publish_date
+              publish_date: data.publish_date,
+              url_thumbnail: data.url_thumbnail,
+              url_banner: data.url_banner
             };
             _this.field_state = false;
           } else {
@@ -197,10 +193,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         form_data.append("_method", "put");
         form_data.append("publish_date", this.form_data.publish_date);
         form_data.append("konten", this.form_data.konten);
+        form_data.append("publish", this.form_data.publish);
       }
 
       form_data.append("publish_date", this.form_data.publish_date);
       form_data.append("konten", this.form_data.konten);
+      form_data.append("publish", this.form_data.publish);
       axios.post(this.actionForm, form_data).then(function (response) {
         if (response.data.success) {
           _this3.form_alert_state = true;

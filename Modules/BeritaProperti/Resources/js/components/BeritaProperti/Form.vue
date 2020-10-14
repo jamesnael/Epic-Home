@@ -32,12 +32,6 @@
 			    default: function () {
 			        return []
 			    }
-			},
-			filterPublish: {
-			    type: Array,
-			    default: function () {
-			        return []
-			    }
 			}
 		},
 		data: () => ({
@@ -51,7 +45,7 @@
 				banner: '',
 				konten: '',
 				penulis: '',
-				publish: '',
+				publish: 1,
 				publish_date: new Date().toISOString().substr(0, 10)
 			},
 			field_state: false,
@@ -82,6 +76,8 @@
     		            			penulis: data.penulis,
     		            			publish: data.publish,
     		            			publish_date: data.publish_date,
+    		            			url_thumbnail: data.url_thumbnail,
+    		            			url_banner: data.url_banner
     		            		}
 
     			                this.field_state = false
@@ -132,10 +128,12 @@
 	    		    form_data.append("_method", "put");
 	    		    form_data.append("publish_date", this.form_data.publish_date);
                     form_data.append("konten", this.form_data.konten)
+                    form_data.append("publish", this.form_data.publish)
 	    		}
 	    		
 	    		form_data.append("publish_date", this.form_data.publish_date);
 	    		form_data.append("konten", this.form_data.konten)
+                form_data.append("publish", this.form_data.publish)
 
 	    		axios.post(this.actionForm, form_data)
 	    		    .then((response) => {

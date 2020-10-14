@@ -89,6 +89,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       type: String,
       "default": ''
     },
+    idProyekPrimary: {
+      type: Number,
+      required: true
+    },
     filterProyekPrimari: {
       type: Array,
       "default": function _default() {
@@ -111,7 +115,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   data: function data() {
     return {
       form_data: {
-        id_proyek_primari: '',
+        // id_proyek_primari: '',
         id_cluster: '',
         id_tipe_unit: '',
         harga_unit: '',

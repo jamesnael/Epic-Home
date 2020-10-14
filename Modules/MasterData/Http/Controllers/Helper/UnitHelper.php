@@ -16,12 +16,12 @@ class UnitHelper extends Controller
      * Return Form Helper
      *
      */
-    public function getHelper()
+    public function getHelper($proyek_primary = null)
     {
         return [
-            'proyek_primari' => ProyekPrimary::select('id AS value', 'nama_proyek AS text')->get(),
+            'proyek_primari' => ProyekPrimary::select('id AS value', 'nama_proyek AS text')->where('id', $proyek_primary->id)->get(),
             'cluster' => Cluster::select('id AS value', 'nama_cluster AS text')->get(),
-            'tipe_unit' => TipeUnit::select('id AS value', 'nama_tipe_unit AS text')->get(),
+            'tipe_unit' => TipeUnit::select('id AS value', 'nama_tipe_unit AS text')->where('id_proyek_primary', $proyek_primary->id)->get(),
         ];
     }
 

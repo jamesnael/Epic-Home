@@ -19,13 +19,24 @@
                 class="my-4"
                 v-model="form_data.kategori"
                 :items="filterKategori"
+                :search-input.sync="search_kategori"
                 label="Kategori"
                 name="kategori"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-combobox>
+            >
+                <template v-slot:no-data>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                No results matching "<strong>@{{ search_kategori }}</strong>". Press <kbd>enter</kbd> to create a new one
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </template>
+            </v-combobox>
         </validation-provider>
 
         <validation-provider rules="required" name="Pertanyaan" v-slot="{ errors }">
@@ -60,20 +71,16 @@
             </v-col>
         </v-row>
 
-        <validation-provider rules="required" name="Publish" v-slot="{ errors }">
-            <v-select
-                class="my-4"
-                v-model="form_data.publish" 
-                :items="filterPublish"
-                label="Publish"
-                name="publish"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :readonly="field_state"
-            ></v-select>
-        </validation-provider>
-
+        <v-switch
+            class="my-4"
+            v-model="form_data.publish"
+            name="publish"
+            label="Publish"
+            :true-value="1"
+            :false-value="0"
+            inset
+        ></v-switch>
+        
         <v-btn
         	class="mr-4"
           	:loading="field_state"

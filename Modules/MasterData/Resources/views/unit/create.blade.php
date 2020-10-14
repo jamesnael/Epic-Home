@@ -11,6 +11,7 @@
                         :filter-proyek-primari='@json($proyek_primari)'
                         :filter-cluster='@json($cluster)'
                         :filter-tipe-unit='@json($tipe_unit)'
+                        :id-proyek-primary="{{ $proyek_primary->id }}"
 	    				action-form="{{ route('proyek-primary.unit.store', [$proyek_primary->slug]) }}"
 	    				redirect-uri="{{ route('proyek-primary.unit.index', [$proyek_primary->slug]) }}">
 		    			@include('masterdata::unit.form')

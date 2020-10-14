@@ -11,8 +11,7 @@
 	    				action-form="{{ route('faq.store') }}"
 	    				redirect-uri="{{ route('faq.index') }}"
                         :filter-menu='@json($menu)'
-                        :filter-kategori='@json($kategori)'
-                        :filter-publish='@json($publish)'>
+                        :filter-kategori='@json($kategori)'>
 		    			@include('masterdata::faq.form')
 		    		</faq-form>
 			    </v-card-text>
