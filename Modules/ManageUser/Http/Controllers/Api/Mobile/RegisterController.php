@@ -40,6 +40,11 @@ class RegisterController extends Controller
             $data = User::create($request->only(['nama','telepon', 'kode_otp', 'is_sales']));
             $sales = $data->sales()->create($request->all());
             
+            log_activity(
+                'Register sales ' . $data->nama,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $data->kode_otp);
         } catch (\Exception $e) {
@@ -85,6 +90,13 @@ class RegisterController extends Controller
 
         try {
             $user = User::isSales()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
+            log_activity(
+                'Verifikasi OTP Register sales ' . $user->nama,
+                $user,
+                [
+                    'verifikasi' => $request->all()
+                ]
+            );
             if ($user->kode_otp == $request->input('kode_otp')) {
                 $date = now()->format('dMYHis');
                 $token = [
@@ -139,6 +151,10 @@ class RegisterController extends Controller
             $user->update([
                 'kode_otp' => $this->generateOTPCode()
             ]);
+            log_activity(
+                'Resend Verifikasi OTP Register sales ' . $user->nama,
+                $user
+            );
             DB::commit();
             return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $user->kode_otp);
         } catch (\Exception $e) {

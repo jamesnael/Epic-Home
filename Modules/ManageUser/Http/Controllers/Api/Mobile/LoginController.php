@@ -42,7 +42,10 @@ class LoginController extends Controller
             $user->update([
                 'kode_otp' => $this->otp->generateOTPCode()
             ]);
-            
+            log_activity(
+                'Login sales ' . $user->nama,
+                $user
+            );
             DB::commit();
             return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $user->kode_otp);
         } catch (\Exception $e) {
@@ -86,6 +89,13 @@ class LoginController extends Controller
 
         try {
             $user = User::isSales()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
+            log_activity(
+                'Verifikasi OTP Login sales ' . $user->nama,
+                $user,
+                [
+                    'verifikasi' => $request->all()
+                ]
+            );
             if ($user->kode_otp == $request->input('kode_otp')) {
                 $date = now()->format('dMYHis');
                 $token = [
@@ -140,6 +150,10 @@ class LoginController extends Controller
             $user->update([
                 'kode_otp' => $this->otp->generateOTPCode()
             ]);
+            log_activity(
+                'Resend Verifikasi OTP Login sales ' . $user->nama,
+                $user
+            );
             DB::commit();
             return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $user->kode_otp);
         } catch (\Exception $e) {

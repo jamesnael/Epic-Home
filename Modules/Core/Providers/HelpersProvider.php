@@ -227,21 +227,22 @@ if (! function_exists('get_file_content')) {
 }
 
 if (! function_exists('log_activity')) {
-    function log_activity($description, $model, $causer = null, $log_name = null) {
+    function log_activity($description, $model, $extra = [], $causer = null, $log_name = null) {
         $properties = [];
         if (is_array($model)) {
             foreach ($model as $key => $value) {
-                $properties[] = [
-                    'attributes' => $value->getOriginal(),
-                    'changes' => $value->getChanges(),
-                ];
+                $properties[] = collect([
+                                    'attributes' => $value->getOriginal(),
+                                    'changes' => $value->getChanges(),
+                                ])->merge($extra);
             }
         } else {
-            $properties[] = [
-                'attributes' => $model->getOriginal(),
-                'changes' => $model->getChanges(),
-            ];
+            $properties[] = collect([
+                                'attributes' => $model->getOriginal(),
+                                'changes' => $model->getChanges(),
+                            ])->merge($extra);
         }
+
         activity($log_name ?: config('activitylog.default_log_name', 'default'))
             ->by($causer ?: (Auth::user() ?? null))
             ->withProperties($properties)
