@@ -87,7 +87,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapMobileRoutes()
     {
         Route::prefix('api/v1/mobile/sales')
-            ->middleware('api')
+            ->middleware(['api', 'expects-json'])
             ->as('api.mobile.')
             ->namespace($this->moduleNamespace . '\Api\Mobile')
             ->group(module_path('ManageUser', '/Routes/mobile.php'));
@@ -103,7 +103,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapFrontendRoutes()
     {
         Route::prefix('api/v1/web/customer')
-            ->middleware('api')
+            ->middleware(['api', 'expects-json'])
             ->as('api.frontend.')
             ->namespace($this->moduleNamespace . '\Api\Frontend')
             ->group(module_path('ManageUser', '/Routes/frontend.php'));
