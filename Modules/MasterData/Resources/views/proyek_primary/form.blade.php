@@ -103,7 +103,7 @@
                 <div id="proyek-primary-map"></div>
             </div>
         </div>
-        <h5>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h5>
+        <h4>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h4>
         <v-row>
             <v-col cols="12" md="6">
                 <v-text-field

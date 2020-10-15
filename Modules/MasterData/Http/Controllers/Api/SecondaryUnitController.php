@@ -132,7 +132,7 @@ class SecondaryUnitController extends Controller
 
         $array_gallery_unit = json_decode($secondary_unit->gallery_unit, true);
         $files_gallery_unit=[];
-        foreach ($array_gallery_unit as $key => $value) {
+        foreach ($array_gallery_unit ?? [] as $key => $value) {
             array_push($files_gallery_unit, get_file_url('public', 'SecondaryUnit/gallery_unit/' . $value));
         }
 
@@ -150,7 +150,7 @@ class SecondaryUnitController extends Controller
     {
         return Validator::make($request->all(), [
             'id_tipe_bangunan' => 'bail|required|exists:Modules\MasterData\Entities\TipeBangunan,id',
-            'status_unit' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.status_unit_secondary', json_encode([])))),
+            'status_unit' => 'bail|required|in:' . implode(',', decode_option('masterdata.status_unit_secondary')),
             'nama_unit' => 'bail|required',
             'alamat' => 'bail|required',
             'kota' => 'bail|nullable',
@@ -173,16 +173,16 @@ class SecondaryUnitController extends Controller
             'deskripsi_unit' => 'bail|nullable',
             'harga_unit' => 'bail|required',
             'harga_per_meter' => 'bail|required',
-            'jenis_pembayaran' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.jenis_pembayaran', json_encode([])))),
+            'jenis_pembayaran' => 'bail|nullable|in:' . implode(',', decode_option('masterdata.jenis_pembayaran')),
             'nama_pemilik' => 'bail|required',
             'alamat_lengkap_pemilik' => 'bail|required',
             'no_telepon_pemilik' => ['bail', 'required', new SignedPhoneNumber],
-            'no_npwp_pemilik' => 'bail|required',
-            'bersedia_dipasang' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.bersedia_dipasang', json_encode([])))),
+            'no_npwp_pemilik' => 'bail|nullable',
+            'bersedia_dipasang' => 'bail|nullable|in:' . implode(',', decode_option('masterdata.bersedia_dipasang')),
             'jangka_waktu_pemasangan' => 'bail|nullable',
             'open_house' => 'bail|nullable',
             'gallery_unit' => 'bail|nullable',
-            'approved_status' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.approved_status', json_encode([])))),
+            'approved_status' => 'bail|nullable|in:' . implode(',', decode_option('masterdata.approved_status')),
             'longitude' => 'bail|nullable',
             'latitude' => 'bail|nullable',
 

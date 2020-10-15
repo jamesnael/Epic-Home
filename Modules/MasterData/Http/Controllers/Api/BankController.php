@@ -123,13 +123,13 @@ class BankController extends Controller
     {
         return Validator::make($request->all(), [
             'nama_bank' => 'bail|required',
-            'jenis_bank' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.jenis_bank', json_encode([])))),
+            'jenis_bank' => 'bail|required|in:' . implode(',', decode_option('masterdata.jenis_bank')),
             'nama_pinjaman' => 'bail|nullable',
             'suku_bunga' => 'bail|nullable',
             'masa_kredit' => 'bail|nullable',
             'tenor_mulai_dari' => 'bail|nullable',
             'tenor_sampai_dengan' => 'bail|nullable',
-            'status' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.status', json_encode([])))),
+            'status' => 'bail|required|in:' . implode(',', decode_option('masterdata.status')),
             'flat_suku_bunga' => 'bail|nullable'
         ]);
     }
