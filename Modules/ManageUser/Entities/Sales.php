@@ -57,6 +57,15 @@ class Sales extends Model
     protected $dates = [
         'deleted_at',
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'deleted_at',
+    ];
     
     /**
      * Get the relationship for the model.

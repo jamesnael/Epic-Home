@@ -39,6 +39,8 @@ class AddColomUnitTable extends Migration
             $table->integer('jangka_waktu_pemasangan')->nullable();
             $table->string('open_house')->nullable();
             $table->string('gallery_unit')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
             $table->string('approved_status')->nullable();
         });
 
