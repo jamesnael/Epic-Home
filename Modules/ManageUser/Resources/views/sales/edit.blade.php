@@ -9,6 +9,9 @@
     				<sales-form
 	    				inline-template
 	    				action-form="{{ route('sales.update', [ $data->slug ]) }}"
+	    				:filter-jenis-kelamin='@json($jenis_kelamin)'
+	    				:filter-tipe-agent='@json($tipe_agent)'
+	    				:filter-status-sales='@json($status_sales)'
 	    				redirect-uri="{{ route('sales.index') }}"
 	    				data-uri="{{ route('sales.data', [ $data->slug ]) }}">
 		    			@include('manageuser::sales.form')

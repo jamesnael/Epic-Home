@@ -52,7 +52,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.tipe_agent" 
-                :items="['Independen','Agent Property']"
+                :items="filterTipeAgent"
                 label="Tipe Agen"
                 name="tipe_agent"
                 hint="* harus diisi"
@@ -144,7 +144,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.jenis_kelamin" 
-                :items="['Laki-laki','Perempuan']"
+                :items="filterJenisKelamin"
                 label="Jenis Kelamin"
                 name="jenis_kelamin"
                 hint="* harus diisi"
@@ -338,7 +338,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.status_sales" 
-                :items="['Pending', 'Verifikasi Ulang', 'Sudah Diverifikasi']"
+                :items="filterStatusSales"
                 label="Status Sales"
                 name="status_sales"
                 hint="* harus diisi"

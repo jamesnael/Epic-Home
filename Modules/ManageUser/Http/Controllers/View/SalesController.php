@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\ManageUser\Entities\User;
+use Modules\ManageUser\Http\Controllers\Helper\SalesHelper;
 
 class SalesController extends Controller
 {
@@ -21,6 +22,7 @@ class SalesController extends Controller
             ['href' => route('sales.index'), 'text' => 'Sales Data'],
             ['href' => route('sales.index'), 'text' => 'Sales'],
         ];
+        $this->helper = new SalesHelper;
     }
 
     /**
@@ -96,7 +98,8 @@ class SalesController extends Controller
 
         return view('manageuser::sales.create')
             ->with('page_title', 'Tambah Sales')
-            ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 
 
@@ -108,6 +111,7 @@ class SalesController extends Controller
         return view('manageuser::sales.edit')
             ->with('data', $sales->load('sales'))
             ->with('page_title', 'Ubah Sales ' . $sales->nama)
-            ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 }

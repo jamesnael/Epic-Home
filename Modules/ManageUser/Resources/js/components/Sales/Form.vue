@@ -28,6 +28,18 @@
 			dataUri: {
 				type: String,
 				default: ''
+			},
+			filterJenisKelamin: {
+				type: Array,
+				required: true
+			},
+			filterTipeAgent: {
+				type: Array,
+				required: true
+			},
+			filterStatusSales: {
+				type: Array,
+				required: true
 			}
 		},
 		data: () => ({

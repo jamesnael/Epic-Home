@@ -90,6 +90,18 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     dataUri: {
       type: String,
       "default": ''
+    },
+    filterJenisKelamin: {
+      type: Array,
+      required: true
+    },
+    filterTipeAgent: {
+      type: Array,
+      required: true
+    },
+    filterStatusSales: {
+      type: Array,
+      required: true
     }
   },
   data: function data() {
