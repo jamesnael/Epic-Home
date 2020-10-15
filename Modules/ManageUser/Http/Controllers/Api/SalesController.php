@@ -166,7 +166,7 @@ class SalesController extends Controller
             'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
             'password' => 'bail|sometimes|confirmed|min:8',
             'no_telepon_agent_referensi' => 'bail|nullable',
-            'tipe_agent' => 'bail|nullable',
+            'tipe_agent' => 'bail|nullable|in:Independen,Agent Property',
             'kantor_agent' => 'bail|nullable',
             'nama_depan' => 'bail|nullable',
             'nama_belakang' => 'bail|nullable',
@@ -188,7 +188,7 @@ class SalesController extends Controller
             'note' => 'bail|nullable',
             'foto_ktp' => 'bail|nullable',
             'foto_selfie' => 'bail|nullable',
-            'status_sales' => 'bail|nullable'
+            'status_sales' => 'bail|nullable|in:Pending,Verifikasi Ulang,Sudah Diverifikasi'
         ]);
     }
 
