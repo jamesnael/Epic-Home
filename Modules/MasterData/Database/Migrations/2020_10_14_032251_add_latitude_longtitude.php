@@ -13,10 +13,6 @@ class AddLatitudeLongtitude extends Migration
      */
     public function up()
     {
-        Schema::table('ms_secondary_unit', function (Blueprint $table) {
-            $table->string('longitude')->nullable();
-            $table->string('latitude')->nullable();
-        });
         Schema::table('ms_developer', function (Blueprint $table) {
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();

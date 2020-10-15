@@ -22,7 +22,7 @@ Route::post('login/verifikasi', 'LoginController@verifikasi')->name('login.verif
 Route::post('login/resend', 'LoginController@resend')->name('login.resend');
 
 Route::post('verifikasi', 'VerifikasiController@verifikasi')->name('verifikasi.post');
-Route::get('verifikasi/helper', 'VerifikasiController@formHelper')->name('login.helper');
+Route::get('verifikasi/helper', 'VerifikasiController@formHelper')->name('verifikasi.helper');
 
 Route::get('klien', 'KlienController@getClientList')->name('klien.get');
 Route::post('klien', 'KlienController@storeClient')->name('klien.post');

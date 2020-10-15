@@ -287,9 +287,9 @@
                 <validation-provider v-slot="{ errors }" name="Jumlah garasi" rules="required|numeric">
                     <v-text-field
                         class="my-4"
-                        v-model="form_data.jumlah_garasi"
+                        v-model="form_data.jumlah_garasi_mobil"
                         label="Jumlah Garasi"
-                        name="jumlah_garasi"
+                        name="jumlah_garasi_mobil"
                         clearable
                         clear-icon="mdi-eraser-variant"
                         :persistent-hint="true"

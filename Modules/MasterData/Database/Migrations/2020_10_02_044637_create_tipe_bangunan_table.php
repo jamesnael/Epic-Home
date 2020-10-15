@@ -30,6 +30,6 @@ class CreateTipeBangunanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipe_bangunan');
+        Schema::dropIfExists('ms_tipe_bangunan');
     }
 }

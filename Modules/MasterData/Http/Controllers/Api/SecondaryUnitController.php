@@ -5,7 +5,7 @@ namespace Modules\MasterData\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\SecondaryUnit;
+use Modules\MasterData\Entities\Unit as SecondaryUnit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;

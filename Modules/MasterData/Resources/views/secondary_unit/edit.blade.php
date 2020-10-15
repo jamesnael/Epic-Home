@@ -16,9 +16,9 @@
                         :filter-status-unit='@json($status_unit)'
                         :filter-approved-status='@json($approved_status)'
                         :filter-kondisi-bangunan='@json($kondisi_bangunan)'
-	    				action-form="{{ route('secondary-unit.update', [ $data->slug ]) }}"
+	    				action-form="{{ route('secondary-unit.update', [ $data->id ]) }}"
 	    				redirect-uri="{{ route('secondary-unit.index') }}"
-	    				data-uri="{{ route('secondary-unit.data', [ $data->slug ]) }}">
+	    				data-uri="{{ route('secondary-unit.data', [ $data->id ]) }}">
 		    			@include('masterdata::secondary_unit.form')
 		    		</secondary-unit-form>
 			    </v-card-text>
