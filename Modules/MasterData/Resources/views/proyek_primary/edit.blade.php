@@ -12,6 +12,7 @@
                         :filter-tipe-bangunan='@json($tipe_bangunan)'
                         :filter-developer='@json($developer)'
                         :filter-status_unit='@json($status_unit)'
+                        :filter-jenis-pembayaran='@json($jenis_pembayaran)'
 	    				action-form="{{ route('proyek-primary.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('proyek-primary.index') }}"
 	    				data-uri="{{ route('proyek-primary.data', [ $data->slug ]) }}">

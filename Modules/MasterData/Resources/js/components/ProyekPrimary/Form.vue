@@ -52,6 +52,12 @@
 			    default: function () {
 			        return []
 			    }
+			},
+			filterJenisPembayaran: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
 			}
 		},
 		data: () => ({

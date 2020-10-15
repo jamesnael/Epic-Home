@@ -11,7 +11,7 @@ class SetOptionManageUser extends Command
      *
      * @var string
      */
-    protected $signature = 'option:manage_user';
+    protected $signature = 'option:manageuser';
 
     /**
      * The console command description.

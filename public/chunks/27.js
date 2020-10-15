@@ -132,6 +132,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
+    },
+    filterJenisPembayaran: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
     }
   },
   data: function data() {

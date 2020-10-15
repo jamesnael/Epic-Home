@@ -47,6 +47,54 @@
 			        return []
 			    }
 			},
+			filterOpenHouse: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterJenisPembayaran: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterStatusUnit: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterSertifikat: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterBersediaDipasang: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterApprovedStatus: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterApprovedStatus: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterKondisiBangunan: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
 		},
 		data: () => ({
 			form_data: {

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\MasterData\Entities\Bank;
+use Modules\MasterData\Http\Controllers\Helper\BankHelper;
 
 class BankController extends Controller
 {
@@ -21,6 +22,7 @@ class BankController extends Controller
             ['href' => route('bank.index'), 'text' => 'Master Data'],
             ['href' => route('bank.index'), 'text' => 'Bank'],
         ];
+        $this->helper = new BankHelper;
     }
 
     /**
@@ -90,7 +92,8 @@ class BankController extends Controller
 
         return view('masterdata::bank.create')
             ->with('page_title', 'Tambah Bank')
-            ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 
     /**
@@ -105,6 +108,7 @@ class BankController extends Controller
         return view('masterdata::bank.edit')
             ->with('data', $bank)
             ->with('page_title', 'Ubah Bank ' . $bank->nama_bank)
-            ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 }

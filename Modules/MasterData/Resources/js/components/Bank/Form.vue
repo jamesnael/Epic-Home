@@ -24,7 +24,19 @@
 			dataUri: {
 				type: String,
 				default: ''
-			}
+			},
+			filterStatus: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterJenisBank: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
 		},
 		data: () => ({
 			enabled: false,

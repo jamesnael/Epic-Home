@@ -4,7 +4,7 @@
             <v-autocomplete
                 class="my-4"
                 v-model="form_data.jenis_bank" 
-                :items="['Konvensional','Syariah']"
+                :items="filterJenisBank"
                 label="Jenis Bank"
                 name="jenis_bank"
                 hint="* harus diisi"
@@ -130,7 +130,7 @@
             <v-autocomplete
                 class="my-4"
                 v-model="form_data.status" 
-                :items="['Publish','Unpublish']"
+                :items="filterStatus"
                 label="Status"
                 name="status"
                 hint="* harus diisi"

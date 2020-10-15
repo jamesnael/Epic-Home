@@ -5,20 +5,19 @@ namespace Modules\MasterData\Http\Controllers\Helper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\KategoriFaq;
 
-class FaqHelper extends Controller
+class BankHelper extends Controller
 {
     /**
      *
      * Return Form Helper
      *
      */
-    public function getHelper()
+    public function getHelper($proyek_primary = null)
     {
         return [
-            'menu' => json_decode(option('masterdata.menu', json_encode([]))),
-            'kategori' => KategoriFaq::pluck('nama'),
+            'jenis_bank' => json_decode(option('masterdata.jenis_bank', json_encode([]))),
+            'status' => json_decode(option('masterdata.status', json_encode([]))),
         ];
     }
 

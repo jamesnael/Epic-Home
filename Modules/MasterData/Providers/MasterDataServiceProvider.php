@@ -26,6 +26,7 @@ class MasterDataServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerCommands();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
 
@@ -86,6 +87,18 @@ class MasterDataServiceProvider extends ServiceProvider
         } else {
             $this->loadTranslationsFrom(module_path($this->moduleName, 'Resources/lang'), $this->moduleNameLower);
         }
+    }
+
+     /**
+     * Register commands
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        $this->commands([
+            \Modules\MasterData\Console\Commands\SetOptionMasterData::class,
+        ]);
     }
 
     /**

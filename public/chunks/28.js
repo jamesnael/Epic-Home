@@ -81,6 +81,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
 /* harmony import */ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate/dist/locale/id.json */ "./node_modules/vee-validate/dist/locale/id.json");
 var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! vee-validate/dist/locale/id.json */ "./node_modules/vee-validate/dist/locale/id.json", 1);
+var _props;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -96,7 +100,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationObserver"],
     ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationProvider"]
   },
-  props: {
+  props: (_props = {
     actionForm: {
       type: String,
       required: true
@@ -126,8 +130,54 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       "default": function _default() {
         return [];
       }
+    },
+    filterOpenHouse: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterJenisPembayaran: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterStatusUnit: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterSertifikat: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterBersediaDipasang: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterApprovedStatus: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
     }
-  },
+  }, _defineProperty(_props, "filterApprovedStatus", {
+    type: Array,
+    "default": function _default() {
+      return [];
+    }
+  }), _defineProperty(_props, "filterKondisiBangunan", {
+    type: Array,
+    "default": function _default() {
+      return [];
+    }
+  }), _props),
   data: function data() {
     return {
       form_data: {

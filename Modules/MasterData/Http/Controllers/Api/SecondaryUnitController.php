@@ -150,7 +150,7 @@ class SecondaryUnitController extends Controller
     {
         return Validator::make($request->all(), [
             'id_tipe_bangunan' => 'bail|required|exists:Modules\MasterData\Entities\TipeBangunan,id',
-            'status_unit' => 'bail|required',
+            'status_unit' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.status_unit_secondary', json_encode([])))),
             'nama_unit' => 'bail|required',
             'alamat' => 'bail|required',
             'kota' => 'bail|nullable',
@@ -173,16 +173,16 @@ class SecondaryUnitController extends Controller
             'deskripsi_unit' => 'bail|nullable',
             'harga_unit' => 'bail|required',
             'harga_per_meter' => 'bail|required',
-            'jenis_pembayaran' => 'bail|required',
+            'jenis_pembayaran' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.jenis_pembayaran', json_encode([])))),
             'nama_pemilik' => 'bail|required',
             'alamat_lengkap_pemilik' => 'bail|required',
             'no_telepon_pemilik' => ['bail', 'required', new SignedPhoneNumber],
             'no_npwp_pemilik' => 'bail|required',
-            'bersedia_dipasang' => 'bail|nullable',
+            'bersedia_dipasang' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.bersedia_dipasang', json_encode([])))),
             'jangka_waktu_pemasangan' => 'bail|nullable',
             'open_house' => 'bail|nullable',
             'gallery_unit' => 'bail|nullable',
-            'approved_status' => 'bail|nullable',
+            'approved_status' => 'bail|required|in:' . implode(',', json_decode(option('masterdata.approved_status', json_encode([])))),
             'longitude' => 'bail|nullable',
             'latitude' => 'bail|nullable',
 
