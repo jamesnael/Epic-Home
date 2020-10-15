@@ -136,7 +136,7 @@ class FaqController extends Controller
     public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
-            'menu' => 'bail|required|string|max:190',
+            'menu' => 'bail|required|in:' . implode(',', decode_option('masterdata.menu')),
             'kategori' => 'bail|required|string|max:190',
             'pertanyaan' => 'bail|required|string|max:190',
             'jawaban' => 'bail|required'

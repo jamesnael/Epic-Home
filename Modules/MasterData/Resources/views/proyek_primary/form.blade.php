@@ -33,7 +33,7 @@
                 label="Status Unit"
                 hint="* harus diisi"
                 name="status_unit"
-                :items="['Jual', 'Sewa', 'Dijual/Disewa']"
+                :items="filterStatusUnit"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -103,7 +103,7 @@
                 <div id="proyek-primary-map"></div>
             </div>
         </div>
-        <h5>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h5>
+        <h4>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h4>
         <v-row>
             <v-col cols="12" md="6">
                 <v-text-field
@@ -262,7 +262,7 @@
                 v-model="form_data.jenis_pembayaran"
                 label="Jenis Pembayaran Tersedia"
                 name="jenis_pembayaran"
-                :items="['Installment', 'KPR/KPA', 'Hardcash']"
+                :items="filterJenisPembayaran"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"

@@ -18,7 +18,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.status_unit" 
-                :items="['Beli','Sewa','Beli/sewa']"
+                :items="filterStatusUnit"
                 label="Status Unit"
                 name="status_unit"
                 hint="* harus diisi"
@@ -87,6 +87,7 @@
             </div>
         </div>
 
+        <h4>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h4>
         <v-row>
             <v-col cols="12" md="6">
                 <v-text-field
@@ -149,7 +150,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.kondisi_bangunan" 
-                :items="['Standard','Renovasi']"
+                :items="filterKondisiBangunan"
                 label="Status Bangunan"
                 name="kondisi_bangunan"
                 hint="* harus diisi"
@@ -177,7 +178,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.sertifikat" 
-                :items="['HGB','SHM','Strata','Lainya']"
+                :items="filterSertifikat"
                 label="Sertifikat"
                 name="sertifikat"
                 hint="* harus diisi"
@@ -424,7 +425,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.jenis_pembayaran" 
-                :items="['Hardcash','KPA','KPR Express','Tahunan','Cash Bertahap','KPR']"
+                :items="filterJenisPembayaran"
                 label="Jenis Pembayaran Tersedia"
                 name="jenis_pembayaran"
                 hint="* harus diisi"
@@ -496,7 +497,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.bersedia_dipasang" 
-                :items="['Spanduk','Iklan','Papan Tanda','Lainya','Tidak']"
+                :items="filterBersediaDipasang"
                 label="Bersedia Dipasang Spanduk"
                 name="bersedia_dipasang"
                 hint="* harus diisi"
@@ -527,7 +528,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.open_house" 
-                :items="['Ya','Tidak']"
+                :items="filterOpenHouse"
                 label="Bersedia Open House"
                 name="open_house"
                 hint="* harus diisi"
@@ -580,7 +581,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.approved_status" 
-                :items="['Disetujui','Pending']"
+                :items="filterApprovedStatus"
                 label="Approved Status"
                 name="approved_status"
                 hint="* harus diisi"

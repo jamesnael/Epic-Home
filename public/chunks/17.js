@@ -86,6 +86,18 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     dataUri: {
       type: String,
       "default": ''
+    },
+    filterStatus: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    filterJenisBank: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
     }
   },
   data: function data() {

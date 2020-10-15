@@ -9,6 +9,8 @@
     				<bank-form
 	    				inline-template
 	    				action-form="{{ route('bank.store') }}"
+                        :filter-status='@json($status)'
+                        :filter-jenis-bank='@json($jenis_bank)'
 	    				redirect-uri="{{ route('bank.index') }}">
 		    			@include('masterdata::bank.form')
 		    		</bank-form>
