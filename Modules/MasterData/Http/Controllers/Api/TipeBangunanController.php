@@ -27,6 +27,12 @@ class TipeBangunanController extends Controller
         DB::beginTransaction();
         try {
             $data = TipeBangunan::create($request->all());
+
+            log_activity(
+                'Tambah tipe bangunan ' . $data->nama_tipe_bangunan,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Tipe bangunan berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -52,6 +58,12 @@ class TipeBangunanController extends Controller
         DB::beginTransaction();
         try {
             $tipe_bangunan->update($request->all());
+
+            log_activity(
+                'Ubah tipe bangunan ' . $tipe_bangunan->nama_tipe_bangunan,
+                $tipe_bangunan
+            );
+
             DB::commit();
             return response_json(true, null, 'Tipe bangunan berhasil disimpan.', $tipe_bangunan);
         } catch (\Exception $e) {
@@ -69,6 +81,11 @@ class TipeBangunanController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus tipe bangunan ' . $tipe_bangunan->nama_tipe_bangunan,
+                $tipe_bangunan
+            );
+
             $tipe_bangunan->delete();
             DB::commit();
             return response_json(true, null, 'Tipe bangunan dihapus.');

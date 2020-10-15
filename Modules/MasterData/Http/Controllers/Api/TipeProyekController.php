@@ -27,6 +27,12 @@ class TipeProyekController extends Controller
         DB::beginTransaction();
         try {
             $data = TipeProyek::create($request->all());
+
+            log_activity(
+                'Tambah tipe proyek ' . $data->nama,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Tipe proyek berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -52,6 +58,12 @@ class TipeProyekController extends Controller
         DB::beginTransaction();
         try {
             $tipe_proyek->update($request->all());
+
+            log_activity(
+                'Ubah tipe proyek ' . $tipe_proyek->nama,
+                $tipe_proyek
+            );
+
             DB::commit();
             return response_json(true, null, 'Tipe proyek berhasil disimpan.', $tipe_proyek);
         } catch (\Exception $e) {
@@ -69,6 +81,12 @@ class TipeProyekController extends Controller
     {
         DB::beginTransaction();
         try {
+
+            log_activity(
+                'Hapus tipe proyek ' . $tipe_proyek->nama,
+                $tipe_proyek
+            );
+
             $tipe_proyek->delete();
             DB::commit();
             return response_json(true, null, 'Tipe proyek dihapus.');

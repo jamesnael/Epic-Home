@@ -27,6 +27,12 @@ class ClusterController extends Controller
         DB::beginTransaction();
         try {
             $data = Cluster::create($request->all());
+
+            log_activity(
+                'Tambah cluster ' . $data->nama_cluster,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Cluster berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -52,6 +58,11 @@ class ClusterController extends Controller
         DB::beginTransaction();
         try {
             $cluster->update($request->all());
+            log_activity(
+                'Ubah cluster ' . $cluster->nama_cluster,
+                $cluster
+            );
+
             DB::commit();
             return response_json(true, null, 'Cluster berhasil disimpan.', $cluster);
         } catch (\Exception $e) {
@@ -69,6 +80,12 @@ class ClusterController extends Controller
     {
         DB::beginTransaction();
         try {
+
+            log_activity(
+                'Hapus cluster ' . $cluster->nama_cluster,
+                $cluster
+            );
+
             $cluster->delete();
             DB::commit();
             return response_json(true, null, 'Cluster dihapus.');

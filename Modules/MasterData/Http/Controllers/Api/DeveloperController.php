@@ -37,6 +37,11 @@ class DeveloperController extends Controller
             }
             $data->save();
 
+            log_activity(
+                'Tambah developer ' . $data->nama_developer,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Developer berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -68,6 +73,11 @@ class DeveloperController extends Controller
             }
             $developer->save();
 
+            log_activity(
+                'Ubah developer ' . $developer->nama_developer,
+                $developer
+            );
+
 
             DB::commit();
             return response_json(true, null, 'Developer berhasil disimpan.', $developer);
@@ -83,6 +93,11 @@ class DeveloperController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus developer ' . $developer->nama_developer,
+                $developer
+            );
+            
             $developer->delete();
             DB::commit();
             return response_json(true, null, 'Developer property dihapus.');

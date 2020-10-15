@@ -38,6 +38,11 @@ class AgentPropertyController extends Controller
             }
             $data->save();
 
+            log_activity(
+                'Tambah agent property ' . $data->nama_agent_property,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Agent property berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -73,6 +78,11 @@ class AgentPropertyController extends Controller
             }
             $agent_property->save();
 
+            log_activity(
+                'Ubah agent property ' . $agent_property->nama_agent_property,
+                $agent_property
+            );
+
 
             DB::commit();
             return response_json(true, null, 'Agent property berhasil disimpan.', $agent_property);
@@ -91,6 +101,11 @@ class AgentPropertyController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus agent property ' . $agent_property->nama_agent_property,
+                $agent_property
+            );
+            
             $agent_property->delete();
             DB::commit();
             return response_json(true, null, 'Agent property dihapus.');

@@ -40,6 +40,11 @@ class FaqController extends Controller
             }
             $data->save();
 
+            log_activity(
+                'Tambah FAQ ' . $data->menu,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Faq berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -76,6 +81,11 @@ class FaqController extends Controller
                 $faq->publish = 0;
             }
             $faq->save();
+
+            log_activity(
+                'Ubah FAQ ' . $faq->menu,
+                $faq
+            );
             
             DB::commit();
             return response_json(true, null, 'Faq berhasil disimpan.', $faq);
@@ -94,6 +104,11 @@ class FaqController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus FAQ ' . $faq->menu,
+                $faq
+            );
+
             $faq->delete();
             DB::commit();
             return response_json(true, null, 'Faq dihapus.');

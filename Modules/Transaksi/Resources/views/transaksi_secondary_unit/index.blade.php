@@ -1,5 +1,15 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.luas_tanah="{ item }">
+    @{{ item.luas_tanah }} m<sup>2</sup>
+</template>
+<template v-slot:item.luas_bangunan="{ item }">
+    @{{ item.luas_bangunan }} m<sup>2</sup>
+</template>
+
+@endpush
+
 @section('content')
     <v-tabs>
         <v-tab>
@@ -14,7 +24,7 @@
                             <table-component inline-template
                                 table-number
                                 with-actions
-                                uri="{{ route('transaksi-secondary-unit-bayar.table') }}"
+                                uri="{{ route('transaksi-secondary-unit.table') }}"
                                 :headers='@json($table_headers)'
                                 no-data-text="Tidak ada data ditemukan."
                                 no-results-text="Tidak ada data ditemukan."

@@ -5,6 +5,7 @@ namespace Modules\Transaksi\Http\Controllers\View;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Transaksi\Entities\TransaksiPemesanan;
 
 class TransaksiSecondaryUnitController extends Controller
 {

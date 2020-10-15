@@ -42,6 +42,11 @@ class UnitController extends Controller
             }
             $data->save();
 
+            log_activity(
+                'Tambah unit ' . $data->nama_unit ?? $data->nomor_unit ,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Unit berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -80,6 +85,11 @@ class UnitController extends Controller
             }
             $unit->save();
 
+            log_activity(
+                'Ubah unit ' . $unit->nama_unit ?? $unit->nomor_unit ,
+                $unit
+            );
+
             DB::commit();
             return response_json(true, null, 'Unit berhasil disimpan.', $unit);
         } catch (\Exception $e) {
@@ -97,6 +107,12 @@ class UnitController extends Controller
     {
         DB::beginTransaction();
         try {
+
+            log_activity(
+                'Hapus unit ' . $unit->nama_unit ?? $unit->nomor_unit ,
+                $unit
+            );
+
             $unit->delete();
             DB::commit();
             return response_json(true, null, 'Unit dihapus.');
@@ -115,7 +131,7 @@ class UnitController extends Controller
     {
         $array_gambar_unit = $unit->gambar_unit;
         $gambar_units = [];
-        foreach ($array_gambar_unit as $key => $value) {
+        foreach ($array_gambar_unit ?? [] as $key => $value) {
             array_push($gambar_units, get_file_url('public', 'unit/' . $value));
         }
         $unit->url_gambar_unit = $gambar_units;

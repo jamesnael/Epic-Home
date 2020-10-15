@@ -59,6 +59,11 @@ class BeritaPropertiController extends Controller
 
             $data->save();
 
+            log_activity(
+                'Tambah berita ' . $data->judul,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Berita properti berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -114,6 +119,11 @@ class BeritaPropertiController extends Controller
 
             $berita_properti->save();
 
+            log_activity(
+                'Ubah berita ' . $berita_properti->judul,
+                $berita_properti
+            );
+
             DB::commit();
             return response_json(true, null, 'Berita properti berhasil disimpan.', $berita_properti);
         } catch (\Exception $e) {
@@ -131,6 +141,11 @@ class BeritaPropertiController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus berita ' . $berita_properti->judul,
+                $berita_properti
+            );
+            
             $berita_properti->delete();
             DB::commit();
             return response_json(true, null, 'Berita properti dihapus.');

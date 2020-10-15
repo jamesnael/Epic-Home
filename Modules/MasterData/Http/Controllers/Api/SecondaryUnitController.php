@@ -32,16 +32,8 @@ class SecondaryUnitController extends Controller
             $request->merge(['approved_status' => 'Pending']);
 
             $data = SecondaryUnit::create($request->all());
-            // if ($request->hasFile('gallery_unit')) {
-            //     $file_name = $data->nama_unit .'-'. uniqid() . '.' . $request->file('gallery_unit')->getClientOriginalExtension();
-            //     Storage::disk('public')->putFileAs('SecondaryUnit/gallery_unit', $request->file('gallery_unit'), $file_name
-            //     );
-            //     $data->gallery_unit = $file_name;
 
-            // }
-            // $data->save();
-
-             if ($request->hasFile('gallery_unit')) {
+            if ($request->hasFile('gallery_unit')) {
                 $files = [];
                 foreach ($request->file('gallery_unit') ?? [] as $key => $file) {
                     $file_name = $data->nama_unit . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
@@ -53,6 +45,11 @@ class SecondaryUnitController extends Controller
                 $data->save();
 
             }
+
+            log_activity(
+                'Tambah secondary unit ' . $data->nama_unit,
+                $data
+            );
 
             DB::commit();
             return response_json(true, null, 'Secondary unit berhasil disimpan.', $data);
@@ -93,6 +90,11 @@ class SecondaryUnitController extends Controller
 
             $secondary_unit->save();
 
+            log_activity(
+                'Ubah secondary unit ' . $secondary_unit->nama_unit,
+                $secondary_unit
+            );
+
             DB::commit();
             return response_json(true, null, 'Secondary unit berhasil disimpan.', $secondary_unit);
         } catch (\Exception $e) {
@@ -107,6 +109,12 @@ class SecondaryUnitController extends Controller
     {
         DB::beginTransaction();
         try {
+
+            log_activity(
+                'Hapus secondary unit ' . $secondary_unit->nama_unit,
+                $secondary_unit
+            );
+
             $secondary_unit->delete();
             DB::commit();
             return response_json(true, null, 'Secondary unit dihapus.');

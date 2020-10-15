@@ -31,6 +31,12 @@ class BankController extends Controller
                 $request->merge(['flat_suku_bunga' => true]);
             }
             $data = Bank::create($request->all());
+
+            log_activity(
+                'Tambah bank ' . $data->nama_bank,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Bank berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -62,6 +68,11 @@ class BankController extends Controller
                 $request->merge(['flat_suku_bunga' => false]);
             }
             $bank->update($request->all());
+
+            log_activity(
+                'Ubah bank ' . $bank->nama_bank,
+                $bank
+            );
             DB::commit();
             return response_json(true, null, 'Bank berhasil disimpan.', $bank);
         } catch (\Exception $e) {
@@ -79,6 +90,11 @@ class BankController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus bank ' . $bank->nama_bank,
+                $bank
+            );
+            
             $bank->delete();
             DB::commit();
             return response_json(true, null, 'Bank dihapus.');

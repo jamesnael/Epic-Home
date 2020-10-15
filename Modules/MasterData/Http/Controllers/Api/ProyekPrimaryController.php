@@ -86,6 +86,11 @@ class ProyekPrimaryController extends Controller
             }
             $data->save();
 
+            log_activity(
+                'Tambah proyek primary ' . $data->nama_proyek,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Proyek primary berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -184,6 +189,11 @@ class ProyekPrimaryController extends Controller
 
             $proyek_primary->save();
 
+            log_activity(
+                'Ubah proyek primary ' . $proyek_primary->nama_proyek,
+                $proyek_primary
+            );
+
             DB::commit();
             return response_json(true, null, 'Proyek primary berhasil disimpan.', $proyek_primary);
         } catch (\Exception $e) {
@@ -201,6 +211,11 @@ class ProyekPrimaryController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus proyek primary ' . $proyek_primary->nama_proyek,
+                $proyek_primary
+            );
+
             $proyek_primary->delete();
             DB::commit();
             return response_json(true, null, 'Proyek primary dihapus.');
@@ -223,7 +238,7 @@ class ProyekPrimaryController extends Controller
 
         $array_google_map_gallery = json_decode($proyek_primary->google_map_gallery, true);
         $google_map_galleries=[];
-        foreach ($array_google_map_gallery as $key => $value) {
+        foreach ($array_google_map_gallery ?? [] as $key => $value) {
             array_push($google_map_galleries, get_file_url('public', 'proyek_primary/google_map_gallery/' . $value));
         }
 
@@ -231,7 +246,7 @@ class ProyekPrimaryController extends Controller
 
         $array_progress_update = json_decode($proyek_primary->progress_update, true);
         $files_progress_update=[];
-        foreach ($array_progress_update as $key => $value) {
+        foreach ($array_progress_update ?? [] as $key => $value) {
             array_push($files_progress_update, get_file_url('public', 'proyek_primary/progress_update/' . $value));
         }
 

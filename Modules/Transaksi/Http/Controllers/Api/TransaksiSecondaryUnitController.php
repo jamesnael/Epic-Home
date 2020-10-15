@@ -38,15 +38,14 @@ class TransaksiSecondaryUnitController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
-            $item->tanggal_pesan = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
-            $item->tipe_unit = $item->unit->tipe_unit->nama_tipe_unit ?? '';
-            $item->blok = $item->unit->blok ?? '';
-            $item->luas_tanah = $item->unit->luas_tanah ?? '';
-            $item->luas_bangunan = $item->unit->luas_bangunan ?? 0;
-            $item->nama_unit = $item->unit->nama_unit ?? 0;
-            $item->nama_klien = $item->klien->nama_klien ?? '';
-            $item->nama_sales = $item->unit->sales->user->nama ?? '';
-            $item->nama_tipe_bangunan = $item->unit->tipe_bangunan->nama_tipe_bangunan ?? '';
+            $item->tanggal_pesan = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y');
+            $item->luas_tanah = $item->unit->luas_tanah;
+            $item->luas_bangunan = $item->unit->luas_bangunan;
+            $item->nama_unit = $item->unit->nama_unit;
+            
+            $item->nama_klien = $item->klien->nama_klien;
+            $item->nama_sales = $item->unit->sales->user->nama;
+            $item->nama_tipe_bangunan = $item->unit->tipe_bangunan->nama_tipe_bangunan;
             $item->status_unit = $item->unit->status_unit ?? '';
             return $item;
         });
@@ -81,13 +80,16 @@ class TransaksiSecondaryUnitController extends Controller
                     ->paginate($request->input('paginate') ?? 10);
 
         $data->getCollection()->transform(function($item) {
-            $item->tanggal_pesan = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
-            $item->tipe_unit = $item->unit->tipe_unit->nama_tipe_unit ?? '';
-            $item->blok = $item->unit->blok ?? '';
-            $item->nomor_unit = $item->unit->nomor_unit ?? '';
-            $item->harga_unit = $item->unit->harga_unit ?? 0;
-            $item->nama_klien = $item->klien->nama_klien ?? '';
-            $item->nama_sales = $item->unit->sales->user->nama ?? '';
+             $item->tanggal_pesan = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y');
+            $item->luas_tanah = $item->unit->luas_tanah;
+            $item->luas_bangunan = $item->unit->luas_bangunan;
+            $item->nama_unit = $item->unit->nama_unit;
+            
+            $item->nama_klien = $item->klien->nama_klien;
+            $item->nama_sales = $item->unit->sales->user->nama;
+            $item->nama_tipe_bangunan = $item->unit->tipe_bangunan->nama_tipe_bangunan;
+            $item->status_unit = $item->unit->status_unit ?? '';
+            return $item;
             return $item;
         });
 

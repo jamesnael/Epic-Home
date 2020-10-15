@@ -33,7 +33,7 @@
                 label="Status Unit"
                 hint="* harus diisi"
                 name="status_unit"
-                :items="filterStatusUnit"
+                :items="['Jual', 'Sewa', 'Dijual/Disewa']"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -103,7 +103,7 @@
                 <div id="proyek-primary-map"></div>
             </div>
         </div>
-
+        <h5>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h5>
         <v-row>
             <v-col cols="12" md="6">
                 <v-text-field

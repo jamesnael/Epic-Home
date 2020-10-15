@@ -27,6 +27,11 @@ class TipeUnitController extends Controller
         DB::beginTransaction();
         try {
             $data = TipeUnit::create($request->all());
+            log_activity(
+                'Tambah tipe unit ' . $data->nama_tipe_unit,
+                $data
+            );
+
             DB::commit();
             return response_json(true, null, 'Tipe unit berhasil disimpan.', $data);
         } catch (\Exception $e) {
@@ -52,6 +57,12 @@ class TipeUnitController extends Controller
         DB::beginTransaction();
         try {
             $tipe_unit->update($request->all());
+
+            log_activity(
+                'Ubah tipe unit ' . $tipe_unit->nama_tipe_unit,
+                $tipe_unit
+            );
+
             DB::commit();
             return response_json(true, null, 'Tipe unit berhasil disimpan.', $tipe_unit);
         } catch (\Exception $e) {
@@ -69,6 +80,11 @@ class TipeUnitController extends Controller
     {
         DB::beginTransaction();
         try {
+            log_activity(
+                'Hapus tipe unit ' . $tipe_unit->nama_tipe_unit,
+                $tipe_unit
+            );
+
             $tipe_unit->delete();
             DB::commit();
             return response_json(true, null, 'Tipe unit dihapus.');
