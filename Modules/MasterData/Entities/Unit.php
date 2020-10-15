@@ -79,6 +79,14 @@ class Unit extends Model
     /**
      * Get the relationship for the model.
      */
+    public function tipe_bangunan()
+    {
+        return $this->belongsTo('Modules\MasterData\Entities\TipeBangunan', 'id_tipe_bangunan');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
     public function transaksi()
     {
         return $this->hasMany('Modules\Transaksi\Entities\TransaksiPemesanan', 'id_unit');

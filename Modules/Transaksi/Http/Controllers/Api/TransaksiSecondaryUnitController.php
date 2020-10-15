@@ -46,6 +46,8 @@ class TransaksiSecondaryUnitController extends Controller
             $item->nama_unit = $item->unit->nama_unit ?? 0;
             $item->nama_klien = $item->klien->nama_klien ?? '';
             $item->nama_sales = $item->unit->sales->user->nama ?? '';
+            $item->nama_tipe_bangunan = $item->unit->tipe_bangunan->nama_tipe_bangunan ?? '';
+            $item->status_unit = $item->unit->status_unit ?? '';
             return $item;
         });
 
@@ -66,7 +68,7 @@ class TransaksiSecondaryUnitController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = TransaksiPemesanan::with('unit')->where('status', 'secondary_unit')->whereNotNull('jumlah_bayar');
+        $query = TransaksiPemesanan::with('unit')->where('status', 'secondary_unit')->where('jumlah_bayar', '>', 0);
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {
