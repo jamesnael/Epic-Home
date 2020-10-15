@@ -12,64 +12,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Rules\SignedPhoneNumber;
+use Illuminate\Validation\Rule;
 
 class SalesController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        $validator = $this->validateFormRequest($request);
-
-        if ($validator->fails()) {
-            return response_json(false, $validator->errors(), $validator->errors()->first());
-        }
-
-        DB::beginTransaction();
-        try {
-
-            $user = User::create($request->only(['nama','email','password','telepon']));
-            $user->is_sales = true;
-            $user->save();
-            
-            $data = $user->sales->create($request->all());
-           
-            if ($request->hasFile('foto_ktp')) {
-                $file_name = $data->nama_sales .'-'. uniqid() . '.' . $request->file('foto_ktp')->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('sales/foto_ktp', $request->file('foto_ktp'), $file_name
-                );
-                $data->foto_ktp = $file_name;
-
-            }
-
-            if ($request->hasFile('foto_selfie')) {
-                $file_name = $data->nama_sales .'-'. uniqid() . '.' . $request->file('foto_selfie')->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('sales/foto_selfie', $request->file('foto_selfie'), $file_name
-                );
-                $data->foto_selfie = $file_name;
-
-            }
-            $data->save();
-            log_activity(
-                'Tambah sales ' . $user->nama,
-                [
-                    $user,
-                    $user->sales
-                ]
-            );
-            DB::commit();
-            return response_json(true, null, 'Sales berhasil disimpan.', $data);
-        } catch (\Exception $e) {
-            DB::rollback();
-            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
-        }
-    }
-
-
-
     public function update(Request $request, User $sales)
     {
         $validator = $this->validateFormRequest($request, $sales->id);
@@ -119,8 +65,6 @@ class SalesController extends Controller
         }
     }
 
-    
-
     public function destroy(User $sales)
     {
         DB::beginTransaction();
@@ -142,8 +86,6 @@ class SalesController extends Controller
         }
     }
 
-    
-
     public function data(User $sales)
     {
         $data = $sales->load('sales');
@@ -162,16 +104,37 @@ class SalesController extends Controller
     {
         return Validator::make($request->all(), [
             'nama' => 'bail|required',
-            'email' => "bail|nullable|email|unique:\Modules\ManageUser\Entities\User,email,$id,id,deleted_at,null",
-            'telepon' => ['bail', 'required', new SignedPhoneNumber, "unique:\Modules\ManageUser\Entities\User,telepon,$id,id,deleted_at,null"],
-            'password' => 'bail|sometimes|confirmed|min:8',
-            'no_telepon_agent_referensi' => 'bail|nullable',
-            'tipe_agent' => 'bail|nullable|in:Independen,Agent Property',
+            'email' => [
+                'bail', 
+                'nullable', 
+                'email', 
+                Rule::unique('\Modules\ManageUser\Entities\User', 'email')
+                    ->where(function ($query) {
+                        return $query->where('is_sales', true)->whereNull('deleted_at');
+                    })
+                    ->ignore($id)
+            ],
+            'telepon' => [
+                'bail', 
+                'required', 
+                new SignedPhoneNumber, 
+                Rule::unique('\Modules\ManageUser\Entities\User', 'telepon')
+                    ->where(function ($query) {
+                        return $query->where('is_sales', true)->whereNull('deleted_at');
+                    })
+                    ->ignore($id)
+            ],
+            'no_telepon_agent_referensi' => [
+                'bail', 
+                'nullable', 
+                new SignedPhoneNumber,
+            ],
+            'tipe_agent' => 'bail|nullable|in:' . implode(',', decode_option('manageuser.tipe_agent')),
             'kantor_agent' => 'bail|nullable',
             'nama_depan' => 'bail|nullable',
             'nama_belakang' => 'bail|nullable',
             'no_ktp' => 'bail|nullable',
-            'jenis_kelamin' => 'bail|nullable',
+            'jenis_kelamin' => 'bail|nullable|in:' . implode(',', decode_option('manageuser.jenis_kelamin')),
             'tempat_lahir' => 'bail|nullable',
             'tanggal_lahir' => 'bail|nullable',
             'alamat' => 'bail|nullable',
@@ -188,7 +151,7 @@ class SalesController extends Controller
             'note' => 'bail|nullable',
             'foto_ktp' => 'bail|nullable',
             'foto_selfie' => 'bail|nullable',
-            'status_sales' => 'bail|nullable|in:Pending,Verifikasi Ulang,Sudah Diverifikasi'
+            'status_sales' => 'bail|required|in:' . implode(',', decode_option('manageuser.status_sales'))
         ]);
     }
 
@@ -207,7 +170,7 @@ class SalesController extends Controller
         }
 
         $query = User::with('sales')->whereHas('sales',  function($subquery){
-            $subquery->whereNull('status_sales');
+            $subquery->where('status_sales', '!=', 'Sudah Diverifikasi');
         })->isSales();
 
         if ($request->has('search') && $request->input('search')) {
@@ -256,7 +219,7 @@ class SalesController extends Controller
         }
 
         $query = User::with('sales')->whereHas('sales',  function($subquery){
-            $subquery->whereNotNull('status_sales');
+            $subquery->where('status_sales', 'Sudah Diverifikasi');
         })->isSales();
 
         if ($request->has('search') && $request->input('search')) {

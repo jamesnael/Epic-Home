@@ -53,7 +53,7 @@
      </v-tab-item>
 
     <v-tab>
-        Approved
+        Verified
     </v-tab>
     <v-tab-item>
      <v-row
