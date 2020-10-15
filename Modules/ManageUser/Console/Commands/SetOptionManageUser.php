@@ -46,17 +46,17 @@ class SetOptionManageUser extends Command
 
         $bar->start();
 
-        option(['tipe_agent' => json_encode(['Independen','Agent Property'])]);
+        option(['manageuser.tipe_agent' => json_encode(['Independen','Agent Property'])]);
 
         $bar->advance();
         usleep(300000);
 
-        option(['jenis_kelamin' => json_encode(['Laki-laki','Perempuan'])]);
+        option(['manageuser.jenis_kelamin' => json_encode(['Laki-laki','Perempuan'])]);
 
         $bar->advance();
         usleep(300000);
 
-        option(['status_sales' => json_encode(['Pending', 'Verifikasi Ulang', 'Sudah Diverifikasi'])]);
+        option(['manageuser.status_sales' => json_encode(['Pending', 'Verifikasi Ulang', 'Sudah Diverifikasi'])]);
 
         $bar->advance();
         usleep(300000);

@@ -32,9 +32,9 @@
             ></v-text-field>
         </validation-provider>
     
-        <validation-provider rules="required|max:15" name="No handphone (agen referensi)" v-slot="{ errors }">
+        <validation-provider rules="max:15" name="No handphone (agen referensi)" v-slot="{ errors }">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.no_telepon_agent_referensi"
                 label="No Handphone (Agen Referensi)"
                 name="no_telepon_agent_referensi"
@@ -48,14 +48,13 @@
             ></v-text-field>
         </validation-provider>
 
-         <validation-provider v-slot="{ errors }" name="Tipe Agen" rules="required">
+         <validation-provider v-slot="{ errors }" name="Tipe Agen" rules="">
              <v-autocomplete
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.tipe_agent" 
                 :items="filterTipeAgent"
                 label="Tipe Agen"
                 name="tipe_agent"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -63,15 +62,14 @@
         </validation-provider>
 
 
-        <validation-provider rules="required" name="Kantor agen" v-slot="{ errors }">
+        <validation-provider rules="" name="Kantor agen" v-slot="{ errors }">
             <v-text-field
-                class="my-4"
+                class="mt-4"
                 v-model="form_data.kantor_agent"
                 label="Kantor Agen"
                 name="kantor_agent"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -94,23 +92,7 @@
             ></v-text-field>
         </validation-provider>
 
-        <validation-provider v-if="!dataUri" v-slot="{ errors }" name="Password" rules="required">
-            <v-text-field
-                v-model="form_data.password"
-                :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
-                :type="showPassword ? 'text' : 'password'"
-                hint="* harus diisi minimal 8 karakter"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :readonly="field_state"
-                name="password"
-                label="Password"
-                counter
-                @click:append="showPassword = !showPassword"
-              ></v-text-field>
-        </validation-provider>
-
-        <validation-provider rules="required" name="Nama depan" v-slot="{ errors }">
+        {{-- <validation-provider rules="required" name="Nama depan" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nama_depan"
@@ -138,23 +120,22 @@
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
-        </validation-provider>
+        </validation-provider> --}}
 
-        <validation-provider v-slot="{ errors }" name="Jenis kelamin" rules="required">
+        <validation-provider v-slot="{ errors }" name="Jenis kelamin" rules="">
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.jenis_kelamin" 
                 :items="filterJenisKelamin"
                 label="Jenis Kelamin"
                 name="jenis_kelamin"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-autocomplete>
         </validation-provider>
 
-          <validation-provider rules="required" name="Tempat lahir" v-slot="{ errors }">
+          <validation-provider rules="" name="Tempat lahir" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.tempat_lahir"
@@ -162,7 +143,6 @@
                 name="tempat_lahir"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
@@ -208,7 +188,7 @@
             :disabled="field_state">
         </v-textarea>
 
-        <validation-provider rules="required" name="No rekening" v-slot="{ errors }">
+        <validation-provider rules="" name="No rekening" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.no_rekening"
@@ -216,14 +196,13 @@
                 name="no_rekening"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
 
-        <validation-provider rules="required" name="Atas nama" v-slot="{ errors }">
+        <validation-provider rules="" name="Atas nama" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.nama_rekening"
@@ -231,14 +210,13 @@
                 name="nama_rekening"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
 	
-        <validation-provider rules="required" name="Bank/cabang" v-slot="{ errors }">
+        <validation-provider rules="" name="Bank/cabang" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.bank"
@@ -246,14 +224,13 @@
                 name="bank"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
 
-        <validation-provider rules="required" name="No.npwp" v-slot="{ errors }">
+        <validation-provider rules="" name="No.npwp" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.no_npwp"
@@ -261,7 +238,6 @@
                 name="no_npwp"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"

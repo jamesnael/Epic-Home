@@ -46,7 +46,7 @@ class KlienController extends Controller
     {
         return Validator::make($request->all(), [
             'nama_klien' => 'bail|required|max:255',
-            'email' => "bail|required|unique:\Modules\Transaksi\Entities\Klien,email,$id,id,deleted_at,null",
+            'email' => "bail|required|email",
             'telepone' => ['bail', 'required', new SignedPhoneNumber],
             'catatan' => 'bail|nullable',
             'nama_bank' => 'bail|nullable',

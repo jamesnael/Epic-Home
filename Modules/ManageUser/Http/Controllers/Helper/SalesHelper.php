@@ -16,9 +16,9 @@ class SalesHelper extends Controller
     public function getHelper()
     {
         return [
-            'jenis_kelamin' => json_decode(option('jenis_kelamin', json_encode([]))),
-            'tipe_agent' => json_decode(option('tipe_agent', json_encode([]))),
-            'status_sales' => json_decode(option('status_sales', json_encode([]))),
+            'jenis_kelamin' => json_decode(option('manageuser.jenis_kelamin', json_encode([]))),
+            'tipe_agent' => json_decode(option('manageuser.tipe_agent', json_encode([]))),
+            'status_sales' => json_decode(option('manageuser.status_sales', json_encode([]))),
         ];
     }
 

@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+if (! function_exists('decode_option')) {
+    function decode_option($option, $as_array = true)
+    {
+        return json_decode(option($option, json_encode([])), $as_array);
+    }
+}
+
 if (! function_exists('format_money')) {
     function format_money($value=0)
     {
