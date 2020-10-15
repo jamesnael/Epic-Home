@@ -66,7 +66,7 @@ class TransaksiProyekPrimaryController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = TransaksiPemesanan::with('unit')->where('status', 'proyek_primary')->whereNotNull('jumlah_bayar');
+        $query = TransaksiPemesanan::with('unit')->where('status', 'proyek_primary')->where('jumlah_bayar', '>', 0);
 
         if ($request->has('search') && $request->input('search')) {
             $query->where(function($subquery) use ($request) {

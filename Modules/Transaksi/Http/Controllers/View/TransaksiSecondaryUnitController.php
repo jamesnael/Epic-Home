@@ -38,7 +38,7 @@ class TransaksiSecondaryUnitController extends Controller
                 "text" => 'Jenis Bangunan',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'jenis_bangunan',
+                "value" => 'nama_tipe_bangunan',
             ],
             [
                 "text" => 'Nama Unit',
@@ -50,7 +50,7 @@ class TransaksiSecondaryUnitController extends Controller
                 "text" => 'Status',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'status',
+                "value" => 'status_unit',
             ],
             [
                 "text" => 'Luas Tanah',
@@ -68,7 +68,7 @@ class TransaksiSecondaryUnitController extends Controller
                 "text" => 'Klien',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'klien',
+                "value" => 'nama_klien',
             ],
             [
                 "text" => 'Cara Bayar',
