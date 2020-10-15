@@ -41,6 +41,10 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+
+        $this->mapMobileRoutes();
+        
+        $this->mapFrontendRoutes();
     }
 
     /**
@@ -71,5 +75,37 @@ class RouteServiceProvider extends ServiceProvider
             ->as('api.')
             ->namespace($this->moduleNamespace)
             ->group(module_path('ManageUser', '/Routes/api.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapMobileRoutes()
+    {
+        Route::prefix('api/v1/mobile/sales')
+            ->middleware('api')
+            ->as('api.mobile.')
+            ->namespace($this->moduleNamespace . '\Api\Mobile')
+            ->group(module_path('ManageUser', '/Routes/mobile.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapFrontendRoutes()
+    {
+        Route::prefix('api/v1/web/customer')
+            ->middleware('api')
+            ->as('api.frontend.')
+            ->namespace($this->moduleNamespace . '\Api\Frontend')
+            ->group(module_path('ManageUser', '/Routes/frontend.php'));
     }
 }

@@ -52,7 +52,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.tipe_agent" 
-                :items="['Independen','Kantor Properti']"
+                :items="['Independen','Agent Property']"
                 label="Tipe Agen"
                 name="tipe_agent"
                 hint="* harus diisi"
@@ -338,7 +338,7 @@
              <v-autocomplete
                 class="my-4"
                 v-model="form_data.status_sales" 
-                :items="['Verifikasi','Ulang','Sukses']"
+                :items="['Pending', 'Verifikasi Ulang', 'Sudah Diverifikasi']"
                 label="Status Sales"
                 name="status_sales"
                 hint="* harus diisi"
