@@ -40,6 +40,37 @@ class Unit extends Model
         'lebar_jalan_depan',
         'lingkungan_sekitar',
         'gambar_unit',
+
+        'id_tipe_bangunan',
+         'id_sales',
+         'status_unit',
+         'nama_unit',
+         'alamat',
+         'kota',
+         'kecamatan',
+         'kondisi_bangunan',
+         'lebar_jalan_depan',
+         'sertifikat',
+         'atas_nama',
+         'kelengkapan_surat',
+         'line_telepon',
+         'air',
+         'furniture_termasuk',
+         'deskripsi_unit',
+         'harga_unit',
+         'harga_per_meter',
+         'jenis_pembayaran',
+         'nama_pemilik',
+         'alamat_lengkap_pemilik',
+         'no_telepon_pemilik',
+         'no_npwp_pemilik',
+         'bersedia_dipasang',
+         'jangka_waktu_pemasangan',
+         'open_house',
+         'gallery_unit',
+         'approved_status',
+         'latitude',
+         'longitude',
     ];
 
     /**
@@ -57,7 +88,10 @@ class Unit extends Model
      * @var array
      */
     protected $casts = [
-        'gambar_unit' => 'array'
+        'gambar_unit' => 'array',
+        'kelengkapan_surat' => 'array',
+        'furniture_termasuk'=> 'array',
+        'gallery_unit'      => 'array',
     ];
 
     /**
