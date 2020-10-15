@@ -5,7 +5,7 @@ namespace Modules\MasterData\Http\Controllers\View;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\SecondaryUnit;
+use Modules\MasterData\Entities\Unit as SecondaryUnit;
 use Modules\MasterData\Http\Controllers\Helper\SecondaryUnitHelper;
 
 class SecondaryUnitController extends Controller
@@ -130,7 +130,7 @@ class SecondaryUnitController extends Controller
 
     public function edit(SecondaryUnit $secondary_unit)
     {
-        $this->breadcrumbs[] = ['href' => route('secondary-unit.edit', [ $secondary_unit->slug ]), 'text' => 'Ubah Secondary Unit ' . $secondary_unit->nama_unit];
+        $this->breadcrumbs[] = ['href' => route('secondary-unit.edit', [ $secondary_unit->id ]), 'text' => 'Ubah Secondary Unit ' . $secondary_unit->nama_unit];
 
         return view('masterdata::secondary_unit.edit')
             ->with('data', $secondary_unit)

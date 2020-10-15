@@ -73,7 +73,7 @@ class TipeBangunan extends Model
      */
     public function secondary_unit()
     {
-        return $this->hasMany('Modules\MasterData\Entities\SecondaryUnit', 'id_tipe_bangunan');
+        return $this->hasMany('Modules\MasterData\Entities\Unit', 'id_tipe_bangunan');
     }
 
     /**
