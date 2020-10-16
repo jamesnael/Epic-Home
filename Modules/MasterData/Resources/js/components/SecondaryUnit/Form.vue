@@ -83,12 +83,6 @@
 			        return []
 			    }
 			},
-			filterApprovedStatus: {
-			    type: Array,
-			    default: function () {
-			        return []
-			    }
-			},
 			filterKondisiBangunan: {
 			    type: Array,
 			    default: function () {
