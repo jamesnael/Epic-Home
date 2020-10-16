@@ -13,8 +13,7 @@ const webpack = require('webpack');
  */
 
 mix.setPublicPath('/')
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+
 
 mix.babelConfig({
   plugins: [
@@ -26,6 +25,9 @@ if (mix.inProduction()) {
     mix.disableNotifications();
     mix.version();
 }
+
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css');
 
 mix.webpackConfig({
     plugins: [
