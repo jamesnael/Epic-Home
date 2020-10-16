@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="/favicon.ico" />
 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
-        <link href="{{ config('app.url', 'http://localhost') }}/{{ mix('public/css/app.css') }}&v={{config('core.app_version')}}" rel="stylesheet">
+        <link href="{{ mix('public/css/app.css') }}&v={{config('core.app_version')}}" rel="stylesheet">
         @yield('styles')
     </head>
     <body>
@@ -113,7 +113,7 @@
             </base-layout>
         </div>
         
-        <script src="{{ config('app.url', 'http://localhost') }}/{{ mix('public/js/app.js') }}&v={{config('core.app_version')}}"></script>
+        <script src="{{ mix('public/js/app.js') }}&v={{config('core.app_version')}}"></script>
         @yield('scripts')
     </body>
 </html>
