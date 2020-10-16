@@ -68,7 +68,7 @@ class SetOptionMasterData extends Command
         $bar->advance();
         usleep(300000);
 
-        option(['masterdata.status_unit_secondary' => json_encode(['Beli','Sewa','Beli/sewa'])]);
+        option(['masterdata.status_unit_secondary' => json_encode(['Jual','Sewa','Dijual/Disewa'])]);
 
         $bar->advance();
         usleep(300000);
