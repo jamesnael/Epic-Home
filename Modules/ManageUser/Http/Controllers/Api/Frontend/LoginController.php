@@ -5,25 +5,22 @@ namespace Modules\ManageUser\Http\Controllers\Api\Frontend;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\ManageUser\Entities\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Modules\Core\Rules\SignedPhoneNumber;
+use Modules\ManageUser\Http\Controllers\Api\Mobile\RegisterController;
 
 class LoginController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * @return Renderable
+     * UserController constructor.
+     *
      */
-    public function index()
+    public function __construct()
     {
-        return view('manageuser::index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('manageuser::create');
+        $this->otp = new RegisterController;
     }
 
     /**
@@ -31,49 +28,156 @@ class LoginController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        //
+        $validator = $this->validateFormRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, $validator->errors(), $validator->errors()->first());
+        }
+
+        DB::beginTransaction();
+        try {
+            $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
+            $user->update([
+                'kode_otp' => $this->otp->generateOTPCode()
+            ]);
+            log_activity(
+                'Login customer ' . $user->nama,
+                $user
+            );
+            DB::commit();
+            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $user->kode_otp);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
+        }
     }
 
     /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
+     *
+     * Validation Rules for Register customer
+     *
      */
-    public function show($id)
+    public function validateFormRequest($request)
     {
-        return view('manageuser::show');
+        return Validator::make($request->all(), [
+            'nomor_hp' => [
+                'bail', 
+                'required', 
+                new SignedPhoneNumber, 
+                Rule::exists('\Modules\ManageUser\Entities\User', 'telepon')
+                    ->where(function ($query) {
+                        return $query->where('is_customer', true)->whereNull('deleted_at');
+                    })
+            ],
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('manageuser::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      * @param Request $request
-     * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function verifikasi(Request $request)
     {
-        //
+        $validator = $this->validateVerificationRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, $validator->errors(), $validator->errors()->first());
+        }
+
+        try {
+            $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
+            log_activity(
+                'Verifikasi OTP Login customer ' . $user->nama,
+                $user,
+                [
+                    'verifikasi' => $request->all()
+                ]
+            );
+            if ($user->kode_otp == $request->input('kode_otp')) {
+                $date = now()->format('dMYHis');
+                $token = [
+                    'token_type' => 'Bearer',
+                    'access_token' => $user->createToken('Token ' . $user->telepon . '_' . $date)->accessToken,
+                    'expires_at' => \Carbon\Carbon::parse($date)->addDays(1)->toDateTimeString()
+                ];
+
+                return response_json(true, null, 'Kode Verifikasi berhasil diterima.', $token);
+            }
+            throw new \Exception("Kode verifikasi Anda salah.");
+        } catch (\Exception $e) {
+            return response_json(false, 'InvalidOTPException', $e->getMessage());
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
-     * @param int $id
+     *
+     * Validation Rules for Verifikasi OTP
+     *
+     */
+    public function validateVerificationRequest($request)
+    {
+        return Validator::make($request->all(), [
+            'nomor_hp' => [
+                'bail',
+                'required',
+                Rule::exists('\Modules\ManageUser\Entities\User', 'telepon')
+                    ->where(function ($query) {
+                        return $query->where('is_customer', true)->whereNull('deleted_at');
+                    })
+            ],
+            'kode_otp' => 'bail|required|numeric',
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @param Request $request
      * @return Renderable
      */
-    public function destroy($id)
+    public function resend(Request $request)
     {
-        //
+        $validator = $this->validateResendRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, $validator->errors(), $validator->errors()->first());
+        }
+
+        try {
+            $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
+            $user->update([
+                'kode_otp' => $this->otp->generateOTPCode()
+            ]);
+            log_activity(
+                'Resend Verifikasi OTP Login customer ' . $user->nama,
+                $user
+            );
+            DB::commit();
+            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $user->kode_otp);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
+        }
+    }
+
+    /**
+     *
+     * Validation Rules for Resend Verifikasi OTP
+     *
+     */
+    public function validateResendRequest($request)
+    {
+        return Validator::make($request->all(), [
+            'nomor_hp' => [
+                'bail',
+                'required',
+                Rule::exists('\Modules\ManageUser\Entities\User', 'telepon')
+                    ->where(function ($query) {
+                        return $query->where('is_customer', true)->whereNull('deleted_at');
+                    })
+            ],
+        ]);
     }
 }
