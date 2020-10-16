@@ -48,8 +48,8 @@
             ></v-text-field>
         </validation-provider>
 
-         <validation-provider v-slot="{ errors }" name="Tipe Agen" rules="">
-             <v-autocomplete
+         <validation-provider v-slot="{ errors }" name="Tipe Agen" vid="tipe_agent" rules="">
+            <v-autocomplete
                 class="mt-4"
                 v-model="form_data.tipe_agent" 
                 :items="filterTipeAgent"
@@ -61,22 +61,45 @@
             ></v-autocomplete>
         </validation-provider>
 
-
-        <validation-provider rules="" name="Kantor agen" v-slot="{ errors }">
-            <v-text-field
+         <validation-provider v-slot="{ errors }" name="Kantor agen" rules="required_if:tipe_agent,Agent Property">
+            <v-autocomplete
                 class="mt-4"
+                :items="filterKantorAgent"
                 v-model="form_data.kantor_agent"
                 label="Kantor Agen"
                 name="kantor_agent"
+                item-value="id"
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
-            ></v-text-field>
+            >
+                <template v-slot:selection="data">
+                    <template>
+                        <v-list-item-avatar>
+                            <img :src="data.item.logo_agent">
+                        </v-list-item-avatar>
+                        <v-list-item-content>
+                            <v-list-item-title v-html="data.item.nama_agent_property"></v-list-item-title>
+                        </v-list-item-content>
+                    </template>
+                </template>
+                <template v-slot:item="data">
+                    <template>
+                        <v-list-item-avatar>
+                            <img :src="data.item.logo_agent">
+                        </v-list-item-avatar>
+                        <v-list-item-content>
+                            <v-list-item-title v-html="data.item.nama_agent_property"></v-list-item-title>
+                            <v-list-item-subtitle v-html="data.item.alamat"></v-list-item-subtitle>
+                        </v-list-item-content>
+                    </template>
+                </template>
+            </v-autocomplete>
         </validation-provider>
 
-         <h3  class="mt-4">Data Diri :</h3>
+        <h3  class="mt-4">Data Diri :</h3>
 
         <validation-provider rules="email" name="Email" v-slot="{ errors }">
             <v-text-field
@@ -135,7 +158,7 @@
             ></v-autocomplete>
         </validation-provider>
 
-          <validation-provider rules="" name="Tempat lahir" v-slot="{ errors }">
+        <validation-provider rules="" name="Tempat lahir" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.tempat_lahir"
@@ -157,7 +180,7 @@
                 transition="scale-transition"
                 offset-y
                 min-width="290px"
-              >
+            >
                 <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                     class="mt-4"

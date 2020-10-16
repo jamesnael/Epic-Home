@@ -24,12 +24,20 @@ if (! function_exists('format_money')) {
 if (! function_exists('clean_string')) {
     function clean_string($string)
     {
-        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        // Strip HTML Tags
+        $clear = strip_tags($string);
+        // Clean up things like &amp;
+        $clear = html_entity_decode($clear);
+        // Strip out any url-encoded stuff
+        $clear = urldecode($clear);
+        // Replace non-AlNum characters with space
+        $clear = preg_replace('/[^A-Za-z0-9]/', ' ', $clear);
+        // Replace Multiple spaces with single space
+        $clear = preg_replace('/ +/', ' ', $clear);
+        // Trim the string of leading/trailing space
+        $clear = trim($clear);
 
-        $string = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
-
-        return str_replace('=', '', $string);
+        return $clear;
     }
 }
 

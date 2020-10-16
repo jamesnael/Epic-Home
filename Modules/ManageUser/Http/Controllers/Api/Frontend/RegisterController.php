@@ -11,9 +11,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Modules\Core\Rules\SignedPhoneNumber;
+use Modules\ManageUser\Http\Controllers\Api\Mobile\RegisterController;
 
 class RegisterController extends Controller
 {
+    /**
+     * UserController constructor.
+     *
+     */
+    public function __construct()
+    {
+        $this->otp = new RegisterController;
+    }
+
     /**
      * Store a newly created resource in storage.
      * @param Request $request
@@ -32,7 +42,7 @@ class RegisterController extends Controller
             $request->merge([
                 'is_customer' => true,
                 'telepon' => $request->input('nomor_hp'),
-                'kode_otp' => $this->generateOTPCode()
+                'kode_otp' => $this->otp->generateOTPCode()
             ]);
             
             $data = User::create($request->only(['nama','telepon', 'kode_otp', 'is_customer']));
@@ -146,7 +156,7 @@ class RegisterController extends Controller
         try {
             $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
             $user->update([
-                'kode_otp' => $this->generateOTPCode()
+                'kode_otp' => $this->otp->generateOTPCode()
             ]);
             log_activity(
                 'Resend Verifikasi OTP Register customer ' . $user->nama,

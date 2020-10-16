@@ -73,4 +73,23 @@ class AgentProperty extends Model
     {
         return 'slug';
     }
+
+    /**
+     * Get the model's logo_agent.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getLogoAgentAttribute($value)
+    {
+        return get_file_url('public', 'agent_property/logo_agent/' . $value);
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function sales()
+    {
+        return $this->hasMany('Modules\MasterData\Entities\AgentProperty', 'kantor_agent', 'id');
+    }
 }

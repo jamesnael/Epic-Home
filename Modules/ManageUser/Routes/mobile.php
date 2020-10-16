@@ -24,9 +24,9 @@ Route::post('login/resend', 'LoginController@resend')->name('login.resend');
 Route::post('verifikasi', 'VerifikasiController@verifikasi')->name('verifikasi.post');
 Route::get('verifikasi/helper', 'VerifikasiController@formHelper')->name('verifikasi.helper');
 
-Route::get('klien', 'KlienController@getClientList')->name('klien.get');
-Route::post('klien', 'KlienController@storeClient')->name('klien.post');
-Route::post('klien/verifikasi', 'KlienController@verifikasi')->name('klien.verifikasi');
-Route::post('klien/resend', 'KlienController@resend')->name('klien.resend');
-
 Route::post('profile/update', 'ProfileController@updateProfile')->name('profile.update');
+
+// Route::get('klien', 'KlienController@getClientList')->name('klien.get');
+// Route::post('klien', 'KlienController@storeClient')->name('klien.post');
+// Route::post('klien/verifikasi', 'KlienController@verifikasi')->name('klien.verifikasi');
+// Route::post('klien/resend', 'KlienController@resend')->name('klien.resend');
