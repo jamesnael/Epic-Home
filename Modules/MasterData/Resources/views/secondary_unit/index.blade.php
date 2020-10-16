@@ -9,6 +9,12 @@
         @{{ item.approved_status.toUpperCase() }}
     </v-chip>
 </template>
+<template v-slot:item.luas_tanah="{ item }">
+    @{{ item.luas_tanah }} m<sup>2</sup>
+</template>
+<template v-slot:item.luas_bangunan="{ item }">
+    @{{ item.luas_bangunan }} m<sup>2</sup>
+</template>
 @endpush
 
 
