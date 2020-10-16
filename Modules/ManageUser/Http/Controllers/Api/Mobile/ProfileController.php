@@ -4,7 +4,6 @@ namespace Modules\ManageUser\Http\Controllers\Api\Mobile;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Modules\ManageUser\Http\Controllers\Helper\SalesHelper as Controller;
 use Modules\MasterData\Entities\AgentProperty;
 use Illuminate\Support\Str;

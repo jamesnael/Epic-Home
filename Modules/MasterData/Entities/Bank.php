@@ -28,6 +28,16 @@ class Bank extends Model
          'deleted_at',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+
     protected $cast = [
          'flat_suku_bunga' => 'boolean',
     ];

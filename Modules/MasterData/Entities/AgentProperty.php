@@ -92,4 +92,5 @@ class AgentProperty extends Model
     {
         return $this->hasMany('Modules\MasterData\Entities\AgentProperty', 'kantor_agent', 'id');
     }
+
 }

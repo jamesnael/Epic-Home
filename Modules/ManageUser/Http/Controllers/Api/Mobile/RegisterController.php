@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Modules\Core\Rules\SignedPhoneNumber;
+use Illuminate\Support\Facades\Notification;
+use Modules\ManageUser\Notifications\VerifikasiEmailUser;
 
 class RegisterController extends Controller
 {
@@ -38,6 +40,9 @@ class RegisterController extends Controller
             ]);
             
             $data = User::create($request->only(['nama','telepon', 'kode_otp', 'is_sales']));
+            
+            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
+            
             $sales = $data->sales()->create($request->all());
             
             log_activity(
@@ -151,12 +156,16 @@ class RegisterController extends Controller
             $user->update([
                 'kode_otp' => $this->generateOTPCode()
             ]);
+
+            $data = $user;
+            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
+
             log_activity(
-                'Resend Verifikasi OTP Register sales ' . $user->nama,
-                $user
+                'Resend Verifikasi OTP Register sales ' . $data->nama,
+                $data
             );
             DB::commit();
-            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $user->kode_otp);
+            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $data->kode_otp);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');

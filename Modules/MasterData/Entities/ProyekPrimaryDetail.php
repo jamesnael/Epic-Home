@@ -35,6 +35,16 @@ class ProyekPrimaryDetail extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+
+    /**
      * Get the relationship for the model.
      */
     public function proyek_primary()

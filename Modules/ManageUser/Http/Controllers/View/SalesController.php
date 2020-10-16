@@ -66,7 +66,7 @@ class SalesController extends Controller
                 "text" => 'Kantor Agent',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'kantor_agent',
+                "value" => 'nama_agent_property',
             ],
             [
                 "text" => 'Jenis Kelamin',

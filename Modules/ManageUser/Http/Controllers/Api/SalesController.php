@@ -196,7 +196,8 @@ class SalesController extends Controller
             $item->tanggal_registrasi = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->no_telepon_agent_referensi = $item->sales->no_telepon_agent_referensi;
             $item->tipe_agent = $item->sales->tipe_agent;
-            $item->kantor_agent = $item->sales->kantor_agent;
+            $item->nama_agent_property = $item->sales->kantor_agen->nama_agent_property ?? '';
+            $item->logo_agent = $item->sales->kantor_agen->logo_agent ?? '';
             $item->jenis_kelamin = $item->sales->jenis_kelamin;
             $item->status_sales = $item->sales->status_sales;
 
@@ -245,7 +246,8 @@ class SalesController extends Controller
             $item->tanggal_registrasi = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->no_telepon_agent_referensi = $item->sales->no_telepon_agent_referensi;
             $item->tipe_agent = $item->sales->tipe_agent;
-            $item->kantor_agent = $item->sales->kantor_agent;
+            $item->nama_agent_property = $item->sales->kantor_agen->nama_agent_property ?? '';
+            $item->logo_agent = $item->sales->kantor_agen->logo_agent ?? '';
             $item->jenis_kelamin = $item->sales->jenis_kelamin;
             $item->status_sales = $item->sales->status_sales;
             return $item;

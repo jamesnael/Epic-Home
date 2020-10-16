@@ -41,6 +41,15 @@ class TransaksiPemesanan extends Model
         'deleted_at',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'deleted_at',
+    ];
+
 
     /**
      * Return the sluggable configuration array for this model.

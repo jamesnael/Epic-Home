@@ -1,24 +1,23 @@
 <?php
 
-namespace Modules\ManageUser\Http\Controllers\Api\Frontend;
+namespace Modules\Transaksi\Http\Controllers\Api\Mobile;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\ManageUser\Entities\User;
+use Modules\Transaksi\Entities\Klien;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Modules\Core\Rules\SignedPhoneNumber;
 use Modules\ManageUser\Http\Controllers\Api\Mobile\RegisterController as OtpRegisterController;
 use Illuminate\Support\Facades\Notification;
-use Modules\ManageUser\Notifications\VerifikasiEmailUser;
+use Modules\Transaksi\Notifications\VerifikasiEmailKlien;
 
-class RegisterController extends Controller
+
+class KlienController extends Controller
 {
     /**
-     * UserController constructor.
+     * KlienController constructor.
      *
      */
     public function __construct()
@@ -31,7 +30,7 @@ class RegisterController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function register(Request $request)
+    public function storeClient(Request $request)
     {
         $validator = $this->validateFormRequest($request);
 
@@ -42,22 +41,20 @@ class RegisterController extends Controller
         DB::beginTransaction();
         try {
             $request->merge([
-                'is_customer' => true,
-                'telepon' => $request->input('nomor_hp'),
                 'kode_otp' => $this->otp->generateOTPCode()
             ]);
-            
-            $data = User::create($request->only(['nama','telepon', 'kode_otp', 'is_customer']));
 
-            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
+            $klien = Klien::create($request->all());
+
+            Notification::route('mail', $klien->email)->notify(new VerifikasiEmailKlien($klien));
             
             log_activity(
-                'Register customer ' . $data->nama,
-                $data
+                'Tambah klien ' . $klien->nama_klien,
+                $klien
             );
 
             DB::commit();
-            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $data->kode_otp);
+            return response_json(true, null, 'Klien berhasil disimpan.', $klien);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -65,25 +62,15 @@ class RegisterController extends Controller
     }
 
     /**
-     *
-     * Validation Rules for Register customer
-     *
+     * Get client list.
+     * @param Request $request
+     * @return Renderable
      */
-    public function validateFormRequest($request)
+    public function getClientList(Request $request)
     {
-        return Validator::make($request->all(), [
-            'nama' => 'bail|required',
-            'nomor_hp' => [
-                'bail', 
-                'required', 
-                new SignedPhoneNumber, 
-                Rule::unique('\Modules\ManageUser\Entities\User', 'telepon')
-                    ->where(function ($query) {
-                        return $query->where('is_customer', true)->whereNull('deleted_at');
-                    })
-            ],
-            'nomor_referensi' => ['bail', 'nullable', new SignedPhoneNumber],
-        ]);
+        $data = Klien::where('is_verified', true)->paginate($request->input('paginate') ?? 10);
+
+        return response_json(true, null, 'Data retrieved.', $data);
     }
 
     /**
@@ -100,23 +87,21 @@ class RegisterController extends Controller
         }
 
         try {
-            $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
+            $klien = Klien::where('email', $request->input('email'))->firstOrFail();
+
             log_activity(
-                'Verifikasi OTP Register customer ' . $user->nama,
-                $user,
+                'Verifikasi OTP klien ' . $klien->nama_klien,
+                $klien,
                 [
                     'verifikasi' => $request->all()
                 ]
             );
-            if ($user->kode_otp == $request->input('kode_otp')) {
-                $date = now()->format('dMYHis');
-                $token = [
-                    'token_type' => 'Bearer',
-                    'access_token' => $user->createToken('Token ' . $user->telepon . '_' . $date)->accessToken,
-                    'expires_at' => \Carbon\Carbon::parse($date)->addDays(1)->toDateTimeString()
-                ];
 
-                return response_json(true, null, 'Kode Verifikasi berhasil diterima.', $token);
+            if ($klien->kode_otp == $request->input('kode_otp')) {
+                $klien->is_verified = true;
+                $klien->save();
+
+                return response_json(true, null, 'Kode Verifikasi berhasil diterima.', $klien);
             }
             throw new \Exception("Kode verifikasi Anda salah.");
         } catch (\Exception $e) {
@@ -132,14 +117,7 @@ class RegisterController extends Controller
     public function validateVerificationRequest($request)
     {
         return Validator::make($request->all(), [
-            'nomor_hp' => [
-                'bail',
-                'required',
-                Rule::exists('\Modules\ManageUser\Entities\User', 'telepon')
-                    ->where(function ($query) {
-                        return $query->where('is_customer', true)->whereNull('deleted_at');
-                    })
-            ],
+            'email'  => 'bail|required|exists:Modules\Transaksi\Entities\Klien,email',
             'kode_otp' => 'bail|required|numeric',
         ]);
     }
@@ -158,19 +136,19 @@ class RegisterController extends Controller
         }
 
         try {
-            $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
-            $user->update([
+            $klien = Klien::where('email', $request->input('email'))->firstOrFail();
+            $klien->update([
                 'kode_otp' => $this->otp->generateOTPCode()
             ]);
 
-            $data = $user;
-            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
+            Notification::route('mail', $klien->email)->notify(new VerifikasiEmailKlien($klien));
+
             log_activity(
-                'Resend Verifikasi OTP Register customer ' . $data->nama,
-                $data
+                'Resend Verifikasi OTP klien ' . $klien->nama,
+                $klien
             );
             DB::commit();
-            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $data->kode_otp);
+            return response_json(true, null, 'Kode verifikasi berhasil dikirim.', $klien->kode_otp);
         } catch (\Exception $e) {
             DB::rollback();
             return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
@@ -185,14 +163,26 @@ class RegisterController extends Controller
     public function validateResendRequest($request)
     {
         return Validator::make($request->all(), [
-            'nomor_hp' => [
-                'bail',
-                'required',
-                Rule::exists('\Modules\ManageUser\Entities\User', 'telepon')
-                    ->where(function ($query) {
-                        return $query->where('is_customer', true)->whereNull('deleted_at');
-                    })
-            ],
+            'email'  => 'bail|required|exists:Modules\Transaksi\Entities\Klien,email',
         ]);
     }
+
+    /**
+     *
+     * Validation Rules for Store/Update Data
+     *
+     */
+    public function validateFormRequest($request, $id = null)
+    {
+        return Validator::make($request->all(), [
+            'nama_klien' => 'bail|required|max:255',
+            'email' => "bail|sometimes|required|email|unique:Modules\Transaksi\Entities\Klien,email,$id,id,deleted_at,NULL",
+            'telepone' => ['bail', 'required', new SignedPhoneNumber],
+            'catatan' => 'bail|nullable',
+            'nama_bank' => 'bail|nullable',
+            'nomor_rekening' => 'bail|nullable|numeric',
+        ]);
+    }
+
+
 }

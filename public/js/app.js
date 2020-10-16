@@ -511,11 +511,6 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "api.sales.store": {
-      "uri": "api\/kelola-user\/sales",
-      "methods": ["POST"],
-      "domain": null
-    },
     "api.sales.update": {
       "uri": "api\/kelola-user\/sales\/{sales}",
       "methods": ["PUT", "PATCH"],
@@ -616,11 +611,6 @@ var Ziggy = {
       "methods": ["GET", "HEAD"],
       "domain": null
     },
-    "sales.store": {
-      "uri": "kelola-user\/sales",
-      "methods": ["POST"],
-      "domain": null
-    },
     "sales.update": {
       "uri": "kelola-user\/sales\/{sales}",
       "methods": ["PUT", "PATCH"],
@@ -663,11 +653,6 @@ var Ziggy = {
     },
     "sales.index": {
       "uri": "kelola-user\/sales",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "sales.create": {
-      "uri": "kelola-user\/sales\/tambah",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -719,6 +704,81 @@ var Ziggy = {
     "password.reset": {
       "uri": "auth\/password\/reset\/{token}",
       "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.mobile.register.post": {
+      "uri": "api\/v1\/mobile\/sales\/register",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.register.verifikasi": {
+      "uri": "api\/v1\/mobile\/sales\/register\/verifikasi",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.register.resend": {
+      "uri": "api\/v1\/mobile\/sales\/register\/resend",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.login.post": {
+      "uri": "api\/v1\/mobile\/sales\/login",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.login.verifikasi": {
+      "uri": "api\/v1\/mobile\/sales\/login\/verifikasi",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.login.resend": {
+      "uri": "api\/v1\/mobile\/sales\/login\/resend",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.verifikasi.post": {
+      "uri": "api\/v1\/mobile\/sales\/verifikasi",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.mobile.verifikasi.helper": {
+      "uri": "api\/v1\/mobile\/sales\/verifikasi\/helper",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "api.mobile.profile.update": {
+      "uri": "api\/v1\/mobile\/sales\/profile\/update",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.frontend.register.post": {
+      "uri": "api\/v1\/web\/customer\/register",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.frontend.register.verifikasi": {
+      "uri": "api\/v1\/web\/customer\/register\/verifikasi",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.frontend.register.resend": {
+      "uri": "api\/v1\/web\/customer\/register\/resend",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.frontend.login.post": {
+      "uri": "api\/v1\/web\/customer\/login",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.frontend.login.verifikasi": {
+      "uri": "api\/v1\/web\/customer\/login\/verifikasi",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "api.frontend.login.resend": {
+      "uri": "api\/v1\/web\/customer\/login\/resend",
+      "methods": ["POST"],
       "domain": null
     },
     "api.tipe-proyek.table": {
@@ -84520,8 +84580,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\epic_home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\epic_home\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic-home\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

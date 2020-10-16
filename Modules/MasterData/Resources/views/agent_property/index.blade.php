@@ -1,4 +1,16 @@
 @extends('core::layouts.master')
+@push('table_slot')
+<template v-slot:item.nama_agent_property="{ item }">
+    <template>
+        <v-list-item-avatar v-if="item.logo_agent">
+            <img :src="item.logo_agent">
+        </v-list-item-avatar>
+        <v-list-item-content>
+            <v-list-item-title v-html="item.nama_agent_property"></v-list-item-title>
+        </v-list-item-content>
+    </template>
+</template>
+@endpush
 
 @section('content')
     <v-row

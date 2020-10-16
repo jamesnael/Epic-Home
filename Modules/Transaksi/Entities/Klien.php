@@ -29,6 +29,8 @@ class Klien extends Model
     	'catatan',
     	'nama_bank',
     	'nomor_rekening',
+        'kode_otp',
+        'is_verified'
     ];
 
     /**
@@ -37,6 +39,15 @@ class Klien extends Model
      * @var array
      */
     protected $dates = [
+        'deleted_at',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
         'deleted_at',
     ];
 
