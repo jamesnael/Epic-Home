@@ -13,6 +13,7 @@ use Illuminate\Validation\Rule;
 use Modules\Core\Rules\SignedPhoneNumber;
 use Illuminate\Support\Facades\Notification;
 use Modules\ManageUser\Notifications\VerifikasiEmailUser;
+use Modules\Transaksi\Notifications\VerifikasiEmailKlien;
 
 class RegisterController extends Controller
 {
@@ -36,12 +37,11 @@ class RegisterController extends Controller
                 'status_sales' => 'Pending',
                 'telepon' => $request->input('nomor_hp'),
                 'no_telepon_agent_referensi' => $request->input('nomor_referensi'),
-                'kode_otp' => $this->generateOTPCode()
             ]);
             
             $data = User::create($request->only(['nama','telepon', 'kode_otp', 'is_sales']));
-            
-            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
+            $data->kode_otp = $this->generateOTPCode('mail', $data->email, 'User', $data);
+            $data->save();
             
             $sales = $data->sales()->create($request->all());
             
@@ -154,11 +154,8 @@ class RegisterController extends Controller
         try {
             $user = User::isSales()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
             $user->update([
-                'kode_otp' => $this->generateOTPCode()
+                'kode_otp' => $this->generateOTPCode('mail', $user->email, 'User', $user)
             ]);
-
-            $data = $user;
-            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
 
             log_activity(
                 'Resend Verifikasi OTP Register sales ' . $data->nama,
@@ -196,8 +193,14 @@ class RegisterController extends Controller
      * Generate kode OTP untuk sales
      *
      */
-    public function generateOTPCode()
+    public function generateOTPCode($driver = 'mail', $to, $type = 'User', $data = null)
     {
+        if ($type == 'User') {
+            Notification::route($driver, $to)->notify(new VerifikasiEmailUser($data));
+        } elseif ($type == 'Klien') {
+            Notification::route($driver, $to)->notify(new VerifikasiEmailKlien($data));
+        }
+
         return rand(1000,9999);
     }
 }

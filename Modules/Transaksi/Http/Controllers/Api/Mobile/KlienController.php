@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Modules\Core\Rules\SignedPhoneNumber;
 use Modules\ManageUser\Http\Controllers\Api\Mobile\RegisterController as OtpRegisterController;
-use Illuminate\Support\Facades\Notification;
-use Modules\Transaksi\Notifications\VerifikasiEmailKlien;
-
 
 class KlienController extends Controller
 {
@@ -40,13 +37,10 @@ class KlienController extends Controller
 
         DB::beginTransaction();
         try {
-            $request->merge([
-                'kode_otp' => $this->otp->generateOTPCode()
-            ]);
 
             $klien = Klien::create($request->all());
-
-            Notification::route('mail', $klien->email)->notify(new VerifikasiEmailKlien($klien));
+            $klien->kode_otp = $this->otp->generateOTPCode('mail', $klien->email, 'Klien', $klien);
+            $klien->save();
             
             log_activity(
                 'Tambah klien ' . $klien->nama_klien,
@@ -137,11 +131,8 @@ class KlienController extends Controller
 
         try {
             $klien = Klien::where('email', $request->input('email'))->firstOrFail();
-            $klien->update([
-                'kode_otp' => $this->otp->generateOTPCode()
-            ]);
-
-            Notification::route('mail', $klien->email)->notify(new VerifikasiEmailKlien($klien));
+            $klien->kode_otp = $this->otp->generateOTPCode('mail', $klien->email, 'Klien', $klien);
+            $klien->save();
 
             log_activity(
                 'Resend Verifikasi OTP klien ' . $klien->nama,

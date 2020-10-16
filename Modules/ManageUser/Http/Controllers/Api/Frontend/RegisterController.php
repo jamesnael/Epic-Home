@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Modules\Core\Rules\SignedPhoneNumber;
 use Modules\ManageUser\Http\Controllers\Api\Mobile\RegisterController as OtpRegisterController;
-use Illuminate\Support\Facades\Notification;
-use Modules\ManageUser\Notifications\VerifikasiEmailUser;
 
 class RegisterController extends Controller
 {
@@ -44,12 +42,11 @@ class RegisterController extends Controller
             $request->merge([
                 'is_customer' => true,
                 'telepon' => $request->input('nomor_hp'),
-                'kode_otp' => $this->otp->generateOTPCode()
             ]);
             
             $data = User::create($request->only(['nama','telepon', 'kode_otp', 'is_customer']));
-
-            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
+            $data->kode_otp = $this->otp->generateOTPCode('mail', $data->email, 'User', $data);
+            $data->save();
             
             log_activity(
                 'Register customer ' . $data->nama,
@@ -160,11 +157,9 @@ class RegisterController extends Controller
         try {
             $user = User::isCustomer()->where('telepon', $request->input('nomor_hp'))->firstOrFail();
             $user->update([
-                'kode_otp' => $this->otp->generateOTPCode()
+                'kode_otp' => $this->otp->generateOTPCode('mail', $user->email, 'User', $user)
             ]);
 
-            $data = $user;
-            Notification::route('mail', $data->email)->notify(new VerifikasiEmailUser($data));
             log_activity(
                 'Resend Verifikasi OTP Register customer ' . $data->nama,
                 $data
