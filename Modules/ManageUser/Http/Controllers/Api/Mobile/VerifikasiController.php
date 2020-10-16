@@ -4,8 +4,13 @@ namespace Modules\ManageUser\Http\Controllers\Api\Mobile;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\ManageUser\Http\Controllers\Helper\SalesHelper as Controller;
 use Modules\MasterData\Entities\AgentProperty;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class VerifikasiController extends Controller
 {
@@ -26,7 +31,9 @@ class VerifikasiController extends Controller
     public function getHelper()
     {
         return [
-            'agent_property' => AgentProperty::get(),
+            'tipe_agent' => json_decode(option('manageuser.tipe_agent', json_encode([]))),
+            'kantor_agent' => AgentProperty::get(),
+            'jenis_kelamin' => json_decode(option('manageuser.jenis_kelamin', json_encode([]))),
             'provinsi' => [],
             'kota' => [],
             'kecamatan' => [],
@@ -35,16 +42,72 @@ class VerifikasiController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return Renderable
+     */
+    public function verifikasi(Request $request)
+    {
+        $validator = $this->validateFormRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, $validator->errors(), $validator->errors()->first());
+        }
+
+        DB::beginTransaction();
+        try {
+            $user = Auth::user();
+            $user->update(['email' => $request->input('email')]);
+
+            $request->merge([
+                'foto_ktp' => 'ktp_' . Str::snake($user->slug) . '_' . uniqid() . '.' . $request->file('image_foto_ktp')->getClientOriginalExtension(),
+                'foto_selfie' => 'selfie_' . Str::snake($user->slug) . '_' . uniqid() . '.' . $request->file('image_foto_selfie')->getClientOriginalExtension(),
+            ]);
+
+            Storage::disk('public')->putFileAs(
+                'document/' . $user->slug, $request->file('image_foto_ktp'), $request->input('foto_ktp')
+            );
+            Storage::disk('public')->putFileAs(
+                'document/' . $user->slug, $request->file('image_foto_selfie'), $request->input('foto_selfie')
+            );
+
+            $user->sales->update($request->except(['email', 'image_foto_ktp', 'image_foto_selfie']));
+
+            DB::commit();
+            return response_json(true, null, 'Data verifikasi berhasil diterima.', $data);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat menyimpan data, silahkan dicoba kembali beberapa saat lagi.');
+        }
+    }
+
+    /**
      *
-     * Handle incoming request for form helper
+     * Validation Rules for Register Sales
      *
      */
-    public function formHelper()
+    public function validateFormRequest($request)
     {
-        try {
-            return response_json(true, null, 'Sukses mengambil data.', $this->getHelper());
-        } catch (Exception $e) {
-            return response_json(false, $e->getMessage() . ' on file ' . $e->getFile() . ' on line number ' . $e->getLine(), 'Terdapat kesalahan saat mengambil data, silahkan dicoba kembali beberapa saat lagi.');
-        }
+        return Validator::make($request->all(), [
+            // 'nama_depan' => 'bail|required',
+            // 'nama_belakang' => 'bail|nullable',
+            'email' => 'bail|required|email',
+            'tipe_agent' => 'bail|nullable|in:' . implode(',', decode_option('manageuser.tipe_agent')),
+            'kantor_agent' => 'bail|required_if:tipe_agent,Agent Property|nullable|exists:\Modules\MasterData\Entities\AgentProperty,id',
+            'no_ktp' => 'bail|required|numeric',
+            'jenis_kelamin' => 'bail|nullable|in:' . implode(',', decode_option('manageuser.jenis_kelamin')),
+            'tempat_lahir' => 'bail|nullable',
+            'tanggal_lahir' => 'bail|nullable|date_format:Y-m-d',
+            'alamat' => 'bail|required',
+            'provinsi' => 'bail|required',
+            'kota' => 'bail|required',
+            'kecamatan' => 'bail|required',
+            'kelurahan' => 'bail|required',
+            'rt' => 'bail|nullable|numeric',
+            'rw' => 'bail|nullable|numeric',
+            'no_npwp' => 'bail|required|numeric',
+            'image_foto_ktp' => 'bail|required|image',
+            'image_foto_selfie' => 'bail|required|image',
+        ]);
     }
 }

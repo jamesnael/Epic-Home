@@ -5,6 +5,7 @@ namespace Modules\ManageUser\Http\Controllers\Helper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\MasterData\Entities\AgentProperty;
 
 class SalesHelper extends Controller
 {
@@ -16,8 +17,13 @@ class SalesHelper extends Controller
     public function getHelper()
     {
         return [
-            'jenis_kelamin' => json_decode(option('manageuser.jenis_kelamin', json_encode([]))),
             'tipe_agent' => json_decode(option('manageuser.tipe_agent', json_encode([]))),
+            'kantor_agent' => AgentProperty::get(),
+            'jenis_kelamin' => json_decode(option('manageuser.jenis_kelamin', json_encode([]))),
+            'provinsi' => [],
+            'kota' => [],
+            'kecamatan' => [],
+            'kelurahan' => [],
             'status_sales' => json_decode(option('manageuser.status_sales', json_encode([]))),
         ];
     }

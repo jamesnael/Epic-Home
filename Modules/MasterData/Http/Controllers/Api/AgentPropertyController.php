@@ -30,7 +30,7 @@ class AgentPropertyController extends Controller
         try {
             $data = AgentProperty::create($request->all());
             if ($request->hasFile('logo_agent')) {
-                $file_name = $data->nama_agent_property .'-'. uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
+                $file_name = clean_string($data->nama_agent_property) .'-'. uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
                 Storage::disk('public')->putFileAs('agent_property/logo_agent', $request->file('logo_agent'), $file_name
                 );
                 $data->logo_agent = $file_name;
@@ -70,7 +70,7 @@ class AgentPropertyController extends Controller
             $agent_property->update($request->all());
 
             if ($request->hasFile('logo_agent')) {
-                $file_name = $agent_property->nama_agent_property . '-' . uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
+                $file_name = clean_string($agent_property->nama_agent_property) . '-' . uniqid() . '.' . $request->file('logo_agent')->getClientOriginalExtension();
                 Storage::disk('public')->putFileAs('agent_property/logo_agent', $request->file('logo_agent'), $file_name
                 );
                 $agent_property->logo_agent = $file_name;

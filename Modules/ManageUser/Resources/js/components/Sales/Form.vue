@@ -1,9 +1,10 @@
 <script type="text/javascript">
 	import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
-	import { required, email, numeric, image , regex, max } from 'vee-validate/dist/rules'
+	import { required, required_if, email, numeric, image , regex, max } from 'vee-validate/dist/rules'
 	import id from 'vee-validate/dist/locale/id.json'
 
 	extend('required', required)
+	extend('required_if', required_if)
 	extend('email', email)
 	extend('numeric', numeric)
 	extend('image', image)
@@ -34,6 +35,10 @@
 				required: true
 			},
 			filterTipeAgent: {
+				type: Array,
+				required: true
+			},
+			filterKantorAgent: {
 				type: Array,
 				required: true
 			},
