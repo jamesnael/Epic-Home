@@ -12,7 +12,7 @@ moment.locale('id')
 Vue.mixin({
     methods: {
         ziggy: function ( name, params, absolute ) { 
-            var namedRoute = route(name, params, false, Ziggy)
+            var namedRoute = route(name, params, true, Ziggy)
             return namedRoute;
         },
         base_url: function() {

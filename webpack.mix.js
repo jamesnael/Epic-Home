@@ -25,15 +25,15 @@ if (mix.inProduction()) {
     mix.disableNotifications();
     mix.version();
 }
+mix.js('resources/js/app.js', 'admin/public/js')
+   .sass('resources/sass/app.scss', 'admin/public/css');
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
 
 mix.webpackConfig({
     plugins: [
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ],
     output: {
-        chunkFilename: mix.inProduction() ? 'public/dist/[name].[chunkhash].js' : 'public/chunks/[name].js',
+        chunkFilename: mix.inProduction() ? 'admin/public/dist/[name].[chunkhash].js' : 'admin/public/chunks/[name].js',
     }
 });

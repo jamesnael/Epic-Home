@@ -104,7 +104,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->commands([
             \Modules\Core\Console\GenerateZiggyCommand::class,
-            \Modules\Core\Console\GenerateMainMenuCommand::class
+            \Modules\Core\Console\GenerateMainMenuCommand::class,
+            \Modules\Core\Console\LinkedMixCommand::class
         ]);
     }
 
