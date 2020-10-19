@@ -191,5 +191,6 @@ return [
 
     'links' => [
         base_path('public') => base_path('admin/public'),
+        base_path() . '/../fonts' => base_path('fonts'),
     ],
 ];
