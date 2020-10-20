@@ -9,5 +9,3 @@ Vue.component('faq-form', () => import('./components/Faq/Form.vue'));
 Vue.component('developer-form', () => import('./components/Developer/Form.vue'));
 Vue.component('bank-form', () => import('./components/Bank/Form.vue'));
 Vue.component('secondary-unit-form', () => import('./components/SecondaryUnit/Form.vue'));
-
-Vue.component('maps-component', require('./components/Maps/Form.vue').default);

@@ -39,7 +39,6 @@
 		    checkGoogleInit() {
 				var self = this;
 				setTimeout(function() {
-					console.log(google)
 		            if(typeof google === 'undefined') {
 		                self.checkGoogleInit();
 		            } else {
@@ -50,6 +49,8 @@
         	GMapsInit() {
         		this.latitude = this.latitudeValue;
         		this.longitude = this.longitudeValue;
+
+        		console.log(this.latitude)
         		
         		if (this.latitude && this.longitude) {
 	                var map = new google.maps.Map(document.getElementById('view-map'), {

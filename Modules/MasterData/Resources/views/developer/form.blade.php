@@ -63,7 +63,7 @@
             longitude-input-name="longitude"
             :disabled="field_state"
         >
-            @include('masterdata::maps.map')
+            @include('core::maps.map')
         </maps-component>
 
 		<v-textarea

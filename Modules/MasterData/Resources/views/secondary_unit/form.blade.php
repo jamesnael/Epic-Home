@@ -88,7 +88,7 @@
             longitude-input-name="longitude"
             :disabled="field_state"
         >
-            @include('masterdata::maps.map')
+            @include('core::maps.map')
         </maps-component>
 
         <validation-provider v-slot="{ errors }" name="Luas tanah" rules="required|numeric">
