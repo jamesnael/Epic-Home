@@ -56,38 +56,15 @@
             :disabled="field_state">
         </v-textarea>
 
-        <div class="form-group row">
-            <div class="col-md-12">
-                <div id="developer-map"></div>
-            </div>
-        </div>
-        
-        <h4>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h4>
-        <v-row>
-            <v-col cols="12" md="6">
-                <v-text-field
-                    class="my-4"
-                    v-model="form_data.latitude"
-                    label="Latitude"
-                    clearable
-                    clear-icon="mdi-eraser-variant"
-                    name="latitude"
-                    :disabled="field_state"
-                ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-                <v-text-field
-                    class="my-4"
-                    v-model="form_data.longitude"
-                    label="Longitude"
-                    clearable
-                    clear-icon="mdi-eraser-variant"
-                    name="longitude"
-                    :persistent-hint="true"
-                    :disabled="field_state"
-                ></v-text-field>
-            </v-col>
-        </v-row>
+        <maps-component inline-template
+            :latitude-value="form_data.latitude"
+            :longitude-value="form_data.longitude"
+            latitude-input-name="latitude"
+            longitude-input-name="longitude"
+            :disabled="field_state"
+        >
+            @include('masterdata::maps.map')
+        </maps-component>
 
 		<v-textarea
 			class="my-4"
