@@ -39,6 +39,7 @@
 		    checkGoogleInit() {
 				var self = this;
 				setTimeout(function() {
+					console.log(google)
 		            if(typeof google === 'undefined') {
 		                self.checkGoogleInit();
 		            } else {

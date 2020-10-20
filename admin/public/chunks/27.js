@@ -117,6 +117,8 @@ __webpack_require__.r(__webpack_exports__);
     checkGoogleInit: function checkGoogleInit() {
       var self = this;
       setTimeout(function () {
+        console.log(google);
+
         if (typeof google === 'undefined') {
           self.checkGoogleInit();
         } else {
