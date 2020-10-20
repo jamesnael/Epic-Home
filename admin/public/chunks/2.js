@@ -127,7 +127,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   },
   mounted: function mounted() {
     this.getFormData();
-    this.checkGoogleInit();
   },
   methods: {
     getFormData: function getFormData() {
@@ -219,64 +218,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         _this3.form_alert_color = 'error';
         _this3.form_alert_text = 'Oops, something went wrong. Please try again later.';
       });
-    },
-    checkGoogleInit: function checkGoogleInit() {
-      var self = this;
-      setTimeout(function () {
-        if (typeof google === 'undefined') {
-          self.checkGoogleInit();
-        } else {
-          self.GMapsDeveloperInit();
-        }
-      }, 500);
-    },
-    GMapsDeveloperInit: function GMapsDeveloperInit() {
-      var _this4 = this;
-
-      if (this.form_data.latitude && this.form_data.longitude) {
-        var map = new google.maps.Map(document.getElementById('developer-map'), {
-          center: {
-            lat: parseFloat(this.form_data.latitude),
-            lng: parseFloat(this.form_data.longitude)
-          },
-          zoom: 14
-        });
-        var marker = new google.maps.Marker({
-          position: {
-            lat: parseFloat(this.form_data.latitude),
-            lng: parseFloat(this.form_data.longitude)
-          },
-          map: map
-        });
-        map.panTo({
-          lat: parseFloat(this.form_data.latitude),
-          lng: parseFloat(this.form_data.longitude)
-        });
-      } else {
-        var map = new google.maps.Map(document.getElementById('developer-map'), {
-          center: {
-            lat: -6.1767287,
-            lng: 106.829541
-          },
-          zoom: 14
-        });
-        var marker;
-      }
-
-      map.addListener('click', function (mapsMouseEvent) {
-        _this4.form_data.latitude = mapsMouseEvent.latLng.lat();
-        _this4.form_data.longitude = mapsMouseEvent.latLng.lng();
-
-        if (marker) {
-          marker.setMap(null);
-        }
-
-        marker = new google.maps.Marker({
-          position: mapsMouseEvent.latLng,
-          map: map
-        });
-        map.panTo(mapsMouseEvent.latLng);
-      });
     }
   }
 });
@@ -295,7 +236,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n#office-map, #developer-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n#view-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
 
 // exports
 

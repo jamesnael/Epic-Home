@@ -237,7 +237,7 @@
 	        },
 	        deleteItem() {
 	            this.delete_loader = true
-	            axios.delete(this.base_url() + this.ziggy(this.deleteUri, [this.selected[this.deleteUriParameter]]).url())
+	            axios.delete(this.ziggy(this.deleteUri, [this.selected[this.deleteUriParameter]]).url())
 	                .then((response) => {
 	                    if (response.data.success) {
 	                        this.table_alert = true

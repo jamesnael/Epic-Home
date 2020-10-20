@@ -127,6 +127,9 @@ __webpack_require__.r(__webpack_exports__);
     GMapsInit: function GMapsInit() {
       var _this = this;
 
+      this.latitude = this.latitudeValue;
+      this.longitude = this.longitudeValue;
+
       if (this.latitude && this.longitude) {
         var map = new google.maps.Map(document.getElementById('view-map'), {
           center: {
@@ -189,7 +192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n#office-map, #developer-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n#view-map {\r\n\tmin-height: 400px;\r\n\theight: 100%;\n}\r\n", ""]);
 
 // exports
 

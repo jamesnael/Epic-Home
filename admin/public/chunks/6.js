@@ -304,7 +304,7 @@ var call;
       var _this2 = this;
 
       this.delete_loader = true;
-      axios["delete"](this.base_url() + this.ziggy(this.deleteUri, [this.selected[this.deleteUriParameter]]).url()).then(function (response) {
+      axios["delete"](this.ziggy(this.deleteUri, [this.selected[this.deleteUriParameter]]).url()).then(function (response) {
         if (response.data.success) {
           _this2.table_alert = true;
           _this2.table_alert_state = 'success';
