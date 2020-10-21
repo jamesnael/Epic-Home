@@ -81,15 +81,17 @@
             ></v-text-field>
         </validation-provider>
 
-         <maps-component inline-template
-            :latitude-value="form_data.latitude"
-            :longitude-value="form_data.longitude"
-            latitude-input-name="latitude"
-            longitude-input-name="longitude"
-            :disabled="field_state"
-        >
-            @include('core::maps.map')
-        </maps-component>
+        <div v-if="show_maps">
+            <maps-component inline-template
+                :latitude-value="form_data.latitude"
+                :longitude-value="form_data.longitude"
+                latitude-input-name="latitude"
+                longitude-input-name="longitude"
+                :disabled="field_state"
+            >
+                @include('core::maps.map')
+            </maps-component>
+        </div>
 
         <validation-provider v-slot="{ errors }" name="Luas tanah" rules="required|numeric">
             <v-text-field

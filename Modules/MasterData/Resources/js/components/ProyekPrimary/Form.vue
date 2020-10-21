@@ -61,6 +61,7 @@
 			}
 		},
 		data: () => ({
+			show_maps: true,
 			form_data: {
 				fasilitas_umum: [],
 		    	id_tipe_bangunan: '',
@@ -110,6 +111,7 @@
 		methods: {
     		getFormData() {
     			if (this.dataUri) {
+    				this.show_maps = false
     				this.field_state = true
 
     		        axios
@@ -171,8 +173,6 @@
 		            			  	})
 		            			});
 
-    		            		
-
     			                this.field_state = false
     		            	} else {
     		            		this.form_alert_state = true
@@ -180,12 +180,15 @@
 		    		            this.form_alert_text = response.data.message
 			    		        this.field_state = false
     		            	}
+    		            	this.show_maps = true
+
     		            })
     		            .catch(error => {
 		            		this.form_alert_state = true
 	    		            this.form_alert_color = 'error'
 	    		            this.form_alert_text = response.data.message
 		    		        this.field_state = false
+		    		        this.show_maps = true
     		            });
     			}
     		},

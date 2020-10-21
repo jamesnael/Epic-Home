@@ -50,8 +50,6 @@
         		this.latitude = this.latitudeValue;
         		this.longitude = this.longitudeValue;
 
-        		console.log(this.latitude)
-        		
         		if (this.latitude && this.longitude) {
 	                var map = new google.maps.Map(document.getElementById('view-map'), {
 			          	center: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},

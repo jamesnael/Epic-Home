@@ -55,16 +55,18 @@
             clear-icon="mdi-eraser-variant"
             :disabled="field_state">
         </v-textarea>
-
-        <maps-component inline-template
-            :latitude-value="form_data.latitude"
-            :longitude-value="form_data.longitude"
-            latitude-input-name="latitude"
-            longitude-input-name="longitude"
-            :disabled="field_state"
-        >
-            @include('core::maps.map')
-        </maps-component>
+    
+        <div v-if="show_maps">
+            <maps-component inline-template
+                :latitude-value="form_data.latitude"
+                :longitude-value="form_data.longitude"
+                latitude-input-name="latitude"
+                longitude-input-name="longitude"
+                :disabled="field_state"
+            >
+                @include('core::maps.map')
+            </maps-component>
+        </div>
 
 		<v-textarea
 			class="my-4"
@@ -90,8 +92,20 @@
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_logo_developer" target="_blank" class="ml-8">
-                <small>@{{form_data.logo_developer}}</small>
+            <a :href="form_data.url_logo_developer" target="_blank">
+                <v-card
+                    align="left"
+                    v-if="form_data.url_logo_developer"
+                    max-width="250"
+                    tile
+                >
+                    <v-img
+                        v-if="form_data.url_logo_developer"
+                        max-height="150"
+                        max-width="250"
+                        :src="form_data.url_logo_developer"
+                    ></v-img>
+                </v-card>
             </a>
         </div>
 

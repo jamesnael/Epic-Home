@@ -172,6 +172,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   },
   data: function data() {
     return {
+      show_maps: true,
       form_data: {
         id_tipe_bangunan: '',
         status_unit: '',
@@ -224,6 +225,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       var _this = this;
 
       if (this.dataUri) {
+        this.show_maps = false;
         this.field_state = true;
         axios.get(this.dataUri).then(function (response) {
           if (response.data.success) {
@@ -275,11 +277,14 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
             _this.form_alert_text = response.data.message;
             _this.field_state = false;
           }
+
+          _this.show_maps = true;
         })["catch"](function (error) {
           _this.form_alert_state = true;
           _this.form_alert_color = 'error';
           _this.form_alert_text = response.data.message;
           _this.field_state = false;
+          _this.show_maps = true;
         });
       }
     },
