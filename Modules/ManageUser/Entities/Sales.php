@@ -91,5 +91,6 @@ class Sales extends Model
         return $this->belongsTo('Modules\MasterData\Entities\AgentProperty', 'kantor_agent', 'id');
     }
 
+    
 
 }

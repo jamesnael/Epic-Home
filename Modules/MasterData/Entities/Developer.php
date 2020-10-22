@@ -56,6 +56,10 @@ class Developer extends Model
         return 'slug';
     }
 
+    public function getLogoDeveloperAttribute($value)
+    {
+        return get_file_url('public', 'developer/logo_developer/' . $value);
+    }
     /**
      * Get the relationship for the model.
      */

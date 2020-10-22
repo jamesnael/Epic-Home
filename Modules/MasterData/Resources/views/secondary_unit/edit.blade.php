@@ -9,6 +9,7 @@
     				<secondary-unit-form
 	    				inline-template
 	    				:filter-tipe-bangunan='@json($tipe_bangunan)'
+                        :filter-nama-sales='@json($nama_sales)'
                         :filter-jenis-pembayaran='@json($jenis_pembayaran)'
                         :filter-open-house='@json($open_house)'
                         :filter-sertifikat='@json($sertifikat)'

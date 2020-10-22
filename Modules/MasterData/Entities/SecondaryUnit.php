@@ -119,5 +119,6 @@ class SecondaryUnit extends Model
         return $this->belongsTo('Modules\MasterData\Entities\TipeBangunan', 'id_tipe_bangunan');
     }
 
+    
 
 }

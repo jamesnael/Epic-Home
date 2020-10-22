@@ -1,6 +1,19 @@
 @extends('core::layouts.master')
+@push('table_slot')
+<template v-slot:item.nama_developer="{ item }">
+    <template>
+        <v-list-item-avatar v-if="item.logo_developer">
+            <img :src="item.logo_developer">
+        </v-list-item-avatar>
+        <v-list-item-content>
+            <v-list-item-title v-html="item.nama_developer"></v-list-item-title>
+        </v-list-item-content>
+    </template>
+</template>
+@endpush
 
 @section('content')
+
     <v-row
 	    class="px-md-4 px-sm-2">
     	<v-col cols="12">

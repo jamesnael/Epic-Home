@@ -83,6 +83,12 @@
 			        return []
 			    }
 			},
+			filterNamaSales: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
 			filterKondisiBangunan: {
 			    type: Array,
 			    default: function () {
@@ -94,6 +100,7 @@
 			show_maps: true,
 			form_data: {
 				id_tipe_bangunan: '',
+				id_sales: '',
 				status_unit: '',
 				nama_unit: '',
 				alamat: '',
@@ -152,6 +159,7 @@
     		            		let data = response.data.data
     		            		this.form_data = {
 	            					id_tipe_bangunan: data.id_tipe_bangunan,
+	            					id_sales: data.id_sales,
 									status_unit: data.status_unit,
 									nama_unit: data.nama_unit,
 									alamat: data.alamat,
@@ -213,6 +221,7 @@
 			clearForm() {
 				this.form_data = {
 					id_tipe_bangunan: '',
+					id_sales: '',
 					status_unit: '',
 					nama_unit: '',
 					alamat: '',

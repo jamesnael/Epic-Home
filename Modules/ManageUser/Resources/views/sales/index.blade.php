@@ -3,7 +3,7 @@
 @push('table_slot')
 <template v-slot:item.status_sales="{ item }">
     <v-chip
-        :color="item.status_sales == 'Sukses' ? 'green' : item.status_sales == 'Verifikasi' ? 'yellow' : 'red'"
+        :color="item.status_sales == 'Sudah Diverifikasi' ? 'green' : item.status_sales == 'Verifikasi Ulang' ? 'yellow' : 'red'"
         text-color="white"
     >
         @{{ item.status_sales.toUpperCase() }}

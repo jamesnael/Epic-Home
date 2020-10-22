@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\MasterData\Entities\TipeBangunan;
+use Modules\ManageUser\Entities\Sales;
 
 class SecondaryUnitHelper extends Controller
 {
@@ -18,6 +19,7 @@ class SecondaryUnitHelper extends Controller
     {
         return [
             'tipe_bangunan' => TipeBangunan::select('id AS value', 'nama_tipe_bangunan AS text')->get(),
+            'nama_sales' => Sales::select('id AS value', 'nama_depan AS text')->where('status_sales','Sudah Diverifikasi')->get(),
             'jenis_pembayaran' => json_decode(option('masterdata.jenis_pembayaran', json_encode([]))),
             'status_unit' => json_decode(option('masterdata.status_unit_secondary', json_encode([]))),
             'bersedia_dipasang' => json_decode(option('masterdata.bersedia_dipasang', json_encode([]))),

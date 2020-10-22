@@ -14,6 +14,20 @@
             ></v-autocomplete>
         </validation-provider>
 
+         <validation-provider v-slot="{ errors }" name="Nama Sales" rules="required">
+             <v-autocomplete
+                class="my-4"
+                v-model="form_data.id_sales" 
+                :items="filterNamaSales"
+                label="Nama Sales"
+                name="id_sales"
+                hint="* harus diisi"
+                :persistent-hint="true"
+                :error-messages="errors"
+                :disabled="field_state"
+            ></v-autocomplete>
+        </validation-provider>
+
         <validation-provider v-slot="{ errors }" name="Status unit" rules="required">
              <v-autocomplete
                 class="my-4"
@@ -517,27 +531,27 @@
             ></v-autocomplete>
         </validation-provider>
 
+
         <div  class="mb-4">
             <v-file-input
+                counter
                 small-chips
                 multiple
-                clear-icon="mdi-eraser-variant"
                 accept="image/*"
                 name="gallery_unit[]"
-                label="Gambar Rumah"
+                label="Gallery Unit"
                 prepend-icon="mdi-camera"
                 :disabled="field_state"
             >
             </v-file-input>
-             <v-row>
-               <v-col
+            <v-row>
+                <v-col
                     v-for="(el, idx) in form_data.url_gallery_unit"
                     cols="12"
                     md="3"
                 >
                     <a :href="el" target="_blank">
                         <v-card
-                            v-if="el"
                             class="mx-auto"
                             min-height="150"
                             max-height="150"
