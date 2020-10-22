@@ -82,13 +82,13 @@ class SecondaryUnitController extends Controller
                 "text" => 'Sales',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'sales',
+                "value" => 'nama_sales',
             ],
             [
                 "text" => 'Agensi',
                 "align" => 'center',
                 "sortable" => false,
-                "value" => 'agensi',
+                "value" => 'nama_kantor_agen',
             ],
             [
                 "text" => 'Nama Pemilik',

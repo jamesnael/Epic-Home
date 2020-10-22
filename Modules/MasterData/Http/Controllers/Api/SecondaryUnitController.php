@@ -133,7 +133,7 @@ class SecondaryUnitController extends Controller
         $array_gallery_unit = json_decode($secondary_unit->gallery_unit, true);
         $files_gallery_unit=[];
         foreach ($array_gallery_unit ?? [] as $key => $value) {
-            array_push($files_gallery_unit, get_file_url('public', 'SecondaryUnit/gallery_unit/' . $value));
+            array_push($files_gallery_unit, get_file_url('public', 'secondary_unit/gallery_unit/' . $value));
         }
 
         $secondary_unit->url_gallery_unit = $files_gallery_unit;
@@ -208,7 +208,7 @@ class SecondaryUnitController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = SecondaryUnit::with('tipe_bangunan')->where('approved_status', '!=', 'Disetujui');
+        $query = SecondaryUnit::with('tipe_bangunan','sales')->where('approved_status', '!=', 'Disetujui');
 
 
         if ($request->has('search') && $request->input('search')) {
@@ -236,6 +236,9 @@ class SecondaryUnitController extends Controller
             $item->tanggal_input = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->harga_unit ='Rp '.format_money($item->harga_unit);
             $item->nama_tipe_bangunan = $item->tipe_bangunan->nama_tipe_bangunan ?? '';
+            $item->nama_sales = $item->sales->nama_depan .' '. $item->sales->nama_belakang  ?? '';
+            $item->nama_kantor_agen = $item->sales->kantor_agen->nama_agent_property ?? '';
+            
             return $item;
         });
 
@@ -250,7 +253,7 @@ class SecondaryUnitController extends Controller
             return response_json(false, 'Isian form salah', $validator->errors()->first());
         }
 
-        $query = SecondaryUnit::with('tipe_bangunan')->where('approved_status', 'Disetujui');
+        $query = SecondaryUnit::with('tipe_bangunan','sales')->where('approved_status', 'Disetujui');
 
 
         if ($request->has('search') && $request->input('search')) {
@@ -278,6 +281,8 @@ class SecondaryUnitController extends Controller
             $item->tanggal_input = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->harga_unit ='Rp '.format_money($item->harga_unit);
             $item->nama_tipe_bangunan = $item->tipe_bangunan->nama_tipe_bangunan ?? '';
+            $item->nama_sales = $item->sales->nama_depan .' '. $item->sales->nama_belakang  ?? '';
+            $item->nama_kantor_agen = $item->sales->kantor_agen->nama_agent_property ?? '';
             return $item;
         });
 
