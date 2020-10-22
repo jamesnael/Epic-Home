@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Transaksi\Entities\TransaksiPemesanan;
+use Modules\Transaksi\Http\Controllers\Helper\HelperTransaksi;
 
 class TransaksiSecondaryUnitController extends Controller
 {
@@ -20,6 +21,7 @@ class TransaksiSecondaryUnitController extends Controller
             ['href' => url('transaksi-secondary-unit.index'), 'text' => 'Transaksi'],
             ['href' => route('transaksi-secondary-unit.index'), 'text' => 'Transaksi Secondary Unit'],
         ];
+        $this->helper = new HelperTransaksi;
     }
 
     /**
@@ -103,6 +105,7 @@ class TransaksiSecondaryUnitController extends Controller
         return view('transaksi::transaksi.edit')
             ->with('data', $transaksi_secondary_unit)
             ->with('page_title', 'Ubah Transaksi Secondary Unit ' . $transaksi_secondary_unit->unit->nama_unit ?? $transaksi_secondary_unit->unit->nomor_unit)
-            ->with('breadcrumbs', $this->breadcrumbs);
+            ->with('breadcrumbs', $this->breadcrumbs)
+            ->with($this->helper->getHelper());
     }
 }

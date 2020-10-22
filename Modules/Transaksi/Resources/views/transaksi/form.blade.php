@@ -112,7 +112,7 @@
             <v-autocomplete
                 class="my-4"
                 v-model="form_data.perihal_pembayaran" 
-                :items="['Booking Fee','Reserved', 'NUP']"
+                :items="filterPerihalPembayaran"
                 label="Untuk Pembayaran"
                 name="perihal_pembayaran"
                 hint="* harus diisi"

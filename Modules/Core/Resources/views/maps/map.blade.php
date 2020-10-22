@@ -13,7 +13,7 @@
                 v-model="latitude"
                 label="Latitude"
                 :name="latitudeInputName"
-                :disabled="field_state"
+                :disabled="disabled"
                 :readonly="!field_state"
             ></v-text-field>
         </v-col>
@@ -24,7 +24,7 @@
                 label="Longitude"
                 :name="longitudeInputName"
                 :persistent-hint="true"
-                :disabled="field_state"
+                :disabled="disabled"
                 :readonly="!field_state"
             ></v-text-field>
         </v-col>

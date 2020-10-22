@@ -56,6 +56,7 @@
         },
 		methods: {
     		getFormData() {
+    			console.log(this);
     			if (this.dataUri) {
     				this.field_state = true
 
@@ -64,7 +65,6 @@
     		            .then(response => {
     		            	if (response.data.success) {
     		            		let data = response.data.data
-    		            			console.log(data)
     		            		this.form_data = {
     		            			menu: data.menu,
     		            			kategori: data.kategori,

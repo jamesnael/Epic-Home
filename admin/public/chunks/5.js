@@ -62,10 +62,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     'user-menu-component': function userMenuComponent() {
-      return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./UserMenu.vue */ "./Modules/Core/Resources/js/components/UserMenu.vue"));
+      return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./UserMenu.vue */ "./Modules/Core/Resources/js/components/UserMenu.vue"));
     },
     'main-menu-component': function mainMenuComponent() {
-      return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
+      return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./MainMenu.vue */ "./Modules/Core/Resources/js/components/MainMenu.vue"));
     }
   },
   data: function data() {

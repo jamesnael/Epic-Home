@@ -185,34 +185,38 @@
         <v-row>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.kelengkapan_surat"
-                      label="HGB"
-                      value="HGB"
-                      name="kelengkapan_surat[]"
+                        v-model="form_data.kelengkapan_surat"
+                        label="HGB"
+                        value="HGB"
+                        name="kelengkapan_surat[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.kelengkapan_surat"
-                      label="SHM"
-                      value="SHM"
-                       name="kelengkapan_surat[]"
+                        v-model="form_data.kelengkapan_surat"
+                        label="SHM"
+                        value="SHM"
+                        name="kelengkapan_surat[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.kelengkapan_surat"
-                      label="Strata"
-                      value="Strata"
-                       name="kelengkapan_surat[]"
+                        v-model="form_data.kelengkapan_surat"
+                        label="Strata"
+                        value="Strata"
+                        name="kelengkapan_surat[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.kelengkapan_surat"
-                      label="Lainya"
-                      value="Lainya"
-                       name="kelengkapan_surat[]"
+                        v-model="form_data.kelengkapan_surat"
+                        label="Lainya"
+                        value="Lainya"
+                        name="kelengkapan_surat[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
           </v-row>
@@ -332,26 +336,29 @@
         <v-row>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.furniture_termasuk"
-                      label="Kitchen Set"
-                      value="kitchen_set"
-                      name="furniture_termasuk[]"
+                        v-model="form_data.furniture_termasuk"
+                        label="Kitchen Set"
+                        value="kitchen_set"
+                        name="furniture_termasuk[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.furniture_termasuk"
-                      label="AC"
-                      value="AC"
-                      name="furniture_termasuk[]"
+                        v-model="form_data.furniture_termasuk"
+                        label="AC"
+                        value="AC"
+                        name="furniture_termasuk[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
                 <v-checkbox
-                      v-model="form_data.furniture_termasuk"
-                      label="Lainya"
-                      value="Lainya"
-                      name="furniture_termasuk[]"
+                        v-model="form_data.furniture_termasuk"
+                        label="Lainya"
+                        value="Lainya"
+                        name="furniture_termasuk[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
         </v-row>
@@ -493,7 +500,7 @@
                 v-model="form_data.jangka_waktu_pemasangan"
                 label="Jangka Waktu Pemasangan"
                 name="jangka_waktu_pemasangan"
-                :disabled="form_data.bersedia_dipasang == 'Tidak' "
+                :readonly="form_data.bersedia_dipasang == 'Tidak' "
                 clearable
                 clear-icon="mdi-eraser-variant"
                 :persistent-hint="true"
@@ -604,4 +611,10 @@
     >
     	@{{ form_alert_text }}
     </v-snackbar>
+
+    <v-overlay
+        :absolute="true"
+        opacity="0"
+        :value="field_state"
+    ></v-overlay>
 </validation-observer>

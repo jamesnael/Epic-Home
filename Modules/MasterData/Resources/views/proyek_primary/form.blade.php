@@ -316,6 +316,7 @@
                     label="HGB"
                     value="HGB"
                     name="sertifikat[]"
+                    :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
@@ -324,6 +325,7 @@
                     label="SHM"
                     value="SHM"
                     name="sertifikat[]"
+                    :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
@@ -332,6 +334,7 @@
                     label="Strata"
                     value="Strata"
                     name="sertifikat[]"
+                    :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
@@ -340,6 +343,7 @@
                     label="Lainya"
                     value="Lainya"
                     name="sertifikat[]"
+                    :disabled="field_state"
                 ></v-checkbox>
             </v-col>
         </v-row>
@@ -352,12 +356,14 @@
                         label="Keamanan 24 Jam"
                         value="Keamanan 24 Jam"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
                 <v-checkbox
                         v-model="form_data.fasilitas"
                         label="CCTV"
                         value="CCTV"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="3">
@@ -366,12 +372,14 @@
                         label="Taman"
                         value="Taman"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
                 <v-checkbox
                         v-model="form_data.fasilitas"
                         label="Tempat Parkir"
                         value="Tempat Parkir"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="3">
@@ -380,12 +388,14 @@
                         label="AC"
                         value="AC"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
                 <v-checkbox
                         v-model="form_data.fasilitas"
                         label="Balkon"
                         value="Balkon"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="3">
@@ -394,12 +404,14 @@
                         label="Kolam Renang"
                         value="Kolam Renang"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
                 <v-checkbox
                         v-model="form_data.fasilitas"
                         label="Gedung Pertemuan"
                         value="Gedung Pertemuan"
                         name="fasilitas[]"
+                        :disabled="field_state"
                 ></v-checkbox>
             </v-col>
         </v-row>
@@ -416,7 +428,7 @@
                         :error-messages="errors"
                         hint="* harus diisi"
                         :persistent-hint="true"
-                        :readonly="field_state">
+                        :disabled="field_state">
                     </wysiwyg>
                     <h5 class="mb-2 font-weight-medium">* harus diisi</h5>
                 </validation-provider>
@@ -568,7 +580,7 @@
                         hint="* harus diisi"
                         :persistent-hint="true"
                         :error-messages="errors"
-                        :readonly="field_state">
+                        :disabled="field_state">
                     </wysiwyg>
                     <h5 class="mb-2 font-weight-medium">* harus diisi</h5>
                 </validation-provider>
@@ -586,7 +598,7 @@
                         label="Q&A"
                         persistent-hint="true"
                         :error-messages="errors"
-                        :readonly="field_state">
+                        :disabled="field_state">
                     </wysiwyg>
                     <h5 class="mb-2 font-weight-medium">* harus diisi</h5>
                 </validation-provider>
@@ -604,20 +616,19 @@
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_banner_proyek" target="_blank">
-                <v-card
-                    v-if="form_data.url_banner_proyek"
-                    class="mx-auto"
-                    max-width="250"
-                    tile
-                >
+            <v-card
+                v-if="form_data.url_banner_proyek"
+                max-width="250"
+                tile
+            >
+                <a :href="form_data.url_banner_proyek" target="_blank">
                     <v-img
                         max-height="150"
                         max-width="250"
                         :src="form_data.url_banner_proyek"
                     ></v-img>
-                </v-card>
-            </a>
+                </a>
+            </v-card>
         </div>
 
         <div  class="mb-4">
@@ -671,7 +682,6 @@
                 <small>@{{form_data.product_knowledge}}</small>
             </a>
         </div>
-    
         <v-btn
             class="mr-4"
             :loading="field_state"
@@ -705,4 +715,9 @@
     >
         @{{ form_alert_text }}
     </v-snackbar>
+    <v-overlay
+        :absolute="true"
+        opacity="0"
+        :value="field_state"
+    ></v-overlay>
 </validation-observer>

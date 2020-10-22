@@ -10,7 +10,7 @@
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
-                :readonly="field_state"
+                :disabled="field_state"
             ></v-select>
         </validation-provider>
 
@@ -64,7 +64,7 @@
                         name="jawaban"
                         label="Jawaban"
                         :error-messages="errors"
-                        :readonly="field_state"
+                        :disabled="field_state"
                     ></wysiwyg>
                     <h5 class="mb-2 font-weight-medium">* harus diisi</h5>
                 </validation-provider>
@@ -79,6 +79,7 @@
             :true-value="1"
             :false-value="0"
             inset
+            :disabled="field_state"
         ></v-switch>
         
         <v-btn
@@ -114,4 +115,9 @@
     >
     	@{{ form_alert_text }}
     </v-snackbar>
+    <v-overlay
+        :absolute="true"
+        opacity="0"
+        :value="field_state"
+    ></v-overlay>
 </validation-observer>

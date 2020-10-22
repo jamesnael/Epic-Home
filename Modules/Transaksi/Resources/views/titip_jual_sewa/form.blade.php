@@ -48,7 +48,7 @@
                 v-model="form_data.kebutuhan"
                 label="Kebutuhan"
                 name="kebutuhan"
-                :items="['Jual', 'Sewa']"
+                :items="filterKebutuhan"
                 hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
@@ -105,6 +105,7 @@
                     label="HGB"
                     value="HGB"
                     name="sertifikat[]"
+                    disabled
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
@@ -113,6 +114,7 @@
                     label="SHM"
                     value="SHM"
                     name="sertifikat[]"
+                    disabled
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
@@ -121,6 +123,7 @@
                     label="Strata"
                     value="Strata"
                     name="sertifikat[]"
+                    disabled
                 ></v-checkbox>
             </v-col>
             <v-col cols="12" md="2">
@@ -129,6 +132,7 @@
                     label="Lainya"
                     value="Lainya"
                     name="sertifikat[]"
+                    disabled
                 ></v-checkbox>
             </v-col>
         </v-row>
@@ -164,7 +168,7 @@
                 v-model="form_data.status"
                 label="Status"
                 name="status"
-                :items="['Terjual','Pending']"
+                :items="filterStatus"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-autocomplete>

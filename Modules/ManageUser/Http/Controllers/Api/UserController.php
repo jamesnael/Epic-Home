@@ -168,7 +168,7 @@ class UserController extends Controller
 
         $data->getCollection()->transform(function($item) {
             $item->last_update = $item->updated_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
-            $item->nama_grup_user = $item->grup_user->nama;
+            $item->nama_grup_user = $item->grup_user->nama ?? '';
             return $item;
         });
 

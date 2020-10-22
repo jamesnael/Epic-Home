@@ -104,6 +104,6 @@ class TitipJualSewaController extends Controller
             ->with('data', $titip_jual_sewa)
             ->with('page_title', 'Ubah Titip Jual/Sewa Unit ' . $titip_jual_sewa->nama_pemilik)
             ->with('breadcrumbs', $this->breadcrumbs)
-            ->with($this->helper->getHelper());;
+            ->with($this->helper->getHelper());
     }
 }

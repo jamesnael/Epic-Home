@@ -9,6 +9,8 @@
     				<titip-jual-sewa-form
 	    				inline-template
 	    				:filter-tipe-bangunan='@json($tipe_bangunan)'
+	    				:filter-status='@json($status)'
+	    				:filter-kebutuhan='@json($kebutuhan)'
 	    				action-form="{{ route('titip-jual-sewa.update', [ $data->slug ]) }}"
 	    				redirect-uri="{{ route('titip-jual-sewa.index') }}"
 	    				data-uri="{{ route('titip-jual-sewa.data', [ $data->slug ]) }}">

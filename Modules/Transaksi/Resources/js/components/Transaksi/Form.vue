@@ -31,6 +31,12 @@
 				type: String,
 				default: ''
 			},
+			filterPerihalPembayaran: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
 		},
 		data: () => ({
 			search_tag: null,

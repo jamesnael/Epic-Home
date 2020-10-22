@@ -86,6 +86,7 @@
                 show-size
                 label="Thumbnail"
                 name="thumbnail"
+                :disabled="field_state"
             ></v-file-input>
             <v-row class="mb-3">
                 <v-col
@@ -124,6 +125,7 @@
                 label="Banner"
                 name="banner[]"
                 multiple
+                :disabled="field_state"
             ></v-file-input>
             <v-row class="mb-3">
                 <v-col
@@ -185,7 +187,8 @@
                         label="Publish Date"
                         v-bind="attrs"
                         v-on="on"
-                        readonly
+                        :readonly="!field_state"
+                        :disabled="field_state"
                     ></v-text-field>
                 </validation-provider>
             </template>
@@ -200,6 +203,7 @@
             :true-value="1"
             :false-value="0"
             inset
+            :disabled="field_state"
         ></v-switch>
 
         <v-btn

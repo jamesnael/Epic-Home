@@ -33,6 +33,18 @@
 			        return []
 			    }
 			},
+			filterStatus: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
+			filterKebutuhan: {
+			    type: Array,
+			    default: function () {
+			        return []
+			    }
+			},
 		},
 		data: () => ({
 			search_tag: null,
@@ -81,6 +93,7 @@
     						    	sertifikat:data.sertifikat,
     						    	gallery_unit:data.gallery_unit,
     						    	url_gallery_unit:data.url_gallery_unit,
+    						    	status:data.status,
     		            		}
 
     			                this.field_state = false

@@ -5,9 +5,8 @@ namespace Modules\Transaksi\Http\Controllers\Helper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MasterData\Entities\TipeBangunan;
 
-class HelperTitipJualSewa extends Controller
+class HelperTransaksi extends Controller
 {
     /**
      *
@@ -17,9 +16,7 @@ class HelperTitipJualSewa extends Controller
     public function getHelper()
     {
         return [
-            'tipe_bangunan' => TipeBangunan::select('id AS value', 'nama_tipe_bangunan AS text')->get(),
-            'kebutuhan' => json_decode(option('transaksi.kebutuhan', json_encode([]))),
-            'status' => json_decode(option('transaksi.status', json_encode([]))),
+            'perihal_pembayaran' => json_decode(option('transaksi.perihal_pembayaran', json_encode([]))),
         ];
     }
 

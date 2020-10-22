@@ -8,6 +8,7 @@
     			<v-card-text>
     				<transaksi-form
 	    				inline-template
+	    				:filter-perihal-pembayaran='@json($perihal_pembayaran)'
 	    				action-form="{{ route('transaksi-pemesanan.update', [ $data->slug ]) }}"
 	    				redirect-primary="{{ route('transaksi-proyek-primary.index') }}"
 	    				redirect-secondary="{{ route('transaksi-secondary-unit.index') }}"
