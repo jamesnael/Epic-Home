@@ -261,12 +261,12 @@ if (! function_exists('log_activity')) {
 if (! function_exists('set_image_dimension')) {
     function set_image_dimension($name, $max_width = 10000, $max_height = 10000, $thumbnail = false) {
         $input = '
-        <input type="text" name="' . $name . '_max_width" value="' . ($max_width ?: 10000) . '" readonly />
-        <input type="text" name="' . $name . '_max_height" value="' . ($max_height ?: 10000) . '" readonly />
+        <input type="hidden" name="' . $name . '_max_width" value="' . ($max_width ?: 10000) . '" readonly />
+        <input type="hidden" name="' . $name . '_max_height" value="' . ($max_height ?: 10000) . '" readonly />
         ';
 
         if ($thumbnail) {
-            $input .= '<input type="text" name="' . $name . '_thumbnail" value="1" readonly />';
+            $input .= '<input type="hidden" name="' . $name . '_thumbnail" value="1" readonly />';
         }
 
         return $input;
