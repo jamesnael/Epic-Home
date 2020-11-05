@@ -257,3 +257,75 @@ if (! function_exists('log_activity')) {
             ->log($description);
     }
 }
+
+if (! function_exists('set_image_dimension')) {
+    function set_image_dimension($name, $max_width = 10000, $max_height = 10000, $thumbnail = false) {
+        $input = '
+        <input type="text" name="' . $name . '_max_width" value="' . ($max_width ?: 10000) . '" readonly />
+        <input type="text" name="' . $name . '_max_height" value="' . ($max_height ?: 10000) . '" readonly />
+        ';
+
+        if ($thumbnail) {
+            $input .= '<input type="text" name="' . $name . '_thumbnail" value="1" readonly />';
+        }
+
+        return $input;
+    }
+}
+
+if (! function_exists('save_uploaded_files')) {
+    function save_uploaded_files(Request $request, $upload_directory = null) {
+        ini_set('memory_limit', '-1');
+
+        if (!$upload_directory) {
+            $upload_directory = public_path('storage/uploads');
+        }
+
+        if (!file_exists($upload_directory)) {
+            mkdir($upload_directory, 0777);
+        }
+
+        if (!file_exists($upload_directory . '/thumb')) {
+            mkdir($upload_directory . '/thumb', 0777, true);
+        }
+
+        $finalRequest = $request;
+
+        foreach ($request->all() as $key => $value) {
+            if ($request->hasFile($key)) {
+                $extension = Arr::last(explode('.',$request->file($key)->getClientOriginalName()));
+                $name = Arr::first(explode('.',$request->file($key)->getClientOriginalName()));
+                $filename = time() . '-' . Str::slug($name).'.'.$extension;
+                $file = $request->file($key);
+
+                if ($request->has($key . '_max_width') && $request->has($key . '_max_height')) {
+                    // Check file width
+                    $image = Image::make($file);
+                    
+                    if ($request->has($key . '_thumbnail')) {
+                        Image::make($file)->resize(50, 50)->save($upload_directory . '/thumb/' . $filename);
+                    }
+
+                    $width = $image->width();
+                    $height = $image->height();
+                    if ($width > $request->{$key . '_max_width'} && $height > $request->{$key . '_max_height'}) {
+                        $image->resize($request->{$key . '_max_width'}, $request->{$key . '_max_height'});
+                    } elseif ($width > $request->{$key . '_max_width'}) {
+                        $image->resize($request->{$key . '_max_width'}, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    } elseif ($height > $request->{$key . '_max_width'}) {
+                        $image->resize(null, $request->{$key . '_max_height'}, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                    $image->save($upload_directory . '/' . $filename);
+                } else {
+                    $file->move($upload_directory, $filename);
+                }
+                $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
+            }
+        }
+        return $finalRequest;
+    }
+}
