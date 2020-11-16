@@ -1,15 +1,15 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[26],{
 
-/***/ "./Modules/Core/Resources/js/components/Address/Input.vue":
-/*!****************************************************************!*\
-  !*** ./Modules/Core/Resources/js/components/Address/Input.vue ***!
-  \****************************************************************/
+/***/ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue":
+/*!**********************************************************************!*\
+  !*** ./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Input_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Input.vue?vue&type=script&lang=js& */ "./Modules/Core/Resources/js/components/Address/Input.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
 
@@ -19,7 +19,7 @@ var render, staticRenderFns
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  _Input_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
   render,
   staticRenderFns,
   false,
@@ -31,29 +31,29 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "Modules/Core/Resources/js/components/Address/Input.vue"
+component.options.__file = "Modules/Transaksi/Resources/js/components/Transaksi/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./Modules/Core/Resources/js/components/Address/Input.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./Modules/Core/Resources/js/components/Address/Input.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
+/***/ "./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Input_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Input.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Resources/js/components/Address/Input.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Input_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Core/Resources/js/components/Address/Input.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Core/Resources/js/components/Address/Input.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Transaksi/Resources/js/components/Transaksi/Form.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -67,144 +67,157 @@ var vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('required', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('min', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["min"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('max', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["max"]);
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["extend"])('numeric', vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["numeric"]);
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate_dist_locale_id_json__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationObserver"],
     ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationProvider"]
   },
   props: {
-    provinceValue: {
+    actionForm: {
+      type: String,
+      required: true
+    },
+    redirectPrimary: {
+      type: String,
+      required: true
+    },
+    redirectSecondary: {
+      type: String,
+      required: true
+    },
+    dataUri: {
       type: String,
       "default": ''
     },
-    provinceRules: {
-      type: String,
-      "default": ''
-    },
-    provinceClass: {
-      type: String,
-      "default": ''
-    },
-    provinceInputName: {
-      type: String,
-      "default": ''
-    },
-    provinceLabel: {
-      type: String,
-      "default": ''
-    },
-    cityValue: {
-      type: String,
-      "default": ''
-    },
-    cityRules: {
-      type: String,
-      "default": ''
-    },
-    cityClass: {
-      type: String,
-      "default": ''
-    },
-    cityInputName: {
-      type: String,
-      "default": ''
-    },
-    cityLabel: {
-      type: String,
-      "default": ''
-    },
-    districtValue: {
-      type: String,
-      "default": ''
-    },
-    districtRules: {
-      type: String,
-      "default": ''
-    },
-    districtClass: {
-      type: String,
-      "default": ''
-    },
-    districtInputName: {
-      type: String,
-      "default": ''
-    },
-    districtLabel: {
-      type: String,
-      "default": ''
-    },
-    disabled: {
-      type: Boolean,
+    filterPerihalPembayaran: {
+      type: Array,
       "default": function _default() {
-        return false;
+        return [];
       }
     }
   },
   data: function data() {
     return {
-      province: '',
-      city: '',
-      district: '',
-      items: []
+      search_tag: null,
+      menu1: false,
+      form_data: {
+        perihal_pembayaran: '',
+        jumlah_bayar: '',
+        terbilang: '',
+        keterangan: '',
+        status: ''
+      },
+      field_state: false,
+      form_alert_state: false,
+      form_alert_color: '',
+      form_alert_text: ''
     };
   },
-  computed: {
-    cityOptions: function cityOptions() {
-      var _this = this;
-
-      if (this.province) {
-        return _.filter(this.items, function (o) {
-          return o.name == _this.province;
-        });
-      }
-
-      return [];
-    },
-    districtOptions: function districtOptions() {
-      var _this2 = this;
-
-      if (this.city) {
-        return _.filter(this.items, function (o) {
-          return o.city == _this2.city;
-        });
-      }
-
-      return [];
-    }
-  },
   mounted: function mounted() {
-    this.getItems();
+    this.getFormData();
   },
   methods: {
-    getItems: function getItems() {
-      var _this3 = this;
+    getFormData: function getFormData() {
+      var _this = this;
 
-      axios.get(this.ziggy('provinces.index').url()).then(function (response) {
-        if (response.data.success) {
-          _this3.items = response.data.data;
-          _this3.province = _this3.provinceValue;
-
-          if (_this3.cityValue) {
-            _this3.$nextTick(function () {
-              _this3.city = _this3.cityValue;
-            });
+      if (this.dataUri) {
+        this.field_state = true;
+        axios.get(this.dataUri).then(function (response) {
+          if (response.data.success) {
+            var data = response.data.data;
+            _this.form_data = {
+              id_unit: data.unit.id,
+              id_klien: data.klien.id,
+              proyek_primary: data.unit.proyek_primary ? data.unit.proyek_primary.id : '',
+              tanggal_pemesanan: data.created_at,
+              nama_proyek: data.unit.proyek_primary ? data.unit.proyek_primary.nama_proyek : '',
+              tipe_unit: data.unit.tipe_unit ? data.unit.tipe_unit.nama_tipe_unit : '',
+              harga_unit: data.unit.harga_unit,
+              cara_bayar: data.cara_bayar,
+              klien: data.klien.nama_klien,
+              telepon: data.klien.telepone,
+              nama_sales: data.unit.sales.user.nama,
+              nama_agent: '',
+              perihal_pembayaran: data.perihal_pembayaran,
+              jumlah_bayar: data.jumlah_bayar,
+              terbilang: data.terbilang,
+              keterangan: data.keterangan
+            };
+            _this.field_state = false;
+          } else {
+            _this.form_alert_state = true;
+            _this.form_alert_color = 'error';
+            _this.form_alert_text = response.data.message;
+            _this.field_state = false;
           }
+        })["catch"](function (error) {
+          _this.form_alert_state = true;
+          _this.form_alert_color = 'error';
+          _this.form_alert_text = response.data.message;
+          _this.field_state = false;
+        });
+      }
+    },
+    clearForm: function clearForm() {
+      this.form_data = {
+        perihal_pembayaran: '',
+        jumlah_bayar: '',
+        terbilang: '',
+        keterangan: '',
+        status: ''
+      };
+      this.$refs.observer.reset();
+    },
+    submitForm: function submitForm() {
+      var _this2 = this;
 
-          if (_this3.districtValue) {
-            _this3.$nextTick(function () {
-              _this3.district = _this3.districtValue;
-            });
-          }
+      this.$refs.observer.validate().then(function (success) {
+        if (!success) {
+          return;
         }
-      })["catch"](function (error) {
-        console.log(error.response);
+
+        _this2.field_state = true;
+
+        _this2.postFormData();
       });
     },
-    refreshCity: function refreshCity() {
-      this.city = '';
-    },
-    refreshDistrict: function refreshDistrict() {
-      this.district = '';
+    postFormData: function postFormData() {
+      var _this3 = this;
+
+      var form_data = new FormData(this.$refs['post-form']);
+
+      if (this.dataUri) {
+        form_data.append("_method", "put");
+      }
+
+      axios.post(this.actionForm, form_data).then(function (response) {
+        if (response.data.success) {
+          _this3.form_alert_state = true;
+          _this3.form_alert_color = 'success';
+          _this3.form_alert_text = response.data.message;
+          setTimeout(function () {
+            if (_this3.form_data.proyek_primary) {
+              _this3["goto"](_this3.redirectPrimary);
+            } else {
+              _this3["goto"](_this3.redirectSecondary);
+            }
+          }, 6000);
+        } else {
+          _this3.field_state = false;
+          _this3.form_alert_state = true;
+          _this3.form_alert_color = 'error';
+          _this3.form_alert_text = response.data.message;
+        }
+      })["catch"](function (error) {
+        _this3.field_state = false;
+        _this3.form_alert_state = true;
+        _this3.form_alert_color = 'error';
+        _this3.form_alert_text = 'Oops, something went wrong. Please try again later.';
+      });
     }
   }
 });
