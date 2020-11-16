@@ -24,6 +24,7 @@
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
+                @input="setSelectedTipeBangunan()"
             ></v-autocomplete>
         </validation-provider>
         <validation-provider v-slot="{ errors }" name="Status unit" rules="required">
@@ -53,34 +54,25 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Provinsi" rules="required">
-            <v-text-field
-                class="my-4"
-                v-model="form_data.provinsi"
-                label="Provinsi"
-                clearable
-                clear-icon="mdi-eraser-variant"
-                name="provinsi"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-text-field>
-        </validation-provider>
-        <validation-provider v-slot="{ errors }" name="Kota" rules="required">
-            <v-text-field
-                class="my-4"
-                v-model="form_data.kota"
-                label="Kota"
-                clearable
-                clear-icon="mdi-eraser-variant"
-                name="kota"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-text-field>
-        </validation-provider>
+        
+        <address-input inline-template
+            :province-value="form_data.provinsi"
+            province-class="mt-4"
+            province-input-name="provinsi"
+            province-label="Provinsi"
+            :city-value="form_data.kota"
+            city-class="mt-4"
+            city-input-name="kota"
+            city-label="Kota"
+            :district-value="form_data.kecamatan"
+            district-class="mt-4"
+            district-input-name="kecamatan"
+            district-label="Kecamatan"
+            :disabled="field_state"
+        >
+            @include('core::address')
+        </address-input>
+        
         <validation-provider rules="required" name="Alamat lengkap" v-slot="{ errors }">
             <v-textarea
                 class="my-4"
@@ -193,7 +185,8 @@
             ></v-text-field>
             <small class="form-text text-muted">Rp @{{ form_data.utj ? number_format(form_data.utj) : 0 }}</small>
         </validation-provider>
-        <validation-provider rules="required|numeric" name="Komisi" v-slot="{ errors }">
+        
+        <validation-provider rules="numeric" name="Komisi" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.komisi"
@@ -201,13 +194,12 @@
                 label="Komisi"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="required|numeric" name="Closing fee hingga" v-slot="{ errors }">
+        <validation-provider rules="numeric" name="Closing fee hingga" v-slot="{ errors }">
             <v-text-field
                 class="mt-4"
                 v-model="form_data.closing_fee"
@@ -222,7 +214,7 @@
             ></v-text-field>
             <small class="form-text text-muted">Rp @{{ form_data.closing_fee ? number_format(form_data.closing_fee) : 0 }}</small>
         </validation-provider>
-        <validation-provider rules="required" name="Reward" v-slot="{ errors }">
+        <validation-provider rules="" name="Reward" v-slot="{ errors }">
             <v-text-field
                 class="my-4"
                 v-model="form_data.reward"
@@ -230,26 +222,27 @@
                 label="Reward"
                 clearable
                 clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
                 :persistent-hint="true"
                 :error-messages="errors"
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="required" name="Jenis pembayaran tersedia" v-slot="{ errors }">
-            <v-autocomplete
-                class="my-4"
-                v-model="form_data.jenis_pembayaran"
-                label="Jenis Pembayaran Tersedia"
-                name="jenis_pembayaran"
-                :items="filterJenisPembayaran"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-autocomplete>
-        </validation-provider>
-        
+
+
+        <h3  class="mt-4">Jenis Pembayaran :</h3>
+        <v-row>
+            <v-col cols="12" md="2"
+                v-for="(item, key) in filterJenisPembayaran"
+            >
+                <v-checkbox
+                    v-model="form_data.jenis_pembayaran"
+                    :label="item"
+                    :value="item"
+                    name="jenis_pembayaran[]"
+                    :disabled="field_state"
+                ></v-checkbox>
+            </v-col>
+        </v-row>
 
         <h2 class="my-6">Spesifikasi</h2>
         <validation-provider rules="required" name="Tahun selesai" v-slot="{ errors }">
@@ -293,20 +286,23 @@
                 :disabled="field_state"
             ></v-text-field>
         </validation-provider>
-        <validation-provider rules="required|numeric" name="Jumlah tower" v-slot="{ errors }">
-            <v-text-field
-                class="my-4"
-                v-model="form_data.jumlah_tower"
-                name="jumlah_tower"
-                label="Jumlah Tower"
-                clearable
-                clear-icon="mdi-eraser-variant"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-text-field>
-        </validation-provider>
+        <div
+            v-if="tipe_bangunan == 'Apartemen'">
+            <validation-provider rules="required|numeric" name="Jumlah tower" v-slot="{ errors }">
+                <v-text-field
+                    class="my-4"
+                    v-model="form_data.jumlah_tower"
+                    name="jumlah_tower"
+                    label="Jumlah Tower"
+                    clearable
+                    clear-icon="mdi-eraser-variant"
+                    hint="* harus diisi"
+                    :persistent-hint="true"
+                    :error-messages="errors"
+                    :disabled="field_state"
+                ></v-text-field>
+            </validation-provider>
+        </div>
 
         <h3  class="mt-4">Sertifikat :</h3>
         <v-row>
@@ -562,7 +558,9 @@
                             :persistent-hint="true"
                             :error-messages="errors"
                             :disabled="field_state"
-                        ></v-text-field>
+                        >
+                            <span slot="append">Km</span>
+                        </v-text-field>
                     </validation-provider>
                 </v-col>
             </v-row>

@@ -98,6 +98,8 @@
 		},
 		data: () => ({
 			show_maps: true,
+			start_date: false,
+			end_date: false,
 			form_data: {
 				id_tipe_bangunan: '',
 				id_sales: '',
@@ -124,7 +126,7 @@
 		    	deskripsi_unit: '',
 		    	harga_unit: '',
 		    	harga_per_meter: '',
-		    	jenis_pembayaran: '',
+		    	jenis_pembayaran: [],
 		    	nama_pemilik: '',
 		    	alamat_lengkap_pemilik: '',
 		    	no_telepon_pemilik: '',
@@ -136,6 +138,8 @@
 		    	approved_status: '',
 		    	latitude: '',
 		    	longitude: '',
+		    	start_date_iklan: '',
+		    	end_date_iklan: '',
 
 			},
 			field_state: false,
@@ -163,6 +167,7 @@
 									status_unit: data.status_unit,
 									nama_unit: data.nama_unit,
 									alamat: data.alamat,
+									provinsi: data.provinsi,
 									kota: data.kota,
 									kecamatan: data.kecamatan,
 									luas_tanah: data.luas_tanah,
@@ -196,6 +201,8 @@
 							    	for_status : data.nama_unit,
 							    	latitude : data.latitude,
 							    	longitude : data.longitude,
+							    	start_date_iklan: data.start_date_iklan,
+							    	end_date_iklan: data.end_date_iklan,
 
 							    	url_gallery_unit: data.url_gallery_unit
     		            		}
@@ -258,6 +265,8 @@
 			    	for_status: '',
 			    	latitude: '',
 			    	longitude: '',
+			    	start_date_iklan: '',
+			    	end_date_iklan: '',
 				}
 				this.$refs.observer.reset()
 			},
@@ -274,6 +283,9 @@
 	    	},
 		    postFormData() {
 	    		const form_data = new FormData(this.$refs['post-form']);
+	    		form_data.append("start_date_iklan", this.form_data.start_date_iklan ? this.form_data.start_date_iklan : '');
+                form_data.append("end_date_iklan", this.form_data.end_date_iklan ? this.form_data.end_date_iklan : '');
+
 	    		if (_.isEmpty(this.form_data.kelengkapan_surat)) {
 		    		data.append("kelengkapan_surat[]", "");
 	    		}
