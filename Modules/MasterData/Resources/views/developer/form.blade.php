@@ -55,39 +55,18 @@
             clear-icon="mdi-eraser-variant"
             :disabled="field_state">
         </v-textarea>
-
-        <div class="form-group row">
-            <div class="col-md-12">
-                <div id="developer-map"></div>
-            </div>
+    
+        <div v-if="show_maps">
+            <maps-component inline-template
+                :latitude-value="form_data.latitude"
+                :longitude-value="form_data.longitude"
+                latitude-input-name="latitude"
+                longitude-input-name="longitude"
+                :disabled="field_state"
+            >
+                @include('core::maps.map')
+            </maps-component>
         </div>
-        
-        <h4>Klik lokasi pada map untuk mendapatkan latitude dan longitude</h4>
-        <v-row>
-            <v-col cols="12" md="6">
-                <v-text-field
-                    class="my-4"
-                    v-model="form_data.latitude"
-                    label="Latitude"
-                    clearable
-                    clear-icon="mdi-eraser-variant"
-                    name="latitude"
-                    :disabled="field_state"
-                ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-                <v-text-field
-                    class="my-4"
-                    v-model="form_data.longitude"
-                    label="Longitude"
-                    clearable
-                    clear-icon="mdi-eraser-variant"
-                    name="longitude"
-                    :persistent-hint="true"
-                    :disabled="field_state"
-                ></v-text-field>
-            </v-col>
-        </v-row>
 
 		<v-textarea
 			class="my-4"
@@ -113,8 +92,20 @@
                 :disabled="field_state"
             >
             </v-file-input>
-            <a :href="form_data.url_logo_developer" target="_blank" class="ml-8">
-                <small>@{{form_data.logo_developer}}</small>
+            <a :href="form_data.url_logo_developer" target="_blank">
+                <v-card
+                    align="left"
+                    v-if="form_data.url_logo_developer"
+                    max-width="250"
+                    tile
+                >
+                    <v-img
+                        v-if="form_data.url_logo_developer"
+                        max-height="150"
+                        max-width="250"
+                        :src="form_data.url_logo_developer"
+                    ></v-img>
+                </v-card>
             </a>
         </div>
 

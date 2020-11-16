@@ -41,11 +41,11 @@
                                                     <div class="d-flex align-center pa-10">
                                                         <div>
                                                             <h2 class="display-1 white--text font-weight-medium">
-                                                                Elegant Design with unlimited features, built with love
+                                                                Epic Home
                                                             </h2>
-                                                            <h6 class="subtitle-1 mt-4 white--text op-5 font-weight-regular">
-                                                                Wrappixel helps developers to build organized and well-coded admin dashboards full of beautiful and feature rich modules.
-                                                            </h6>
+                                                            {{-- <h6 class="subtitle-1 mt-4 white--text op-5 font-weight-regular">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                            </h6> --}}
                                                         </div>
                                                     </div>
                                                 </div>

@@ -26,7 +26,3 @@
     	</v-col>
     </v-row>
 @endsection
-
-@section('scripts')
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbEzICmcP-W38WP-1GQpAZ7ZVPAakGYr0" async defer></script>
-@endsection
