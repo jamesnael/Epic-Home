@@ -163,6 +163,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         return [];
       }
     },
+    filterNamaSales: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
     filterKondisiBangunan: {
       type: Array,
       "default": function _default() {
@@ -175,6 +181,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       show_maps: true,
       form_data: {
         id_tipe_bangunan: '',
+        id_sales: '',
         status_unit: '',
         nama_unit: '',
         alamat: '',
@@ -232,6 +239,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
             var _data = response.data.data;
             _this.form_data = {
               id_tipe_bangunan: _data.id_tipe_bangunan,
+              id_sales: _data.id_sales,
               status_unit: _data.status_unit,
               nama_unit: _data.nama_unit,
               alamat: _data.alamat,
@@ -291,6 +299,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
     clearForm: function clearForm() {
       this.form_data = {
         id_tipe_bangunan: '',
+        id_sales: '',
         status_unit: '',
         nama_unit: '',
         alamat: '',
