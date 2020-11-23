@@ -97,6 +97,14 @@ class Sales extends Model
     public function klien()
     {
         return $this->hasMany('Modules\Transaksi\Entities\Client', 'sales_id');
-    }    
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function listing()
+    {
+        return $this->hasMany('Modules\Transaksi\Entities\Listing', 'id_sales');
+    }
 
 }

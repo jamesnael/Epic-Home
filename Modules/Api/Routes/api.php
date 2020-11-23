@@ -21,6 +21,11 @@ Route::namespace('Mobile')->group(function() {
 
 	Route::get('proyek_primary', 'ProyekPrimaryController@index')->name('proyek_primary.index');
 	Route::get('proyek_primary/detail/{proyek_primary}', 'ProyekPrimaryController@detail')->name('proyek_primary.detail');
+
 	Route::get('secondary_unit', 'SecondaryUnitController@index')->name('secondary_unit.index');
-	Route::get('secondary_unit/detail/{secondary_unit}', 'SecondaryUnitController@detail')->name('secondary_unit.detail');
+	Route::get('secondary_unit/detail/{id}', 'SecondaryUnitController@detail')->name('secondary_unit.detail');
+	
+	Route::post('listing/tambah', 'ListingController@store')->name('listing.store');
+	Route::get('listing/proyek_primary', 'ListingController@index_primary')->name('listing.proyek_primary_index');
+	Route::get('listing/secondary_unit', 'ListingController@index_secondary')->name('listing.secondary_unit_index');
 });
