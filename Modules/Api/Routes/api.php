@@ -28,4 +28,7 @@ Route::namespace('Mobile')->group(function() {
 	Route::post('listing/tambah', 'ListingController@store')->name('listing.store');
 	Route::get('listing/proyek_primary', 'ListingController@index_primary')->name('listing.proyek_primary_index');
 	Route::get('listing/secondary_unit', 'ListingController@index_secondary')->name('listing.secondary_unit_index');
+
+	Route::get('transaksi/{transaksi_slug}', 'TransaksiController@index')->name('transaksi.index');
+	Route::post('transaksi/tambah', 'TransaksiController@store')->name('transaksi.store');
 });
