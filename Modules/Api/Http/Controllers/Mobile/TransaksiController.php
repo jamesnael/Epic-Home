@@ -13,7 +13,9 @@ use Modules\Transaksi\Entities\TransaksiPemesanan;
 
 class TransaksiController extends Controller
 {
-   public function index(Request $request, $transaksi_slug)
+   
+
+    public function index(Request $request, $sales_slug)
     {
         $validator = $this->validateDataRequest($request);
 
@@ -21,12 +23,29 @@ class TransaksiController extends Controller
             return response_json(false, 'Invalid form data', $validator->errors()->first());
         }
 
-        $query = TransaksiPemesanan::whereSlug($transaksi_slug)->first();
+        $data = TransaksiPemesanan::with('unit','klien','klien.sales')->whereHas('klien.sales', function($subquery) use ($sales_slug){
+            $subquery->where('slug', $sales_slug);
+
+        })->get();
         
-        $data = $query->paginate($request->input('paginate') ?? 10);
-        $data->getCollection()->transform(function($item) {
-            return collect($item);
+        $data->transform(function($item) {
+            return ($item);
         });
+        return response_json(true, null, 'Data retrieved.', $data);
+    }
+
+
+
+   public function detail(Request $request, $transaksi_slug)
+    {
+        $validator = $this->validateDataRequest($request);
+
+        if ($validator->fails()) {
+            return response_json(false, 'Invalid form data', $validator->errors()->first());
+        }
+
+        $data = TransaksiPemesanan::whereSlug($transaksi_slug)->first();
+        
         return response_json(true, null, 'Data retrieved.', $data);
     }
 
