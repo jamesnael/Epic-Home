@@ -23,7 +23,7 @@ class TransaksiController extends Controller
             return response_json(false, 'Invalid form data', $validator->errors()->first());
         }
 
-        $data = TransaksiPemesanan::with('unit','klien','klien.sales')->whereHas('klien.sales', function($subquery) use ($sales_slug){
+        $data = TransaksiPemesanan::with('unit','klien')->whereHas('klien.sales', function($subquery) use ($sales_slug){
             $subquery->where('slug', $sales_slug);
 
         })->get();
