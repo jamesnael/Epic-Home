@@ -3,5 +3,7 @@
     "MasterData": true,
     "BeritaProperti": true,
     "ManageUser": true,
-    "Transaksi": true
+    "Transaksi": true,
+    "Api": true,
+    "Controller": true
 }

@@ -16,3 +16,7 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::get('/', 'DashboardController@index')->name('dashboard.index');
+
+Route::group(['namespace' => 'Province', 'prefix' => 'provinces', 'as' => 'provinces.'], function() {
+	Route::get('/', 'ProvinceController@provinceList')->name('index');
+});

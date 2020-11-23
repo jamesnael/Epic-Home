@@ -56,6 +56,24 @@
             ></v-text-field>
         </validation-provider>
 
+        <address-input inline-template
+            :province-value="form_data.provinsi"
+            province-class="mt-4"
+            province-input-name="provinsi"
+            province-label="Provinsi"
+            :city-value="form_data.kota"
+            city-class="mt-4"
+            city-input-name="kota"
+            city-label="Kota"
+            :district-value="form_data.kecamatan"
+            district-class="mt-4"
+            district-input-name="kecamatan"
+            district-label="Kecamatan"
+            :disabled="field_state"
+        >
+            @include('core::address')
+        </address-input>
+
         <v-textarea
             class="my-4"
             v-model="form_data.alamat"
@@ -68,32 +86,6 @@
             :disabled="field_state">
         </v-textarea>
 
-
-        <validation-provider v-slot="{ errors }" name="Kota" rules="required">
-             <v-text-field
-                class="my-4"
-                v-model="form_data.kota" 
-                label="Kota"
-                name="kota"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-text-field>
-        </validation-provider>
-
-        <validation-provider v-slot="{ errors }" name="Kecamatan" rules="required">
-             <v-text-field
-                class="my-4"
-                v-model="form_data.kecamatan" 
-                label="Kecamatan"
-                name="kecamatan"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-text-field>
-        </validation-provider>
 
         <div v-if="show_maps">
             <maps-component inline-template
@@ -421,20 +413,21 @@
             <small class="form-text text-muted">Rp @{{number_format(form_data.harga_per_meter)}}</small>
         </validation-provider>
 
-         <validation-provider v-slot="{ errors }" name="Jenis pembayaran" rules="required">
-             <v-autocomplete
-                class="my-4"
-                v-model="form_data.jenis_pembayaran" 
-                :items="filterJenisPembayaran"
-                label="Jenis Pembayaran Tersedia"
-                name="jenis_pembayaran"
-                hint="* harus diisi"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-autocomplete>
-        </validation-provider>
-
+        <h3  class="mt-4">Jenis Pembayaran :</h3>
+        <v-row>
+            <v-col cols="12" md="2"
+                v-for="(item, key) in filterJenisPembayaran"
+            >
+                <v-checkbox
+                    v-model="form_data.jenis_pembayaran"
+                    :label="item"
+                    :value="item"
+                    name="jenis_pembayaran[]"
+                    :disabled="field_state"
+                ></v-checkbox>
+            </v-col>
+        </v-row>
+         
         <h3 class="mt-8">DATA PEMILIK</h3>
         
           <validation-provider v-slot="{ errors }" name="Nama pemilik" rules="required">
@@ -508,20 +501,67 @@
             ></v-autocomplete>
         </validation-provider>
 
-        <validation-provider v-slot="{ errors }" name="Jangka waktu Pemasangan" rules="numeric">
-             <v-text-field
-                class="my-4"
-                v-model="form_data.jangka_waktu_pemasangan"
-                label="Jangka Waktu Pemasangan"
-                name="jangka_waktu_pemasangan"
-                :readonly="form_data.bersedia_dipasang == 'Tidak' "
-                clearable
-                clear-icon="mdi-eraser-variant"
-                :persistent-hint="true"
-                :error-messages="errors"
-                :disabled="field_state"
-            ></v-text-field>
-        </validation-provider>
+        <div  v-if="form_data.bersedia_dipasang != 'Tidak' ">
+            <h3 class="mt-8">Jangka Waktu Pemasangan</h3>
+            <v-row>
+                <v-col
+                    cols="12"
+                    md="6">
+                        <v-menu
+                        v-model="start_date"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="290px"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                        <validation-provider v-slot="{ errors }" name="Tanggal mulai pemasangan" rules="required">
+                            <v-text-field
+                                :value="reformatDateTime(form_data.start_date_iklan, 'YYYY-MM-DD', 'DD MMMM YYYY')"
+                                hint="* harus diisi"
+                                :persistent-hint="true"
+                                :error-messages="errors"
+                                label="Tanggal Mulai Pasang"
+                                readonly
+                                v-bind="attrs"
+                                v-on="on"
+                            ></v-text-field>
+                        </validation-provider>
+                        </template>
+                        <v-date-picker v-model="form_data.start_date_iklan" @input="start_date = false"></v-date-picker>
+                    </v-menu>
+                </v-col>
+                <v-col
+                    cols="12"
+                    md="6">
+                        <v-menu
+                        v-model="end_date"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="290px"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                        <validation-provider v-slot="{ errors }" name="Tanggal akhir pemasangan" rules="required">
+                            <v-text-field
+                                :value="reformatDateTime(form_data.end_date_iklan, 'YYYY-MM-DD', 'DD MMMM YYYY')"
+                                hint="* harus diisi"
+                                :persistent-hint="true"
+                                :error-messages="errors"
+                                label="Tanggal Selesai Pasang"
+                                readonly
+                                v-bind="attrs"
+                                v-on="on"
+                            ></v-text-field>
+                        </validation-provider>
+                        </template>
+                        <v-date-picker v-model="form_data.end_date_iklan" @input="end_date = false"></v-date-picker>
+                    </v-menu>
+                </v-col>
+            </v-row>
+        </div>
 
 
         <validation-provider v-slot="{ errors }" name="Bersedia open house" rules="required">

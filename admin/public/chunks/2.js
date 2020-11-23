@@ -143,6 +143,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   data: function data() {
     return {
       show_maps: true,
+      tipe_bangunan: '',
       form_data: {
         fasilitas_umum: [],
         id_tipe_bangunan: '',
@@ -159,10 +160,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         harga_awal: '',
         nup: '',
         utj: '',
-        komisi: '',
-        closing_fee: '',
+        komisi: 0,
+        closing_fee: 0,
         reward: '',
-        jenis_pembayaran: '',
+        jenis_pembayaran: [],
         tahun_selesai: '',
         estimasi_selesai: '',
         lingkungan_sekitar: '',
@@ -188,6 +189,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   },
   mounted: function mounted() {
     this.getFormData();
+    this.addFasilitasUmum();
   },
   methods: {
     getFormData: function getFormData() {
@@ -207,7 +209,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               nama_proyek: data.nama_proyek,
               provinsi: data.provinsi,
               kota: data.kota,
-              kabupaten: data.kabupaten,
+              kecamatan: data.kecamatan,
               alamat: data.alamat,
               longitude: data.longitude,
               latitude: data.latitude,
@@ -283,8 +285,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         harga_awal: '',
         nup: '',
         utj: '',
-        komisi: '',
-        closing_fee: '',
+        komisi: 0,
+        closing_fee: 0,
         reward: '',
         jenis_pembayaran: '',
         tahun_selesai: '',
@@ -364,6 +366,19 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       this.form_data.fasilitas_umum = _.filter(this.form_data.fasilitas_umum, function (el, key) {
         return key != idx;
       });
+    },
+    setSelectedTipeBangunan: function setSelectedTipeBangunan() {
+      var _this4 = this;
+
+      var bangunan = _.find(this.filterTipeBangunan, function (o) {
+        return o.value == _this4.form_data.id_tipe_bangunan;
+      });
+
+      if (_.isUndefined(bangunan)) {
+        this.tipe_bangunan = '';
+      } else {
+        this.tipe_bangunan = bangunan.text;
+      }
     }
   }
 });

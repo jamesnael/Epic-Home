@@ -91,6 +91,12 @@ class Sales extends Model
         return $this->belongsTo('Modules\MasterData\Entities\AgentProperty', 'kantor_agent', 'id');
     }
 
-    
+    /**
+     * Get the relationship for the model.
+     */
+    public function klien()
+    {
+        return $this->hasMany('Modules\Transaksi\Entities\Client', 'sales_id');
+    }    
 
 }

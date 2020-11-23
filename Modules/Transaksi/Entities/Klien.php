@@ -30,7 +30,8 @@ class Klien extends Model
     	'nama_bank',
     	'nomor_rekening',
         'kode_otp',
-        'is_verified'
+        'is_verified',
+        'sales_id'
     ];
 
     /**
@@ -81,6 +82,14 @@ class Klien extends Model
     public function transaksi()
     {
         return $this->belongsTo('Modules\Transaksi\Entities\TransaksiPemesanan', 'id_klien');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
+    public function sales()
+    {
+        return $this->belongsTo('Modules\ManageUser\Entities\Sales', 'sales_id');
     }
 
 }

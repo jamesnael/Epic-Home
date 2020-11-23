@@ -83,6 +83,7 @@ class SecondaryUnit extends Model
         'kelengkapan_surat' => 'array',
         'furniture_termasuk'=> 'array',
         'gallery_unit'      => 'array',
+        'jenis_pembayaran'  => 'array',
     ];
 
     /**

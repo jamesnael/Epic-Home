@@ -173,7 +173,7 @@ class SecondaryUnitController extends Controller
             'deskripsi_unit' => 'bail|nullable',
             'harga_unit' => 'bail|required',
             'harga_per_meter' => 'bail|required',
-            'jenis_pembayaran' => 'bail|nullable|in:' . implode(',', decode_option('masterdata.jenis_pembayaran')),
+            'jenis_pembayaran' => 'bail|nullable',
             'nama_pemilik' => 'bail|required',
             'alamat_lengkap_pemilik' => 'bail|required',
             'no_telepon_pemilik' => ['bail', 'required', new SignedPhoneNumber],
@@ -236,7 +236,7 @@ class SecondaryUnitController extends Controller
             $item->tanggal_input = $item->created_at->timezone(config('core.app_timezone', 'UTC'))->locale('id')->translatedFormat('d F Y H:i');
             $item->harga_unit ='Rp '.format_money($item->harga_unit);
             $item->nama_tipe_bangunan = $item->tipe_bangunan->nama_tipe_bangunan ?? '';
-            $item->nama_sales = $item->sales->nama_depan .' '. $item->sales->nama_belakang  ?? '';
+            $item->nama_sales = $item->sales->user->nama ?? '';
             $item->nama_kantor_agen = $item->sales->kantor_agen->nama_agent_property ?? '';
             
             return $item;

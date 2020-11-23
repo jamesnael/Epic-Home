@@ -30,6 +30,7 @@ class ProyekPrimary extends Model
     	'provinsi',
     	'kota',
     	'kabupaten',
+        'kecamatan',
     	'alamat',
     	'longitude',
     	'latitude',
@@ -88,6 +89,7 @@ class ProyekPrimary extends Model
         'google_map_gallery' => 'array',
         'sertifikat' => 'array',
         'fasilitas' => 'array',
+        'jenis_pembayaran' => 'array',
     ];
 
 

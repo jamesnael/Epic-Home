@@ -42,7 +42,7 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-
+        require __DIR__.'/../Helpers/Helpers.php';
         require __DIR__.'/HelpersProvider.php';
     }
 

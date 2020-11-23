@@ -179,6 +179,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
   data: function data() {
     return {
       show_maps: true,
+      start_date: false,
+      end_date: false,
       form_data: {
         id_tipe_bangunan: '',
         id_sales: '',
@@ -205,7 +207,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         deskripsi_unit: '',
         harga_unit: '',
         harga_per_meter: '',
-        jenis_pembayaran: '',
+        jenis_pembayaran: [],
         nama_pemilik: '',
         alamat_lengkap_pemilik: '',
         no_telepon_pemilik: '',
@@ -216,7 +218,9 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         gallery_unit: [],
         approved_status: '',
         latitude: '',
-        longitude: ''
+        longitude: '',
+        start_date_iklan: '',
+        end_date_iklan: ''
       },
       field_state: false,
       form_alert_state: false,
@@ -243,6 +247,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               status_unit: _data.status_unit,
               nama_unit: _data.nama_unit,
               alamat: _data.alamat,
+              provinsi: _data.provinsi,
               kota: _data.kota,
               kecamatan: _data.kecamatan,
               luas_tanah: _data.luas_tanah,
@@ -276,6 +281,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
               for_status: _data.nama_unit,
               latitude: _data.latitude,
               longitude: _data.longitude,
+              start_date_iklan: _data.start_date_iklan,
+              end_date_iklan: _data.end_date_iklan,
               url_gallery_unit: _data.url_gallery_unit
             };
             _this.field_state = false;
@@ -335,7 +342,9 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
         approved_status: '',
         for_status: '',
         latitude: '',
-        longitude: ''
+        longitude: '',
+        start_date_iklan: '',
+        end_date_iklan: ''
       };
       this.$refs.observer.reset();
     },
@@ -356,6 +365,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])('id', vee_validate
       var _this3 = this;
 
       var form_data = new FormData(this.$refs['post-form']);
+      form_data.append("start_date_iklan", this.form_data.start_date_iklan ? this.form_data.start_date_iklan : '');
+      form_data.append("end_date_iklan", this.form_data.end_date_iklan ? this.form_data.end_date_iklan : '');
 
       if (_.isEmpty(this.form_data.kelengkapan_surat)) {
         data.append("kelengkapan_surat[]", "");

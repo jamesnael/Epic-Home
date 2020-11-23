@@ -62,6 +62,7 @@
 		},
 		data: () => ({
 			show_maps: true,
+			tipe_bangunan:'',
 			form_data: {
 				fasilitas_umum: [],
 		    	id_tipe_bangunan: '',
@@ -78,10 +79,10 @@
 		    	harga_awal: '',
 		    	nup: '',
 		    	utj: '',
-		    	komisi: '',
-		    	closing_fee: '',
+		    	komisi: 0,
+		    	closing_fee: 0,
 		    	reward: '',
-		    	jenis_pembayaran: '',
+		    	jenis_pembayaran: [],
 		    	tahun_selesai: '',
 		    	estimasi_selesai: '',
 		    	lingkungan_sekitar: '',
@@ -107,6 +108,7 @@
 		}),
 		mounted() {
             this.getFormData();
+            this.addFasilitasUmum();
         },
 		methods: {
     		getFormData() {
@@ -128,7 +130,7 @@
 	            			    	nama_proyek: data.nama_proyek,
 	            			    	provinsi: data.provinsi,
 	            			    	kota: data.kota,
-	            			    	kabupaten: data.kabupaten,
+	            			    	kecamatan: data.kecamatan,
 	            			    	alamat: data.alamat,
 	            			    	longitude: data.longitude,
 	            			    	latitude: data.latitude,
@@ -209,8 +211,8 @@
 			    	harga_awal: '',
 			    	nup: '',
 			    	utj: '',
-			    	komisi: '',
-			    	closing_fee: '',
+			    	komisi: 0,
+			    	closing_fee: 0,
 			    	reward: '',
 			    	jenis_pembayaran: '',
 			    	tahun_selesai: '',
@@ -293,6 +295,14 @@
 		    		return key != idx
 		    	})
 		    },
+		    setSelectedTipeBangunan() {
+                let bangunan = _.find(this.filterTipeBangunan, o => { return o.value == this.form_data.id_tipe_bangunan})
+                if (_.isUndefined(bangunan)) {
+                    this.tipe_bangunan = ''
+                } else {
+                    this.tipe_bangunan = bangunan.text
+                }
+            },
 		}
 	}
 </script>
