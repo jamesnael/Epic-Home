@@ -51,7 +51,7 @@ class ListingController extends Controller
         ]);
     }
 
-    public function index_primary(Request $request)
+    public function index_primary(Request $request, $sales_slug)
     {
         $validator = $this->validateDataRequest($request);
 
@@ -60,8 +60,11 @@ class ListingController extends Controller
         }
         
         $data = Listing::with('unit', 'sales', 'unit.proyek_primary')
-                ->whereHas('unit', function($item){
+                ->whereHas('unit', function($item) {
                     $item->whereNotNull('id_proyek_primari');
+                })
+                ->whereHas('sales', function($item) use($sales_slug) {
+                    $item->where('slug', $sales_slug);
                 })
                 ->orderBy('created_at', 'desc')
                 ->get();
@@ -73,7 +76,7 @@ class ListingController extends Controller
         return response_json(true, null, 'Data retrieved.', $data);
     }
 
-    public function index_secondary(Request $request)
+    public function index_secondary(Request $request, $sales_slug)
     {
         $validator = $this->validateDataRequest($request);
 
@@ -82,8 +85,11 @@ class ListingController extends Controller
         }
         
         $data = Listing::with('unit', 'sales')
-                ->whereHas('unit', function($item){
+                ->whereHas('unit', function($item) {
                     $item->whereNull('id_proyek_primari');
+                })
+                ->whereHas('sales', function($item) use($sales_slug ){
+                    $item->where('slug', $sales_slug);
                 })
                 ->orderBy('created_at', 'desc')
                 ->get();
