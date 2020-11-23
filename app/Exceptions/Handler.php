@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -34,19 +33,5 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
-    }
-
-    /**
-     * Convert an authentication exception into a response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        return $request->expectsJson()
-                    ? response_json(false, $exception->getMessage(), 'Silahkan Login terlebih dahulu.')
-                    : redirect()->guest($exception->redirectTo() ?? route('login'));
     }
 }

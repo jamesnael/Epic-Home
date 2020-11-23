@@ -20,12 +20,16 @@ Route::namespace('Mobile')->group(function() {
 	Route::post('klien/resend', 'KlienController@resend')->name('client.resend');
 
 	Route::get('proyek_primary', 'ProyekPrimaryController@index')->name('proyek_primary.index');
-	Route::get('proyek_primary/detail/{proyek_primary}', 'ProyekPrimaryController@detail')->name('proyek_primary.detail');
+	Route::get('proyek_primary/detail/{id}', 'ProyekPrimaryController@detail')->name('proyek_primary.detail');
+
 	Route::get('secondary_unit', 'SecondaryUnitController@index')->name('secondary_unit.index');
-	Route::get('secondary_unit/detail/{secondary_unit}', 'SecondaryUnitController@detail')->name('secondary_unit.detail');
+	Route::get('secondary_unit/detail/{id}', 'SecondaryUnitController@detail')->name('secondary_unit.detail');
+	
+	Route::post('listing/tambah', 'ListingController@store')->name('listing.store');
+	Route::get('listing/proyek_primary/{sales_slug}', 'ListingController@index_primary')->name('listing.proyek_primary_index');
+	Route::get('listing/secondary_unit/{sales_slug}', 'ListingController@index_secondary')->name('listing.secondary_unit_index');
 
 	Route::get('transaksi/{sales_slug}', 'TransaksiController@index')->name('transaksi.index');
 	Route::get('transaksi/detail/{transaksi_slug}', 'TransaksiController@detail')->name('transaksi.detail');
 	Route::post('transaksi/tambah', 'TransaksiController@store')->name('transaksi.store');
-	
 });

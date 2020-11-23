@@ -142,6 +142,14 @@ class Unit extends Model
     /**
      * Get the relationship for the model.
      */
+    public function listing()
+    {
+        return $this->hasMany('Modules\Transaksi\Entities\Listings', 'id_unit');
+    }
+
+    /**
+     * Get the relationship for the model.
+     */
     public function sales()
     {
         return $this->belongsTo('Modules\ManageUser\Entities\Sales', 'id_sales');

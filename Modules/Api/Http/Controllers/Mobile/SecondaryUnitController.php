@@ -21,7 +21,7 @@ class SecondaryUnitController extends Controller
             return response_json(false, 'Get data failed.', $validator->errors()->first());
         }
     
-        $data = SecondaryUnit::with('tipe_bangunan')->orderBy('created_at', 'desc')->get();
+        $data = SecondaryUnit::with('tipe_bangunan', 'tipe_unit')->whereNull('id_proyek_primari')->orderBy('created_at', 'desc')->get();
 
         $data->transform(function($item) {
             $array_gallery_unit = json_decode($item->gallery_unit, true);
@@ -38,7 +38,7 @@ class SecondaryUnitController extends Controller
         return response_json(true, null, 'Data retrieved.', $data);
     }
 
-    public function detail(Request $request, $secondary_unit)
+    public function detail(Request $request, $id)
     {
         $validator = $this->validateTableRequest($request);
 
@@ -46,7 +46,7 @@ class SecondaryUnitController extends Controller
             return response_json(false, 'Get data failed.', $validator->errors()->first());
         }
     
-        $data = SecondaryUnit::with('tipe_bangunan')->whereSlug($secondary_unit)->orderBy('created_at', 'desc')->get();
+        $data = SecondaryUnit::with('tipe_bangunan', 'tipe_unit')->where('id', $id)->orderBy('created_at', 'desc')->get();
 
         $data->transform(function($item) {
             $array_gallery_unit = json_decode($item->gallery_unit, true);

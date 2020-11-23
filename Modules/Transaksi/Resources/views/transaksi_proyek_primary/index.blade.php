@@ -1,5 +1,12 @@
 @extends('core::layouts.master')
 
+@push('table_slot')
+<template v-slot:item.harga_unit="{ item }">
+       Rp @{{ number_format(item.harga_unit) }}
+    </span>
+</template>
+@endpush
+
 @section('content')
     <v-tabs>
         <v-tab>

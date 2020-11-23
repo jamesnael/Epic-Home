@@ -14,4 +14,3 @@ package-lock.json
 composer.lock
 .editorconfig
 /media
-/public
