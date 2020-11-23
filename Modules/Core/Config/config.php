@@ -153,7 +153,7 @@ return [
                 ],
                 [
                     'icon' => 'mdi-adjust',
-                    'text' => 'Seconday Unit',
+                    'text' => 'Secondary Unit',
                     'uri' => 'transaksi-secondary-unit.index',
                     'model' => false,
                     'show' => true
