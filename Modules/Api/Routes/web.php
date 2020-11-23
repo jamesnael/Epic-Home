@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('api')->group(function() {
-    Route::get('/', 'ApiController@index');
-});
+// Route::prefix('api')->group(function() {
+//     Route::get('/', 'ApiController@index');
+// });

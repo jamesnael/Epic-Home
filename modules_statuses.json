@@ -2,6 +2,7 @@
     "Core": true,
     "MasterData": true,
     "BeritaProperti": true,
-    "SalesData": true,
+    "Transaksi": true,
+    "Api": true,
     "ManageUser": true
 }
