@@ -30,6 +30,8 @@ class TransaksiPemesanan extends Model
 		'terbilang',
 		'keterangan',
         'status',
+        'cara_bayar',
+        'deskripsi_pembayaran',
     ];
 
     /**
