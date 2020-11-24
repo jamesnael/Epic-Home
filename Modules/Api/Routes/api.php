@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::namespace('Mobile')->group(function() {
+Route::namespace('Mobile')->middleware('auth:api')->group(function() {
 	Route::get('klien/{sales_slug}', 'KlienController@index')->name('client.index');
 	Route::post('klien/tambah', 'KlienController@store')->name('client.store');
 	Route::post('klien/verifikasi', 'KlienController@verifikasi')->name('client.verifikasi');
