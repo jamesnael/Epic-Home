@@ -504,6 +504,46 @@ var Ziggy = {
       "methods": ["POST"],
       "domain": null
     },
+    "berita-properti.table": {
+      "uri": "berita-properti\/table",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.data": {
+      "uri": "berita-properti\/{berita_properti}\/data",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.store": {
+      "uri": "berita-properti",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "berita-properti.update": {
+      "uri": "berita-properti\/{berita_properti}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "berita-properti.destroy": {
+      "uri": "berita-properti\/{berita_properti}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "berita-properti.index": {
+      "uri": "berita-properti",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.create": {
+      "uri": "berita-properti\/tambah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "berita-properti.edit": {
+      "uri": "berita-properti\/{berita_properti}\/ubah",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
     "api.berita-properti.table": {
       "uri": "api\/berita-properti\/table",
       "methods": ["GET", "HEAD"],
@@ -527,21 +567,6 @@ var Ziggy = {
     "api.berita-properti.destroy": {
       "uri": "api\/berita-properti\/{berita_properti}",
       "methods": ["DELETE"],
-      "domain": null
-    },
-    "berita-properti.index": {
-      "uri": "berita-properti",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "berita-properti.create": {
-      "uri": "berita-properti\/tambah",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "berita-properti.edit": {
-      "uri": "berita-properti\/{berita_properti}\/ubah",
-      "methods": ["GET", "HEAD"],
       "domain": null
     },
     "dashboard.index": {
@@ -1850,9 +1875,9 @@ var Ziggy = {
       "domain": null
     }
   },
-  baseUrl: 'https://epichome.id/admin/',
-  baseProtocol: 'https',
-  baseDomain: 'epichome.id',
+  baseUrl: 'http://localhost/admin/',
+  baseProtocol: 'http',
+  baseDomain: 'localhost',
   basePort: false,
   defaultParameters: []
 };
@@ -85604,8 +85629,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\epic-home\admin\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\epic-home\admin\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\epic-home\admin\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\epic-home\admin\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
