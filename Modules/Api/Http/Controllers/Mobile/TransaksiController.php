@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 use Modules\Transaksi\Entities\TransaksiPemesanan;
+use Modules\MasterData\Entities\Unit;
 
 class TransaksiController extends Controller
 {
@@ -44,7 +45,7 @@ class TransaksiController extends Controller
             return response_json(false, 'Invalid form data', $validator->errors()->first());
         }
 
-        $data = TransaksiPemesanan::whereSlug($transaksi_slug)->first();
+        $data = TransaksiPemesanan::with('unit','klien')->whereSlug($transaksi_slug)->first();
         
         return response_json(true, null, 'Data retrieved.', $data);
     }
@@ -75,6 +76,16 @@ class TransaksiController extends Controller
         DB::beginTransaction();
         try {
 
+            $tipe_unit = Unit::find($request->id_unit);
+           
+            if ($tipe_unit->id_proyek_primari == null) {
+
+              $request->merge(['status' => "secondary_unit"]);
+            
+            } else {
+                $request->merge(['status' => "proyek_primary"]);
+
+            }
             $data = TransaksiPemesanan::create($request->all());
 
             DB::commit();
@@ -94,7 +105,6 @@ class TransaksiController extends Controller
             "jumlah_bayar" => "bail|required",
             "terbilang" => "bail|required",
             "keterangan" => "bail|nullable",
-            "status" => "bail|required",
             "cara_bayar" => "bail|required",
             "deskripsi_pembayaran" => "bail|nullable"
         ]);
