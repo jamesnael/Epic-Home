@@ -26,8 +26,8 @@ Route::namespace('Mobile')->middleware('auth:api')->group(function() {
 	Route::get('secondary_unit/detail/{id}', 'SecondaryUnitController@detail')->name('secondary_unit.detail');
 	
 	Route::post('listing/tambah', 'ListingController@store')->name('listing.store');
-	Route::get('listing/proyek_primary/{sales_slug}', 'ListingController@index_primary')->name('listing.proyek_primary_index');
-	Route::get('listing/secondary_unit/{sales_slug}', 'ListingController@index_secondary')->name('listing.secondary_unit_index');
+	Route::get('listing/proyek_primary/{sales_slug}', 'ListingController@indexPrimary')->name('listing.proyek_primary_index');
+	Route::get('listing/secondary_unit/{sales_slug}', 'ListingController@indexSecondary')->name('listing.secondary_unit_index');
 
 	Route::get('transaksi/{sales_slug}', 'TransaksiController@index')->name('transaksi.index');
 	Route::get('transaksi/detail/{transaksi_slug}', 'TransaksiController@detail')->name('transaksi.detail');
