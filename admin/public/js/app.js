@@ -1850,9 +1850,9 @@ var Ziggy = {
       "domain": null
     }
   },
-  baseUrl: 'http://epic-home.test/admin/',
-  baseProtocol: 'http',
-  baseDomain: 'epic-home.test',
+  baseUrl: 'https://epichome.id/admin/',
+  baseProtocol: 'https',
+  baseDomain: 'epichome.id',
   basePort: false,
   defaultParameters: []
 };
@@ -85604,8 +85604,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\Laragon\www\epic-home\admin\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\Laragon\www\epic-home\admin\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\epic-home\admin\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\epic-home\admin\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
