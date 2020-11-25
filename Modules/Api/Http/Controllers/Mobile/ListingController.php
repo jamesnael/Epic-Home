@@ -51,7 +51,7 @@ class ListingController extends Controller
         ]);
     }
 
-    public function index_primary(Request $request, $sales_slug)
+    public function indexPrimary(Request $request, $sales_slug)
     {
         $validator = $this->validateDataRequest($request);
 
@@ -76,7 +76,7 @@ class ListingController extends Controller
         return response_json(true, null, 'Data retrieved.', $data);
     }
 
-    public function index_secondary(Request $request, $sales_slug)
+    public function indexSecondary(Request $request, $sales_slug)
     {
         $validator = $this->validateDataRequest($request);
 
