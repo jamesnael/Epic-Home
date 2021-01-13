@@ -14,8 +14,6 @@ use Modules\MasterData\Entities\Unit;
 
 class TransaksiController extends Controller
 {
-   
-
     public function index(Request $request, $sales_slug)
     {
         $validator = $this->validateDataRequest($request);
@@ -50,7 +48,7 @@ class TransaksiController extends Controller
         return response_json(true, null, 'Data retrieved.', $data);
     }
 
-     public function validateDataRequest($request)
+    public function validateDataRequest($request)
     {
         return Validator::make($request->all(), [
             'paginate' => 'bail|sometimes|required|numeric|min:10',
@@ -96,7 +94,7 @@ class TransaksiController extends Controller
         }
     }
 
-     public function validateFormRequest($request)
+    public function validateFormRequest($request)
     {
         return Validator::make($request->all(), [
             "id_klien" => "bail|required|exists:Modules\Transaksi\Entities\Klien,id",

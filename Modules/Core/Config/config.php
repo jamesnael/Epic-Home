@@ -169,6 +169,15 @@ return [
             'show' => true,
             'children' => null
         ],
+        [  
+            'icon' => 'mdi-monitor-multiple',
+            'icon-alt' => 'mdi-chevron-down',
+            'text' => 'Sales Monitoring',
+            'uri' => 'sales-monitoring.index',
+            'model' => false,
+            'show' => true,
+            'children' => null
+        ],
     ],
     'user_menu' => [
         [  

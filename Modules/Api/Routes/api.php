@@ -32,4 +32,9 @@ Route::namespace('Mobile')->middleware('auth:api')->group(function() {
 	Route::get('transaksi/{sales_slug}', 'TransaksiController@index')->name('transaksi.index');
 	Route::get('transaksi/detail/{transaksi_slug}', 'TransaksiController@detail')->name('transaksi.detail');
 	Route::post('transaksi/tambah', 'TransaksiController@store')->name('transaksi.store');
+
+	Route::get('sales_monitoring', 'SalesMonitoringController@index')->name('sales_monitoring.index');
+	Route::get('sales_monitoring/edit/{slug}', 'SalesMonitoringController@edit')->name('sales_monitoring.edit');
+	Route::post('sales_monitoring/tambah', 'SalesMonitoringController@store')->name('sales_monitoring.store');
+	Route::post('sales_monitoring/update/{slug}', 'SalesMonitoringController@update')->name('sales_monitoring.update');
 });

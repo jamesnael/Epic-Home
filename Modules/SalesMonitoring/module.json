@@ -1,0 +1,13 @@
+{
+    "name": "SalesMonitoring",
+    "alias": "salesmonitoring",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SalesMonitoring\\Providers\\SalesMonitoringServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

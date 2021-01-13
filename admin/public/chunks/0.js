@@ -7,7 +7,7 @@
 /*! exports provided: code, messages, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"code\":\"id\",\"messages\":{\"alpha\":\"{_field_} hanya boleh mengandung karakter alfabet\",\"alpha_num\":\"{_field_} hanya boleh mengandung karakter alfanumerik\",\"alpha_dash\":\"{_field_} boleh mengandung karakter alfanumerik, tanda hubung, dan garis bawah\",\"alpha_spaces\":\"{_field_} hanya boleh berisi karakter alfabet serta spasi\",\"between\":\"{_field_} harus di antara {min} dan {max}\",\"confirmed\":\"{_field_} tidak cocok dengan {target}\",\"digits\":\"{_field_} harus berupa {length} digit angka\",\"dimensions\":\"{_field_} harus berdimensi lebar {width} pixel dan tinggi {height} pixel\",\"email\":\"{_field_} harus berupa alamat surel yang benar\",\"excluded\":\"{_field_} harus berupa nilai yang sah\",\"ext\":\"{_field_} harus berupa berkas yang benar\",\"image\":\"{_field_} harus berupa gambar\",\"integer\":\"{_field_} harus berupa bilangan bulat\",\"length\":\"Panjang {_field_} harus tepat {length}\",\"max_value\":\"Nilai {_field_} tidak boleh lebih dari {max}\",\"max\":\"{_field_} tidak boleh lebih dari {length} karakter\",\"mimes\":\"Tipe berkas {_field_} harus benar\",\"min_value\":\"Nilai {_field_} tidak boleh kurang dari {min}\",\"min\":\"{_field_} minimal mengandung {length} karakter\",\"numeric\":\"{_field_} harus berupa angka\",\"oneOf\":\"{_field_} harus berupa nilai yang sah\",\"regex\":\"Format {_field_} salah\",\"required\":\"{_field_} harus diisi\",\"required_if\":\"{_field_} harus diisi\",\"size\":\"{_field_} harus lebih kecil dari {size}KB\"}}");
+module.exports = JSON.parse("{\"code\":\"id\",\"messages\":{\"alpha\":\"{_field_} hanya boleh mengandung karakter alfabet\",\"alpha_num\":\"{_field_} hanya boleh mengandung karakter alfanumerik\",\"alpha_dash\":\"{_field_} boleh mengandung karakter alfanumerik, tanda hubung, dan garis bawah\",\"alpha_spaces\":\"{_field_} hanya boleh berisi karakter alfabet serta spasi\",\"between\":\"{_field_} harus di antara {min} dan {max}\",\"confirmed\":\"{_field_} tidak cocok dengan {target}\",\"digits\":\"{_field_} harus berupa {length} digit angka\",\"dimensions\":\"{_field_} harus berdimensi lebar {width} pixel dan tinggi {height} pixel\",\"email\":\"{_field_} harus berupa alamat surel yang benar\",\"excluded\":\"{_field_} harus berupa nilai yang sah\",\"ext\":\"{_field_} harus berupa berkas yang benar\",\"image\":\"{_field_} harus berupa gambar\",\"integer\":\"{_field_} harus berupa bilangan bulat\",\"length\":\"Panjang {_field_} harus tepat {length}\",\"max_value\":\"Nilai {_field_} tidak boleh lebih dari {max}\",\"max\":\"{_field_} tidak boleh lebih dari {length} karakter\",\"mimes\":\"Tipe berkas {_field_} harus benar\",\"min_value\":\"Nilai {_field_} tidak boleh kurang dari {min}\",\"min\":\"{_field_} minimal mengandung {length} karakter\",\"numeric\":\"{_field_} harus berupa angka\",\"oneOf\":\"{_field_} harus berupa nilai yang sah\",\"regex\":\"Format {_field_} salah\",\"required\":\"{_field_} harus diisi\",\"required_if\":\"{_field_} harus diisi\",\"size\":\"{_field_} harus lebih kecil dari {size}KB\",\"double\":\"{_field_} harus berupa desimal yang valid\"}}");
 
 /***/ }),
 
@@ -15,7 +15,7 @@ module.exports = JSON.parse("{\"code\":\"id\",\"messages\":{\"alpha\":\"{_field_
 /*!*************************************************!*\
   !*** ./node_modules/vee-validate/dist/rules.js ***!
   \*************************************************/
-/*! exports provided: alpha, alpha_dash, alpha_num, alpha_spaces, between, confirmed, digits, dimensions, email, excluded, ext, image, integer, is, is_not, length, max, max_value, mimes, min, min_value, numeric, oneOf, regex, required, required_if, size */
+/*! exports provided: alpha, alpha_dash, alpha_num, alpha_spaces, between, confirmed, digits, dimensions, double, email, excluded, ext, image, integer, is, is_not, length, max, max_value, mimes, min, min_value, numeric, oneOf, regex, required, required_if, size */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28,6 +28,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "confirmed", function() { return confirmed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "digits", function() { return digits; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dimensions", function() { return dimensions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "double", function() { return double; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "email", function() { return email; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "excluded", function() { return excluded; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ext", function() { return ext; });
@@ -48,7 +49,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "required_if", function() { return required_if; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "size", function() { return size; });
 /**
-  * vee-validate v3.4.0
+  * vee-validate v3.4.5
   * (c) 2020 Abdelrahman Awad
   * @license MIT
   */
@@ -749,6 +750,31 @@ var size = {
     params: params$j
 };
 
+var validate$r = function (value, params) {
+    var _a = params || {}, _b = _a.decimals, decimals = _b === void 0 ? 0 : _b, _c = _a.separator, separator = _c === void 0 ? 'dot' : _c;
+    var separators = {
+        dot: '.',
+        comma: ','
+    };
+    var regexPart = +decimals === 0 ? '+' : "{" + decimals + "}";
+    var regex = new RegExp("^-?\\d+\\" + (separators[separator] || '.') + "\\d" + regexPart + "$");
+    return Array.isArray(value) ? value.every(function (val) { return regex.test(String(val)); }) : regex.test(String(value));
+};
+var params$k = [
+    {
+        name: 'decimals',
+        default: 0
+    },
+    {
+        name: 'separator',
+        default: 'dot'
+    }
+];
+var double = {
+    validate: validate$r,
+    params: params$k
+};
+
 
 
 
@@ -777,7 +803,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /**
-  * vee-validate v3.4.0
+  * vee-validate v3.4.5
   * (c) 2020 Abdelrahman Awad
   * @license MIT
   */
@@ -1660,7 +1686,9 @@ var Dictionary = /** @class */ (function () {
         var _a, _b, _c, _d, _e, _f, _g, _h;
         var message;
         // find if specific message for that field was specified.
-        message = ((_c = (_b = (_a = this.container[locale]) === null || _a === void 0 ? void 0 : _a.fields) === null || _b === void 0 ? void 0 : _b[field]) === null || _c === void 0 ? void 0 : _c[rule]) || ((_e = (_d = this.container[locale]) === null || _d === void 0 ? void 0 : _d.messages) === null || _e === void 0 ? void 0 : _e[rule]);
+        var fieldContainer = (_c = (_b = (_a = this.container[locale]) === null || _a === void 0 ? void 0 : _a.fields) === null || _b === void 0 ? void 0 : _b[field]) === null || _c === void 0 ? void 0 : _c[rule];
+        var messageContainer = (_e = (_d = this.container[locale]) === null || _d === void 0 ? void 0 : _d.messages) === null || _e === void 0 ? void 0 : _e[rule];
+        message = fieldContainer || messageContainer || '';
         if (!message) {
             message = '{_field_} is not valid';
         }
@@ -2172,6 +2200,10 @@ var ValidationProvider = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
             default: function () {
                 return {};
             }
+        },
+        detectInput: {
+            type: Boolean,
+            default: true
         }
     },
     watch: {
@@ -2251,27 +2283,28 @@ var ValidationProvider = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
         this.registerField();
         var ctx = createValidationCtx(this);
         var children = normalizeChildren(this, ctx);
-        var inputs = findInputNodes(children);
-        if (!inputs.length) {
-            // Silent exit if no input was found.
-            return this.slim && children.length <= 1 ? children[0] : h(this.tag, children);
+        // Automatic v-model detection
+        if (this.detectInput) {
+            var inputs = findInputNodes(children);
+            if (inputs.length) {
+                inputs.forEach(function (input, idx) {
+                    var _a, _b, _c, _d, _e, _f;
+                    // If the elements are not checkboxes and there are more input nodes
+                    if (!includes(['checkbox', 'radio'], (_b = (_a = input.data) === null || _a === void 0 ? void 0 : _a.attrs) === null || _b === void 0 ? void 0 : _b.type) && idx > 0) {
+                        return;
+                    }
+                    var resolved = getConfig().useConstraintAttrs ? resolveRules(input) : {};
+                    if (!isEqual(_this._resolvedRules, resolved)) {
+                        _this._needsValidation = true;
+                    }
+                    if (isHTMLNode(input)) {
+                        _this.fieldName = ((_d = (_c = input.data) === null || _c === void 0 ? void 0 : _c.attrs) === null || _d === void 0 ? void 0 : _d.name) || ((_f = (_e = input.data) === null || _e === void 0 ? void 0 : _e.attrs) === null || _f === void 0 ? void 0 : _f.id);
+                    }
+                    _this._resolvedRules = resolved;
+                    addListeners(_this, input);
+                });
+            }
         }
-        inputs.forEach(function (input, idx) {
-            var _a, _b, _c, _d, _e, _f;
-            // If the elements are not checkboxes and there are more input nodes
-            if (!includes(['checkbox', 'radio'], (_b = (_a = input.data) === null || _a === void 0 ? void 0 : _a.attrs) === null || _b === void 0 ? void 0 : _b.type) && idx > 0) {
-                return;
-            }
-            var resolved = getConfig().useConstraintAttrs ? resolveRules(input) : {};
-            if (!isEqual(_this._resolvedRules, resolved)) {
-                _this._needsValidation = true;
-            }
-            if (isHTMLNode(input)) {
-                _this.fieldName = ((_d = (_c = input.data) === null || _c === void 0 ? void 0 : _c.attrs) === null || _d === void 0 ? void 0 : _d.name) || ((_f = (_e = input.data) === null || _e === void 0 ? void 0 : _e.attrs) === null || _f === void 0 ? void 0 : _f.id);
-            }
-            _this._resolvedRules = resolved;
-            addListeners(_this, input);
-        });
         return this.slim && children.length <= 1 ? children[0] : h(this.tag, children);
     },
     beforeDestroy: function () {
@@ -2685,14 +2718,14 @@ function register(vm) {
     }
 }
 function prepareSlotProps(vm) {
-    return __assign(__assign({}, vm.flags), { errors: vm.errors, fields: vm.fields, validate: vm.validate, passes: vm.handleSubmit, handleSubmit: vm.handleSubmit, reset: vm.reset });
+    return __assign(__assign({}, vm.flags), { errors: vm.errors, fields: vm.fields, validate: vm.validate, validateWithInfo: vm.validateWithInfo, passes: vm.handleSubmit, handleSubmit: vm.handleSubmit, reset: vm.reset });
 }
 // Creates a modified version of validation flags
 function createObserverFlags() {
     return __assign(__assign({}, createFlags()), { valid: true, invalid: false });
 }
 function computeObserverState() {
-    var vms = __spreadArrays(values(this.refs), this.observers);
+    var vms = __spreadArrays(values(this.refs), this.observers.filter(function (o) { return !o.disabled; }));
     var errors = {};
     var flags = createObserverFlags();
     var fields = {};
@@ -2760,7 +2793,7 @@ function withValidation(component, mapProps) {
     return hoc;
 }
 
-var version = '3.4.0';
+var version = '3.4.5';
 
 
 

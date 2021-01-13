@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Transaksi\Entities;
+namespace Modules\SalesMonitoring\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Klien extends Model
+class SalesMonitoring extends Model
 {
     use Sluggable, SoftDeletes;
 
@@ -15,7 +15,7 @@ class Klien extends Model
      *
      * @var string
      */
-    protected $table = 'ms_client';
+    protected $table = 'sales_monitoring';
 
     /**
      * The attributes that are mass assignable.
@@ -23,15 +23,11 @@ class Klien extends Model
      * @var array
      */
     protected $fillable = [
-    	'nama_klien',
-    	'telepone',
-    	'email',
-    	'catatan',
-    	'nama_bank',
-    	'nomor_rekening',
-        'kode_otp',
-        'is_verified',
-        'sales_id'
+    	'id_klien',
+        'tanggal_follow_up',
+        'status',
+        'note',
+        'file_attachment'
     ];
 
     /**
@@ -44,12 +40,13 @@ class Klien extends Model
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $hidden = [
-        'deleted_at',
+    protected $casts = [
+        'tag' => 'array',
+        'banner' => 'array'
     ];
 
     /**
@@ -61,7 +58,7 @@ class Klien extends Model
     {
         return [
             'slug' => [
-                'source' => ['nama_klien']
+                'source' => ['id_klien']
             ]
         ];
     }
@@ -79,24 +76,8 @@ class Klien extends Model
     /**
      * Get the relationship for the model.
      */
-    public function transaksi()
+    public function klien()
     {
-        return $this->belongsTo('Modules\Transaksi\Entities\TransaksiPemesanan', 'id_klien');
-    }
-
-    /**
-     * Get the relationship for the model.
-     */
-    public function sales()
-    {
-        return $this->belongsTo('Modules\ManageUser\Entities\Sales', 'sales_id');
-    }
-
-    /**
-     * Get the relationship for the model.
-     */
-    public function sales_monitoring()
-    {
-        return $this->belongsTo('Modules\SalesMonitoring\Entities\SalesMonitoring', 'id_klien');
+        return $this->belongsTo('Modules\Transaksi\Entities\Klien', 'id_klien');
     }
 }

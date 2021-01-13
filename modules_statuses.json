@@ -4,5 +4,6 @@
     "BeritaProperti": true,
     "Transaksi": true,
     "Api": true,
-    "ManageUser": true
+    "ManageUser": true,
+    "SalesMonitoring": true
 }
